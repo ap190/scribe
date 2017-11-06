@@ -50,7 +50,7 @@ const Input = styled.input`
   }
 `;
 
-const LoginPage = () => (
+const LoginPage = props => (
   <Background>
     <LeftImage />
     <Form>
@@ -66,7 +66,12 @@ const LoginPage = () => (
       </Section>
 
       <Section>
-        <button className="btn btn-primary">Login</button>
+        <button
+          className="btn btn-primary"
+          onClick={() => props.history.push("/home")}
+        >
+          Login
+        </button>
       </Section>
     </Form>
   </Background>
