@@ -1,7 +1,6 @@
 import React from "react";
 import styled from "styled-components";
 import { compose } from "recompose";
-import { Link } from "react-router";
 import LoginContainer from "../../containers/Login";
 
 const Background = styled.div`

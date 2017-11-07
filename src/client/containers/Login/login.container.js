@@ -1,8 +1,13 @@
 import React, { Component } from "react";
-import { compose } from "recompose";
 
 export default WrappedComponent => {
   class Login extends Component {
+    constructor(props) {
+      super(props);
+      this.state = {
+        componentLoggedIn: false
+      };
+    }
     render() {
       return <WrappedComponent {...this.props} />;
     }
