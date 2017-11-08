@@ -7,7 +7,7 @@ const divStyle = {
   display: "flex",
   justifyContent: "flex-start",
   height: "100%",
-  backgroundColor: "pink",
+  backgroundColor: "white",
   flex: "1.5",
   flexDirection: "column"
 };

@@ -2,12 +2,17 @@ import React from "react";
 import PropTypes from "prop-types"; // ES6
 
 const divStyle = {
-  height: "30px",
-  padding: "10px",
-  backgroundColor: "pink",
+  backgroundColor: "#F2F2F2",
+  color: "#4A4A4A",
   margin: "10px",
-  marginTop: "20px",
-  borderRadius: "5px"
+  marginTop: "24px",
+  borderRadius: "30px",
+  border: "none",
+  textIndent: "18px",
+  fontSize: "14px",
+  fontFamily: "AvenirNext-Regular",
+  outline: "none",
+  lineHeight: "28px"
 };
 
 const Search = props => (
@@ -15,6 +20,7 @@ const Search = props => (
     type="text"
     style={divStyle}
     value={props.query}
+    placeholder="Search by keywords"
     onChange={event => props.onQueryChangeHandler(event)}
   />
 );
