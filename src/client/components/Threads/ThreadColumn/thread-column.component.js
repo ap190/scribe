@@ -17,7 +17,7 @@ class ThreadColumn extends Component {
     this.state = {
       current_thread: false,
       query: "",
-      threads: [
+      current_threads: [
         {
           text: "hey there~!",
           title: "giraffe",
@@ -35,6 +35,7 @@ class ThreadColumn extends Component {
         }
       ]
     };
+    this.threads = this.state.current_threads;
     this.onQueryChange = this.onQueryChange.bind(this);
   }
 
@@ -42,12 +43,13 @@ class ThreadColumn extends Component {
     this.setState({
       ...this.state,
       query: event.target.value,
-      threads: this.state.threads.filter(
+      current_threads: this.threads.filter(
         thread =>
           thread.text.includes(event.target.value) ||
           thread.title.includes(event.target.value)
       )
     });
+    return
   }
 
   render() {
@@ -57,7 +59,7 @@ class ThreadColumn extends Component {
           query={this.state.query}
           onQueryChangeHandler={this.onQueryChange}
         />
-        <ThreadList threads={this.state.threads} />
+        <ThreadList threads={this.state.current_threads} />
       </div>
     );
   }
