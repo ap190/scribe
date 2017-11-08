@@ -2,8 +2,7 @@ import React, { Component } from "react";
 import styled from "styled-components";
 import { compose } from "recompose";
 import HomeContainer from "../../containers/Home";
-import Aside from "../Aside/aside.component";
-import ThreadColumn from "../ThreadColumn/thread-column.component";
+import ThreadColumn from "../Threads/ThreadColumn/thread-column.component";
 
 const Wrapper = styled.div`
   display: flex;
