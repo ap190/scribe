@@ -20,8 +20,8 @@ function createWindow() {
   // Create the browser window.
   mainWindow = new BrowserWindow({
     titleBarStyle: "hidden",
-    width: 800,
-    height: 600,
+    width: 1281,
+    height: 800,
     icon: path.join(__dirname, "../public/icons/png/64x64.png")
   });
   const startUrl =
