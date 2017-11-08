@@ -8,7 +8,6 @@ const divStyle = {
   justifyContent: "flex-start",
   height: "100%",
   backgroundColor: "white",
-  flex: "1.5",
   flexDirection: "column"
 };
 
@@ -53,7 +52,7 @@ class ThreadColumn extends Component {
   }
 
   isEditorToggledStyles() {
-    return this.props.isEditorToggled ? { display: "none" } : { flex: "1" };
+    return this.props.isEditorToggled ? { display: "none" } : { flex: "2" };
   }
 
   render() {

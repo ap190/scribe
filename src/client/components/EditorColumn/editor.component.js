@@ -6,7 +6,10 @@ const styles = {
     display: "flex",
     height: "100%",
     justifyContent: "center",
-    backgroundColor: "cyan"
+    alignItems: "center",
+    backgroundColor: "#fff",
+    borderLeft: "1px solid #979797",
+    flex: "2"
   },
   button: {
     height: "100px",
@@ -20,11 +23,11 @@ class Editor extends Component {
   }
   render() {
     return (
-      <div style={{ ...styles.editor, ...this.isEditorToggledStyles() }}>
+      <div style={styles.editor}>
         <button
           type="button"
           style={styles.button}
-          onChange={this.props.toggleHandler}
+          onClick={this.props.toggleHandler}
         >
           Click Me!
         </button>
