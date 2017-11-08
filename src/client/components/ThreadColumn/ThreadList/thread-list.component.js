@@ -6,16 +6,13 @@ const divStyle = {
   display: "flex",
   height: "auto",
   padding: "10px",
-  backgroundColor: "purple",
   justifyContent: "center",
-  margin: "10px",
   marginTop: "20px",
   flexDirection: "column"
 };
 
 const ThreadList = props => (
   <div style={divStyle}>
-    <h3>Threads List</h3>
     {props.threads.map(thread => (
       <Thread
         text={thread.text}
