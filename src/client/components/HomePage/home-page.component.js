@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import styled from "styled-components";
 import { compose } from "recompose";
 import HomeContainer from "../../containers/Home";
+import ThreadColumn from "../ThreadColumn/thread-column.component";
 
 const Wrapper = styled.div`
   display: flex;
@@ -13,13 +14,6 @@ const Aside = styled.div`
   display: flex;
   height: 100%;
   background-color: whitesmoke;
-  flex: 1;
-`;
-
-const Threads = styled.div`
-  display: flex;
-  height: 100%;
-  background-color: orange;
   flex: 1;
 `;
 
@@ -41,7 +35,7 @@ class HomePage extends Component {
     return (
       <Wrapper>
         <Aside />
-        <Threads />
+        <ThreadColumn />
         <Editor />
       </Wrapper>
     );
