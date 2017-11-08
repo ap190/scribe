@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import PropTypes from "prop-types";
 import Search from "../Search/search.component";
 import ThreadList from "../ThreadList/thread-list.component";
 
@@ -7,7 +8,7 @@ const divStyle = {
   justifyContent: "flex-start",
   height: "100%",
   backgroundColor: "white",
-  flex: "1",
+  flex: "1.5",
   flexDirection: "column"
 };
 
@@ -49,12 +50,15 @@ class ThreadColumn extends Component {
           thread.title.includes(event.target.value)
       )
     });
-    return
+  }
+
+  isEditorToggledStyles() {
+    return this.props.isEditorToggled ? { display: "none" } : { flex: "1" };
   }
 
   render() {
     return (
-      <div style={divStyle}>
+      <div style={{ ...divStyle, ...this.isEditorToggledStyles() }}>
         <Search
           query={this.state.query}
           onQueryChangeHandler={this.onQueryChange}
@@ -64,5 +68,9 @@ class ThreadColumn extends Component {
     );
   }
 }
+
+ThreadColumn.propTypes = {
+  isEditorToggled: PropTypes.bool.isRequired
+};
 
 export default ThreadColumn;
