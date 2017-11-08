@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import PropTypes from "prop-types";
 import Search from "../Search/search.component";
 import ThreadList from "../ThreadList/thread-list.component";
 
@@ -11,7 +12,7 @@ const divStyle = {
   flexDirection: "column"
 };
 
-class Threads extends Component {
+class ThreadColumn extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -50,9 +51,13 @@ class Threads extends Component {
     });
   }
 
+  isEditorToggledStyles() {
+    return this.props.isEditorToggled ? { display: "none" } : { flex: "1" };
+  }
+
   render() {
     return (
-      <div style={divStyle}>
+      <div style={{ ...divStyle, ...this.isEditorToggledStyles() }}>
         <Search
           query={this.state.query}
           onQueryChangeHandler={this.onQueryChange}
@@ -63,4 +68,8 @@ class Threads extends Component {
   }
 }
 
-export default Threads;
+ThreadColumn.propTypes = {
+  isEditorToggled: PropTypes.bool.isRequired
+};
+
+export default ThreadColumn;

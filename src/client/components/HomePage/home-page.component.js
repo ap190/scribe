@@ -2,7 +2,8 @@ import React, { Component } from "react";
 import styled from "styled-components";
 import { compose } from "recompose";
 import HomeContainer from "../../containers/Home";
-import ThreadColumn from "../Threads/ThreadColumn/thread-column.component";
+import ThreadColumn from "../ThreadColumn/Threads/threads.component";
+import Aside from "../AsideColumn/aside.component";
 
 const Wrapper = styled.div`
   display: flex;
@@ -27,9 +28,9 @@ class HomePage extends Component {
   render() {
     return (
       <Wrapper>
-        <Aside isEditorToggled={this.isEditorToggled} />
-        <ThreadColumn isEditorToggled={this.isEditorToggled} />
-        <Editor isEditorToggled={this.isEditorToggled} />
+        <Aside isEditorToggled={this.state.isEditorToggled} />
+        <ThreadColumn isEditorToggled={this.state.isEditorToggled} />
+        <Editor isEditorToggled={this.state.isEditorToggled} />
       </Wrapper>
     );
   }
