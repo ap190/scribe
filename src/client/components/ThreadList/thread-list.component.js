@@ -1,4 +1,5 @@
-import React, { Component } from "react";
+import React from "react";
+import PropTypes from "prop-types"; // ES6
 import Thread from "../Thread/thread.component";
 
 const divStyle = {
@@ -12,44 +13,28 @@ const divStyle = {
   flexDirection: "column"
 };
 
-class ThreadList extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      threads: [
-        {
-          text: "hey there~!",
-          title: "giraffe",
-          date: Date.now()
-        },
-        {
-          text: "hey here!",
-          title: "elephant",
-          date: Date.now()
-        },
-        {
-          text: "hey over there~!",
-          title: "penguin",
-          date: Date.now()
-        }
-      ]
-    };
-  }
-  render() {
-    return (
-      <div style={divStyle}>
-        <h3>Threads List</h3>
-        {this.state.threads.map(thread => (
-          <Thread
-            text={thread.text}
-            title={thread.title}
-            date={thread.date}
-            key={thread.title}
-          />
-        ))}
-      </div>
-    );
-  }
-}
+const ThreadList = props => (
+  <div style={divStyle}>
+    <h3>Threads List</h3>
+    {props.threads.map(thread => (
+      <Thread
+        text={thread.text}
+        title={thread.title}
+        date={thread.date}
+        key={thread.title}
+      />
+    ))}
+  </div>
+);
+
+ThreadList.propTypes = {
+  threads: PropTypes.arrayOf(
+    PropTypes.shape({
+      text: PropTypes.string.isRequired,
+      title: PropTypes.string.isRequired,
+      date: PropTypes.number.isRequired
+    })
+  ).isRequired
+};
 
 export default ThreadList;

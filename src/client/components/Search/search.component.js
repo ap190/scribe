@@ -1,4 +1,5 @@
-import React, { Component } from "react";
+import React from "react";
+import PropTypes from "prop-types"; // ES6
 
 const divStyle = {
   height: "30px",
@@ -9,18 +10,18 @@ const divStyle = {
   borderRadius: "5px"
 };
 
-class Search extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      query: ""
-    };
-  }
-  render() {
-    return (
-      <input type="text" style={divStyle} placeholder="Search with terms..." />
-    );
-  }
-}
+const Search = props => (
+  <input
+    type="text"
+    style={divStyle}
+    value={props.query}
+    onChange={event => props.onQueryChangeHandler(event)}
+  />
+);
+
+Search.propTypes = {
+  query: PropTypes.string.isRequired,
+  onQueryChangeHandler: PropTypes.func.isRequired
+};
 
 export default Search;
