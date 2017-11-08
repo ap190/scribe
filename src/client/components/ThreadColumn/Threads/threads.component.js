@@ -50,7 +50,6 @@ class ThreadColumn extends Component {
           thread.title.includes(event.target.value)
       )
     });
-    return
   }
 
   isEditorToggledStyles() {
