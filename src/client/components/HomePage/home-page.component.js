@@ -4,18 +4,12 @@ import { compose } from "recompose";
 import HomeContainer from "../../containers/Home";
 import ThreadColumn from "../ThreadColumn/Threads/threads.component";
 import Aside from "../AsideColumn/aside.component";
+import Editor from "../EditorColumn/editor.component";
 
 const Wrapper = styled.div`
   display: flex;
   flex-direction: row;
   height: 100vh;
-`;
-
-const Editor = styled.div`
-  display: flex;
-  height: 100%;
-  background-color: cyan;
-  flex: ${props => (props.toggled ? 3 : 2)};
 `;
 
 class HomePage extends Component {
@@ -24,13 +18,24 @@ class HomePage extends Component {
     this.state = {
       isEditorToggled: false
     };
+    this.toggleEditor = this.toggleEditor.bind(this);
+  }
+  toggleEditor() {
+    console.log(this.state.isEditorToggled);
+    this.setState({
+      ...this.state,
+      isEditorToggled: !this.state.isEditorToggled
+    });
   }
   render() {
     return (
       <Wrapper>
         <Aside isEditorToggled={this.state.isEditorToggled} />
         <ThreadColumn isEditorToggled={this.state.isEditorToggled} />
-        <Editor isEditorToggled={this.state.isEditorToggled} />
+        <Editor
+          isEditorToggled={this.state.isEditorToggled}
+          toggleHandler={this.toggleEditor}
+        />
       </Wrapper>
     );
   }
