@@ -5,7 +5,6 @@ import Thread from "../Thread/thread.component";
 const divStyle = {
   display: "flex",
   height: "auto",
-  padding: "10px",
   justifyContent: "center",
   marginTop: "20px",
   flexDirection: "column"

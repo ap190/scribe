@@ -9,7 +9,7 @@ const divStyle = {
   height: "100%",
   backgroundColor: "white",
   flex: "1.5",
-  flexDirection: "column"
+  flexDirection: "column",
 };
 
 class ThreadColumn extends Component {
