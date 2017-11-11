@@ -68,7 +68,12 @@ class HomePage extends Component {
             const fatherIndex = layer.findIndex(
               element => element.module === arr[j]
             );
-            if (fatherIndex === -1) throw new Error("our code suckss");
+            if (fatherIndex === -1) {
+              console.error(arr, i);
+              throw new Error(
+                "our code  does not suck. it could be better tho"
+              );
+            }
             layer = layer[fatherIndex].children;
           }
           layer.push(file);
@@ -85,7 +90,9 @@ class HomePage extends Component {
           const fatherIndex = layer.findIndex(
             element => element.module === arr[j]
           );
-          if (!fatherIndex) throw new Error("our code suckss");
+          if (fatherIndex === -1) {
+            throw new Error("Move fast break things");
+          }
           layer = layer[fatherIndex].children;
         }
         const doesFolderExist = layer.findIndex(
