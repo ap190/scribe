@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import FileTree from "react-ui-tree";
 import PropTypes from "prop-types";
 import cx from "classnames";
-import treeFromFile from "./tree";
 import "./aside.css";
 
 const styles = {
@@ -14,8 +13,7 @@ class Aside extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      active: null,
-      tree: treeFromFile
+      active: null
     };
     this.renderNode = this.renderNode.bind(this);
     this.onClickNode = this.onClickNode.bind(this);
@@ -68,11 +66,12 @@ class Aside extends Component {
         <div className="tree">
           <FileTree
             paddingLeft={20}
-            tree={this.state.tree}
+            tree={this.props.tree}
             onChange={this.handleChange}
             isNodeCollapsed={this.isNodeCollapsed}
             renderNode={this.renderNode}
           />
+          <button onClick={this.props.selectProjectDir}>open project</button>
         </div>
         <div className="inspector" />
       </div>
@@ -81,7 +80,9 @@ class Aside extends Component {
 }
 
 Aside.propTypes = {
-  isEditorToggled: PropTypes.bool.isRequired
+  isEditorToggled: PropTypes.bool.isRequired,
+  selectProjectDir: PropTypes.func.isRequired,
+  tree: PropTypes.any.isRequired
 };
 
 export default Aside;

@@ -1,16 +1,21 @@
-const electron = require("electron");
-// Module to control application life.
-const app = electron.app;
-// Module to create native browser window.
-const BrowserWindow = electron.BrowserWindow;
-
+const { app } = require("electron");
 const path = require("path");
 const url = require("url");
+const { ipcMain } = require("electron");
+const electron = require("electron");
+
+const BrowserWindow = electron.BrowserWindow;
 const {
   default: installExtension,
   REACT_DEVELOPER_TOOLS,
   REDUX_DEVTOOLS
 } = require("electron-devtools-installer");
+
+// TODO example for basic IPC communication
+ipcMain.on("asynchronous-message", (event, arg) => {
+  console.log(arg); // prints "ping"
+  event.sender.send("asynchronous-reply", "pong");
+});
 
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
