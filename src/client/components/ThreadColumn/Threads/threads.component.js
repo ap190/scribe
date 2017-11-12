@@ -1,16 +1,14 @@
 import UUIDv4 from "uuid/v4";
 import React, { Component } from "react";
 import PropTypes from "prop-types";
+import CreateFlow from "../CreateFlow/create-flow.component";
 import Search from "../Search/search.component";
 import ThreadList from "../ThreadList/thread-list.component";
 
 const divStyle = {
-  display: "flex",
-  justifyContent: "flex-start",
   height: "100%",
   backgroundColor: "white",
-  flex: "1.5",
-  flexDirection: "column"
+  overflowY: "auto"
 };
 
 class ThreadColumn extends Component {
@@ -29,6 +27,36 @@ class ThreadColumn extends Component {
         {
           text: "hey here!",
           title: "elephant",
+          date: Date.now(),
+          id: UUIDv4()
+        },
+        {
+          text: "hey over there~!",
+          title: "penguin",
+          date: Date.now(),
+          id: UUIDv4()
+        },
+        {
+          text: "hey over there~!",
+          title: "penguin",
+          date: Date.now(),
+          id: UUIDv4()
+        },
+        {
+          text: "hey over there~!",
+          title: "penguin",
+          date: Date.now(),
+          id: UUIDv4()
+        },
+        {
+          text: "hey over there~!",
+          title: "penguin",
+          date: Date.now(),
+          id: UUIDv4()
+        },
+        {
+          text: "hey over there~!",
+          title: "penguin",
           date: Date.now(),
           id: UUIDv4()
         },
@@ -76,6 +104,7 @@ class ThreadColumn extends Component {
           onDeleteThreadHandler={this.onDeleteThread}
           query={this.state.query}
         />
+        <CreateFlow />
       </div>
     );
   }

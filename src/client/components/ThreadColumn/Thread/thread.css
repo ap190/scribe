@@ -38,4 +38,5 @@ img.delete-icon:hover {
   padding: 16px;
   display: flex;
   justify-content: space-between;
+  min-height: 100px;
 }

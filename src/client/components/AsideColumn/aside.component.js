@@ -6,6 +6,8 @@ import Channels from "./Channels/channels.component";
 import Tree from "./Tree/tree.component";
 import "./aside.css";
 
+const addFlowIcon = "./assets/icons/simple_add.png";
+
 const styles = {
   height: "100%",
   backgroundColor: "#f2f2f2"
