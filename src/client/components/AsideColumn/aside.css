@@ -1,22 +1,41 @@
+/*Tree*/
 .tree {
-  /*position: fixed;*/
-  top: 0;
-  left: 0;
-  bottom: 0;
   width: 300px;
   overflow-x: hidden;
   overflow-y: auto;
-  background-color: #21252b;
-  padding-top: 15px;
+  background-color: #f2f2f2;
+  padding-top: 5px;
   padding-left: 10px;
 }
+
+.channels {
+  padding-top: 5px;
+  padding-left: 10px;
+  width: 80%;
+  margin-top: 4%;
+}
+
+.channelsTitleContainer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+img.add-channel-icon {
+  height: 16px;
+  width: 16px;
+  /*padding-top: 2px;*/
+  cursor: pointer;
+}
+
 .m-node.placeholder {
   border: 1px dashed #1385e5;
 }
 .m-node .inner {
-  color: #9da5b4;
+  color: #000000;
   font-size: 12px;
-  font-family: Menlo;
+  font-family: "AvenirNext-Regular";
+  line-height: 26px;
 }
 .m-node .node {
   display: inline-block;
@@ -24,7 +43,7 @@
   padding: 4px 5px;
 }
 .m-node .node.is-active {
-  background-color: #31363f;
+  background-color: #e0e6f6;
 }
 
 .f-no-select {
@@ -74,3 +93,5 @@
 .m-node .caret-down:before {
   content: "\25BE";
 }
+
+/*Channels*/

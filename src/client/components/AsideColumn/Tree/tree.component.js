@@ -1,17 +1,9 @@
 import React, { Component } from "react";
-import PropTypes from "prop-types";
 import cx from "classnames";
-import Header from "./Header/header.component";
-import Channels from "./Channels/channels.component";
-import Tree from "./Tree/tree.component";
-import "./aside.css";
+import FileTree from "react-ui-tree";
+import PropTypes from "prop-types";
 
-const styles = {
-  height: "100%",
-  backgroundColor: "#f2f2f2"
-};
-
-class Aside extends Component {
+class Tree extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -64,28 +56,19 @@ class Aside extends Component {
 
   render() {
     return (
-      <div style={{ ...styles, ...this.isEditorToggledStyles() }}>
-        <Channels />
-        <div className="tree">
-          <Header title="Project" />
-          <Tree
-            paddingLeft={20}
-            tree={this.props.tree}
-            onChange={this.handleChange}
-            isNodeCollapsed={this.isNodeCollapsed}
-            renderNode={this.renderNode}
-          />
-        </div>
-        <button onClick={this.props.selectProjectDir}>open project</button>
-      </div>
+      <FileTree
+        paddingLeft={20}
+        tree={this.props.tree}
+        onChange={this.handleChange}
+        isNodeCollapsed={this.isNodeCollapsed}
+        renderNode={this.renderNode}
+      />
     );
   }
 }
 
-Aside.propTypes = {
-  isEditorToggled: PropTypes.bool.isRequired,
-  selectProjectDir: PropTypes.func.isRequired,
+Tree.propTypes = {
   tree: PropTypes.any.isRequired
 };
 
-export default Aside;
+export default Tree;

@@ -16,6 +16,7 @@ const Thread = props => (
         className="delete-icon"
         src={deleteIcon}
         onClick={() => props.onDeleteThreadHandler(props.id)}
+        alt="Delete a thread button"
       />
     </div>
   </div>
