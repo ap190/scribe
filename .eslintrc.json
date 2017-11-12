@@ -2,7 +2,8 @@
   "extends": ["airbnb", "prettier", "prettier/react"],
   "plugins": ["prettier"],
   "rules": {
-    "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }]
+    "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
+    "no-noninteractive-element-to-interactive-role": 0
   },
   "parserOptions": {
     "ecmaVersion": 2016,

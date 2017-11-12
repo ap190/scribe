@@ -1,38 +1,23 @@
 import React from "react";
 import PropTypes from "prop-types"; // ES6
+import "./thread.css";
 
-const titleStyle = {
-  fontFamily: "AvenirNext-Bold",
-  fontSize: "24px",
-  color: "#4A4A4A",
-  lineHeight: "24px",
-  marginTop: "14px"
-};
-
-const dateStyle = {
-  fontFamily: "AvenirNext-Regular",
-  fontSize: "10px",
-  color: "#595959",
-  lineHeight: "32px"
-};
-
-const bodyStyle = {
-  fontFamily: "AvenirNext-Regular",
-  fontSize: "18px",
-  color: "#4A4A4A",
-  lineHeight: "32px"
-};
-
-const containerStyle = {
-  boxShadow: "inset 0 -1px 0 0 #d9d9d9",
-  padding: "16px"
-}
+const deleteIcon = "./assets/icons/delete.png";
 
 const Thread = props => (
-  <div style={containerStyle} onClick={() => props.onDeleteThreadHandler(props.id)}>
-    <div style={titleStyle}>{props.title}</div>
-    <div style={dateStyle}>{props.date}</div>
-    <div style={bodyStyle}>{props.text}</div>
+  <div className="thread-container">
+    <div>
+      <div className="title">{props.title}</div>
+      <div className="date">{props.date}</div>
+      <div className="body-content">{props.text}</div>
+    </div>
+    <div>
+      <img
+        className="delete-icon"
+        src={deleteIcon}
+        onClick={() => props.onDeleteThreadHandler(props.id)}
+      />
+    </div>
   </div>
 );
 
