@@ -1,6 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import Header from "../Header/header.component";
+import ChannelList from "../ChannelList/channelList.component";
 import "../aside.css";
 
 const addChannelIcon = "./assets/icons/add_channel.png";
@@ -16,12 +17,14 @@ const Channels = props => (
         onClick={props.createChannelHandler}
       />
     </div>
+    <ChannelList channels={props.channels} />
   </div>
 );
 
 Channels.propTypes = {
   title: PropTypes.string.isRequired,
-  createChannelHandler: PropTypes.func.isRequired
+  createChannelHandler: PropTypes.func.isRequired,
+  channels: PropTypes.array.isRequired
 };
 
 export default Channels;

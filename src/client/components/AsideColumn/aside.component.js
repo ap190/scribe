@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import cx from "classnames";
-import Modal from "../Modal/modal.component";
 import Channels from "./Channels/channels.component";
 import Tree from "./Tree/tree.component";
 import "./aside.css";
@@ -70,6 +69,7 @@ class Aside extends Component {
         <Channels
           title={"Channels"}
           createChannelHandler={this.props.createChannelHandler}
+          channels={this.props.channels}
         />
         <Tree
           paddingLeft={20}
@@ -88,7 +88,8 @@ Aside.propTypes = {
   isEditorToggled: PropTypes.bool.isRequired,
   selectProjectDir: PropTypes.func.isRequired,
   tree: PropTypes.any.isRequired,
-  createChannelHandler: PropTypes.func.isRequired
+  createChannelHandler: PropTypes.func.isRequired,
+  channels: PropTypes.array.isRequired
 };
 
 export default Aside;
