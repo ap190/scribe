@@ -1,3 +1,4 @@
+import UUIDv4 from "uuid/v4";
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import Search from "../Search/search.component";
@@ -22,32 +23,39 @@ class ThreadColumn extends Component {
         {
           text: "hey there~!",
           title: "giraffe",
-          date: Date.now()
+          date: Date.now(),
+          id: UUIDv4()
         },
         {
           text: "hey here!",
           title: "elephant",
-          date: Date.now()
+          date: Date.now(),
+          id: UUIDv4()
         },
         {
           text: "hey over there~!",
           title: "penguin",
-          date: Date.now()
+          date: Date.now(),
+          id: UUIDv4()
         }
       ]
     };
-    this.threads = this.state.current_threads;
     this.onQueryChange = this.onQueryChange.bind(this);
+    this.onDeleteThread = this.onDeleteThread.bind(this);
   }
 
   onQueryChange(event) {
     this.setState({
       ...this.state,
-      query: event.target.value,
-      current_threads: this.threads.filter(
-        thread =>
-          thread.text.includes(event.target.value) ||
-          thread.title.includes(event.target.value)
+      query: event.target.value
+    });
+  }
+
+  onDeleteThread(threadId) {
+    this.setState({
+      ...this.state,
+      current_threads: this.state.current_threads.filter(
+        thread => thread.id !== threadId
       )
     });
   }
@@ -63,7 +71,11 @@ class ThreadColumn extends Component {
           query={this.state.query}
           onQueryChangeHandler={this.onQueryChange}
         />
-        <ThreadList threads={this.state.current_threads} />
+        <ThreadList
+          threads={this.state.current_threads}
+          onDeleteThreadHandler={this.onDeleteThread}
+          query={this.state.query}
+        />
       </div>
     );
   }
