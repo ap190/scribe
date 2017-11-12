@@ -40,17 +40,41 @@ class HomePage extends Component {
     );
   }
 
+  findParentIndex(layer, parent) {
+    const parentIndex = layer.findIndex(element => element.module === parent);
+    if (parentIndex === -1) {
+      throw new Error("Could not find parent...");
+    }
+    return parentIndex;
+  }
+
+  generateRelativePathArrAndGetDeepestNestedFile(dirArr, relativePath) {
+    const pathArray = dirArr.map(filePath =>
+      this.getRelativePathAsSplitArray(filePath, relativePath)
+    );
+
+    const longestArrayLen = pathArray.reduce(
+      (prev, curr) => (curr.length > prev ? curr.length : prev),
+      0
+    );
+
+    return {
+      pathArray,
+      longestArrayLen
+    };
+  }
+
   createFileStructure(dirArr, relativePath) {
     const output = {
       module: relativePath,
       children: []
     };
-    const pathArray = dirArr.map(filePath =>
-      this.getRelativePathAsSplitArray(filePath, relativePath)
-    );
-    const longestArrayLen = pathArray.reduce(
-      (prev, curr) => (curr.length > prev ? curr.length : prev),
-      0
+    const {
+      pathArray,
+      longestArrayLen
+    } = this.generateRelativePathArrAndGetDeepestNestedFile(
+      dirArr,
+      relativePath
     );
     for (let i = 0; i < longestArrayLen; i += 1) {
       pathArray.forEach(arr => {
@@ -65,16 +89,8 @@ class HomePage extends Component {
           };
           let layer = output.children;
           for (let j = 0; j < i; j += 1) {
-            const fatherIndex = layer.findIndex(
-              element => element.module === arr[j]
-            );
-            if (fatherIndex === -1) {
-              console.error(arr, i);
-              throw new Error(
-                "our code  does not suck. it could be better tho"
-              );
-            }
-            layer = layer[fatherIndex].children;
+            const parentIndex = this.findParentIndex(layer, arr[j]);
+            layer = layer[parentIndex].children;
           }
           layer.push(file);
         }
@@ -87,13 +103,8 @@ class HomePage extends Component {
         };
         let layer = output.children;
         for (let j = 0; j < i; j += 1) {
-          const fatherIndex = layer.findIndex(
-            element => element.module === arr[j]
-          );
-          if (fatherIndex === -1) {
-            throw new Error("Move fast break things");
-          }
-          layer = layer[fatherIndex].children;
+          const parentIndex = this.findParentIndex(layer, arr[j]);
+          layer = layer[parentIndex].children;
         }
         const doesFolderExist = layer.findIndex(
           element => element.module === folder.module

@@ -3,7 +3,8 @@
   "plugins": ["prettier"],
   "rules": {
     "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
-    "no-noninteractive-element-to-interactive-role": 0
+    "no-noninteractive-element-to-interactive-role": 0,
+    "class-methods-use-this": 0
   },
   "parserOptions": {
     "ecmaVersion": 2016,
