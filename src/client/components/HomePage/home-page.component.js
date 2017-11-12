@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import styled from "styled-components";
 import { compose } from "recompose";
 import HomeContainer from "../../containers/Home";
+import Modal from "../Modal/modal.component";
 import ThreadColumn from "../ThreadColumn/Threads/threads.component";
 import Aside from "../AsideColumn/aside.component";
 import Editor from "../EditorColumn/editor.component";
@@ -21,13 +22,15 @@ class HomePage extends Component {
     super(props);
     this.state = {
       isEditorToggled: false,
-      relativePath: "t",
+      relativePath: "",
       absolutePath: "",
-      files: {}
+      files: {},
+      isOpen: false
     };
     this.toggleEditor = this.toggleEditor.bind(this);
     this.selectProjectDir = this.selectProjectDir.bind(this);
     this.createFileStructure = this.createFileStructure.bind(this);
+    this.toggleModal = this.toggleModal.bind(this);
     this.currentWindow = currentWindow;
   }
 
@@ -136,6 +139,12 @@ class HomePage extends Component {
     });
   }
 
+  toggleModal() {
+    this.setState({
+      isOpen: !this.state.isOpen
+    });
+  }
+
   toggleEditor() {
     this.setState({
       ...this.state,
@@ -146,10 +155,14 @@ class HomePage extends Component {
   render() {
     return (
       <Wrapper>
+        <Modal show={this.state.isOpen} onClose={this.toggleModal}>
+          `Here's some content for the modal`
+        </Modal>
         <Aside
           isEditorToggled={this.state.isEditorToggled}
           selectProjectDir={this.selectProjectDir}
           tree={this.state.files}
+          createChannelHandler={this.toggleModal}
         />
         <ThreadColumn isEditorToggled={this.state.isEditorToggled} />
         <Editor

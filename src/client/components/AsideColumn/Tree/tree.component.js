@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import cx from "classnames";
 import FileTree from "react-ui-tree";
 import PropTypes from "prop-types";
+import Header from "../Header/header.component";
 
 class Tree extends Component {
   constructor(props) {
@@ -56,13 +57,16 @@ class Tree extends Component {
 
   render() {
     return (
-      <FileTree
-        paddingLeft={20}
-        tree={this.props.tree}
-        onChange={this.handleChange}
-        isNodeCollapsed={this.isNodeCollapsed}
-        renderNode={this.renderNode}
-      />
+      <div className="tree">
+        <Header title="Project" />
+        <FileTree
+          paddingLeft={20}
+          tree={this.props.tree}
+          onChange={this.handleChange}
+          isNodeCollapsed={this.isNodeCollapsed}
+          renderNode={this.renderNode}
+        />
+      </div>
     );
   }
 }

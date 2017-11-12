@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import cx from "classnames";
-import Header from "./Header/header.component";
+import Modal from "../Modal/modal.component";
 import Channels from "./Channels/channels.component";
 import Tree from "./Tree/tree.component";
 import "./aside.css";
@@ -67,17 +67,17 @@ class Aside extends Component {
   render() {
     return (
       <div style={{ ...styles, ...this.isEditorToggledStyles() }}>
-        <Channels />
-        <div className="tree">
-          <Header title="Project" />
-          <Tree
-            paddingLeft={20}
-            tree={this.props.tree}
-            onChange={this.handleChange}
-            isNodeCollapsed={this.isNodeCollapsed}
-            renderNode={this.renderNode}
-          />
-        </div>
+        <Channels
+          title={"Channels"}
+          createChannelHandler={this.props.createChannelHandler}
+        />
+        <Tree
+          paddingLeft={20}
+          tree={this.props.tree}
+          onChange={this.handleChange}
+          isNodeCollapsed={this.isNodeCollapsed}
+          renderNode={this.renderNode}
+        />
         <button onClick={this.props.selectProjectDir}>open project</button>
       </div>
     );
@@ -87,7 +87,8 @@ class Aside extends Component {
 Aside.propTypes = {
   isEditorToggled: PropTypes.bool.isRequired,
   selectProjectDir: PropTypes.func.isRequired,
-  tree: PropTypes.any.isRequired
+  tree: PropTypes.any.isRequired,
+  createChannelHandler: PropTypes.func.isRequired
 };
 
 export default Aside;
