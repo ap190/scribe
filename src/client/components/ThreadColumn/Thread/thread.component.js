@@ -29,7 +29,7 @@ const containerStyle = {
 }
 
 const Thread = props => (
-  <div style={containerStyle}>
+  <div style={containerStyle} onClick={() => props.onDeleteThreadHandler(props.id)}>
     <div style={titleStyle}>{props.title}</div>
     <div style={dateStyle}>{props.date}</div>
     <div style={bodyStyle}>{props.text}</div>
@@ -39,7 +39,9 @@ const Thread = props => (
 Thread.propTypes = {
   title: PropTypes.string.isRequired,
   text: PropTypes.string.isRequired,
-  date: PropTypes.number.isRequired
+  date: PropTypes.number.isRequired,
+  id: PropTypes.string.isRequired,
+  onDeleteThreadHandler: PropTypes.func.isRequired
 };
 
 export default Thread;
