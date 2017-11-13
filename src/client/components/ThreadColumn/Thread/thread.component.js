@@ -1,12 +1,14 @@
 import React from "react";
 import PropTypes from "prop-types"; // ES6
+import Highlighter from "../Highlighter/highlighter.component";
 import "./thread.css";
 
 const deleteIcon = "./assets/icons/delete.png";
 
 const Thread = props => (
   <div className="thread-container">
-    <div>
+    <Highlighter toggleModal={props.toggleModal} />
+    <div className="thread-content">
       <div className="title">{props.title}</div>
       <div className="date">{props.date}</div>
       <div className="body-content">{props.text}</div>
@@ -27,7 +29,8 @@ Thread.propTypes = {
   text: PropTypes.string.isRequired,
   date: PropTypes.number.isRequired,
   id: PropTypes.string.isRequired,
-  onDeleteThreadHandler: PropTypes.func.isRequired
+  onDeleteThreadHandler: PropTypes.func.isRequired,
+  toggleModal: PropTypes.func.isRequired
 };
 
 export default Thread;

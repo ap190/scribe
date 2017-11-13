@@ -12,7 +12,7 @@ import ThreatModal from "../Modal/threadModal.component.js";
 import { createFileStructure } from "../../utils/createFileTree";
 import {
   ASIDE_CREATE_CHANNEL_MODAL,
-  THREADS_CREATE_THREAD_MODAL
+  HIGHLIGHT_THREAD_MODAL
 } from "../../utils/const";
 
 const electron = window.require("electron");
@@ -61,6 +61,17 @@ class HomePage extends Component {
     this.currentWindow = currentWindow;
   }
 
+  getModalContent() {
+    switch (this.state.currentModal) {
+      case ASIDE_CREATE_CHANNEL_MODAL:
+        return <ChannelModal handleAddChannel={this.handleAddChannel} />;
+      case HIGHLIGHT_THREAD_MODAL:
+        return <ThreatModal />;
+      default:
+        return null;
+    }
+  }
+
   selectProjectDir() {
     const { getDirSelectionFromUser } = mainProcessFileHandling;
     const {
@@ -87,17 +98,6 @@ class HomePage extends Component {
       isModalOpen: false,
       channels: [...this.state.channels, newChannel]
     });
-  }
-
-  getModalContent() {
-    switch (this.state.currentModal) {
-      case ASIDE_CREATE_CHANNEL_MODAL:
-        return <ChannelModal handleAddChannel={this.handleAddChannel} />;
-      case THREADS_CREATE_THREAD_MODAL:
-        return <ThreatModal />;
-      default:
-        return null;
-    }
   }
 
   toggleModal(modalType) {
@@ -134,6 +134,7 @@ class HomePage extends Component {
         />
         <ThreadColumn
           isEditorToggled={this.state.isEditorToggled}
+          toggleModal={this.toggleModal}
           handleAddThread={this.openModal}
         />
         <Editor

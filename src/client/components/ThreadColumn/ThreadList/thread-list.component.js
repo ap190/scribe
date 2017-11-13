@@ -5,7 +5,6 @@ import Thread from "../Thread/thread.component";
 const divStyle = {
   height: "auto",
   justifyContent: "center",
-  marginTop: "20px",
   overflow: "auto",
   flex: "1",
   flexDirection: "column"
@@ -26,6 +25,7 @@ const ThreadList = props => (
             key={thread.id}
             id={thread.id}
             onDeleteThreadHandler={props.onDeleteThreadHandler}
+            toggleModal={props.toggleModal}
           />
         ) : null
     )}
@@ -42,7 +42,8 @@ ThreadList.propTypes = {
     })
   ).isRequired,
   query: PropTypes.string.isRequired,
-  onDeleteThreadHandler: PropTypes.func.isRequired
+  onDeleteThreadHandler: PropTypes.func.isRequired,
+  toggleModal: PropTypes.func.isRequired
 };
 
 export default ThreadList;

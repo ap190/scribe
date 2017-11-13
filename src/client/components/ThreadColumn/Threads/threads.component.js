@@ -106,7 +106,7 @@ class ThreadColumn extends Component {
   }
 
   isEditorToggledStyles() {
-    return this.props.isEditorToggled ? { display: "none" } : { flex: "2" };
+    return this.props.isEditorToggled ? { display: "none" } : { flex: "1.2" };
   }
 
   render() {
@@ -120,6 +120,7 @@ class ThreadColumn extends Component {
           threads={this.state.current_threads}
           onDeleteThreadHandler={this.onDeleteThread}
           query={this.state.query}
+          toggleModal={this.props.toggleModal}
         />
         <CreateFlow onAddThreadHandler={this.onAddThread} />
       </div>
@@ -128,7 +129,8 @@ class ThreadColumn extends Component {
 }
 
 ThreadColumn.propTypes = {
-  isEditorToggled: PropTypes.bool.isRequired
+  isEditorToggled: PropTypes.bool.isRequired,
+  toggleModal: PropTypes.func.isRequired
 };
 
 export default ThreadColumn;
