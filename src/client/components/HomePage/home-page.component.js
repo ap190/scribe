@@ -7,7 +7,13 @@ import Modal from "../Modal/modal.component";
 import ThreadColumn from "../ThreadColumn/Threads/threads.component";
 import Aside from "../AsideColumn/aside.component";
 import Editor from "../EditorColumn/editor.component";
+import ChannelModal from "../Modal/channelModal.component";
+import ThreatModal from "../Modal/threadModal.component.js";
 import { createFileStructure } from "../../utils/createFileTree";
+import {
+  ASIDE_CREATE_CHANNEL_MODAL,
+  THREADS_CREATE_THREAD_MODAL
+} from "../../utils/const";
 
 const electron = window.require("electron");
 const remote = electron.remote;
@@ -27,7 +33,8 @@ class HomePage extends Component {
       relativePath: "",
       absolutePath: "",
       files: {},
-      isOpen: false,
+      isModalOpen: false,
+      currentModal: "",
       channels: [
         {
           channelName: "# design stuff",
@@ -50,6 +57,7 @@ class HomePage extends Component {
     this.selectProjectDir = this.selectProjectDir.bind(this);
     this.toggleModal = this.toggleModal.bind(this);
     this.handleAddChannel = this.handleAddChannel.bind(this);
+    this.getModalContent = this.getModalContent.bind(this);
     this.currentWindow = currentWindow;
   }
 
@@ -74,23 +82,30 @@ class HomePage extends Component {
     });
   }
 
-  handleAddChannel() {
-    let channels = this.state.channels;
-    channels.push({
-      channelName: "# newoneeee",
-      lastPosted: "2 minutes ago",
-      id: UUIDv4()
-    });
+  handleAddChannel(newChannel) {
     this.setState({
-      channels
+      isModalOpen: false,
+      channels: [...this.state.channels, newChannel]
     });
-    return true;
   }
 
-  toggleModal() {
+  getModalContent() {
+    switch (this.state.currentModal) {
+      case ASIDE_CREATE_CHANNEL_MODAL:
+        return <ChannelModal handleAddChannel={this.handleAddChannel} />;
+      case THREADS_CREATE_THREAD_MODAL:
+        return <ThreatModal />;
+      default:
+        return null;
+    }
+  }
+
+  toggleModal(modalType) {
     this.setState({
-      isOpen: !this.state.isOpen
+      isModalOpen: !this.state.isModalOpen,
+      currentModal: modalType
     });
+    return this.getModalContent();
   }
 
   toggleEditor() {
@@ -103,17 +118,24 @@ class HomePage extends Component {
   render() {
     return (
       <Wrapper>
-        <Modal show={this.state.isOpen} onClose={this.toggleModal}>
-          `Here's some content for the modal`
+        <Modal
+          show={this.state.isModalOpen}
+          onClose={this.toggleModal}
+          modalContent={ChannelModal}
+        >
+          {this.getModalContent()}
         </Modal>
         <Aside
           isEditorToggled={this.state.isEditorToggled}
           selectProjectDir={this.selectProjectDir}
           tree={this.state.files}
-          handleAddChannel={this.handleAddChannel}
+          toggleModal={this.toggleModal}
           channels={this.state.channels}
         />
-        <ThreadColumn isEditorToggled={this.state.isEditorToggled} />
+        <ThreadColumn
+          isEditorToggled={this.state.isEditorToggled}
+          handleAddThread={this.openModal}
+        />
         <Editor
           isEditorToggled={this.state.isEditorToggled}
           toggleHandler={this.toggleEditor}

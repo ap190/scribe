@@ -66,7 +66,7 @@ class Aside extends Component {
       <div style={{ ...styles, ...this.isEditorToggledStyles() }}>
         <Channels
           title={"Channels"}
-          handleAddChannel={this.props.handleAddChannel}
+          toggleModal={this.props.toggleModal}
           channels={this.props.channels}
         />
         <Tree
@@ -86,7 +86,7 @@ Aside.propTypes = {
   isEditorToggled: PropTypes.bool.isRequired,
   selectProjectDir: PropTypes.func.isRequired,
   tree: PropTypes.any.isRequired,
-  handleAddChannel: PropTypes.func.isRequired,
+  toggleModal: PropTypes.func.isRequired,
   channels: PropTypes.array.isRequired
 };
 
