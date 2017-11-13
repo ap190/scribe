@@ -3,7 +3,6 @@ import PropTypes from "prop-types"; // ES6
 import Thread from "../Thread/thread.component";
 
 const divStyle = {
-  display: "flex",
   height: "auto",
   justifyContent: "center",
   marginTop: "20px",
