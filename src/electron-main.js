@@ -4,6 +4,8 @@ const url = require("url");
 const { ipcMain } = require("electron");
 const electron = require("electron");
 
+require("electron-context-menu")();
+
 const BrowserWindow = electron.BrowserWindow;
 const {
   default: installExtension,
@@ -38,7 +40,7 @@ function createWindow() {
     });
   mainWindow.loadURL(startUrl);
   // Open the DevTools.
-  mainWindow.webContents.openDevTools();
+  // mainWindow.webContents.openDevTools();
 
   // React DevTools
   installExtension(REACT_DEVELOPER_TOOLS)
