@@ -14,7 +14,7 @@ const Channels = props => (
         className="add-channel-icon"
         src={addChannelIcon}
         alt="Add a channel button"
-        onClick={props.createChannelHandler}
+        onClick={props.handleAddChannel}
       />
     </div>
     <ChannelList channels={props.channels} />
@@ -23,7 +23,7 @@ const Channels = props => (
 
 Channels.propTypes = {
   title: PropTypes.string.isRequired,
-  createChannelHandler: PropTypes.func.isRequired,
+  handleAddChannel: PropTypes.func.isRequired,
   channels: PropTypes.array.isRequired
 };
 

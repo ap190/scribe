@@ -74,6 +74,19 @@ class HomePage extends Component {
     });
   }
 
+  handleAddChannel() {
+    let channels = this.state.channels;
+    channels.push({
+      channelName: "# newoneeee",
+      lastPosted: "2 minutes ago",
+      id: UUIDv4()
+    });
+    this.setState({
+      channels
+    });
+    return true;
+  }
+
   toggleModal() {
     this.setState({
       isOpen: !this.state.isOpen
@@ -87,10 +100,6 @@ class HomePage extends Component {
     });
   }
 
-  handleAddChannel() {
-    return true;
-  }
-
   render() {
     return (
       <Wrapper>
@@ -101,7 +110,7 @@ class HomePage extends Component {
           isEditorToggled={this.state.isEditorToggled}
           selectProjectDir={this.selectProjectDir}
           tree={this.state.files}
-          createChannelHandler={this.toggleModal}
+          handleAddChannel={this.handleAddChannel}
           channels={this.state.channels}
         />
         <ThreadColumn isEditorToggled={this.state.isEditorToggled} />
