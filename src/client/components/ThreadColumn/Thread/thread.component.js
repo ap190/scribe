@@ -7,7 +7,10 @@ const deleteIcon = "./assets/icons/delete.png";
 
 const Thread = props => (
   <div className="thread-container">
-    <Highlighter toggleModal={props.toggleModal} />
+    <Highlighter
+      highlightColor={props.highlightColor}
+      toggleModal={props.toggleModal}
+    />
     <div className="thread-content">
       <div className="title">{props.title}</div>
       <div className="date">{props.date}</div>
@@ -30,7 +33,8 @@ Thread.propTypes = {
   date: PropTypes.number.isRequired,
   id: PropTypes.string.isRequired,
   onDeleteThreadHandler: PropTypes.func.isRequired,
-  toggleModal: PropTypes.func.isRequired
+  toggleModal: PropTypes.func.isRequired,
+  highlightColor: PropTypes.string.isRequired
 };
 
 export default Thread;
