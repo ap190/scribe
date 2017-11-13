@@ -5,14 +5,3 @@ body {
   -ms-overflow-style: scrollbar;
   -webkit-app-region: drag;
 }
-
-.footer-menu {
-  background-color: #e0e6f6;
-  height: 6%;
-  position: sticky;
-  bottom: 0vh;
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-  padding: 10px;
-}

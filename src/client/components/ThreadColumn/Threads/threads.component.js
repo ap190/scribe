@@ -70,6 +70,7 @@ class ThreadColumn extends Component {
     };
     this.onQueryChange = this.onQueryChange.bind(this);
     this.onDeleteThread = this.onDeleteThread.bind(this);
+    this.onAddThread = this.onAddThread.bind(this);
   }
 
   onQueryChange(event) {
@@ -85,6 +86,20 @@ class ThreadColumn extends Component {
       current_threads: this.state.current_threads.filter(
         thread => thread.id !== threadId
       )
+    });
+  }
+
+  onAddThread() {
+    /* Hard coded thread for now. */
+    const newThread = {
+      text: "new thread",
+      title: "cute penguin",
+      date: Date.now(),
+      id: UUIDv4()
+    };
+    this.setState({
+      ...this.state,
+      current_threads: [newThread].concat(this.state.current_threads)
     });
   }
 
@@ -104,7 +119,7 @@ class ThreadColumn extends Component {
           onDeleteThreadHandler={this.onDeleteThread}
           query={this.state.query}
         />
-        <CreateFlow />
+        <CreateFlow onAddThreadHandler={this.onAddThread} />
       </div>
     );
   }

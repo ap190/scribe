@@ -11,9 +11,7 @@ const divStyle = {
   fontFamily: "AvenirNext-Regular",
   outline: "none",
   lineHeight: "28px",
-  width: "100%",
-  position: "sticky",
-  top: "0"
+  width: "100%"
 };
 
 const wrapperStyle = {
