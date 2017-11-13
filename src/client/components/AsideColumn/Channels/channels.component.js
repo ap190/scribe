@@ -9,15 +9,13 @@ const addChannelIcon = "./assets/icons/add_channel.png";
 
 const Channels = props => (
   <div className="channels">
-    <div className="channelsTitleContainer">
-      <Header title={props.title} />
-      <img
-        className="add-channel-icon"
-        src={addChannelIcon}
-        alt="Add a channel button"
-        onClick={() => props.toggleModal(ASIDE_CREATE_CHANNEL_MODAL)}
-      />
-    </div>
+    <Header
+      title={props.title}
+      handler={props.toggleModal}
+      alternativeText="Add a channel button"
+      source={addChannelIcon}
+      modalType={ASIDE_CREATE_CHANNEL_MODAL}
+    />
     <ChannelList channels={props.channels} />
   </div>
 );

@@ -4,6 +4,8 @@ import FileTree from "react-ui-tree";
 import PropTypes from "prop-types";
 import Header from "../Header/header.component";
 
+const folderIcon = "./assets/icons/folder.png";
+
 class Tree extends Component {
   constructor(props) {
     super(props);
@@ -54,7 +56,12 @@ class Tree extends Component {
   render() {
     return (
       <div className="tree">
-        <Header title="Project" />
+        <Header
+          title={this.props.title}
+          handler={this.props.handleOpenDir}
+          alternativeText="Select a Project"
+          source={folderIcon}
+        />
         <FileTree
           paddingLeft={20}
           tree={this.props.tree}
@@ -68,7 +75,9 @@ class Tree extends Component {
 }
 
 Tree.propTypes = {
-  tree: PropTypes.any.isRequired
+  tree: PropTypes.any.isRequired,
+  handleOpenDir: PropTypes.func.isRequired,
+  title: PropTypes.string.isRequired
 };
 
 export default Tree;

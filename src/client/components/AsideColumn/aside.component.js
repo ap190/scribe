@@ -70,13 +70,10 @@ class Aside extends Component {
           channels={this.props.channels}
         />
         <Tree
-          paddingLeft={20}
+          title={"Projects"}
           tree={this.props.tree}
-          onChange={this.handleChange}
-          isNodeCollapsed={this.isNodeCollapsed}
-          renderNode={this.renderNode}
+          handleOpenDir={this.props.selectProjectDir}
         />
-        <button onClick={this.props.selectProjectDir}>open project</button>
       </div>
     );
   }
