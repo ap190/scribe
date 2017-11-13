@@ -22,10 +22,6 @@ class Tree extends Component {
     });
   }
 
-  isEditorToggledStyles() {
-    return this.props.isEditorToggled ? { display: "none" } : null;
-  }
-
   handleChange(tree) {
     this.setState({
       tree

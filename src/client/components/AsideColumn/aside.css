@@ -49,7 +49,7 @@
 img.add-channel-icon {
   height: 16px;
   width: 16px;
-  /*padding-top: 2px;*/
+  padding-right: 10px;
   cursor: pointer;
 }
 
