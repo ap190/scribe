@@ -7,7 +7,9 @@ import "./aside.css";
 
 const styles = {
   height: "100%",
-  backgroundColor: "#f2f2f2"
+  backgroundColor: "#f2f2f2",
+  display: "flex",
+  flexDirection: "column"
 };
 
 class Aside extends Component {

@@ -15,7 +15,6 @@ import {
 const divStyle = {
   height: "100%",
   backgroundColor: "white",
-  overflowY: "auto",
   display: "flex",
   flexDirection: "column"
 };

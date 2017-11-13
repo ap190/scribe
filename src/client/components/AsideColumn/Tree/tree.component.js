@@ -55,20 +55,22 @@ class Tree extends Component {
 
   render() {
     return (
-      <div className="tree">
+      <div className="projects-container">
         <Header
           title={this.props.title}
           handler={this.props.handleOpenDir}
           alternativeText="Select a Project"
           source={folderIcon}
         />
-        <FileTree
-          paddingLeft={20}
-          tree={this.props.tree}
-          onChange={this.handleChange}
-          isNodeCollapsed={this.isNodeCollapsed}
-          renderNode={this.renderNode}
-        />
+        <div className="tree">
+          <FileTree
+            paddingLeft={20}
+            tree={this.props.tree}
+            onChange={this.handleChange}
+            isNodeCollapsed={this.isNodeCollapsed}
+            renderNode={this.renderNode}
+          />
+        </div>
       </div>
     );
   }
