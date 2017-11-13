@@ -19,6 +19,7 @@
   align-items: center;
   justify-content: space-between;
   margin-bottom: auto;
+  margin-top: 10px;
 }
 
 .channels-list {

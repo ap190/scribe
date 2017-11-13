@@ -4,6 +4,13 @@ import PropTypes from "prop-types";
 import CreateFlow from "../CreateFlow/create-flow.component";
 import Search from "../Search/search.component";
 import ThreadList from "../ThreadList/thread-list.component";
+import {
+  GREY_HIGHLIGHT,
+  RED_HIGHLIGHT,
+  BLUE_HIGHLIGHT,
+  YELLOW_HIGHLIGHT,
+  PURPLE_HIGHLIGHT
+} from "../../../utils/const";
 
 const divStyle = {
   height: "100%",
@@ -24,49 +31,57 @@ class ThreadColumn extends Component {
           text: "hey there~!",
           title: "giraffe",
           date: Date.now(),
-          id: UUIDv4()
+          id: UUIDv4(),
+          highlightColor: GREY_HIGHLIGHT
         },
         {
           text: "hey here!",
           title: "elephant",
           date: Date.now(),
-          id: UUIDv4()
+          id: UUIDv4(),
+          highlightColor: RED_HIGHLIGHT
         },
         {
           text: "hey over there~!",
           title: "penguin",
           date: Date.now(),
-          id: UUIDv4()
+          id: UUIDv4(),
+          highlightColor: RED_HIGHLIGHT
         },
         {
           text: "hey over there~!",
           title: "penguin",
           date: Date.now(),
-          id: UUIDv4()
+          id: UUIDv4(),
+          highlightColor: BLUE_HIGHLIGHT
         },
         {
           text: "hey over there~!",
           title: "penguin",
           date: Date.now(),
-          id: UUIDv4()
+          id: UUIDv4(),
+          highlightColor: PURPLE_HIGHLIGHT
         },
         {
           text: "hey over there~!",
           title: "penguin",
           date: Date.now(),
-          id: UUIDv4()
+          id: UUIDv4(),
+          highlightColor: YELLOW_HIGHLIGHT
         },
         {
           text: "hey over there~!",
           title: "penguin",
           date: Date.now(),
-          id: UUIDv4()
+          id: UUIDv4(),
+          highlightColor: PURPLE_HIGHLIGHT
         },
         {
           text: "hey over there~!",
           title: "penguin",
           date: Date.now(),
-          id: UUIDv4()
+          id: UUIDv4(),
+          highlightColor: RED_HIGHLIGHT
         }
       ]
     };

@@ -26,6 +26,7 @@ const ThreadList = props => (
             id={thread.id}
             onDeleteThreadHandler={props.onDeleteThreadHandler}
             toggleModal={props.toggleModal}
+            highlightColor={thread.highlightColor}
           />
         ) : null
     )}
@@ -38,7 +39,8 @@ ThreadList.propTypes = {
       text: PropTypes.string.isRequired,
       title: PropTypes.string.isRequired,
       date: PropTypes.number.isRequired,
-      id: PropTypes.string.isRequired
+      id: PropTypes.string.isRequired,
+      highlightColor: PropTypes.string.isRequired
     })
   ).isRequired,
   query: PropTypes.string.isRequired,

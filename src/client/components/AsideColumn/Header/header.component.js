@@ -4,7 +4,8 @@ const Header = props => (
     style={{
       marginLeft: "10px",
       color: "#000000",
-      fontFamily: "AvenirNext-Bold"
+      fontFamily: "AvenirNext-Bold",
+      fontSize: "20px"
     }}
   >
     {props.title}
