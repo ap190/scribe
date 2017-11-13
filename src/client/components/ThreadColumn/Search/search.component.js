@@ -11,7 +11,8 @@ const divStyle = {
   fontFamily: "AvenirNext-Regular",
   outline: "none",
   lineHeight: "28px",
-  width: "100%"
+  width: "100%",
+  top: "0"
 };
 
 const wrapperStyle = {

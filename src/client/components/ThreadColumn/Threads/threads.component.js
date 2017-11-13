@@ -8,7 +8,9 @@ import ThreadList from "../ThreadList/thread-list.component";
 const divStyle = {
   height: "100%",
   backgroundColor: "white",
-  overflowY: "auto"
+  overflowY: "auto",
+  display: "flex",
+  flexDirection: "column"
 };
 
 class ThreadColumn extends Component {

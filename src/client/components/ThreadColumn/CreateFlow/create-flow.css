@@ -16,22 +16,3 @@
   line-height: 30px;
   margin-top: 4px;
 }
-
-.parent {
-  width: inherit;
-}
-
-.footer-menu {
-  background-color: #e0e6f6;
-  height: 6%;
-  position: fixed;
-  bottom: 0;
-  padding: 10px;
-  margin-top: auto;
-}
-
-.footer-menu-items {
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-}

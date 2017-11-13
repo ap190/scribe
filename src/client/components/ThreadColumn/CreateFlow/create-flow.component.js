@@ -5,16 +5,14 @@ import "./create-flow.css";
 const addFlowIcon = "./assets/icons/simple_add.png";
 
 const CreateFlow = props => (
-  <div className="parent footer-menu">
-    <div className="footer-menu-items">
-      <img
-        className="add-flow-icon"
-        src={addFlowIcon}
-        alt="Add a flow button"
-        onClick={props.onAddThreadHandler}
-      />
-      <div className="add-flow-description">Start a Flow</div>
-    </div>
+  <div className="footer-menu">
+    <img
+      className="add-flow-icon"
+      src={addFlowIcon}
+      alt="Add a flow button"
+      onClick={props.onAddThreadHandler}
+    />
+    <div className="add-flow-description">Start a Flow</div>
   </div>
 );
 
