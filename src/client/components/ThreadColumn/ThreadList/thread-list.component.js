@@ -7,6 +7,8 @@ const divStyle = {
   height: "auto",
   justifyContent: "center",
   marginTop: "20px",
+  overflow: "auto",
+  flex: "1",
   flexDirection: "column"
 };
 

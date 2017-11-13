@@ -12,7 +12,7 @@ const divStyle = {
   outline: "none",
   lineHeight: "28px",
   width: "100%",
-  position: "sticky",
+  // position: "sticky",
   top: "0"
 };
 
