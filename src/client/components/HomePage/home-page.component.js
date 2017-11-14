@@ -111,10 +111,19 @@ class HomePage extends Component {
   }
 
   selectChannel(channelId) {
-    const { channels } = this.state;
-    const selectedChannel = channels.find(channel => channel.id === channelId);
-    selectedChannel.selected = !selectedChannel.selected;
-    this.setState();
+    let { channels } = this.state;
+    channels = channels.map(channel => {
+      if (channel.id === channelId && !channel.selected) {
+        channel.selected = true;
+        return channel;
+      } else if (channel.id === channelId && channel.selected) {
+        channel.selected = false;
+        return channel;
+      }
+      channel.selected = false;
+      return channel;
+    });
+    this.setState({ channels });
   }
 
   handleAddChannel(newChannel) {
