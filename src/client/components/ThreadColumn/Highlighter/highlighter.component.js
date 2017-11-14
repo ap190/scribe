@@ -12,7 +12,11 @@ const styles = {
 const Highlighter = props => (
   <div
     style={{ ...styles, backgroundColor: props.highlightColor }}
-    onClick={() => props.toggleModal(HIGHLIGHT_THREAD_MODAL)}
+    onClick={() =>
+      props.toggleModal(HIGHLIGHT_THREAD_MODAL, {
+        threadColor: props.highlightColor
+      })
+    }
   />
 );
 

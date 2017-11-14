@@ -8,7 +8,7 @@ import ThreadColumn from "../ThreadColumn/Threads/threads.component";
 import Aside from "../AsideColumn/aside.component";
 import Editor from "../EditorColumn/editor.component";
 import ChannelModal from "../Modal/channelModal.component";
-import ThreatModal from "../Modal/threadModal.component";
+import ThreadModal from "../Modal/threadModal.component";
 import { createFileStructure } from "../../utils/createFileTree";
 import {
   ASIDE_CREATE_CHANNEL_MODAL,
@@ -65,7 +65,7 @@ class HomePage extends Component {
     this.currentWindow = currentWindow;
   }
 
-  getModalContent() {
+  getModalContent(threadColor) {
     switch (this.state.currentModal) {
       case ASIDE_CREATE_CHANNEL_MODAL:
         return (
@@ -75,16 +75,22 @@ class HomePage extends Component {
           />
         );
       case HIGHLIGHT_THREAD_MODAL:
-        return <ThreatModal handleOnClose={this.toggleModal} />;
+        return (
+          <ThreadModal
+            currentHighlight={this.state.threadColor}
+            handleOnClose={this.toggleModal}
+          />
+        );
       default:
         return null;
     }
   }
 
-  toggleModal(modalType) {
+  toggleModal(modalType, modalStateObject) {
     this.setState({
       isModalOpen: !this.state.isModalOpen,
-      currentModal: modalType
+      currentModal: modalType,
+      ...modalStateObject
     });
     return this.getModalContent();
   }

@@ -7,6 +7,7 @@ const ColorCircleList = props => (
   <div className="colorList">
     {props.colors.map(color => (
       <ColorCircle
+        key={color}
         onSelectCircleHandler={props.onSelectCircleHandler}
         selectedColor={props.currentHighlight}
         color={color}

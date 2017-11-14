@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import styled from "styled-components";
+import PropTypes from "prop-types";
 import ColorCircleList from "./ThreadHighlightModal/ColorCircleList/color-circle-list.component";
 import {
   GREY_HIGHLIGHT,
@@ -53,7 +54,7 @@ const modalStyle = {
 class ThreadModal extends Component {
   constructor(props) {
     super(props);
-    this.state = { value: "", currentHighlight: GREY_HIGHLIGHT };
+    this.state = { value: "", currentHighlight: props.currentHighlight };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleSelectColor = this.handleSelectColor.bind(this);
@@ -64,6 +65,7 @@ class ThreadModal extends Component {
   }
 
   handleSubmit(event) {
+    console.log("here!");
     event.preventDefault();
   }
 
@@ -89,7 +91,7 @@ class ThreadModal extends Component {
           />
           <Footer>
             <button className="accept-btn" type="submit">
-              Create Channel
+              Save Color
             </button>
             <button className="cancel-btn" onClick={this.props.handleOnClose}>
               Cancel
@@ -100,5 +102,10 @@ class ThreadModal extends Component {
     );
   }
 }
+
+ThreadModal.propTypes = {
+  currentHighlight: PropTypes.string.isRequired,
+  handleOnClose: PropTypes.func.isRequired
+};
 
 export default ThreadModal;
