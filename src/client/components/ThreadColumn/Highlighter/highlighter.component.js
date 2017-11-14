@@ -14,7 +14,8 @@ const Highlighter = props => (
     style={{ ...styles, backgroundColor: props.highlightColor }}
     onClick={() =>
       props.toggleModal(HIGHLIGHT_THREAD_MODAL, {
-        threadColor: props.highlightColor
+        threadColor: props.highlightColor,
+        threadId: props.threadId
       })
     }
   />
@@ -22,7 +23,8 @@ const Highlighter = props => (
 
 Highlighter.propTypes = {
   toggleModal: PropTypes.func.isRequired,
-  highlightColor: PropTypes.string.isRequired
+  highlightColor: PropTypes.string.isRequired,
+  threadId: PropTypes.string.isRequired
 };
 
 export default Highlighter;

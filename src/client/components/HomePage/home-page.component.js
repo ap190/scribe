@@ -60,12 +60,13 @@ class HomePage extends Component {
     this.selectProjectDir = this.selectProjectDir.bind(this);
     this.toggleModal = this.toggleModal.bind(this);
     this.handleAddChannel = this.handleAddChannel.bind(this);
+    this.handleChangeThreadColor = this.handleChangeThreadColor.bind(this);
     this.getModalContent = this.getModalContent.bind(this);
     this.selectChannel = this.selectChannel.bind(this);
     this.currentWindow = currentWindow;
   }
 
-  getModalContent(threadColor) {
+  getModalContent() {
     switch (this.state.currentModal) {
       case ASIDE_CREATE_CHANNEL_MODAL:
         return (
@@ -77,7 +78,9 @@ class HomePage extends Component {
       case HIGHLIGHT_THREAD_MODAL:
         return (
           <ThreadModal
+            handleChangeThreadColor={this.handleChangeThreadColor}
             currentHighlight={this.state.threadColor}
+            threadId={this.state.threadId}
             handleOnClose={this.toggleModal}
           />
         );
@@ -139,6 +142,16 @@ class HomePage extends Component {
     });
   }
 
+  handleChangeThreadColor(threadObj) {
+    this.refs.threadColumn.changeThreadColor(
+      threadObj.threadId,
+      threadObj.threadColor
+    );
+    this.setState({
+      isModalOpen: false
+    });
+  }
+
   toggleEditor() {
     this.setState({
       ...this.state,
@@ -159,6 +172,7 @@ class HomePage extends Component {
           selectChannel={this.selectChannel}
         />
         <ThreadColumn
+          ref="threadColumn"
           isEditorToggled={this.state.isEditorToggled}
           toggleModal={this.toggleModal}
           handleAddThread={this.openModal}

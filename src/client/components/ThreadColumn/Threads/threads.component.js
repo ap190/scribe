@@ -120,6 +120,18 @@ class ThreadColumn extends Component {
     });
   }
 
+  changeThreadColor(threadId, threadColor) {
+    this.setState({
+      ...this.state,
+      current_threads: this.state.current_threads.map(thread => {
+        if (thread.id === threadId) {
+          thread.highlightColor = threadColor;
+        }
+        return thread;
+      })
+    });
+  }
+
   isEditorToggledStyles() {
     return this.props.isEditorToggled ? { display: "none" } : { flex: "1.2" };
   }

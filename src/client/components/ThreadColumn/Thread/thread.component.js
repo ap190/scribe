@@ -8,6 +8,7 @@ const deleteIcon = "./assets/icons/delete.png";
 const Thread = props => (
   <div className="thread-container">
     <Highlighter
+      threadId={props.id}
       highlightColor={props.highlightColor}
       toggleModal={props.toggleModal}
     />

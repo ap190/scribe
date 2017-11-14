@@ -65,8 +65,11 @@ class ThreadModal extends Component {
   }
 
   handleSubmit(event) {
-    console.log("here!");
     event.preventDefault();
+    this.props.handleChangeThreadColor({
+      threadId: this.props.threadId,
+      threadColor: this.state.currentHighlight
+    });
   }
 
   handleChange(event) {
@@ -104,8 +107,10 @@ class ThreadModal extends Component {
 }
 
 ThreadModal.propTypes = {
+  threadId: PropTypes.string.isRequired,
   currentHighlight: PropTypes.string.isRequired,
-  handleOnClose: PropTypes.func.isRequired
+  handleOnClose: PropTypes.func.isRequired,
+  handleChangeThreadColor: PropTypes.func.isRequired
 };
 
 export default ThreadModal;
