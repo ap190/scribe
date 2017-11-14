@@ -8,7 +8,7 @@ import ThreadColumn from "../ThreadColumn/Threads/threads.component";
 import Aside from "../AsideColumn/aside.component";
 import Editor from "../EditorColumn/editor.component";
 import ChannelModal from "../Modal/channelModal.component";
-import ThreatModal from "../Modal/threadModal.component.js";
+import ThreatModal from "../Modal/threadModal.component";
 import { createFileStructure } from "../../utils/createFileTree";
 import {
   ASIDE_CREATE_CHANNEL_MODAL,
@@ -64,12 +64,25 @@ class HomePage extends Component {
   getModalContent() {
     switch (this.state.currentModal) {
       case ASIDE_CREATE_CHANNEL_MODAL:
-        return <ChannelModal handleAddChannel={this.handleAddChannel} />;
+        return (
+          <ChannelModal
+            handleAddChannel={this.handleAddChannel}
+            handleOnClose={this.toggleModal}
+          />
+        );
       case HIGHLIGHT_THREAD_MODAL:
-        return <ThreatModal />;
+        return <ThreatModal handleOnClose={this.toggleModal} />;
       default:
         return null;
     }
+  }
+
+  toggleModal(modalType) {
+    this.setState({
+      isModalOpen: !this.state.isModalOpen,
+      currentModal: modalType
+    });
+    return this.getModalContent();
   }
 
   selectProjectDir() {
@@ -100,14 +113,6 @@ class HomePage extends Component {
     });
   }
 
-  toggleModal(modalType) {
-    this.setState({
-      isModalOpen: !this.state.isModalOpen,
-      currentModal: modalType
-    });
-    return this.getModalContent();
-  }
-
   toggleEditor() {
     this.setState({
       ...this.state,
@@ -118,13 +123,7 @@ class HomePage extends Component {
   render() {
     return (
       <Wrapper>
-        <Modal
-          show={this.state.isModalOpen}
-          onClose={this.toggleModal}
-          modalContent={ChannelModal}
-        >
-          {this.getModalContent()}
-        </Modal>
+        <Modal show={this.state.isModalOpen}>{this.getModalContent()}</Modal>
         <Aside
           isEditorToggled={this.state.isEditorToggled}
           selectProjectDir={this.selectProjectDir}

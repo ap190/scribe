@@ -8,8 +8,7 @@ const Header = props => (
       className="header-icon"
       src={props.source}
       alt="Add a channel button"
-      onClick={() =>
-        "modalType" in props ? props.handler(props.modalType) : props.handler()}
+      onClick={() => props.handler(props.modalType)}
     />
   </div>
 );
@@ -17,8 +16,7 @@ const Header = props => (
 Header.propTypes = {
   source: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
-  modalType: PropTypes.string,
-  toggleModal: PropTypes.func,
+  modalType: PropTypes.string.isRequired,
   handler: PropTypes.func.isRequired
 };
 

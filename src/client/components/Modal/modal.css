@@ -1,0 +1,31 @@
+.accept-btn {
+  border: none;
+  font-family: Arial;
+  color: #ffffff;
+  font-size: 20px;
+  background: #35a566;
+  padding: 10px 20px 10px 20px;
+  text-decoration: none;
+}
+
+.accept-btn:hover {
+  background: #329b60;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.cancel-btn {
+  border: none;
+  font-family: Arial;
+  color: #ffffff;
+  font-size: 20px;
+  background: #f0623a;
+  padding: 10px 20px 10px 20px;
+  text-decoration: none;
+}
+
+.cancel-btn:hover {
+  background: #dd5c38;
+  text-decoration: none;
+  cursor: pointer;
+}

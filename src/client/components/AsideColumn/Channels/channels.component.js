@@ -2,8 +2,8 @@ import React from "react";
 import PropTypes from "prop-types";
 import Header from "../Header/header.component";
 import ChannelList from "../ChannelList/channelList.component";
-import { ASIDE_CREATE_CHANNEL_MODAL } from "../../../utils/const";
 import "../aside.css";
+import { ASIDE_CREATE_CHANNEL_MODAL } from "../../../utils/const";
 
 const addChannelIcon = "./assets/icons/add_channel.png";
 

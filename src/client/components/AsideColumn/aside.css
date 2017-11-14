@@ -2,9 +2,8 @@
 .tree {
   background-color: #f2f2f2;
   padding-top: 5px;
-  padding-left: 10px;
   flex-grow: 1;
-  margin-left: 24px;
+  margin-left: 2px;
 }
 
 .channels {
