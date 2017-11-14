@@ -12,6 +12,7 @@ const ChannelList = props => (
           id={channel.id}
           key={channel.id}
           selectChannel={props.selectChannel}
+          selected={channel.selected}
         />
       ))}
   </div>
