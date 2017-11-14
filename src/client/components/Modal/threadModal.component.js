@@ -1,5 +1,13 @@
 import React, { Component } from "react";
 import styled from "styled-components";
+import ColorCircleList from "./ThreadHighlightModal/ColorCircleList/color-circle-list.component";
+import {
+  GREY_HIGHLIGHT,
+  RED_HIGHLIGHT,
+  BLUE_HIGHLIGHT,
+  YELLOW_HIGHLIGHT,
+  PURPLE_HIGHLIGHT
+} from "../../utils/const";
 
 const Footer = styled.div`
   display: flex;
@@ -45,29 +53,39 @@ const modalStyle = {
 class ThreadModal extends Component {
   constructor(props) {
     super(props);
-    this.state = { value: "" };
+    this.state = { value: "", currentHighlight: GREY_HIGHLIGHT };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleSelectColor = this.handleSelectColor.bind(this);
   }
 
-  handleChange(event) {
-    this.setState({ value: event.target.value });
+  handleSelectColor(color) {
+    this.setState({ ...this.state, currentHighlight: color });
   }
 
   handleSubmit(event) {
     event.preventDefault();
   }
 
+  handleChange(event) {
+    this.setState({ ...this.state, value: event.target.value });
+  }
+
   render() {
     return (
       <form onSubmit={this.handleSubmit}>
         <div className="modal" style={modalStyle}>
-          <div style={modalHeader}>Create a Channel</div>
-          <Input
-            type="text"
-            value={this.state.value}
-            onChange={this.handleChange}
-            placeholder="Enter channel name..."
+          <div style={modalHeader}>Select a Color Label</div>
+          <ColorCircleList
+            onSelectCircleHandler={this.handleSelectColor}
+            currentHighlight={this.state.currentHighlight}
+            colors={[
+              GREY_HIGHLIGHT,
+              RED_HIGHLIGHT,
+              YELLOW_HIGHLIGHT,
+              BLUE_HIGHLIGHT,
+              PURPLE_HIGHLIGHT
+            ]}
           />
           <Footer>
             <button className="accept-btn" type="submit">
