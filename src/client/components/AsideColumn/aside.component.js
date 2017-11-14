@@ -70,6 +70,7 @@ class Aside extends Component {
           title={"Channels"}
           toggleModal={this.props.toggleModal}
           channels={this.props.channels}
+          selectChannel={this.props.selectChannel}
         />
         <Tree
           title={"Projects"}
@@ -86,7 +87,8 @@ Aside.propTypes = {
   selectProjectDir: PropTypes.func.isRequired,
   tree: PropTypes.any.isRequired,
   toggleModal: PropTypes.func.isRequired,
-  channels: PropTypes.array.isRequired
+  channels: PropTypes.array.isRequired,
+  selectChannel: PropTypes.func.isRequired
 };
 
 export default Aside;

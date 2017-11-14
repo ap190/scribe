@@ -16,14 +16,18 @@ const Channels = props => (
       source={addChannelIcon}
       modalType={ASIDE_CREATE_CHANNEL_MODAL}
     />
-    <ChannelList channels={props.channels} />
+    <ChannelList
+      channels={props.channels}
+      selectChannel={props.selectChannel}
+    />
   </div>
 );
 
 Channels.propTypes = {
   title: PropTypes.string.isRequired,
   toggleModal: PropTypes.func.isRequired,
-  channels: PropTypes.array.isRequired
+  channels: PropTypes.array.isRequired,
+  selectChannel: PropTypes.func.isRequired
 };
 
 export default Channels;

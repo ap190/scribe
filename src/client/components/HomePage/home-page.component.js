@@ -39,17 +39,20 @@ class HomePage extends Component {
         {
           channelName: "# design stuff",
           lastPosted: "4 days ago",
-          id: UUIDv4()
+          id: UUIDv4(),
+          selected: false
         },
         {
           channelName: "# backend",
           lastPosted: "21 minutes ago",
-          id: UUIDv4()
+          id: UUIDv4(),
+          selected: false
         },
         {
           channelName: "# business clients",
           lastPosted: "1 day ago",
-          id: UUIDv4()
+          id: UUIDv4(),
+          selected: false
         }
       ]
     };
@@ -58,6 +61,7 @@ class HomePage extends Component {
     this.toggleModal = this.toggleModal.bind(this);
     this.handleAddChannel = this.handleAddChannel.bind(this);
     this.getModalContent = this.getModalContent.bind(this);
+    this.selectChannel = this.selectChannel.bind(this);
     this.currentWindow = currentWindow;
   }
 
@@ -106,6 +110,13 @@ class HomePage extends Component {
     });
   }
 
+  selectChannel(channelId) {
+    const { channels } = this.state;
+    const selectedChannel = channels.find(channel => channel.id === channelId);
+    selectedChannel.selected = !selectedChannel.selected;
+    this.setState();
+  }
+
   handleAddChannel(newChannel) {
     this.setState({
       isModalOpen: false,
@@ -130,6 +141,7 @@ class HomePage extends Component {
           tree={this.state.files}
           toggleModal={this.toggleModal}
           channels={this.state.channels}
+          selectChannel={this.selectChannel}
         />
         <ThreadColumn
           isEditorToggled={this.state.isEditorToggled}

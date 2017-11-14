@@ -9,14 +9,17 @@ const ChannelList = props => (
         <Channel
           channelName={channel.channelName}
           lastPosted={channel.lastPosted}
+          id={channel.id}
           key={channel.id}
+          selectChannel={props.selectChannel}
         />
       ))}
   </div>
 );
 
 ChannelList.propTypes = {
-  channels: PropTypes.array.isRequired
+  channels: PropTypes.array.isRequired,
+  selectChannel: PropTypes.func.isRequired
 };
 
 export default ChannelList;
