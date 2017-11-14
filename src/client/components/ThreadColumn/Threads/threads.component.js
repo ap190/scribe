@@ -111,7 +111,8 @@ class ThreadColumn extends Component {
       text: "new thread",
       title: "cute penguin",
       date: Date.now(),
-      id: UUIDv4()
+      id: UUIDv4(),
+      highlightColor: GREY_HIGHLIGHT
     };
     this.setState({
       ...this.state,
