@@ -39,12 +39,12 @@
   line-height: 32px;
   display: flex;
   justify-content: space-between;
-  border-bottom: 1px solid #b8b6bc;
+  border-bottom: 1px solid #c9cfdd;
   width: 100%;
 }
 
 .channel-list-item:hover {
-  background: #6e6d70;
+  background: #9ca1ac;
   text-decoration: none;
   cursor: pointer;
 }
@@ -127,18 +127,6 @@ img.header-icon {
 }
 .m-node .caret-down:before {
   content: "\25BE";
-}
-
-.btn-openProject {
-  background-color: #f2f2f2;
-  border: #000000 1px solid;
-  color: #000000;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
-  margin-left: 15px;
-  cursor: pointer;
 }
 
 .projects-container {

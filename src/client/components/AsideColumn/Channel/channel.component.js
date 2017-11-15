@@ -5,7 +5,7 @@ const Channel = props => (
   <div
     className="channel-list-item"
     onClick={() => props.selectChannel(props.id)}
-    style={props.selected ? { backgroundColor: "#939196" } : null}
+    style={props.selected ? { backgroundColor: "#e0e6f6" } : null}
   >
     <div className="channel-list-item-title">{props.channelName}</div>
     <div className="channel-list-item-last-post">{props.lastPosted}</div>

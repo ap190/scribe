@@ -16,11 +16,11 @@ const Input = styled.input`
   background: #ffffff;
   box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1), 0 4px 8px 0 rgba(0, 0, 0, 0.1);
   border-radius: 3px;
+  border: 1px solid black;
   outline: none;
   font-size: 16px;
   line-height: 22px;
   padding: 6px 12px 6px 12px;
-  border: none;
   &:focus {
     outline: none;
   }
@@ -61,7 +61,8 @@ class ChannelModal extends Component {
     this.props.handleAddChannel({
       channelName: `# ${this.state.value}`,
       lastPosted: "4 days ago",
-      id: UUIDv4()
+      id: UUIDv4(),
+      selected: false
     });
   }
 
@@ -70,12 +71,15 @@ class ChannelModal extends Component {
       <form onSubmit={this.handleSubmit}>
         <div className="modal" style={modalStyle}>
           <div style={modalHeader}>Create a Channel</div>
-          <Input
-            type="text"
-            value={this.state.value}
-            onChange={this.handleChange}
-            placeholder="Enter channel name..."
-          />
+          <div>
+            <label htmlFor="ChannelName">Name</label>
+            <Input
+              type="text"
+              value={this.state.value}
+              onChange={this.handleChange}
+              placeholder="Enter channel name..."
+            />
+          </div>
           <Footer>
             <button className="accept-btn" type="submit">
               Create Channel
