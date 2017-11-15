@@ -17,22 +17,6 @@ const Footer = styled.div`
   justify-content: space-around;
 `;
 
-const Input = styled.input`
-  display: flex;
-  min-width: 240px;
-  background: #ffffff;
-  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1), 0 4px 8px 0 rgba(0, 0, 0, 0.1);
-  border-radius: 3px;
-  outline: none;
-  font-size: 16px;
-  line-height: 22px;
-  padding: 6px 12px 6px 12px;
-  border: none;
-  &:focus {
-    outline: none;
-  }
-`;
-
 const modalHeader = {
   fontFamily: "AvenirNext-Bold",
   fontSize: "-webkit-xxx-large"

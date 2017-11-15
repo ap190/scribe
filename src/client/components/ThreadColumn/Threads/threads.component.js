@@ -149,7 +149,10 @@ class ThreadColumn extends Component {
           query={this.state.query}
           toggleModal={this.props.toggleModal}
         />
-        <CreateFlow onAddThreadHandler={this.onAddThread} />
+        <CreateFlow
+          onAddThreadHandler={this.onAddThread}
+          isModalOpen={this.props.isModalOpen}
+        />
       </div>
     );
   }
@@ -157,7 +160,8 @@ class ThreadColumn extends Component {
 
 ThreadColumn.propTypes = {
   isEditorToggled: PropTypes.bool.isRequired,
-  toggleModal: PropTypes.func.isRequired
+  toggleModal: PropTypes.func.isRequired,
+  isModalOpen: PropTypes.bool.isRequired
 };
 
 export default ThreadColumn;

@@ -6,7 +6,7 @@ import HomeContainer from "../../containers/Home";
 import Modal from "../Modal/modal.component";
 import ThreadColumn from "../ThreadColumn/Threads/threads.component";
 import Aside from "../AsideColumn/aside.component";
-import Editor from "../EditorColumn/editor.component";
+import EditorColumn from "../EditorColumn/editor.component";
 import ChannelModal from "../Modal/channelModal.component";
 import ThreadModal from "../Modal/threadModal.component";
 import { createFileStructure } from "../../utils/createFileTree";
@@ -176,10 +176,12 @@ class HomePage extends Component {
           isEditorToggled={this.state.isEditorToggled}
           toggleModal={this.toggleModal}
           handleAddThread={this.openModal}
+          isModalOpen={this.state.isModalOpen}
         />
-        <Editor
+        <EditorColumn
           isEditorToggled={this.state.isEditorToggled}
           toggleHandler={this.toggleEditor}
+          isModalOpen={this.state.isModalOpen}
         />
       </Wrapper>
     );
