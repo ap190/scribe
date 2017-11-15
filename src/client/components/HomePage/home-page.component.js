@@ -40,11 +40,12 @@ class HomePage extends Component {
     };
     this.toggleEditor = this.toggleEditor.bind(this);
     this.selectProjectDir = this.selectProjectDir.bind(this);
+    this.selectChannel = this.selectChannel.bind(this);
+    this.selectThread = this.selectThread.bind(this);
     this.toggleModal = this.toggleModal.bind(this);
     this.handleAddChannel = this.handleAddChannel.bind(this);
     this.handleChangeThreadColor = this.handleChangeThreadColor.bind(this);
     this.getModalContent = this.getModalContent.bind(this);
-    this.selectChannel = this.selectChannel.bind(this);
     this.currentWindow = currentWindow;
   }
 
@@ -107,7 +108,6 @@ class HomePage extends Component {
     channels = channels.map(channel => {
       if (channel.id === channelId && !channel.selected) {
         currentChannel = channel;
-        console.log(currentChannel);
         channel.selected = !channel.selected;
         this.setState({ channels, currentChannel });
         return channel;
@@ -123,6 +123,25 @@ class HomePage extends Component {
       isModalOpen: false,
       channels: [...this.state.channels, newChannel]
     });
+  }
+
+  selectThread(thread) {
+    const { channels } = this.state;
+    const channelIdx = channels.findIndex(
+      channel => channel.channelName === thread.channelName
+    );
+    const threadIdx = channels[channelIdx].threads.findIndex(
+      currentThread => thread.id === currentThread.id
+    );
+    channels[channelIdx].threads[threadIdx].selected = !channels[channelIdx]
+      .threads[threadIdx].selected;
+    channels[channelIdx].threads.forEach((currThread, idx) => {
+      if (idx === threadIdx) {
+        return;
+      }
+      currThread.selected = false;
+    });
+    this.setState({ channels });
   }
 
   handleChangeThreadColor(threadObj) {
@@ -158,11 +177,11 @@ class HomePage extends Component {
           ref="threadColumn"
           isEditorToggled={this.state.isEditorToggled}
           toggleModal={this.toggleModal}
-          handleAddThread={this.openModal}
           isModalOpen={this.state.isModalOpen}
           threads={
             this.state.currentChannel && this.state.currentChannel.threads
           }
+          selectThread={this.selectThread}
         />
         <EditorColumn
           isEditorToggled={this.state.isEditorToggled}

@@ -20,56 +20,72 @@ export default {
           title: "giraffe",
           date: Date.now(),
           id: UUIDv4(),
-          highlightColor: GREY_HIGHLIGHT
+          highlightColor: GREY_HIGHLIGHT,
+          selected: false,
+          channelName: "# design stuff"
         },
         {
           text: "hey here!",
           title: "elephant",
           date: Date.now(),
           id: UUIDv4(),
-          highlightColor: RED_HIGHLIGHT
+          highlightColor: RED_HIGHLIGHT,
+          selected: false,
+          channelName: "# design stuff"
         },
         {
           text: "hey over there~!",
           title: "penguin",
           date: Date.now(),
           id: UUIDv4(),
-          highlightColor: RED_HIGHLIGHT
+          highlightColor: RED_HIGHLIGHT,
+          selected: false,
+          channelName: "# design stuff"
         },
         {
           text: "hey over there~!",
           title: "penguin",
           date: Date.now(),
           id: UUIDv4(),
-          highlightColor: BLUE_HIGHLIGHT
+          highlightColor: BLUE_HIGHLIGHT,
+          selected: false,
+          channelName: "# design stuff"
         },
         {
           text: "hey over there~!",
           title: "penguin",
           date: Date.now(),
           id: UUIDv4(),
-          highlightColor: PURPLE_HIGHLIGHT
+          highlightColor: PURPLE_HIGHLIGHT,
+          selected: false,
+          channelName: "# design stuff"
         },
         {
           text: "hey over there~!",
           title: "penguin",
           date: Date.now(),
           id: UUIDv4(),
-          highlightColor: YELLOW_HIGHLIGHT
+          highlightColor: YELLOW_HIGHLIGHT,
+          selected: false,
+          channelName: "# design stuff"
         },
         {
           text: "hey over there~!",
           title: "penguin",
           date: Date.now(),
           id: UUIDv4(),
-          highlightColor: PURPLE_HIGHLIGHT
+          highlightColor: PURPLE_HIGHLIGHT,
+          selected: false,
+          channelName: "# design stuff"
         },
         {
           text: "hey over there~!",
           title: "penguin",
           date: Date.now(),
           id: UUIDv4(),
-          highlightColor: RED_HIGHLIGHT
+          highlightColor: RED_HIGHLIGHT,
+          selected: false,
+          channelName: "# design stuff"
         }
       ]
     },
@@ -91,21 +107,27 @@ export default {
           title: "giraffe",
           date: Date.now(),
           id: UUIDv4(),
-          highlightColor: GREY_HIGHLIGHT
+          highlightColor: GREY_HIGHLIGHT,
+          selected: false,
+          channelName: "# business clients"
         },
         {
           text: "hey here!",
           title: "elephant",
           date: Date.now(),
           id: UUIDv4(),
-          highlightColor: RED_HIGHLIGHT
+          highlightColor: RED_HIGHLIGHT,
+          selected: false,
+          channelName: "# business clients"
         },
         {
           text: "hey over there~!",
           title: "penguin",
           date: Date.now(),
           id: UUIDv4(),
-          highlightColor: RED_HIGHLIGHT
+          highlightColor: RED_HIGHLIGHT,
+          selected: false,
+          channelName: "# business clients"
         }
       ]
     }

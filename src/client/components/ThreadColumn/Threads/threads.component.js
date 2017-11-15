@@ -137,7 +137,6 @@ class ThreadColumn extends Component {
   }
 
   render() {
-    console.log(this.props);
     return (
       <div style={{ ...divStyle, ...this.isEditorToggledStyles() }}>
         <Search
@@ -149,6 +148,7 @@ class ThreadColumn extends Component {
           onDeleteThreadHandler={this.onDeleteThread}
           query={this.state.query}
           toggleModal={this.props.toggleModal}
+          selectThread={this.props.selectThread}
         />
         <CreateFlow
           onAddThreadHandler={this.onAddThread}
@@ -163,7 +163,8 @@ ThreadColumn.propTypes = {
   isEditorToggled: PropTypes.bool.isRequired,
   toggleModal: PropTypes.func.isRequired,
   isModalOpen: PropTypes.bool.isRequired,
-  threads: PropTypes.array
+  threads: PropTypes.array,
+  selectThread: PropTypes.func.isRequired
 };
 
 export default ThreadColumn;

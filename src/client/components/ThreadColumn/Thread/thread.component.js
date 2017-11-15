@@ -6,7 +6,11 @@ import "./thread.css";
 const deleteIcon = "./assets/icons/delete.png";
 
 const Thread = props => (
-  <div className="thread-container">
+  <div
+    className="thread-container"
+    style={props.selected ? { opacity: "0.5" } : {}}
+    onClick={() => props.selectThread(props)}
+  >
     <Highlighter
       threadId={props.id}
       highlightColor={props.highlightColor}
@@ -35,7 +39,9 @@ Thread.propTypes = {
   id: PropTypes.string.isRequired,
   onDeleteThreadHandler: PropTypes.func.isRequired,
   toggleModal: PropTypes.func.isRequired,
-  highlightColor: PropTypes.string.isRequired
+  highlightColor: PropTypes.string.isRequired,
+  selected: PropTypes.bool.isRequired,
+  selectThread: PropTypes.func.isRequired
 };
 
 export default Thread;

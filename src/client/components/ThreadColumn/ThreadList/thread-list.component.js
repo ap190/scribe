@@ -25,6 +25,9 @@ const ThreadList = props =>
               date={thread.date}
               key={thread.id}
               id={thread.id}
+              selected={thread.selected}
+              selectThread={props.selectThread}
+              channelName={thread.channelName}
               onDeleteThreadHandler={props.onDeleteThreadHandler}
               toggleModal={props.toggleModal}
               highlightColor={thread.highlightColor}
@@ -41,9 +44,11 @@ ThreadList.propTypes = {
       title: PropTypes.string.isRequired,
       date: PropTypes.number.isRequired,
       id: PropTypes.string.isRequired,
+      channelName: PropTypes.string.isRequired,
       highlightColor: PropTypes.string.isRequired
     })
   ),
+  selectThread: PropTypes.func.isRequired,
   query: PropTypes.string.isRequired,
   onDeleteThreadHandler: PropTypes.func.isRequired,
   toggleModal: PropTypes.func.isRequired
