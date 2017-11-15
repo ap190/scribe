@@ -13,25 +13,26 @@ const divStyle = {
 const filterThreadListItem = (query, thread) =>
   thread.text.includes(query) || thread.title.includes(query);
 
-const ThreadList = props => (
-  <div style={divStyle}>
-    {props.threads.map(
-      thread =>
-        filterThreadListItem(props.query, thread) ? (
-          <Thread
-            text={thread.text}
-            title={thread.title}
-            date={thread.date}
-            key={thread.id}
-            id={thread.id}
-            onDeleteThreadHandler={props.onDeleteThreadHandler}
-            toggleModal={props.toggleModal}
-            highlightColor={thread.highlightColor}
-          />
-        ) : null
-    )}
-  </div>
-);
+const ThreadList = props =>
+  !props.threads ? null : (
+    <div style={divStyle}>
+      {props.threads.map(
+        thread =>
+          filterThreadListItem(props.query, thread) ? (
+            <Thread
+              text={thread.text}
+              title={thread.title}
+              date={thread.date}
+              key={thread.id}
+              id={thread.id}
+              onDeleteThreadHandler={props.onDeleteThreadHandler}
+              toggleModal={props.toggleModal}
+              highlightColor={thread.highlightColor}
+            />
+          ) : null
+      )}
+    </div>
+  );
 
 ThreadList.propTypes = {
   threads: PropTypes.arrayOf(
@@ -42,7 +43,7 @@ ThreadList.propTypes = {
       id: PropTypes.string.isRequired,
       highlightColor: PropTypes.string.isRequired
     })
-  ).isRequired,
+  ),
   query: PropTypes.string.isRequired,
   onDeleteThreadHandler: PropTypes.func.isRequired,
   toggleModal: PropTypes.func.isRequired

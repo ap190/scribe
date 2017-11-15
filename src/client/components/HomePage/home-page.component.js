@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import styled from "styled-components";
-import UUIDv4 from "uuid/v4";
 import { compose } from "recompose";
 import HomeContainer from "../../containers/Home";
 import Modal from "../Modal/modal.component";
@@ -14,6 +13,7 @@ import {
   ASIDE_CREATE_CHANNEL_MODAL,
   HIGHLIGHT_THREAD_MODAL
 } from "../../utils/const";
+import data from "./channelData";
 
 const electron = window.require("electron");
 const remote = electron.remote;
@@ -35,26 +35,8 @@ class HomePage extends Component {
       files: {},
       isModalOpen: false,
       currentModal: "",
-      channels: [
-        {
-          channelName: "# design stuff",
-          lastPosted: "4 days ago",
-          id: UUIDv4(),
-          selected: false
-        },
-        {
-          channelName: "# backend",
-          lastPosted: "21 minutes ago",
-          id: UUIDv4(),
-          selected: false
-        },
-        {
-          channelName: "# business clients",
-          lastPosted: "1 day ago",
-          id: UUIDv4(),
-          selected: false
-        }
-      ]
+      channels: data.channels,
+      currentChannel: null
     };
     this.toggleEditor = this.toggleEditor.bind(this);
     this.selectProjectDir = this.selectProjectDir.bind(this);
@@ -121,18 +103,19 @@ class HomePage extends Component {
 
   selectChannel(channelId) {
     let { channels } = this.state;
+    let currentChannel;
     channels = channels.map(channel => {
       if (channel.id === channelId && !channel.selected) {
-        channel.selected = true;
-        return channel;
-      } else if (channel.id === channelId && channel.selected) {
-        channel.selected = false;
+        currentChannel = channel;
+        console.log(currentChannel);
+        channel.selected = !channel.selected;
+        this.setState({ channels, currentChannel });
         return channel;
       }
       channel.selected = false;
+      this.setState({ channels, currentChannel });
       return channel;
     });
-    this.setState({ channels });
   }
 
   handleAddChannel(newChannel) {
@@ -177,6 +160,9 @@ class HomePage extends Component {
           toggleModal={this.toggleModal}
           handleAddThread={this.openModal}
           isModalOpen={this.state.isModalOpen}
+          threads={
+            this.state.currentChannel && this.state.currentChannel.threads
+          }
         />
         <EditorColumn
           isEditorToggled={this.state.isEditorToggled}
