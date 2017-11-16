@@ -36,7 +36,8 @@ class HomePage extends Component {
       isModalOpen: false,
       currentModal: "",
       channels: data.channels,
-      currentChannel: null
+      currentChannel: null,
+      activeNode: null
     };
     this.toggleEditor = this.toggleEditor.bind(this);
     this.selectProjectDir = this.selectProjectDir.bind(this);
@@ -46,6 +47,7 @@ class HomePage extends Component {
     this.handleAddChannel = this.handleAddChannel.bind(this);
     this.handleChangeThreadColor = this.handleChangeThreadColor.bind(this);
     this.getModalContent = this.getModalContent.bind(this);
+    this.selectFile = this.selectFile.bind(this);
     this.currentWindow = currentWindow;
   }
 
@@ -102,20 +104,23 @@ class HomePage extends Component {
     });
   }
 
-  selectChannel(channelId) {
+  selectChannel(channelId, activeFile) {
     let { channels } = this.state;
     let currentChannel;
     channels = channels.map(channel => {
       if (channel.id === channelId && !channel.selected) {
         currentChannel = channel;
         channel.selected = !channel.selected;
-        this.setState({ channels, currentChannel });
         return channel;
       }
       channel.selected = false;
-      this.setState({ channels, currentChannel });
       return channel;
     });
+    this.setState({ channels, currentChannel, activeNode: activeFile });
+  }
+
+  selectFile(file) {
+    this.selectChannel(null, file);
   }
 
   handleAddChannel(newChannel) {
@@ -169,9 +174,11 @@ class HomePage extends Component {
           isEditorToggled={this.state.isEditorToggled}
           selectProjectDir={this.selectProjectDir}
           tree={this.state.files}
+          activeNode={this.state.activeNode}
           toggleModal={this.toggleModal}
           channels={this.state.channels}
           selectChannel={this.selectChannel}
+          selectFile={this.selectFile}
         />
         <ThreadColumn
           ref="threadColumn"

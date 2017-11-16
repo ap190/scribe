@@ -10,19 +10,15 @@ const folderIcon = "./assets/icons/folder.png";
 class Tree extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      active: null
-    };
     this.renderNode = this.renderNode.bind(this);
     this.onClickNode = this.onClickNode.bind(this);
     this.handleChange = this.handleChange.bind(this);
     this.updateTree = this.updateTree.bind(this);
   }
 
-  onClickNode(node) {
-    this.setState({
-      active: node
-    });
+  onClickNode(file) {
+    this.props.selectFile(file);
+    console.log("file is ", file);
   }
 
   handleChange(tree) {
@@ -45,7 +41,7 @@ class Tree extends Component {
         role="menuitem"
         tabIndex="0"
         className={cx("node", {
-          "is-active": node === this.state.active
+          "is-active": node === this.props.activeNode
         })}
         onClick={this.onClickNode.bind(null, node)}
       >
@@ -67,6 +63,7 @@ class Tree extends Component {
         <div className="tree">
           <FileTree
             tree={this.props.tree}
+            activeNode={this.props.activeNode}
             onChange={this.handleChange}
             isNodeCollapsed={this.isNodeCollapsed}
             renderNode={this.renderNode}
@@ -80,7 +77,9 @@ class Tree extends Component {
 Tree.propTypes = {
   tree: PropTypes.any.isRequired,
   handleOpenDir: PropTypes.func.isRequired,
-  title: PropTypes.string.isRequired
+  title: PropTypes.string.isRequired,
+  activeNode: PropTypes.any,
+  selectFile: PropTypes.func.isRequired
 };
 
 export default Tree;

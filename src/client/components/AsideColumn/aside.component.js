@@ -64,6 +64,7 @@ class Aside extends Component {
   }
 
   render() {
+    console.log(this.props.activeNode);
     return (
       <div style={{ ...styles, ...this.isEditorToggledStyles() }}>
         <Channels
@@ -76,6 +77,8 @@ class Aside extends Component {
           title={"Projects"}
           tree={this.props.tree}
           handleOpenDir={this.props.selectProjectDir}
+          selectFile={this.props.selectFile}
+          activeNode={this.props.activeNode}
         />
       </div>
     );
@@ -88,7 +91,9 @@ Aside.propTypes = {
   tree: PropTypes.any.isRequired,
   toggleModal: PropTypes.func.isRequired,
   channels: PropTypes.array.isRequired,
-  selectChannel: PropTypes.func.isRequired
+  selectChannel: PropTypes.func.isRequired,
+  selectFile: PropTypes.func.isRequired,
+  activeNode: PropTypes.any.isRequired
 };
 
 export default Aside;
