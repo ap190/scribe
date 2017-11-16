@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import UUIDv4 from "uuid/v4";
 import styled from "styled-components";
 import { compose } from "recompose";
 import HomeContainer from "../../containers/Home";
@@ -11,7 +12,8 @@ import ThreadModal from "../Modal/threadModal.component";
 import { createFileStructure } from "../../utils/createFileTree";
 import {
   ASIDE_CREATE_CHANNEL_MODAL,
-  HIGHLIGHT_THREAD_MODAL
+  HIGHLIGHT_THREAD_MODAL,
+  PURPLE_HIGHLIGHT
 } from "../../utils/const";
 import data from "./channelData";
 
@@ -45,6 +47,7 @@ class HomePage extends Component {
     this.selectThread = this.selectThread.bind(this);
     this.toggleModal = this.toggleModal.bind(this);
     this.handleAddChannel = this.handleAddChannel.bind(this);
+    this.handleAddThread = this.handleAddThread.bind(this);
     this.handleChangeThreadColor = this.handleChangeThreadColor.bind(this);
     this.getModalContent = this.getModalContent.bind(this);
     this.selectFile = this.selectFile.bind(this);
@@ -130,6 +133,28 @@ class HomePage extends Component {
     });
   }
 
+  handleAddThread() {
+    const { currentChannel } = this.state;
+    console.log("handle add ", currentChannel);
+    const channels = this.state.channels;
+    const updatedChannels = channels.map(channel => {
+      if (currentChannel.id !== channel.id) {
+        return channel;
+      }
+      channel.threads.push({
+        text: "hey there~!",
+        title: "giraffe",
+        date: Date.now(),
+        id: UUIDv4(),
+        highlightColor: PURPLE_HIGHLIGHT,
+        selected: false,
+        channelName: "# design stuff"
+      });
+      return channel;
+    });
+    this.setState({ channels: updatedChannels });
+  }
+
   selectThread(thread) {
     const { channels } = this.state;
     const channelIdx = channels.findIndex(
@@ -189,6 +214,7 @@ class HomePage extends Component {
             this.state.currentChannel && this.state.currentChannel.threads
           }
           selectThread={this.selectThread}
+          handleAddThread={this.handleAddThread}
         />
         <EditorColumn
           isEditorToggled={this.state.isEditorToggled}

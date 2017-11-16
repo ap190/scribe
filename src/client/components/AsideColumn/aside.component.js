@@ -64,7 +64,6 @@ class Aside extends Component {
   }
 
   render() {
-    console.log(this.props.activeNode);
     return (
       <div style={{ ...styles, ...this.isEditorToggledStyles() }}>
         <Channels
@@ -93,7 +92,7 @@ Aside.propTypes = {
   channels: PropTypes.array.isRequired,
   selectChannel: PropTypes.func.isRequired,
   selectFile: PropTypes.func.isRequired,
-  activeNode: PropTypes.any.isRequired
+  activeNode: PropTypes.any
 };
 
 export default Aside;

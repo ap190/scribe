@@ -1,5 +1,5 @@
 import React from "react";
-import PropTypes from "prop-types"; // ES6
+import PropTypes from "prop-types";
 import Thread from "../Thread/thread.component";
 
 const divStyle = {
@@ -14,7 +14,9 @@ const filterThreadListItem = (query, thread) =>
   thread.text.includes(query) || thread.title.includes(query);
 
 const ThreadList = props =>
-  !props.threads ? null : (
+  !props.threads ? (
+    <div style={divStyle} />
+  ) : (
     <div style={divStyle}>
       {props.threads.map(
         thread =>

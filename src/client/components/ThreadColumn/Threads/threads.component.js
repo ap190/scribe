@@ -1,16 +1,15 @@
-import UUIDv4 from "uuid/v4";
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import CreateFlow from "../CreateFlow/create-flow.component";
 import Search from "../Search/search.component";
 import ThreadList from "../ThreadList/thread-list.component";
-import {
-  GREY_HIGHLIGHT,
-  RED_HIGHLIGHT,
-  BLUE_HIGHLIGHT,
-  YELLOW_HIGHLIGHT,
-  PURPLE_HIGHLIGHT
-} from "../../../utils/const";
+// import {
+//   GREY_HIGHLIGHT,
+//   RED_HIGHLIGHT,
+//   BLUE_HIGHLIGHT,
+//   YELLOW_HIGHLIGHT,
+//   PURPLE_HIGHLIGHT
+// } from "../../../utils/const";
 
 const divStyle = {
   height: "100%",
@@ -24,69 +23,10 @@ class ThreadColumn extends Component {
     super(props);
     this.state = {
       current_thread: false,
-      query: "",
-      current_threads: [
-        {
-          text: "hey there~!",
-          title: "giraffe",
-          date: Date.now(),
-          id: UUIDv4(),
-          highlightColor: GREY_HIGHLIGHT
-        },
-        {
-          text: "hey here!",
-          title: "elephant",
-          date: Date.now(),
-          id: UUIDv4(),
-          highlightColor: RED_HIGHLIGHT
-        },
-        {
-          text: "hey over there~!",
-          title: "penguin",
-          date: Date.now(),
-          id: UUIDv4(),
-          highlightColor: RED_HIGHLIGHT
-        },
-        {
-          text: "hey over there~!",
-          title: "penguin",
-          date: Date.now(),
-          id: UUIDv4(),
-          highlightColor: BLUE_HIGHLIGHT
-        },
-        {
-          text: "hey over there~!",
-          title: "penguin",
-          date: Date.now(),
-          id: UUIDv4(),
-          highlightColor: PURPLE_HIGHLIGHT
-        },
-        {
-          text: "hey over there~!",
-          title: "penguin",
-          date: Date.now(),
-          id: UUIDv4(),
-          highlightColor: YELLOW_HIGHLIGHT
-        },
-        {
-          text: "hey over there~!",
-          title: "penguin",
-          date: Date.now(),
-          id: UUIDv4(),
-          highlightColor: PURPLE_HIGHLIGHT
-        },
-        {
-          text: "hey over there~!",
-          title: "penguin",
-          date: Date.now(),
-          id: UUIDv4(),
-          highlightColor: RED_HIGHLIGHT
-        }
-      ]
+      query: ""
     };
     this.onQueryChange = this.onQueryChange.bind(this);
     this.onDeleteThread = this.onDeleteThread.bind(this);
-    this.onAddThread = this.onAddThread.bind(this);
   }
 
   onQueryChange(event) {
@@ -102,21 +42,6 @@ class ThreadColumn extends Component {
       current_threads: this.state.current_threads.filter(
         thread => thread.id !== threadId
       )
-    });
-  }
-
-  onAddThread() {
-    /* Hard coded thread for now. */
-    const newThread = {
-      text: "new thread",
-      title: "cute penguin",
-      date: Date.now(),
-      id: UUIDv4(),
-      highlightColor: GREY_HIGHLIGHT
-    };
-    this.setState({
-      ...this.state,
-      current_threads: [newThread].concat(this.state.current_threads)
     });
   }
 
@@ -151,7 +76,8 @@ class ThreadColumn extends Component {
           selectThread={this.props.selectThread}
         />
         <CreateFlow
-          onAddThreadHandler={this.onAddThread}
+          handleAddThread={this.props.handleAddThread}
+          threads={this.props.threads}
           isModalOpen={this.props.isModalOpen}
         />
       </div>
@@ -164,7 +90,8 @@ ThreadColumn.propTypes = {
   toggleModal: PropTypes.func.isRequired,
   isModalOpen: PropTypes.bool.isRequired,
   threads: PropTypes.array,
-  selectThread: PropTypes.func.isRequired
+  selectThread: PropTypes.func.isRequired,
+  handleAddThread: PropTypes.func.isRequired
 };
 
 export default ThreadColumn;
