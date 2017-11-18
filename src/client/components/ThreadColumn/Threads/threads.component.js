@@ -3,13 +3,6 @@ import PropTypes from "prop-types";
 import CreateFlow from "../CreateFlow/create-flow.component";
 import Search from "../Search/search.component";
 import ThreadList from "../ThreadList/thread-list.component";
-// import {
-//   GREY_HIGHLIGHT,
-//   RED_HIGHLIGHT,
-//   BLUE_HIGHLIGHT,
-//   YELLOW_HIGHLIGHT,
-//   PURPLE_HIGHLIGHT
-// } from "../../../utils/const";
 
 const divStyle = {
   height: "100%",

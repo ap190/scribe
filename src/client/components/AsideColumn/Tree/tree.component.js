@@ -18,7 +18,6 @@ class Tree extends Component {
 
   onClickNode(file) {
     this.props.selectFile(file);
-    console.log("file is ", file);
   }
 
   handleChange(tree) {

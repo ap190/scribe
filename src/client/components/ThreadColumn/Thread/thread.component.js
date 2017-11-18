@@ -40,7 +40,7 @@ Thread.propTypes = {
   onDeleteThreadHandler: PropTypes.func.isRequired,
   toggleModal: PropTypes.func.isRequired,
   highlightColor: PropTypes.string.isRequired,
-  selected: PropTypes.bool.isRequired,
+  selected: PropTypes.bool,
   selectThread: PropTypes.func.isRequired
 };
 

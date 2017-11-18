@@ -16,6 +16,7 @@ import {
   PURPLE_HIGHLIGHT
 } from "../../utils/const";
 import data from "./channelData";
+import fileData from "./fileData";
 
 const electron = window.require("electron");
 const remote = electron.remote;
@@ -38,7 +39,9 @@ class HomePage extends Component {
       isModalOpen: false,
       currentModal: "",
       channels: data.channels,
+      fileData: fileData.files,
       currentChannel: null,
+      currentThreads: null,
       activeNode: null
     };
     this.toggleEditor = this.toggleEditor.bind(this);
@@ -110,6 +113,7 @@ class HomePage extends Component {
   selectChannel(channelId, activeFile) {
     let { channels } = this.state;
     let currentChannel;
+    let threads;
     channels = channels.map(channel => {
       if (channel.id === channelId && !channel.selected) {
         currentChannel = channel;
@@ -119,7 +123,32 @@ class HomePage extends Component {
       channel.selected = false;
       return channel;
     });
-    this.setState({ channels, currentChannel, activeNode: activeFile });
+
+    // Selected "Channel" is file
+    if (activeFile) {
+      currentChannel = activeFile;
+      const currentFile = this.state.fileData.find(
+        file => currentChannel.module === file.module
+      );
+
+      // currentFile has threads
+      if (currentFile) {
+        threads = currentFile.threads;
+      } else {
+        // currentFile has no threads yet
+        threads = null;
+      }
+    } else {
+      // this is a channel
+      threads = currentChannel.threads;
+    }
+
+    this.setState({
+      channels,
+      currentChannel,
+      activeNode: activeFile,
+      currentThreads: threads
+    });
   }
 
   selectFile(file) {
@@ -133,9 +162,9 @@ class HomePage extends Component {
     });
   }
 
+  // TODO split to 2  methods - addThread for Channel, add For File
   handleAddThread() {
     const { currentChannel } = this.state;
-    console.log("handle add ", currentChannel);
     const channels = this.state.channels;
     const updatedChannels = channels.map(channel => {
       if (currentChannel.id !== channel.id) {
@@ -210,9 +239,7 @@ class HomePage extends Component {
           isEditorToggled={this.state.isEditorToggled}
           toggleModal={this.toggleModal}
           isModalOpen={this.state.isModalOpen}
-          threads={
-            this.state.currentChannel && this.state.currentChannel.threads
-          }
+          threads={this.state.currentThreads}
           selectThread={this.selectThread}
           handleAddThread={this.handleAddThread}
         />

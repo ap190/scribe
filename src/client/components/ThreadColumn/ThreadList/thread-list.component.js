@@ -46,7 +46,7 @@ ThreadList.propTypes = {
       title: PropTypes.string.isRequired,
       date: PropTypes.number.isRequired,
       id: PropTypes.string.isRequired,
-      channelName: PropTypes.string.isRequired,
+      channelName: PropTypes.string,
       highlightColor: PropTypes.string.isRequired
     })
   ),
