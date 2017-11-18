@@ -7,6 +7,10 @@
   overflow-y: auto;
 }
 
+.m-tree {
+  padding-bottom: 30px;
+}
+
 .aside-title-container {
   display: flex;
   align-items: center;

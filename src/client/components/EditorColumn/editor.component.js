@@ -46,11 +46,7 @@ class EditorColumn extends Component {
           />
         )}
 
-        {!isModalOpen && (
-          <ColumnFooter>
-            <Icon icon={Images.addIcon} />
-          </ColumnFooter>
-        )}
+        {!isModalOpen && <ColumnFooter />}
       </div>
     );
   }

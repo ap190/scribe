@@ -6,6 +6,8 @@ export default styled.div`
   bottom: 0;
   left: 0;
   display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
   width: 100%;
   height: 60px;
   padding: 20px;

@@ -8,7 +8,7 @@ const divStyle = {
   overflow: "auto",
   flex: "1",
   flexDirection: "column",
-  paddingBottom: "10px"
+  paddingBottom: "60px"
 };
 
 const filterThreadListItem = (query, thread) =>

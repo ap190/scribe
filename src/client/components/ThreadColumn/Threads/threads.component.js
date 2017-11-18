@@ -84,7 +84,12 @@ class ThreadColumn extends Component {
         {!isModalOpen && (
           <ColumnFooter>
             <Icon icon={Images.addIcon} handleClick={this.handleIconTrick} />
-            <div className="add-flow-description">Start a Flow</div>
+            <div
+              className="add-flow-description"
+              style={{ paddingLeft: "inherit" }}
+            >
+              Start a Flow
+            </div>
           </ColumnFooter>
         )}
       </div>
