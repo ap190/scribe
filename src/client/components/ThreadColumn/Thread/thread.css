@@ -39,6 +39,7 @@ img.delete-icon:hover {
   display: flex;
   justify-content: space-between;
   min-height: 100px;
+  position: relative;
 }
 
 .thread-content {

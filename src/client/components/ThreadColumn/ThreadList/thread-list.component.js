@@ -7,7 +7,8 @@ const divStyle = {
   justifyContent: "center",
   overflow: "auto",
   flex: "1",
-  flexDirection: "column"
+  flexDirection: "column",
+  position: "absolute"
 };
 
 const filterThreadListItem = (query, thread) =>

@@ -22,6 +22,7 @@ const electron = window.require("electron");
 const remote = electron.remote;
 const currentWindow = remote.getCurrentWindow();
 const mainProcessFileHandling = remote.require("./server/fileHandler");
+
 const Wrapper = styled.div`
   display: flex;
   flex-direction: row;
@@ -252,6 +253,7 @@ class HomePage extends Component {
           activeNode={this.state.activeNode}
           toggleModal={this.toggleModal}
           channels={this.state.channels}
+          isModalOpen={this.state.isModalOpen}          
           selectChannelOrFile={this.selectChannelOrFile}
           selectFile={this.selectFile}
         />

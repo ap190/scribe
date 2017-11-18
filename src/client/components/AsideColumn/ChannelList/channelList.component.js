@@ -1,6 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import Channel from "../Channel/channel.component";
+import "./channelList.css"
 
 const ChannelList = props => (
   <div className="channels-list">

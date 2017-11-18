@@ -3,62 +3,27 @@
   padding-top: 5px;
   flex-grow: 1;
   margin-left: 2px;
+  position: relative;
 }
 
-.channels {
-  padding-top: 5px;
-  padding-left: 10px;
-  margin-top: 4%;
-}
 
 .aside-title-container {
   display: flex;
   align-items: center;
   justify-content: space-between;
   margin-bottom: auto;
-  margin-left: 10px;
   color: #000000;
   font-family: "AvenirNext-Bold";
-  margin-top: 10px;
+  padding-top: 36px;
+  padding-right: 12px;
+  padding-bottom: 12px;
+  padding-left: 12px;
 }
 
-.channels-list {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  justify-content: center;
-  padding: 10px;
-  padding-right: 24px;
-  cursor: pointer;
-}
-
-.channel-list-item {
-  font-family: AvenirNext-Medium;
-  font-size: 14px;
-  color: #000000;
-  line-height: 32px;
-  display: flex;
-  justify-content: space-between;
-  border-bottom: 1px solid #c9cfdd;
-  width: 100%;
-}
-
-.channel-list-item:hover {
-  background: #9ca1ac;
-  text-decoration: none;
-  cursor: pointer;
-}
-
-.channel-list-item-last-post {
-  margin-left: 60px;
-  font-family: AvenirNext-Regular;
-  font-size: 10px;
-}
 
 img.header-icon {
   height: 16px;
   width: 16px;
-  padding-right: 24px;
   cursor: pointer;
 }
 
@@ -130,6 +95,5 @@ img.header-icon {
 }
 
 .projects-container {
-  padding-left: 10px;
   overflow-y: auto;
 }

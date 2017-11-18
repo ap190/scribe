@@ -1,51 +1,54 @@
-import React, { Component } from "react";
-import PropTypes from "prop-types";
-import cx from "classnames";
-import Channels from "./Channels/channels.component";
-import Tree from "./Tree/tree.component";
-import "./aside.css";
+import React, { Component } from "react"
+import PropTypes from "prop-types"
+import cx from "classnames"
+import Channels from "./Channels/channels.component"
+import Tree from "./Tree/tree.component"
+import "./aside.css"
+import ColumnFooter from "../ColumnFooter"
+import Icon from "../Icon"
+import { Images } from "../../themes"
 
 const styles = {
   height: "100%",
   backgroundColor: "#f2f2f2",
   display: "flex",
   flexDirection: "column"
-};
+}
 
 class Aside extends Component {
   constructor(props) {
-    super(props);
+    super(props)
     this.state = {
       active: null
-    };
-    this.renderNode = this.renderNode.bind(this);
-    this.onClickNode = this.onClickNode.bind(this);
-    this.handleChange = this.handleChange.bind(this);
-    this.updateTree = this.updateTree.bind(this);
+    }
+    this.renderNode = this.renderNode.bind(this)
+    this.onClickNode = this.onClickNode.bind(this)
+    this.handleChange = this.handleChange.bind(this)
+    this.updateTree = this.updateTree.bind(this)
   }
 
   onClickNode(node) {
     this.setState({
       active: node
-    });
+    })
   }
 
   isEditorToggledStyles() {
-    return this.props.isEditorToggled ? { display: "none" } : null;
+    return this.props.isEditorToggled ? { display: "none" } : null
   }
 
   handleChange(tree) {
     this.setState({
       tree
-    });
+    })
   }
 
   updateTree() {
-    const { tree } = this.state;
-    tree.children.push({ module: "test" });
+    const { tree } = this.state
+    tree.children.push({ module: "test" })
     this.setState({
       tree
-    });
+    })
   }
 
   renderNode(node) {
@@ -60,10 +63,11 @@ class Aside extends Component {
       >
         {node.module}
       </span>
-    );
+    )
   }
 
   render() {
+    const { isModalOpen } = this.props
     return (
       <div style={{ ...styles, ...this.isEditorToggledStyles() }}>
         <Channels
@@ -79,8 +83,13 @@ class Aside extends Component {
           selectFile={this.props.selectFile}
           activeNode={this.props.activeNode}
         />
+        {!isModalOpen && (
+          <ColumnFooter>
+            <Icon icon={Images.addIcon}  />
+          </ColumnFooter>
+        )}
       </div>
-    );
+    )
   }
 }
 
@@ -92,7 +101,8 @@ Aside.propTypes = {
   channels: PropTypes.array.isRequired,
   selectChannelOrFile: PropTypes.func.isRequired,
   selectFile: PropTypes.func.isRequired,
-  activeNode: PropTypes.any
-};
+  activeNode: PropTypes.any,
+  isModalOpen: PropTypes.bool
+}
 
-export default Aside;
+export default Aside
