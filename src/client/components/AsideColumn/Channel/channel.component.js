@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 const Channel = props => (
   <div
     className="channel-list-item"
-    onClick={() => props.selectChannel(props.id)}
+    onClick={() => props.selectChannelOrFile(props.id)}
     style={props.selected ? { backgroundColor: "#e0e6f6" } : null}
   >
     <div className="channel-list-item-title">{props.channelName}</div>
@@ -16,7 +16,7 @@ Channel.propTypes = {
   channelName: PropTypes.string.isRequired,
   id: PropTypes.string.isRequired,
   lastPosted: PropTypes.string.isRequired,
-  selectChannel: PropTypes.func.isRequired,
+  selectChannelOrFile: PropTypes.func.isRequired,
   selected: PropTypes.bool.isRequired
 };
 

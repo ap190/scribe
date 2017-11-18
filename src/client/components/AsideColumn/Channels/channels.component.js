@@ -18,7 +18,7 @@ const Channels = props => (
     />
     <ChannelList
       channels={props.channels}
-      selectChannel={props.selectChannel}
+      selectChannelOrFile={props.selectChannelOrFile}
     />
   </div>
 );
@@ -27,7 +27,7 @@ Channels.propTypes = {
   title: PropTypes.string.isRequired,
   toggleModal: PropTypes.func.isRequired,
   channels: PropTypes.array.isRequired,
-  selectChannel: PropTypes.func.isRequired
+  selectChannelOrFile: PropTypes.func.isRequired
 };
 
 export default Channels;

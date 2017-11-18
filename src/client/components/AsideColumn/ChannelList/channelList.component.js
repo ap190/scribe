@@ -11,7 +11,7 @@ const ChannelList = props => (
           lastPosted={channel.lastPosted}
           id={channel.id}
           key={channel.id}
-          selectChannel={props.selectChannel}
+          selectChannelOrFile={props.selectChannelOrFile}
           selected={channel.selected}
         />
       ))}
@@ -20,7 +20,7 @@ const ChannelList = props => (
 
 ChannelList.propTypes = {
   channels: PropTypes.array.isRequired,
-  selectChannel: PropTypes.func.isRequired
+  selectChannelOrFile: PropTypes.func.isRequired
 };
 
 export default ChannelList;

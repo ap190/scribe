@@ -46,7 +46,8 @@ class HomePage extends Component {
     };
     this.toggleEditor = this.toggleEditor.bind(this);
     this.selectProjectDir = this.selectProjectDir.bind(this);
-    this.selectChannel = this.selectChannel.bind(this);
+    this.selectChannelOrFile = this.selectChannelOrFile.bind(this);
+    this.getUpdatedChannelsState = this.getUpdatedChannelsState.bind(this);
     this.selectThread = this.selectThread.bind(this);
     this.toggleModal = this.toggleModal.bind(this);
     this.handleAddChannel = this.handleAddChannel.bind(this);
@@ -110,37 +111,57 @@ class HomePage extends Component {
     });
   }
 
-  selectChannel(channelId, activeFile) {
-    let { channels } = this.state;
+  getUpdatedChannelsState(channelsWithOldState, channelId) {
     let currentChannel;
     let threads;
-    channels = channels.map(channel => {
+    const channels = channelsWithOldState.map(channel => {
       if (channel.id === channelId && !channel.selected) {
         currentChannel = channel;
+        threads = currentChannel.threads;
         channel.selected = !channel.selected;
         return channel;
       }
       channel.selected = false;
       return channel;
     });
+    return {
+      channels,
+      currentChannel,
+      threads
+    };
+  }
 
-    // Selected "Channel" is file
-    if (activeFile) {
-      currentChannel = activeFile;
-      const currentFile = this.state.fileData.find(
-        file => currentChannel.module === file.module
-      );
+  getUpdatedChannelAndThreadsIfSelectionIsFile(activeFile, threads) {
+    const currentFile = this.state.fileData.find(
+      file => activeFile.module === file.module
+    );
 
-      // currentFile has threads
-      if (currentFile) {
-        threads = currentFile.threads;
-      } else {
-        // currentFile has no threads yet
-        threads = null;
-      }
+    // currentFile has threads
+    if (currentFile) {
+      threads = activeFile.threads;
     } else {
-      // this is a channel
-      threads = currentChannel.threads;
+      // currentFile has no threads yet
+      threads = null;
+    }
+    return {
+      activeFile,
+      threads
+    };
+  }
+
+  selectChannelOrFile(channelId, activeFile) {
+    let { channels, currentChannel, threads } = this.getUpdatedChannelsState(
+      this.state.channels,
+      channelId
+    );
+
+    if (activeFile) {
+      const updateChannelIsFileData = this.getUpdatedChannelAndThreadsIfSelectionIsFile(
+        activeFile,
+        threads
+      );
+      currentChannel = updateChannelIsFileData.activeFile;
+      threads = updateChannelIsFileData.threads;
     }
 
     this.setState({
@@ -152,7 +173,7 @@ class HomePage extends Component {
   }
 
   selectFile(file) {
-    this.selectChannel(null, file);
+    this.selectChannelOrFile(null, file);
   }
 
   handleAddChannel(newChannel) {
@@ -231,7 +252,7 @@ class HomePage extends Component {
           activeNode={this.state.activeNode}
           toggleModal={this.toggleModal}
           channels={this.state.channels}
-          selectChannel={this.selectChannel}
+          selectChannelOrFile={this.selectChannelOrFile}
           selectFile={this.selectFile}
         />
         <ThreadColumn
