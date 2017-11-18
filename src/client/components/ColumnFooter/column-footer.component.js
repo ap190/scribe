@@ -1,6 +1,5 @@
-import React from 'react';
-import styled from "styled-components"
-import {Colors} from "../../themes" 
+import styled from "styled-components";
+import { Colors } from "../../themes";
 
 export default styled.div`
   position: absolute;
@@ -10,5 +9,6 @@ export default styled.div`
   width: 100%;
   height: 60px;
   padding: 20px;
+  font-family: "AvenirNext-Bold";
   background-color: ${Colors.actionPrimary};
-`
+`;

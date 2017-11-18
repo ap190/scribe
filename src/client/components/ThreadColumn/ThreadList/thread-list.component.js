@@ -8,7 +8,7 @@ const divStyle = {
   overflow: "auto",
   flex: "1",
   flexDirection: "column",
-  position: "absolute"
+  paddingBottom: "10px"
 };
 
 const filterThreadListItem = (query, thread) =>
@@ -19,24 +19,35 @@ const ThreadList = props =>
     <div style={divStyle} />
   ) : (
     <div style={divStyle}>
-      {props.threads.map(
-        thread =>
-          filterThreadListItem(props.query, thread) ? (
-            <Thread
-              text={thread.text}
-              title={thread.title}
-              date={thread.date}
-              key={thread.id}
-              id={thread.id}
-              selected={thread.selected}
-              selectThread={props.selectThread}
-              channelName={thread.channelName}
-              onDeleteThreadHandler={props.onDeleteThreadHandler}
-              toggleModal={props.toggleModal}
-              highlightColor={thread.highlightColor}
-            />
-          ) : null
-      )}
+      <div
+        className="thread-list-header"
+        style={{
+          fontFamily: "AvenirNext-Bold",
+          padding: "10px"
+        }}
+      >
+        {props.currentChannel.channelName || props.currentChannel.module}
+      </div>
+      <div style={{ borderTop: "1px solid #979797" }}>
+        {props.threads.map(
+          thread =>
+            filterThreadListItem(props.query, thread) ? (
+              <Thread
+                text={thread.text}
+                title={thread.title}
+                date={thread.date}
+                key={thread.id}
+                id={thread.id}
+                selected={thread.selected}
+                selectThread={props.selectThread}
+                channelName={thread.channelName}
+                onDeleteThreadHandler={props.onDeleteThreadHandler}
+                toggleModal={props.toggleModal}
+                highlightColor={thread.highlightColor}
+              />
+            ) : null
+        )}
+      </div>
     </div>
   );
 
@@ -54,7 +65,8 @@ ThreadList.propTypes = {
   selectThread: PropTypes.func.isRequired,
   query: PropTypes.string.isRequired,
   onDeleteThreadHandler: PropTypes.func.isRequired,
-  toggleModal: PropTypes.func.isRequired
+  toggleModal: PropTypes.func.isRequired,
+  currentChannel: PropTypes.any
 };
 
 export default ThreadList;

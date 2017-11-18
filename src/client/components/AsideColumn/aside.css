@@ -4,8 +4,8 @@
   flex-grow: 1;
   margin-left: 2px;
   position: relative;
+  overflow-y: auto;
 }
-
 
 .aside-title-container {
   display: flex;
@@ -19,7 +19,6 @@
   padding-bottom: 12px;
   padding-left: 12px;
 }
-
 
 img.header-icon {
   height: 16px;

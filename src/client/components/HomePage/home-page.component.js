@@ -139,7 +139,7 @@ class HomePage extends Component {
 
     // currentFile has threads
     if (currentFile) {
-      threads = activeFile.threads;
+      threads = currentFile.threads;
     } else {
       // currentFile has no threads yet
       threads = null;
@@ -253,12 +253,13 @@ class HomePage extends Component {
           activeNode={this.state.activeNode}
           toggleModal={this.toggleModal}
           channels={this.state.channels}
-          isModalOpen={this.state.isModalOpen}          
+          isModalOpen={this.state.isModalOpen}
           selectChannelOrFile={this.selectChannelOrFile}
           selectFile={this.selectFile}
         />
         <ThreadColumn
           ref="threadColumn"
+          currentChannel={this.state.currentChannel}
           isEditorToggled={this.state.isEditorToggled}
           toggleModal={this.toggleModal}
           isModalOpen={this.state.isModalOpen}

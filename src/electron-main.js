@@ -4,7 +4,7 @@ const url = require("url");
 const { ipcMain } = require("electron");
 const electron = require("electron");
 
-// require("electron-context-menu")();
+require("electron-context-menu")();
 
 const BrowserWindow = electron.BrowserWindow;
 const {
