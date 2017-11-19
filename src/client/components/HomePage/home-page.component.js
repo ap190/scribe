@@ -32,6 +32,8 @@ const Wrapper = styled.div`
 class HomePage extends Component {
   constructor(props) {
     super(props);
+    console.log("beep bop...");
+    console.log(JSON.stringify(data.channels));
     this.state = {
       isEditorToggled: false,
       relativePath: "",
