@@ -3,20 +3,20 @@ import UUIDv4 from "uuid/v4";
 import styled from "styled-components";
 import { compose } from "recompose";
 import HomeContainer from "../../containers/Home";
-import Modal from "../Modal/modal.component";
-import ThreadColumn from "../ThreadColumn/Threads/threads.component";
-import Aside from "../AsideColumn/aside.component";
-import EditorColumn from "../EditorColumn/editor.component";
-import ChannelModal from "../Modal/channelModal.component";
-import ThreadModal from "../Modal/threadModal.component";
+import Modal from "../common/Modal";
+import ThreadColumn from "./ThreadColumn";
+import Aside from "./AsideColumn";
+import EditorColumn from "./EditorColumn";
+import ChannelModal from "../common/Modal/channelModal.component";
+import ThreadModal from "../common/Modal/threadModal.component";
 import { createFileStructure } from "../../utils/createFileTree";
 import {
   ASIDE_CREATE_CHANNEL_MODAL,
   HIGHLIGHT_THREAD_MODAL,
   PURPLE_HIGHLIGHT
 } from "../../utils/const";
-import data from "./channelData";
-import fileData from "./fileData";
+import data from "../../data/channelData";
+import fileData from "../../data/fileData";
 
 const electron = window.require("electron");
 const remote = electron.remote;
@@ -41,6 +41,8 @@ class HomePage extends Component {
       currentModal: "",
       channels: data.channels,
       fileData: fileData.files,
+      channelsInRAM: null, // TODO
+      fileDataInRAM: null, // TODO
       currentChannel: null,
       currentThreads: null,
       activeNode: null
@@ -82,36 +84,6 @@ class HomePage extends Component {
     }
   }
 
-  toggleModal(modalType, modalStateObject) {
-    this.setState({
-      isModalOpen: !this.state.isModalOpen,
-      currentModal: modalType,
-      ...modalStateObject
-    });
-    return this.getModalContent();
-  }
-
-  selectProjectDir() {
-    const { getDirSelectionFromUser } = mainProcessFileHandling;
-    const {
-      fileStructure,
-      relativePath,
-      absolutePath
-    } = getDirSelectionFromUser(this.currentWindow);
-    if (!fileStructure || fileStructure.length < 1) {
-      return;
-    }
-    const structureObject = createFileStructure(
-      fileStructure,
-      relativePath[relativePath.length - 1]
-    );
-    this.setState({
-      files: structureObject,
-      absolutePath,
-      relativePath
-    });
-  }
-
   getUpdatedChannelsState(channelsWithOldState, channelId) {
     let currentChannel;
     let threads;
@@ -148,6 +120,36 @@ class HomePage extends Component {
       activeFile,
       threads
     };
+  }
+
+  selectProjectDir() {
+    const { getDirSelectionFromUser } = mainProcessFileHandling;
+    const {
+      fileStructure,
+      relativePath,
+      absolutePath
+    } = getDirSelectionFromUser(this.currentWindow);
+    if (!fileStructure || fileStructure.length < 1) {
+      return;
+    }
+    const structureObject = createFileStructure(
+      fileStructure,
+      relativePath[relativePath.length - 1]
+    );
+    this.setState({
+      files: structureObject,
+      absolutePath,
+      relativePath
+    });
+  }
+
+  toggleModal(modalType, modalStateObject) {
+    this.setState({
+      isModalOpen: !this.state.isModalOpen,
+      currentModal: modalType,
+      ...modalStateObject
+    });
+    return this.getModalContent();
   }
 
   selectChannelOrFile(channelId, activeFile) {

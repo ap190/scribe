@@ -1,0 +1,17 @@
+.md-RichEditor-root {
+  width: 80%;
+  font-family: "AvenirNext-Regular";
+}
+
+.editor {
+  position: relative;
+  display: flex;
+  height: 100%;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  background-color: #fff;
+  border-left: 1px solid #979797;
+  flex: 2;
+  padding-left: 24px;
+}
