@@ -79,11 +79,11 @@ class ThreadModal extends Component {
             ]}
           />
           <Footer>
-            <button className="accept-btn" type="submit">
-              Save Color
-            </button>
             <button className="cancel-btn" onClick={this.props.handleOnClose}>
               Cancel
+            </button>
+            <button className="accept-btn" type="submit">
+              Save Color
             </button>
           </Footer>
         </div>

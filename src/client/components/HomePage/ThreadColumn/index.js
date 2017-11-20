@@ -20,26 +20,15 @@ class ThreadColumn extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      current_threads: props.threads,
       query: ""
     };
     this.onQueryChange = this.onQueryChange.bind(this);
-    this.onDeleteThread = this.onDeleteThread.bind(this);
   }
 
   onQueryChange(event) {
     this.setState({
       ...this.state,
       query: event.target.value
-    });
-  }
-
-  onDeleteThread(threadId) {
-    this.setState({
-      ...this.state,
-      current_threads: this.state.current_threads.filter(
-        thread => thread.id !== threadId
-      )
     });
   }
 
@@ -59,13 +48,8 @@ class ThreadColumn extends Component {
     return this.props.isEditorToggled ? { display: "none" } : { flex: "1.2" };
   }
 
-  handleIconTrick() {
-    const { threads } = this.props;
-    this.props.handleAddThread(threads);
-  }
-
   render() {
-    const { isModalOpen } = this.props;
+    const { isModalOpen, handleAddThread } = this.props;
     return (
       <div style={{ ...divStyle, ...this.isEditorToggledStyles() }}>
         <Search
@@ -79,11 +63,12 @@ class ThreadColumn extends Component {
           toggleModal={this.props.toggleModal}
           selectThread={this.props.selectThread}
           currentChannel={this.props.currentChannel}
+          handleDeleteThread={this.props.handleDeleteThread}
         />
 
         {!isModalOpen && (
           <ColumnFooter>
-            <Icon icon={Images.addIcon} handleClick={this.handleIconTrick} />
+            <Icon icon={Images.addIcon} handleClick={handleAddThread} />
             <div
               className="add-flow-description"
               style={{ paddingLeft: "inherit" }}
@@ -104,7 +89,8 @@ ThreadColumn.propTypes = {
   isModalOpen: PropTypes.bool.isRequired,
   threads: PropTypes.array,
   selectThread: PropTypes.func.isRequired,
-  handleAddThread: PropTypes.func.isRequired
+  handleAddThread: PropTypes.func.isRequired,
+  handleDeleteThread: PropTypes.func.isRequired
 };
 
 export default ThreadColumn;

@@ -3,6 +3,7 @@ const path = require("path");
 const url = require("url");
 const { ipcMain } = require("electron");
 const electron = require("electron");
+const { genLoadData } = require("./server/readData");
 
 require("electron-context-menu")();
 
@@ -13,10 +14,8 @@ const {
   REDUX_DEVTOOLS
 } = require("electron-devtools-installer");
 
-// TODO example for basic IPC communication
-ipcMain.on("asynchronous-message", (event, arg) => {
-  console.log(arg); // prints "ping"
-  event.sender.send("asynchronous-reply", "pong");
+ipcMain.on("load-file-req", (event, arg) => {
+  genLoadData(event);
 });
 
 // Keep a global reference of the window object, if you don't, the window will

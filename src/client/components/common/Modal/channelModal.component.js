@@ -62,7 +62,9 @@ class ChannelModal extends Component {
       channelName: `# ${this.state.value}`,
       lastPosted: "4 days ago",
       id: UUIDv4(),
-      selected: false
+      selected: false,
+      channelType: "communication",
+      threads: []
     });
   }
 

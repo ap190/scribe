@@ -12,16 +12,16 @@ import ThreadModal from "../common/Modal/threadModal.component";
 import { createFileStructure } from "../../utils/createFileTree";
 import {
   ASIDE_CREATE_CHANNEL_MODAL,
-  HIGHLIGHT_THREAD_MODAL,
-  PURPLE_HIGHLIGHT
+  HIGHLIGHT_THREAD_MODAL
 } from "../../utils/const";
-import data from "../../data/channelData";
-import fileData from "../../data/fileData";
+import { highlightColor } from "../../themes";
 
+const { PURPLE_HIGHLIGHT } = highlightColor;
 const electron = window.require("electron");
 const remote = electron.remote;
 const currentWindow = remote.getCurrentWindow();
 const mainProcessFileHandling = remote.require("./server/fileHandler");
+const ipcRenderer = electron.ipcRenderer;
 
 const Wrapper = styled.div`
   display: flex;
@@ -32,8 +32,6 @@ const Wrapper = styled.div`
 class HomePage extends Component {
   constructor(props) {
     super(props);
-    console.log("beep bop...");
-    console.log(JSON.stringify(data.channels));
     this.state = {
       isEditorToggled: false,
       relativePath: "",
@@ -41,26 +39,36 @@ class HomePage extends Component {
       files: {},
       isModalOpen: false,
       currentModal: "",
-      channels: data.channels,
-      fileData: fileData.files,
-      channelsInRAM: null, // TODO
-      fileDataInRAM: null, // TODO
-      currentChannel: null,
+      channels: undefined,
+      currentChannel: undefined,
       currentThreads: null,
       activeNode: null
     };
     this.toggleEditor = this.toggleEditor.bind(this);
     this.selectProjectDir = this.selectProjectDir.bind(this);
     this.selectChannelOrFile = this.selectChannelOrFile.bind(this);
-    this.getUpdatedChannelsState = this.getUpdatedChannelsState.bind(this);
+    this.getUpdatedChannelsSelectedState = this.getUpdatedChannelsSelectedState.bind(
+      this
+    );
     this.selectThread = this.selectThread.bind(this);
     this.toggleModal = this.toggleModal.bind(this);
     this.handleAddChannel = this.handleAddChannel.bind(this);
     this.handleAddThread = this.handleAddThread.bind(this);
     this.handleChangeThreadColor = this.handleChangeThreadColor.bind(this);
+    this.handleDeleteThread = this.handleDeleteThread.bind(this);
     this.getModalContent = this.getModalContent.bind(this);
     this.selectFile = this.selectFile.bind(this);
     this.currentWindow = currentWindow;
+  }
+
+  componentDidMount() {
+    ipcRenderer.send("load-file-req");
+
+    ipcRenderer.on("load-file-res", (event, channels) => {
+      this.setState({
+        channels
+      });
+    });
   }
 
   getModalContent() {
@@ -86,7 +94,7 @@ class HomePage extends Component {
     }
   }
 
-  getUpdatedChannelsState(channelsWithOldState, channelId) {
+  getUpdatedChannelsSelectedState(channelsWithOldState, channelId) {
     let currentChannel;
     let threads;
     const channels = channelsWithOldState.map(channel => {
@@ -107,19 +115,19 @@ class HomePage extends Component {
   }
 
   getUpdatedChannelAndThreadsIfSelectionIsFile(activeFile, threads) {
-    const currentFile = this.state.fileData.find(
-      file => activeFile.module === file.module
+    const currentChannel = this.state.channels.find(
+      file => file.channelType === "file" && activeFile.module === file.module
     );
 
     // currentFile has threads
-    if (currentFile) {
-      threads = currentFile.threads;
+    if (currentChannel) {
+      threads = currentChannel.threads;
     } else {
       // currentFile has no threads yet
       threads = null;
     }
     return {
-      activeFile,
+      currentChannel,
       threads
     };
   }
@@ -154,18 +162,19 @@ class HomePage extends Component {
     return this.getModalContent();
   }
 
-  selectChannelOrFile(channelId, activeFile) {
-    let { channels, currentChannel, threads } = this.getUpdatedChannelsState(
-      this.state.channels,
-      channelId
-    );
+  selectChannelOrFile(channelType, channelId = null, activeFile = null) {
+    let {
+      channels,
+      currentChannel,
+      threads
+    } = this.getUpdatedChannelsSelectedState(this.state.channels, channelId);
 
-    if (activeFile) {
+    if (channelType === "file") {
       const updateChannelIsFileData = this.getUpdatedChannelAndThreadsIfSelectionIsFile(
         activeFile,
         threads
       );
-      currentChannel = updateChannelIsFileData.activeFile;
+      currentChannel = updateChannelIsFileData.currentChannel;
       threads = updateChannelIsFileData.threads;
     }
 
@@ -178,7 +187,7 @@ class HomePage extends Component {
   }
 
   selectFile(file) {
-    this.selectChannelOrFile(null, file);
+    this.selectChannelOrFile("file", null, file);
   }
 
   handleAddChannel(newChannel) {
@@ -188,10 +197,11 @@ class HomePage extends Component {
     });
   }
 
-  // TODO split to 2  methods - addThread for Channel, add For File
   handleAddThread() {
-    const { currentChannel } = this.state;
-    const channels = this.state.channels;
+    const { currentChannel, channels } = this.state;
+    if (!currentChannel) {
+      return;
+    }
     const updatedChannels = channels.map(channel => {
       if (currentChannel.id !== channel.id) {
         return channel;
@@ -210,6 +220,26 @@ class HomePage extends Component {
     this.setState({ channels: updatedChannels });
   }
 
+  handleDeleteThread(channelName, threadId) {
+    const { channels } = this.state;
+    const currentChannel = channels.find(
+      channel => channel.channelName === channelName
+    );
+    const currentThreads = currentChannel.threads.filter(
+      thread => thread.id !== threadId
+    );
+    const channelToReplaceIdx = channels.findIndex(
+      channel => channel.channelName === channelName
+    );
+    currentChannel.threads = currentThreads;
+    channels[channelToReplaceIdx] = currentChannel;
+    this.setState({
+      channels,
+      currentChannel,
+      currentThreads
+    });
+  }
+
   selectThread(thread) {
     const { channels } = this.state;
     const channelIdx = channels.findIndex(
@@ -218,6 +248,12 @@ class HomePage extends Component {
     const threadIdx = channels[channelIdx].threads.findIndex(
       currentThread => thread.id === currentThread.id
     );
+
+    // was just deleted
+    if (threadIdx === -1) {
+      return;
+    }
+
     channels[channelIdx].threads[threadIdx].selected = !channels[channelIdx]
       .threads[threadIdx].selected;
     channels[channelIdx].threads.forEach((currThread, idx) => {
@@ -230,10 +266,9 @@ class HomePage extends Component {
   }
 
   handleChangeThreadColor(threadObj) {
-    this.refs.threadColumn.changeThreadColor(
-      threadObj.threadId,
-      threadObj.threadColor
-    );
+    // TODO
+    console.log("handleChangeThreadColor");
+    console.log(threadObj);
     this.setState({
       isModalOpen: false
     });
@@ -270,6 +305,7 @@ class HomePage extends Component {
           threads={this.state.currentThreads}
           selectThread={this.selectThread}
           handleAddThread={this.handleAddThread}
+          handleDeleteThread={this.handleDeleteThread}
         />
         <EditorColumn
           isEditorToggled={this.state.isEditorToggled}

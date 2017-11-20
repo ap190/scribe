@@ -8,16 +8,14 @@ const Img = styled.img`
   cursor: pointer;
 `;
 
-const Icon = ({ icon, handleClick }) => {
-  return (
-    <div onClick={handleClick}>
-      <Img src={icon} alt="Add a flow button" />
-    </div>
-  );
-};
+const Icon = ({ icon, handleClick }) => (
+  <div onClick={handleClick}>
+    <Img src={icon} alt="Add a flow button" />
+  </div>
+);
 
 Icon.propTypes = {
-  handleIconClick: PropTypes.func,
+  handleClick: PropTypes.func,
   icon: PropTypes.string.isRequired
 };
 

@@ -65,21 +65,30 @@ class Aside extends Component {
   }
 
   render() {
-    const { isModalOpen } = this.props;
+    const {
+      isModalOpen,
+      channels,
+      toggleModal,
+      tree,
+      selectProjectDir,
+      selectFile,
+      activeNode,
+      selectChannelOrFile
+    } = this.props;
     return (
       <div style={{ ...styles, ...this.isEditorToggledStyles() }}>
         <Channels
           title={"Channels"}
-          toggleModal={this.props.toggleModal}
-          channels={this.props.channels}
-          selectChannelOrFile={this.props.selectChannelOrFile}
+          toggleModal={toggleModal}
+          channels={channels}
+          selectChannelOrFile={selectChannelOrFile}
         />
         <Tree
           title={"Projects"}
-          tree={this.props.tree}
-          handleOpenDir={this.props.selectProjectDir}
-          selectFile={this.props.selectFile}
-          activeNode={this.props.activeNode}
+          tree={tree}
+          handleOpenDir={selectProjectDir}
+          selectFile={selectFile}
+          activeNode={activeNode}
         />
         {!isModalOpen && <ColumnFooter />}
       </div>
@@ -87,12 +96,16 @@ class Aside extends Component {
   }
 }
 
+Aside.defaultProps = {
+  channels: []
+};
+
 Aside.propTypes = {
   isEditorToggled: PropTypes.bool.isRequired,
   selectProjectDir: PropTypes.func.isRequired,
   tree: PropTypes.any.isRequired,
   toggleModal: PropTypes.func.isRequired,
-  channels: PropTypes.array.isRequired,
+  channels: PropTypes.array,
   selectChannelOrFile: PropTypes.func.isRequired,
   selectFile: PropTypes.func.isRequired,
   activeNode: PropTypes.any,
