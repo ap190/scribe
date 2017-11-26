@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import { Editor, createEditorState } from "medium-draft";
 import "medium-draft/lib/index.css";
 import "./editor.css";
+import EditorActionBar from "./EditorActionBar";
 import ColumnFooter from "../../common/ColumnFooter";
 
 class EditorColumn extends Component {
@@ -33,17 +34,20 @@ class EditorColumn extends Component {
   }
   render() {
     const { editorState } = this.state;
-    const { isModalOpen } = this.props;
+    const { isModalOpen, toggleHandler } = this.props;
     return (
       <div className="editor">
-        {isModalOpen ? null : (
-          <Editor
-            ref="editor"
-            editorState={editorState}
-            onChange={this.onChange}
-          />
-        )}
-
+        <EditorActionBar
+          handleSave={() => console.log("maximizing...")}
+          handleMaximize={toggleHandler}
+          handleNextThread={() => console.log("next thread...")}
+        />
+        <Editor
+          ref="editor"
+          editorState={editorState}
+          onChange={this.onChange}
+          style={{ justifySelf: "flex-start" }}
+        />
         {!isModalOpen && <ColumnFooter />}
       </div>
     );

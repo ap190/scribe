@@ -13,7 +13,8 @@
         "id": "6e0c304c-0885-43fd-b4c2-cf7a204437b4",
         "highlightColor": "#DFDCE3",
         "selected": false,
-        "channelName": "# design stuff"
+        "channelName": "# design stuff",
+        "document": false
       },
       {
         "text": "hey here!",
@@ -22,7 +23,8 @@
         "id": "60c9c04c-0fd4-4463-a0cb-36b7ca4095cd",
         "highlightColor": "#fc4a1a",
         "selected": false,
-        "channelName": "# design stuff"
+        "channelName": "# design stuff",
+        "document": false
       },
       {
         "text": "hey over there~!",
@@ -31,7 +33,8 @@
         "id": "8e31155e-fa94-45f3-a721-e776e766539a",
         "highlightColor": "#fc4a1a",
         "selected": false,
-        "channelName": "# design stuff"
+        "channelName": "# design stuff",
+        "document": false
       },
       {
         "text": "hey over there~!",
@@ -40,7 +43,8 @@
         "id": "c2a2057e-b324-41c5-80ed-12eed7f42053",
         "highlightColor": "#4abdac",
         "selected": false,
-        "channelName": "# design stuff"
+        "channelName": "# design stuff",
+        "document": false
       },
       {
         "text": "hey over there~!",
@@ -49,7 +53,8 @@
         "id": "5ae6af22-b13d-49c2-b33b-d9e470b57082",
         "highlightColor": "#49306B",
         "selected": false,
-        "channelName": "# design stuff"
+        "channelName": "# design stuff",
+        "document": false
       },
       {
         "text": "hey over there~!",
@@ -58,7 +63,8 @@
         "id": "ad7ebda8-c76e-4e54-987f-a6e9d3d53ce5",
         "highlightColor": "#f7b733",
         "selected": false,
-        "channelName": "# design stuff"
+        "channelName": "# design stuff",
+        "document": false
       },
       {
         "text": "hey over there~!",
@@ -67,7 +73,8 @@
         "id": "d7e2f819-2d6c-4f64-a15f-08fcf87f5452",
         "highlightColor": "#49306B",
         "selected": false,
-        "channelName": "# design stuff"
+        "channelName": "# design stuff",
+        "document": false
       },
       {
         "text": "hey over there~!",
@@ -76,7 +83,8 @@
         "id": "49ae8a8c-1fab-4f98-b944-3e65e25814ff",
         "highlightColor": "#fc4a1a",
         "selected": false,
-        "channelName": "# design stuff"
+        "channelName": "# design stuff",
+        "document": false
       }
     ]
   },
@@ -99,7 +107,8 @@
         "date": 1511095020708,
         "id": "de9e0166-8947-4c8d-b4a0-2743a01866df",
         "highlightColor": "#DFDCE3",
-        "module": ".gitignore"
+        "module": ".gitignore",
+        "document": false
       },
       {
         "text": "scribe is king",
@@ -107,7 +116,8 @@
         "date": 1511095020708,
         "id": "ea54b259-5dc1-4c65-b946-d351be42123e",
         "highlightColor": "#fc4a1a",
-        "module": ".gitignore"
+        "module": ".gitignore",
+        "document": false
       },
       {
         "text": "the best thing ever",
@@ -115,7 +125,8 @@
         "date": 1511095020708,
         "id": "cd80dc27-7705-49ce-9934-a44303d246e8",
         "highlightColor": "#fc4a1a",
-        "module": ".gitignore"
+        "module": ".gitignore",
+        "document": false
       }
     ]
   },
@@ -131,7 +142,8 @@
         "date": 12312321313,
         "id": "49ae8a8c-1fab-4f98-b944-3e65e25814zz",
         "highlightColor": "#DFDCE3",
-        "module": "README.md"
+        "module": "README.md",
+        "document": false
       },
       {
         "text": "hey here!",
@@ -139,7 +151,8 @@
         "date": 343454235234,
         "id": "49ae8a8c-1fab-4f98-b944-3e65e25814ee",
         "highlightColor": "#fc4a1a",
-        "module": "README.md"
+        "module": "README.md",
+        "document": false
       },
       {
         "text": "hey over there~!",
@@ -147,7 +160,8 @@
         "date": 343454235234,
         "id": "49ae8a8c-1fab-4f98-b944-3e65e25814aa",
         "highlightColor": "#fc4a1a",
-        "module": "README.md"
+        "module": "README.md",
+        "document": false
       },
       {
         "text": "hey over there~!",
@@ -155,7 +169,8 @@
         "date": 343454235234,
         "id": "49ae8a8c-1fab-4f98-b944-3e65e25814dd",
         "highlightColor": "#49306B",
-        "module": "README.md"
+        "module": "README.md",
+        "document": false
       },
       {
         "text": "hey over there~!",
@@ -163,7 +178,8 @@
         "date": 343454235234,
         "id": "49ae8a8c-1fab-4f98-b944-3e65e25814rr",
         "highlightColor": "#fc4a1a",
-        "module": "README.md"
+        "module": "README.md",
+        "document": false
       }
     ]
   },
@@ -189,7 +205,8 @@
         "id": "ee9da705-58cc-473d-b494-af5fd33c7718",
         "highlightColor": "#DFDCE3",
         "selected": false,
-        "channelName": "# business clients"
+        "channelName": "# business clients",
+        "document": false
       },
       {
         "text": "hey here!",
@@ -198,7 +215,8 @@
         "id": "f9144043-9100-4277-a057-d891092bd64e",
         "highlightColor": "#fc4a1a",
         "selected": false,
-        "channelName": "# business clients"
+        "channelName": "# business clients",
+        "document": false
       },
       {
         "text": "hey over there~!",
@@ -207,7 +225,8 @@
         "id": "75500add-0ef5-492e-82b2-335587959851",
         "highlightColor": "#fc4a1a",
         "selected": false,
-        "channelName": "# business clients"
+        "channelName": "# business clients",
+        "document": false
       }
     ]
   }

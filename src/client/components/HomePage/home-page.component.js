@@ -269,7 +269,7 @@ class HomePage extends Component {
     const { threadId, threadColor } = threadObj;
     const { currentChannel, currentThreads } = this.state;
 
-    console.log(`old threads ${currentThreads[0].highlightColor}`);
+    // create new threads
     const newThreads = currentThreads.map(thread => {
       if (thread.id === threadId) {
         return {
@@ -279,7 +279,8 @@ class HomePage extends Component {
       }
       return thread;
     });
-    console.log(`new threads ${newThreads[0].highlightColor}`);
+
+    // update channels with new threads
     const channels = this.state.channels.map(channel => {
       if (channel.id === currentChannel.id) {
         channel.threads = newThreads;
@@ -299,6 +300,7 @@ class HomePage extends Component {
   }
 
   toggleEditor() {
+    console.log(`toggle editor now works`);
     this.setState({
       ...this.state,
       isEditorToggled: !this.state.isEditorToggled
