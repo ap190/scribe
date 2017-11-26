@@ -43,6 +43,7 @@ class EditorColumn extends Component {
           handleNextThread={() => console.log("next thread...")}
         />
         <Editor
+          className="check"
           ref="editor"
           editorState={editorState}
           onChange={this.onChange}
