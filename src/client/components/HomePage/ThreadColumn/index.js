@@ -13,7 +13,8 @@ const divStyle = {
   backgroundColor: "white",
   display: "flex",
   flexDirection: "column",
-  borderLeft: "1px solid #979797"
+  borderLeft: "1px solid #979797",
+  zIndex: "2"
 };
 
 class ThreadColumn extends Component {

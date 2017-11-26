@@ -323,7 +323,6 @@ class HomePage extends Component {
           selectFile={this.selectFile}
         />
         <ThreadColumn
-          ref="threadColumn"
           currentChannel={this.state.currentChannel}
           isEditorToggled={this.state.isEditorToggled}
           toggleModal={this.toggleModal}
