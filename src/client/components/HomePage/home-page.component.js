@@ -266,11 +266,35 @@ class HomePage extends Component {
   }
 
   handleChangeThreadColor(threadObj) {
-    // TODO
-    console.log("handleChangeThreadColor");
-    console.log(threadObj);
+    const { threadId, threadColor } = threadObj;
+    const { currentChannel, currentThreads } = this.state;
+
+    console.log(`old threads ${currentThreads[0].highlightColor}`);
+    const newThreads = currentThreads.map(thread => {
+      if (thread.id === threadId) {
+        return {
+          ...thread,
+          highlightColor: threadColor
+        };
+      }
+      return thread;
+    });
+    console.log(`new threads ${newThreads[0].highlightColor}`);
+    const channels = this.state.channels.map(channel => {
+      if (channel.id === currentChannel.id) {
+        channel.threads = newThreads;
+        return channel;
+      }
+      return channel;
+    });
+
     this.setState({
-      isModalOpen: false
+      isModalOpen: false,
+      channels,
+      currentChannel: channels.find(
+        channel => channel.id === currentChannel.id
+      ),
+      currentThreads: newThreads
     });
   }
 
