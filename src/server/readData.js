@@ -2,7 +2,7 @@ const fs = require("fs");
 const path = require("path");
 const jsonfile = require("jsonfile");
 
-const jsonpath = path.join(__dirname, "..", "data", "channels.json");
+const jsonpath = path.join(__dirname, "..", "data", "workspace.json");
 
 exports.genLoadData = event => {
   jsonfile.readFile(jsonpath, "utf8", (err, data) => {

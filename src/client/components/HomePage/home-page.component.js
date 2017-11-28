@@ -2,8 +2,7 @@ import React, { Component } from "react";
 import UUIDv4 from "uuid/v4";
 import styled from "styled-components";
 import { compose } from "recompose";
-import { convertFromRaw, convertToRaw, EditorState } from "draft-js";
-import { createEditorState } from "medium-draft";
+import { convertFromRaw, EditorState } from "draft-js";
 import HomeContainer from "../../containers/Home";
 import Modal from "../common/Modal";
 import ThreadColumn from "./ThreadColumn";
@@ -74,6 +73,10 @@ class HomePage extends Component {
         channels
       });
     });
+
+    ipcRenderer.on("save-workspace-res", () =>
+      console.log("saved successfullyy...")
+    );
   }
 
   getModalContent() {
@@ -314,14 +317,31 @@ class HomePage extends Component {
     });
   }
 
-  handleDocumentChange(currentDocument) {
-    this.setState({
+  handleDocumentChange(currentDocument, contentRaw) {
+    const { channels, currentChannel, currentThreads } = this.state;
+    if (!currentChannel || !currentThreads || !channels) return;
+    const currentChannelIdx = channels.findIndex(
+      channel => channel.channelName === currentChannel.channelName
+    );
+    const currentThreadIdx = currentThreads.findIndex(
+      thread => thread.selected
+    );
+    currentChannel.threads[currentThreadIdx].document = JSON.stringify(
       currentDocument
+    );
+    currentThreads[currentThreadIdx].document = JSON.stringify(currentDocument);
+    console.log("content raw is ", contentRaw);
+    channels[currentChannelIdx].threads[currentThreadIdx].document = contentRaw;
+    this.setState({
+      channels,
+      currentDocument,
+      currentThreads
     });
   }
 
   saveWorkspace() {
-    console.log("saving your data...");
+    ipcRenderer.send("save-workspace", this.state.channels);
+    console.log("saving your data...", this.state.channels);
   }
 
   render() {

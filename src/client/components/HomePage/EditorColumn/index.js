@@ -12,8 +12,7 @@ class EditorColumn extends Component {
     super(props);
     this.state = {
       editorState: props.currentDocument,
-      editorEnabled: true,
-      placeholder: "Write here..."
+      editorEnabled: true
     };
 
     this.onChange = this.onChange.bind(this);
@@ -25,7 +24,11 @@ class EditorColumn extends Component {
   }
 
   onChange(editorState) {
-    this.props.handleDocumentChange(editorState);
+    console.log("in editor", convertToRaw(editorState.getCurrentContent()));
+    this.props.handleDocumentChange(
+      editorState,
+      convertToRaw(editorState.getCurrentContent())
+    );
   }
 
   getEditorState() {

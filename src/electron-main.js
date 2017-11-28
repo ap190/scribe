@@ -4,6 +4,7 @@ const url = require("url");
 const { ipcMain } = require("electron");
 const electron = require("electron");
 const { genLoadData } = require("./server/readData");
+const { genSaveWorkspace } = require("./server/saveWorkspace");
 
 require("electron-context-menu")();
 
@@ -18,6 +19,9 @@ ipcMain.on("load-file-req", (event, arg) => {
   genLoadData(event);
 });
 
+ipcMain.on("save-workspace", (event, arg) => {
+  genSaveWorkspace(event, arg);
+});
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
 let mainWindow;
