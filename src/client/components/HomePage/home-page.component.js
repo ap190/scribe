@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import UUIDv4 from "uuid/v4";
 import styled from "styled-components";
 import { compose } from "recompose";
+import { convertFromRaw, convertToRaw, EditorState } from "draft-js";
+import { createEditorState } from "medium-draft";
 import HomeContainer from "../../containers/Home";
 import Modal from "../common/Modal";
 import ThreadColumn from "./ThreadColumn";
@@ -34,15 +36,16 @@ class HomePage extends Component {
     super(props);
     this.state = {
       isEditorToggled: false,
-      relativePath: "",
-      absolutePath: "",
-      files: {},
       isModalOpen: false,
-      currentModal: "",
+      relativePath: undefined,
+      absolutePath: undefined,
+      currentModal: undefined,
       channels: undefined,
       currentChannel: undefined,
-      currentThreads: null,
-      activeNode: null
+      currentThreads: undefined,
+      currentDocument: undefined,
+      activeNode: undefined,
+      files: {}
     };
     this.toggleEditor = this.toggleEditor.bind(this);
     this.selectProjectDir = this.selectProjectDir.bind(this);
@@ -56,8 +59,10 @@ class HomePage extends Component {
     this.handleAddThread = this.handleAddThread.bind(this);
     this.handleChangeThreadColor = this.handleChangeThreadColor.bind(this);
     this.handleDeleteThread = this.handleDeleteThread.bind(this);
+    this.handleDocumentChange = this.handleDocumentChange.bind(this);
     this.getModalContent = this.getModalContent.bind(this);
     this.selectFile = this.selectFile.bind(this);
+    this.saveWorkspace = this.saveWorkspace.bind(this);
     this.currentWindow = currentWindow;
   }
 
@@ -242,6 +247,7 @@ class HomePage extends Component {
 
   selectThread(thread) {
     const { channels } = this.state;
+    let currentDocument;
     const channelIdx = channels.findIndex(
       channel => channel.channelName === thread.channelName
     );
@@ -254,15 +260,17 @@ class HomePage extends Component {
       return;
     }
 
-    channels[channelIdx].threads[threadIdx].selected = !channels[channelIdx]
-      .threads[threadIdx].selected;
     channels[channelIdx].threads.forEach((currThread, idx) => {
       if (idx === threadIdx) {
+        currThread.selected = !currThread.selected;
+        currentDocument = currThread.document
+          ? EditorState.createWithContent(convertFromRaw(currThread.document))
+          : EditorState.createEmpty();
         return;
       }
       currThread.selected = false;
     });
-    this.setState({ channels });
+    this.setState({ channels, currentDocument });
   }
 
   handleChangeThreadColor(threadObj) {
@@ -300,11 +308,20 @@ class HomePage extends Component {
   }
 
   toggleEditor() {
-    console.log(`toggle editor now works`);
     this.setState({
       ...this.state,
       isEditorToggled: !this.state.isEditorToggled
     });
+  }
+
+  handleDocumentChange(currentDocument) {
+    this.setState({
+      currentDocument
+    });
+  }
+
+  saveWorkspace() {
+    console.log("saving your data...");
   }
 
   render() {
@@ -336,6 +353,9 @@ class HomePage extends Component {
           isEditorToggled={this.state.isEditorToggled}
           toggleHandler={this.toggleEditor}
           isModalOpen={this.state.isModalOpen}
+          currentDocument={this.state.currentDocument}
+          handleDocumentChange={this.handleDocumentChange}
+          saveWorkspace={this.saveWorkspace}
         />
       </Wrapper>
     );

@@ -10,7 +10,7 @@ const backdropStyle = {
   right: 0,
   backgroundColor: "rgba(0,0,0,0.3)",
   padding: 50,
-  zIndex: 10
+  zIndex: 200
 };
 
 const Modal = props =>

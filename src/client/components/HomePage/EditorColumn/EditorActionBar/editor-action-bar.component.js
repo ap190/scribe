@@ -5,12 +5,17 @@ import saveIcon from "../../../../../../public/assets/icons/save.png";
 import nextIcon from "../../../../../../public/assets/icons/next.png";
 import fullScreenIcon from "../../../../../../public/assets/icons/full_screen.png";
 
-const EditorActionBar = ({ handleSave, handleMaximize, handleNextThread }) => (
+const EditorActionBar = ({
+  handleSave,
+  handleMaximize,
+  handleNextThread,
+  isEditorToggled
+}) => (
   <div className="editor-action-bar">
     <div className="editor-action-bar-icon-container">
       <ActionBarIcon icon={saveIcon} title={"Save"} handleClick={handleSave} />
       <ActionBarIcon
-        title={"Maximiize"}
+        title={isEditorToggled ? "Minimize" : "Maximize"}
         icon={fullScreenIcon}
         handleClick={handleMaximize}
       />
@@ -26,7 +31,8 @@ const EditorActionBar = ({ handleSave, handleMaximize, handleNextThread }) => (
 EditorActionBar.propTypes = {
   handleSave: PropTypes.func.isRequired,
   handleMaximize: PropTypes.func.isRequired,
-  handleNextThread: PropTypes.func.isRequired
+  handleNextThread: PropTypes.func.isRequired,
+  isEditorToggled: PropTypes.bool.isRequired
 };
 
 export default EditorActionBar;

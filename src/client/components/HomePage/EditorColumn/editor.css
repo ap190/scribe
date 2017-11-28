@@ -1,7 +1,7 @@
 .md-RichEditor-root {
   width: 100%;
   font-family: "AvenirNext-Regular";
-  /*overflow-y: auto;*/
+  overflow-y: auto;
   height: 90vh;
   margin-bottom: 20px;
   margin-top: 10px;

@@ -8,13 +8,25 @@
     "threads": [
       {
         "text": "hey there~!",
-        "title": "giraffe",
+        "title": "has document",
         "date": 1511088475082,
         "id": "6e0c304c-0885-43fd-b4c2-cf7a204437b4",
         "highlightColor": "#DFDCE3",
         "selected": false,
         "channelName": "# design stuff",
-        "document": false
+        "document": {
+          "entityMap": {},
+          "blocks": [
+            {
+              "key": "9kp26",
+              "text": "hello there friend",
+              "type": "unstyled",
+              "depth": 0,
+              "inlineStyleRanges": [],
+              "entityRanges": []
+            }
+          ]
+        }
       },
       {
         "text": "hey here!",
@@ -24,7 +36,19 @@
         "highlightColor": "#fc4a1a",
         "selected": false,
         "channelName": "# design stuff",
-        "document": false
+        "document": {
+          "entityMap": {},
+          "blocks": [
+            {
+              "key": "9kp26",
+              "text": "apollo 17 yea",
+              "type": "unstyled",
+              "depth": 0,
+              "inlineStyleRanges": [],
+              "entityRanges": []
+            }
+          ]
+        }
       },
       {
         "text": "hey over there~!",
@@ -34,7 +58,7 @@
         "highlightColor": "#fc4a1a",
         "selected": false,
         "channelName": "# design stuff",
-        "document": false
+        "document": null
       },
       {
         "text": "hey over there~!",
@@ -44,7 +68,7 @@
         "highlightColor": "#4abdac",
         "selected": false,
         "channelName": "# design stuff",
-        "document": false
+        "document": null
       },
       {
         "text": "hey over there~!",
@@ -54,7 +78,7 @@
         "highlightColor": "#49306B",
         "selected": false,
         "channelName": "# design stuff",
-        "document": false
+        "document": null
       },
       {
         "text": "hey over there~!",
@@ -64,7 +88,7 @@
         "highlightColor": "#f7b733",
         "selected": false,
         "channelName": "# design stuff",
-        "document": false
+        "document": null
       },
       {
         "text": "hey over there~!",
@@ -74,7 +98,7 @@
         "highlightColor": "#49306B",
         "selected": false,
         "channelName": "# design stuff",
-        "document": false
+        "document": null
       },
       {
         "text": "hey over there~!",
@@ -84,7 +108,7 @@
         "highlightColor": "#fc4a1a",
         "selected": false,
         "channelName": "# design stuff",
-        "document": false
+        "document": null
       }
     ]
   },
@@ -108,7 +132,7 @@
         "id": "de9e0166-8947-4c8d-b4a0-2743a01866df",
         "highlightColor": "#DFDCE3",
         "module": ".gitignore",
-        "document": false
+        "document": null
       },
       {
         "text": "scribe is king",
@@ -117,7 +141,7 @@
         "id": "ea54b259-5dc1-4c65-b946-d351be42123e",
         "highlightColor": "#fc4a1a",
         "module": ".gitignore",
-        "document": false
+        "document": null
       },
       {
         "text": "the best thing ever",
@@ -126,7 +150,7 @@
         "id": "cd80dc27-7705-49ce-9934-a44303d246e8",
         "highlightColor": "#fc4a1a",
         "module": ".gitignore",
-        "document": false
+        "document": null
       }
     ]
   },
@@ -143,7 +167,7 @@
         "id": "49ae8a8c-1fab-4f98-b944-3e65e25814zz",
         "highlightColor": "#DFDCE3",
         "module": "README.md",
-        "document": false
+        "document": null
       },
       {
         "text": "hey here!",
@@ -152,7 +176,7 @@
         "id": "49ae8a8c-1fab-4f98-b944-3e65e25814ee",
         "highlightColor": "#fc4a1a",
         "module": "README.md",
-        "document": false
+        "document": null
       },
       {
         "text": "hey over there~!",
@@ -161,7 +185,7 @@
         "id": "49ae8a8c-1fab-4f98-b944-3e65e25814aa",
         "highlightColor": "#fc4a1a",
         "module": "README.md",
-        "document": false
+        "document": null
       },
       {
         "text": "hey over there~!",
@@ -170,7 +194,7 @@
         "id": "49ae8a8c-1fab-4f98-b944-3e65e25814dd",
         "highlightColor": "#49306B",
         "module": "README.md",
-        "document": false
+        "document": null
       },
       {
         "text": "hey over there~!",
@@ -179,7 +203,7 @@
         "id": "49ae8a8c-1fab-4f98-b944-3e65e25814rr",
         "highlightColor": "#fc4a1a",
         "module": "README.md",
-        "document": false
+        "document": null
       }
     ]
   },
@@ -206,7 +230,7 @@
         "highlightColor": "#DFDCE3",
         "selected": false,
         "channelName": "# business clients",
-        "document": false
+        "document": null
       },
       {
         "text": "hey here!",
@@ -216,7 +240,7 @@
         "highlightColor": "#fc4a1a",
         "selected": false,
         "channelName": "# business clients",
-        "document": false
+        "document": null
       },
       {
         "text": "hey over there~!",
@@ -226,7 +250,7 @@
         "highlightColor": "#fc4a1a",
         "selected": false,
         "channelName": "# business clients",
-        "document": false
+        "document": null
       }
     ]
   }
