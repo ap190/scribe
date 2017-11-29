@@ -43,6 +43,7 @@ class HomePage extends Component {
       currentChannel: undefined,
       currentThreads: undefined,
       currentDocument: undefined,
+      currentTitle: undefined,
       activeNode: undefined,
       files: {}
     };
@@ -59,6 +60,7 @@ class HomePage extends Component {
     this.handleChangeThreadColor = this.handleChangeThreadColor.bind(this);
     this.handleDeleteThread = this.handleDeleteThread.bind(this);
     this.handleDocumentChange = this.handleDocumentChange.bind(this);
+    this.handleThreadTitleChange = this.handleThreadTitleChange.bind(this);
     this.getModalContent = this.getModalContent.bind(this);
     this.selectFile = this.selectFile.bind(this);
     this.saveWorkspace = this.saveWorkspace.bind(this);
@@ -251,6 +253,7 @@ class HomePage extends Component {
   selectThread(thread) {
     const { channels } = this.state;
     let currentDocument;
+    let currentTitle;
     const channelIdx = channels.findIndex(
       channel => channel.channelName === thread.channelName
     );
@@ -269,11 +272,12 @@ class HomePage extends Component {
         currentDocument = currThread.document
           ? EditorState.createWithContent(convertFromRaw(currThread.document))
           : EditorState.createEmpty();
+        currentTitle = currThread.title;
         return;
       }
       currThread.selected = false;
     });
-    this.setState({ channels, currentDocument });
+    this.setState({ channels, currentDocument, currentTitle });
   }
 
   handleChangeThreadColor(threadObj) {
@@ -326,6 +330,7 @@ class HomePage extends Component {
     const currentThreadIdx = currentThreads.findIndex(
       thread => thread.selected
     );
+
     currentChannel.threads[currentThreadIdx].document = JSON.stringify(
       currentDocument
     );
@@ -336,6 +341,38 @@ class HomePage extends Component {
       channels,
       currentDocument,
       currentThreads
+    });
+  }
+
+  handleThreadTitleChange(threadTitle) {
+    console.log(threadTitle);
+    const { channels, currentChannel, currentThreads } = this.state;
+    if (!currentChannel || !currentThreads || !channels) return;
+
+    // create new threads
+    const newThreads = currentThreads.map(thread => {
+      if (thread.selected) {
+        return {
+          ...thread,
+          title: threadTitle
+        };
+      }
+      return thread;
+    });
+
+    // update channels with new threads
+    const newChannels = this.state.channels.map(channel => {
+      if (channel.id === currentChannel.id) {
+        channel.threads = newThreads;
+        return channel;
+      }
+      return channel;
+    });
+
+    this.setState({
+      channels: newChannels,
+      currentThreads: newThreads,
+      currentTitle: threadTitle
     });
   }
 
@@ -374,7 +411,9 @@ class HomePage extends Component {
           toggleHandler={this.toggleEditor}
           isModalOpen={this.state.isModalOpen}
           currentDocument={this.state.currentDocument}
+          currentTitle={this.state.currentTitle}
           handleDocumentChange={this.handleDocumentChange}
+          handleThreadTitleChange={this.handleThreadTitleChange}
           saveWorkspace={this.saveWorkspace}
         />
       </Wrapper>

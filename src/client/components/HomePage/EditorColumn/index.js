@@ -12,6 +12,7 @@ class EditorColumn extends Component {
     super(props);
     this.state = {
       editorState: props.currentDocument,
+      currentTitle: props.currentTitle,
       editorEnabled: true
     };
 
@@ -44,7 +45,8 @@ class EditorColumn extends Component {
       toggleHandler,
       isEditorToggled,
       saveWorkspace,
-      currentDocument
+      currentDocument,
+      currentTitle
     } = this.props;
     return (
       <div className="editor">
@@ -53,6 +55,14 @@ class EditorColumn extends Component {
           handleMaximize={toggleHandler}
           handleNextThread={() => console.log("next thread...")}
           isEditorToggled={isEditorToggled}
+        />
+        <input
+          className="doc-title"
+          type="text"
+          value={currentTitle}
+          onChange={event =>
+            this.props.handleThreadTitleChange(event.target.value)
+          }
         />
         <Editor
           ref="editor"
@@ -67,7 +77,8 @@ class EditorColumn extends Component {
 }
 
 EditorColumn.defaultProps = {
-  currentDocument: EditorState.createEmpty()
+  currentDocument: EditorState.createEmpty(),
+  currentTitle: "Untitled"
 };
 
 EditorColumn.propTypes = {
@@ -76,7 +87,9 @@ EditorColumn.propTypes = {
   isModalOpen: PropTypes.bool.isRequired,
   saveWorkspace: PropTypes.func.isRequired,
   handleDocumentChange: PropTypes.func.isRequired,
-  currentDocument: PropTypes.any
+  handleThreadTitleChange: PropTypes.func.isRequired,
+  currentDocument: PropTypes.any,
+  currentTitle: PropTypes.string.isRequired
 };
 
 export default EditorColumn;
