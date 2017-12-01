@@ -412,7 +412,6 @@ class HomePage extends Component {
     });
 
     ipcRenderer.send("save-workspace", this.state.channels);
-    console.log("saving your data...", this.state.channels);
   }
 
   render() {
@@ -446,7 +445,7 @@ class HomePage extends Component {
           isModalOpen={this.state.isModalOpen}
           currentDocument={this.state.currentDocument}
           currentTitle={this.state.currentTitle}
-          updateTime={this.state.savedTime}
+          updateTime={this.state.updateTime}
           handleDocumentChange={this.handleDocumentChange}
           handleThreadTitleChange={this.handleThreadTitleChange}
           saveWorkspace={this.saveWorkspace}

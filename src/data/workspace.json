@@ -4,7 +4,7 @@
         "channelType": "communication",
         "id": "6e55e4dd-d4de-436c-9f7f-956f4910d424",
         "lastPosted": "4 days ago",
-        "selected": false,
+        "selected": true,
         "threads": [
             {
                 "channelName": "# design stuff",
@@ -40,7 +40,7 @@
             },
             {
                 "channelName": "# design stuff",
-                "date": "Friday, December 1, 2017 4:32 AM",
+                "date": "Friday, December 1, 2017 4:45 AM",
                 "document": {
                     "blocks": [
                         {
@@ -56,7 +56,7 @@
                 },
                 "highlightColor": "#fc4a1a",
                 "id": "60c9c04c-0fd4-4463-a0cb-36b7ca4095cd",
-                "selected": false,
+                "selected": true,
                 "text": "hey here!",
                 "title": "elephant"
             },
@@ -149,7 +149,7 @@
                 },
                 "highlightColor": "#fc4a1a",
                 "id": "8e31155e-fa94-45f3-a721-e776e766539a",
-                "selected": true,
+                "selected": false,
                 "text": "hey over there~!",
                 "title": "penguin"
             },
@@ -329,12 +329,52 @@
         "channelType": "communication",
         "id": "768c7062-2110-45df-99ef-63e0f0aad9c0",
         "lastPosted": "1 day ago",
-        "selected": true,
+        "selected": false,
         "threads": [
             {
                 "channelName": "# business clients",
-                "date": "Friday, December 1, 2017 4:34 AM",
-                "document": null,
+                "date": "Friday, December 1, 2017 4:42 AM",
+                "document": {
+                    "blocks": [
+                        {
+                            "data": {},
+                            "depth": 0,
+                            "entityRanges": [],
+                            "inlineStyleRanges": [],
+                            "key": "9g01v",
+                            "text": "",
+                            "type": "unstyled"
+                        },
+                        {
+                            "data": {},
+                            "depth": 0,
+                            "entityRanges": [],
+                            "inlineStyleRanges": [],
+                            "key": "89gh9",
+                            "text": "",
+                            "type": "unstyled"
+                        },
+                        {
+                            "data": {},
+                            "depth": 0,
+                            "entityRanges": [],
+                            "inlineStyleRanges": [],
+                            "key": "b0tge",
+                            "text": "",
+                            "type": "unstyled"
+                        },
+                        {
+                            "data": {},
+                            "depth": 0,
+                            "entityRanges": [],
+                            "inlineStyleRanges": [],
+                            "key": "58g43",
+                            "text": "",
+                            "type": "unstyled"
+                        }
+                    ],
+                    "entityMap": {}
+                },
                 "highlightColor": "#DFDCE3",
                 "id": "ee9da705-58cc-473d-b494-af5fd33c7718",
                 "selected": false,
@@ -343,7 +383,7 @@
             },
             {
                 "channelName": "# business clients",
-                "date": "Friday, December 1, 2017 4:35 AM",
+                "date": "Friday, December 1, 2017 4:42 AM",
                 "document": {
                     "blocks": [
                         {
@@ -360,7 +400,7 @@
                 },
                 "highlightColor": "#fc4a1a",
                 "id": "f9144043-9100-4277-a057-d891092bd64e",
-                "selected": true,
+                "selected": false,
                 "text": "hey here!",
                 "title": "elephant"
             },
