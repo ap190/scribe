@@ -390,7 +390,8 @@ class HomePage extends Component {
       if (thread.selected) {
         return {
           ...thread,
-          date: timestamp
+          date: timestamp,
+          text: thread.document.blocks[0].text
         };
       }
       return thread;

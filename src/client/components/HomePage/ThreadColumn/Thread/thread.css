@@ -27,10 +27,14 @@ img.delete-icon:hover {
 }
 
 .body-content {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
   font-family: AvenirNext-Regular;
   font-size: 14px;
   color: #4a4a4a;
   line-height: 32px;
+  max-width: 110px;
 }
 
 .thread-container {

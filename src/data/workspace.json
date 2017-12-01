@@ -40,15 +40,16 @@
             },
             {
                 "channelName": "# design stuff",
-                "date": "Friday, December 1, 2017 4:45 AM",
+                "date": "Friday, December 1, 2017 5:03 AM",
                 "document": {
                     "blocks": [
                         {
+                            "data": {},
                             "depth": 0,
                             "entityRanges": [],
                             "inlineStyleRanges": [],
                             "key": "9kp26",
-                            "text": "apollo 17 yea",
+                            "text": "hi hihi agaegaegawgeaw cnncnjshheasss ",
                             "type": "unstyled"
                         }
                     ],
@@ -57,7 +58,7 @@
                 "highlightColor": "#fc4a1a",
                 "id": "60c9c04c-0fd4-4463-a0cb-36b7ca4095cd",
                 "selected": true,
-                "text": "hey here!",
+                "text": "hi hihi agaegaegawgeaw cnncnjshheasss ",
                 "title": "elephant"
             },
             {
@@ -333,7 +334,7 @@
         "threads": [
             {
                 "channelName": "# business clients",
-                "date": "Friday, December 1, 2017 4:42 AM",
+                "date": "Friday, December 1, 2017 4:48 AM",
                 "document": {
                     "blocks": [
                         {
@@ -383,7 +384,7 @@
             },
             {
                 "channelName": "# business clients",
-                "date": "Friday, December 1, 2017 4:42 AM",
+                "date": "Friday, December 1, 2017 4:49 AM",
                 "document": {
                     "blocks": [
                         {
@@ -394,13 +395,58 @@
                             "key": "c4hq",
                             "text": "gggg",
                             "type": "unstyled"
+                        },
+                        {
+                            "data": {},
+                            "depth": 0,
+                            "entityRanges": [],
+                            "inlineStyleRanges": [],
+                            "key": "48h5p",
+                            "text": "",
+                            "type": "unstyled"
+                        },
+                        {
+                            "data": {},
+                            "depth": 0,
+                            "entityRanges": [],
+                            "inlineStyleRanges": [],
+                            "key": "7i92h",
+                            "text": "",
+                            "type": "unstyled"
+                        },
+                        {
+                            "data": {},
+                            "depth": 0,
+                            "entityRanges": [],
+                            "inlineStyleRanges": [],
+                            "key": "b6qoq",
+                            "text": "",
+                            "type": "unstyled"
+                        },
+                        {
+                            "data": {},
+                            "depth": 0,
+                            "entityRanges": [],
+                            "inlineStyleRanges": [],
+                            "key": "fc44h",
+                            "text": "lol",
+                            "type": "unstyled"
+                        },
+                        {
+                            "data": {},
+                            "depth": 0,
+                            "entityRanges": [],
+                            "inlineStyleRanges": [],
+                            "key": "btl6h",
+                            "text": "",
+                            "type": "unstyled"
                         }
                     ],
                     "entityMap": {}
                 },
                 "highlightColor": "#fc4a1a",
                 "id": "f9144043-9100-4277-a057-d891092bd64e",
-                "selected": false,
+                "selected": true,
                 "text": "hey here!",
                 "title": "elephant"
             },
