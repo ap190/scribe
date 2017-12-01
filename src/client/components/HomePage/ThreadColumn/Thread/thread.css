@@ -13,7 +13,7 @@ img.delete-icon:hover {
 
 .title {
   font-family: AvenirNext-Bold;
-  font-size: 20px;
+  font-size: 24px;
   color: #4a4a4a;
   line-height: 24px;
   margin-top: 14px;
@@ -21,7 +21,7 @@ img.delete-icon:hover {
 
 .date {
   font-family: AvenirNext-Regular;
-  font-size: 10px;
+  font-size: 12px;
   color: #595959;
   line-height: 32px;
 }

@@ -28,6 +28,13 @@
   font-weight: bold;
 }
 
+.update-time {
+  font-family: "AvenirNext-Regular";
+  color: #4a4a4a;
+  font-size: 12px;
+  padding-left: 24px;
+}
+
 .doc-title:focus {
   outline: none;
 }

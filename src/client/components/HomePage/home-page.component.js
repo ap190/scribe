@@ -3,6 +3,7 @@ import UUIDv4 from "uuid/v4";
 import styled from "styled-components";
 import { compose } from "recompose";
 import { convertFromRaw, EditorState } from "draft-js";
+import moment from "moment";
 import HomeContainer from "../../containers/Home";
 import Modal from "../common/Modal";
 import ThreadColumn from "./ThreadColumn";
@@ -44,6 +45,7 @@ class HomePage extends Component {
       currentThreads: undefined,
       currentDocument: undefined,
       currentTitle: undefined,
+      savedTime: undefined,
       activeNode: undefined,
       files: {}
     };
@@ -254,6 +256,7 @@ class HomePage extends Component {
     const { channels } = this.state;
     let currentDocument;
     let currentTitle;
+    let savedTime;
     const channelIdx = channels.findIndex(
       channel => channel.channelName === thread.channelName
     );
@@ -273,11 +276,12 @@ class HomePage extends Component {
           ? EditorState.createWithContent(convertFromRaw(currThread.document))
           : EditorState.createEmpty();
         currentTitle = currThread.title;
+        savedTime = currThread.date;
         return;
       }
       currThread.selected = false;
     });
-    this.setState({ channels, currentDocument, currentTitle });
+    this.setState({ channels, currentDocument, currentTitle, savedTime });
   }
 
   handleChangeThreadColor(threadObj) {
@@ -345,7 +349,6 @@ class HomePage extends Component {
   }
 
   handleThreadTitleChange(threadTitle) {
-    console.log(threadTitle);
     const { channels, currentChannel, currentThreads } = this.state;
     if (!currentChannel || !currentThreads || !channels) return;
 
@@ -377,6 +380,37 @@ class HomePage extends Component {
   }
 
   saveWorkspace() {
+    // Get time of save.
+    const timestamp = moment().format("LLLL");
+    const { channels, currentChannel, currentThreads } = this.state;
+    if (!currentChannel || !currentThreads || !channels) return;
+
+    // create new threads
+    const newThreads = currentThreads.map(thread => {
+      if (thread.selected) {
+        return {
+          ...thread,
+          date: timestamp
+        };
+      }
+      return thread;
+    });
+
+    // update channels with new threads
+    const newChannels = this.state.channels.map(channel => {
+      if (channel.id === currentChannel.id) {
+        channel.threads = newThreads;
+        return channel;
+      }
+      return channel;
+    });
+
+    this.setState({
+      channels: newChannels,
+      currentThreads: newThreads,
+      updateTime: timestamp
+    });
+
     ipcRenderer.send("save-workspace", this.state.channels);
     console.log("saving your data...", this.state.channels);
   }
@@ -412,6 +446,7 @@ class HomePage extends Component {
           isModalOpen={this.state.isModalOpen}
           currentDocument={this.state.currentDocument}
           currentTitle={this.state.currentTitle}
+          updateTime={this.state.savedTime}
           handleDocumentChange={this.handleDocumentChange}
           handleThreadTitleChange={this.handleThreadTitleChange}
           saveWorkspace={this.saveWorkspace}

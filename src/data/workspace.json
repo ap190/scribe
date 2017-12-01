@@ -4,7 +4,7 @@
         "channelType": "communication",
         "id": "6e55e4dd-d4de-436c-9f7f-956f4910d424",
         "lastPosted": "4 days ago",
-        "selected": true,
+        "selected": false,
         "threads": [
             {
                 "channelName": "# design stuff",
@@ -12,11 +12,21 @@
                 "document": {
                     "blocks": [
                         {
+                            "data": {},
                             "depth": 0,
                             "entityRanges": [],
                             "inlineStyleRanges": [],
                             "key": "9kp26",
                             "text": "hello there friend",
+                            "type": "unstyled"
+                        },
+                        {
+                            "data": {},
+                            "depth": 0,
+                            "entityRanges": [],
+                            "inlineStyleRanges": [],
+                            "key": "551fo",
+                            "text": "",
                             "type": "unstyled"
                         }
                     ],
@@ -30,7 +40,7 @@
             },
             {
                 "channelName": "# design stuff",
-                "date": 1511088475082,
+                "date": "Friday, December 1, 2017 4:32 AM",
                 "document": {
                     "blocks": [
                         {
@@ -52,7 +62,7 @@
             },
             {
                 "channelName": "# design stuff",
-                "date": 1511088475082,
+                "date": "Friday, December 1, 2017 4:32 AM",
                 "document": {
                     "blocks": [
                         {
@@ -145,7 +155,7 @@
             },
             {
                 "channelName": "# design stuff",
-                "date": 1511088475082,
+                "date": "6 Mar 2017 21:22:23 GMT",
                 "document": null,
                 "highlightColor": "#4abdac",
                 "id": "c2a2057e-b324-41c5-80ed-12eed7f42053",
@@ -155,7 +165,7 @@
             },
             {
                 "channelName": "# design stuff",
-                "date": 1511088475082,
+                "date": "6 Mar 2017 21:22:23 GMT",
                 "document": null,
                 "highlightColor": "#49306B",
                 "id": "5ae6af22-b13d-49c2-b33b-d9e470b57082",
@@ -165,7 +175,7 @@
             },
             {
                 "channelName": "# design stuff",
-                "date": 1511088475082,
+                "date": "6 Mar 2017 21:22:23 GMT",
                 "document": null,
                 "highlightColor": "#f7b733",
                 "id": "ad7ebda8-c76e-4e54-987f-a6e9d3d53ce5",
@@ -175,7 +185,7 @@
             },
             {
                 "channelName": "# design stuff",
-                "date": 1511088475082,
+                "date": "6 Mar 2017 21:22:23 GMT",
                 "document": null,
                 "highlightColor": "#49306B",
                 "id": "d7e2f819-2d6c-4f64-a15f-08fcf87f5452",
@@ -185,8 +195,21 @@
             },
             {
                 "channelName": "# design stuff",
-                "date": 1511088475082,
-                "document": null,
+                "date": "6 Mar 2017 21:22:23 GMT",
+                "document": {
+                    "blocks": [
+                        {
+                            "data": {},
+                            "depth": 0,
+                            "entityRanges": [],
+                            "inlineStyleRanges": [],
+                            "key": "d6sd2",
+                            "text": "",
+                            "type": "unstyled"
+                        }
+                    ],
+                    "entityMap": {}
+                },
                 "highlightColor": "#fc4a1a",
                 "id": "49ae8a8c-1fab-4f98-b944-3e65e25814ff",
                 "selected": false,
@@ -211,7 +234,7 @@
         "selected": false,
         "threads": [
             {
-                "date": 1511095020708,
+                "date": "6 Mar 2017 21:22:23 GMT",
                 "document": null,
                 "highlightColor": "#DFDCE3",
                 "id": "de9e0166-8947-4c8d-b4a0-2743a01866df",
@@ -220,7 +243,7 @@
                 "title": "code"
             },
             {
-                "date": 1511095020708,
+                "date": "6 Mar 2017 21:22:23 GMT",
                 "document": null,
                 "highlightColor": "#fc4a1a",
                 "id": "ea54b259-5dc1-4c65-b946-d351be42123e",
@@ -229,7 +252,7 @@
                 "title": "elephant"
             },
             {
-                "date": 1511095020708,
+                "date": "6 Mar 2017 21:22:23 GMT",
                 "document": null,
                 "highlightColor": "#fc4a1a",
                 "id": "cd80dc27-7705-49ce-9934-a44303d246e8",
@@ -247,7 +270,7 @@
         "selected": false,
         "threads": [
             {
-                "date": 12312321313,
+                "date": "6 Mar 2017 21:22:23 GMT",
                 "document": null,
                 "highlightColor": "#DFDCE3",
                 "id": "49ae8a8c-1fab-4f98-b944-3e65e25814zz",
@@ -256,7 +279,7 @@
                 "title": "Set Up Guide"
             },
             {
-                "date": 343454235234,
+                "date": "6 Mar 2017 21:22:23 GMT",
                 "document": null,
                 "highlightColor": "#fc4a1a",
                 "id": "49ae8a8c-1fab-4f98-b944-3e65e25814ee",
@@ -265,7 +288,7 @@
                 "title": "elephant"
             },
             {
-                "date": 343454235234,
+                "date": "6 Mar 2017 21:22:23 GMT",
                 "document": null,
                 "highlightColor": "#fc4a1a",
                 "id": "49ae8a8c-1fab-4f98-b944-3e65e25814aa",
@@ -274,7 +297,7 @@
                 "title": "penguin"
             },
             {
-                "date": 343454235234,
+                "date": "6 Mar 2017 21:22:23 GMT",
                 "document": null,
                 "highlightColor": "#49306B",
                 "id": "49ae8a8c-1fab-4f98-b944-3e65e25814dd",
@@ -283,7 +306,7 @@
                 "title": "penguin"
             },
             {
-                "date": 343454235234,
+                "date": "6 Mar 2017 21:22:23 GMT",
                 "document": null,
                 "highlightColor": "#fc4a1a",
                 "id": "49ae8a8c-1fab-4f98-b944-3e65e25814rr",
@@ -306,11 +329,11 @@
         "channelType": "communication",
         "id": "768c7062-2110-45df-99ef-63e0f0aad9c0",
         "lastPosted": "1 day ago",
-        "selected": false,
+        "selected": true,
         "threads": [
             {
                 "channelName": "# business clients",
-                "date": 1511088475082,
+                "date": "Friday, December 1, 2017 4:34 AM",
                 "document": null,
                 "highlightColor": "#DFDCE3",
                 "id": "ee9da705-58cc-473d-b494-af5fd33c7718",
@@ -320,18 +343,44 @@
             },
             {
                 "channelName": "# business clients",
-                "date": 1511088475082,
-                "document": null,
+                "date": "Friday, December 1, 2017 4:35 AM",
+                "document": {
+                    "blocks": [
+                        {
+                            "data": {},
+                            "depth": 0,
+                            "entityRanges": [],
+                            "inlineStyleRanges": [],
+                            "key": "c4hq",
+                            "text": "gggg",
+                            "type": "unstyled"
+                        }
+                    ],
+                    "entityMap": {}
+                },
                 "highlightColor": "#fc4a1a",
                 "id": "f9144043-9100-4277-a057-d891092bd64e",
-                "selected": false,
+                "selected": true,
                 "text": "hey here!",
                 "title": "elephant"
             },
             {
                 "channelName": "# business clients",
-                "date": 1511088475082,
-                "document": null,
+                "date": "Friday, December 1, 2017 4:33 AM",
+                "document": {
+                    "blocks": [
+                        {
+                            "data": {},
+                            "depth": 0,
+                            "entityRanges": [],
+                            "inlineStyleRanges": [],
+                            "key": "b7a9e",
+                            "text": "",
+                            "type": "unstyled"
+                        }
+                    ],
+                    "entityMap": {}
+                },
                 "highlightColor": "#fc4a1a",
                 "id": "75500add-0ef5-492e-82b2-335587959851",
                 "selected": false,

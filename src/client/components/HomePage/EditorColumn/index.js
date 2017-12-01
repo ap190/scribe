@@ -13,6 +13,7 @@ class EditorColumn extends Component {
     this.state = {
       editorState: props.currentDocument,
       currentTitle: props.currentTitle,
+      updateTime: props.updateTime,
       editorEnabled: true
     };
 
@@ -46,7 +47,8 @@ class EditorColumn extends Component {
       isEditorToggled,
       saveWorkspace,
       currentDocument,
-      currentTitle
+      currentTitle,
+      updateTime
     } = this.props;
     return (
       <div className="editor">
@@ -64,6 +66,11 @@ class EditorColumn extends Component {
             this.props.handleThreadTitleChange(event.target.value)
           }
         />
+        <div className="update-time">
+          {updateTime === undefined
+            ? "New thread has not been saved yet."
+            : `Last Saved: ${updateTime}`}
+        </div>
         <Editor
           ref="editor"
           editorState={currentDocument}
@@ -78,7 +85,8 @@ class EditorColumn extends Component {
 
 EditorColumn.defaultProps = {
   currentDocument: EditorState.createEmpty(),
-  currentTitle: "Untitled"
+  currentTitle: "Untitled",
+  updateTime: undefined
 };
 
 EditorColumn.propTypes = {
@@ -89,7 +97,8 @@ EditorColumn.propTypes = {
   handleDocumentChange: PropTypes.func.isRequired,
   handleThreadTitleChange: PropTypes.func.isRequired,
   currentDocument: PropTypes.any,
-  currentTitle: PropTypes.string.isRequired
+  currentTitle: PropTypes.string.isRequired,
+  updateTime: PropTypes.string.isRequired
 };
 
 export default EditorColumn;
