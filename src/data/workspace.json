@@ -8,7 +8,7 @@
         "threads": [
             {
                 "channelName": "# design stuff",
-                "date": 1511088475082,
+                "date": "Sunday, December 3, 2017 3:11 PM",
                 "document": {
                     "blocks": [
                         {
@@ -34,8 +34,8 @@
                 },
                 "highlightColor": "#DFDCE3",
                 "id": "6e0c304c-0885-43fd-b4c2-cf7a204437b4",
-                "selected": false,
-                "text": "hey there~!",
+                "selected": true,
+                "text": "hello there friend",
                 "title": "has document"
             },
             {
@@ -57,7 +57,7 @@
                 },
                 "highlightColor": "#fc4a1a",
                 "id": "60c9c04c-0fd4-4463-a0cb-36b7ca4095cd",
-                "selected": true,
+                "selected": false,
                 "text": "hi hihi agaegaegawgeaw cnncnjshheasss ",
                 "title": "elephant"
             },
@@ -334,7 +334,7 @@
         "threads": [
             {
                 "channelName": "# business clients",
-                "date": "Sunday, December 3, 2017 1:53 PM",
+                "date": "Sunday, December 3, 2017 3:11 PM",
                 "document": {
                     "blocks": [
                         {
@@ -420,7 +420,7 @@
             },
             {
                 "channelName": "# business clients",
-                "date": "Friday, December 1, 2017 4:49 AM",
+                "date": "Sunday, December 3, 2017 3:03 PM",
                 "document": {
                     "blocks": [
                         {
@@ -483,7 +483,7 @@
                 "highlightColor": "#fc4a1a",
                 "id": "f9144043-9100-4277-a057-d891092bd64e",
                 "selected": false,
-                "text": "hey here!",
+                "text": "gggg",
                 "title": "elephant"
             },
             {

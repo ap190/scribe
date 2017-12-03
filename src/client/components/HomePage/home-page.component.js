@@ -45,9 +45,8 @@ class HomePage extends Component {
       channels: undefined,
       currentChannel: undefined,
       currentThreads: undefined,
+      currentThread: undefined,
       currentDocument: undefined,
-      currentTitle: undefined,
-      savedTime: undefined,
       activeNode: undefined,
       files: {}
     };
@@ -258,8 +257,7 @@ class HomePage extends Component {
   selectThread(thread) {
     const { channels } = this.state;
     let currentDocument;
-    let currentTitle;
-    let savedTime;
+    let currentThread;
     const channelIdx = channels.findIndex(
       channel => channel.channelName === thread.channelName
     );
@@ -278,13 +276,12 @@ class HomePage extends Component {
         currentDocument = currThread.document
           ? EditorState.createWithContent(convertFromRaw(currThread.document))
           : EditorState.createEmpty();
-        currentTitle = currThread.title;
-        savedTime = currThread.date;
+        currentThread = currThread;
         return;
       }
       currThread.selected = false;
     });
-    this.setState({ channels, currentDocument, currentTitle, savedTime });
+    this.setState({ channels, currentDocument, currentThread });
   }
 
   applyThreadChange(threadId, threadFunc) {
@@ -292,12 +289,16 @@ class HomePage extends Component {
 
     // create new threads
     const newThreads = currentThreads.map(thread => {
-      if (
-        thread.id === threadId ||
-        (threadId === SELECTED_THREAD && thread.selected)
-      ) {
+      if (thread.id === threadId) {
         return threadFunc(thread);
+      } else if (threadId === SELECTED_THREAD && thread.selected) {
+        const updatedThread = threadFunc(thread);
+        this.setState({
+          currentThread: updatedThread
+        });
+        return updatedThread;
       }
+
       return thread;
     });
 
@@ -368,10 +369,6 @@ class HomePage extends Component {
         title: threadTitle
       };
     });
-
-    this.setState({
-      currentTitle: threadTitle
-    });
   }
 
   saveWorkspace() {
@@ -384,10 +381,6 @@ class HomePage extends Component {
         date: timestamp,
         text: thread.document.blocks[0].text
       };
-    });
-
-    this.setState({
-      updateTime: timestamp
     });
 
     ipcRenderer.send("save-workspace", this.state.channels);
@@ -423,8 +416,7 @@ class HomePage extends Component {
           toggleHandler={this.toggleEditor}
           isModalOpen={this.state.isModalOpen}
           currentDocument={this.state.currentDocument}
-          currentTitle={this.state.currentTitle}
-          updateTime={this.state.updateTime}
+          currentThread={this.state.currentThread}
           handleDocumentChange={this.handleDocumentChange}
           handleThreadTitleChange={this.handleThreadTitleChange}
           saveWorkspace={this.saveWorkspace}
