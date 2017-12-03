@@ -3,8 +3,9 @@ import PropTypes from "prop-types";
 import Header from "../Header";
 import ChannelList from "../ChannelList";
 import "../aside.css";
-import { ASIDE_CREATE_CHANNEL_MODAL } from "../../../../utils/const";
+import { modals } from "../../../../utils/const";
 
+const { ASIDE_CREATE_CHANNEL_MODAL } = modals;
 const addChannelIcon = "./assets/icons/add_channel.png";
 
 const Channels = props => (

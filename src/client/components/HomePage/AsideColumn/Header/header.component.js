@@ -16,7 +16,7 @@ const Header = props => (
 Header.propTypes = {
   source: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
-  modalType: PropTypes.string.isRequired,
+  modalType: PropTypes.string,
   handler: PropTypes.func.isRequired
 };
 

@@ -3,7 +3,6 @@ import cx from "classnames";
 import FileTree from "react-ui-tree";
 import PropTypes from "prop-types";
 import Header from "../Header/header.component";
-import { HIGHLIGHT_THREAD_MODAL } from "../../../../utils/const";
 
 const folderIcon = "./assets/icons/folder.png";
 
@@ -57,7 +56,6 @@ class Tree extends Component {
           handler={this.props.handleOpenDir}
           alternativeText="Select a Project"
           source={folderIcon}
-          modalType={HIGHLIGHT_THREAD_MODAL}
         />
         <div className="tree">
           <FileTree

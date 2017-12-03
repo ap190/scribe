@@ -12,13 +12,11 @@ import EditorColumn from "./EditorColumn";
 import ChannelModal from "../common/Modal/channelModal.component";
 import ThreadModal from "../common/Modal/threadModal.component";
 import { createFileStructure } from "../../utils/createFileTree";
-import {
-  ASIDE_CREATE_CHANNEL_MODAL,
-  HIGHLIGHT_THREAD_MODAL
-} from "../../utils/const";
+import { modals } from "../../utils/const";
 import { highlightColor } from "../../themes";
 
-const { PURPLE_HIGHLIGHT } = highlightColor;
+const { GREY_HIGHLIGHT } = highlightColor;
+const { ASIDE_CREATE_CHANNEL_MODAL, HIGHLIGHT_THREAD_MODAL } = modals;
 const electron = window.require("electron");
 const remote = electron.remote;
 const currentWindow = remote.getCurrentWindow();
@@ -45,9 +43,8 @@ class HomePage extends Component {
       channels: undefined,
       currentChannel: undefined,
       currentThreads: undefined,
+      currentThread: undefined,
       currentDocument: undefined,
-      currentTitle: undefined,
-      savedTime: undefined,
       activeNode: undefined,
       files: {}
     };
@@ -217,22 +214,37 @@ class HomePage extends Component {
     if (!currentChannel) {
       return;
     }
+
+    const newThread = {
+      text: "New unsaved thread",
+      date: "Unsaved",
+      title: "Untitled",
+      id: UUIDv4(),
+      highlightColor: GREY_HIGHLIGHT,
+      selected: true,
+      document: undefined
+    };
+
     const updatedChannels = channels.map(channel => {
       if (currentChannel.id !== channel.id) {
         return channel;
       }
-      channel.threads.push({
-        text: "hey there~!",
-        title: "giraffe",
-        date: Date.now(),
-        id: UUIDv4(),
-        highlightColor: PURPLE_HIGHLIGHT,
-        selected: false,
-        channelName: "# design stuff"
+
+      newThread.channelName = channel.channelName;
+
+      // Unselect threads.
+      channel.threads.forEach(thread => {
+        thread.selected = false;
       });
+
+      channel.threads.unshift(newThread);
       return channel;
     });
-    this.setState({ channels: updatedChannels });
+    this.setState({
+      channels: updatedChannels,
+      currentThread: newThread,
+      currentDocument: newThread.document
+    });
   }
 
   handleDeleteThread(channelName, threadId) {
@@ -258,8 +270,7 @@ class HomePage extends Component {
   selectThread(thread) {
     const { channels } = this.state;
     let currentDocument;
-    let currentTitle;
-    let savedTime;
+    let currentThread;
     const channelIdx = channels.findIndex(
       channel => channel.channelName === thread.channelName
     );
@@ -278,13 +289,12 @@ class HomePage extends Component {
         currentDocument = currThread.document
           ? EditorState.createWithContent(convertFromRaw(currThread.document))
           : EditorState.createEmpty();
-        currentTitle = currThread.title;
-        savedTime = currThread.date;
+        currentThread = currThread;
         return;
       }
       currThread.selected = false;
     });
-    this.setState({ channels, currentDocument, currentTitle, savedTime });
+    this.setState({ channels, currentDocument, currentThread });
   }
 
   applyThreadChange(threadId, threadFunc) {
@@ -292,12 +302,16 @@ class HomePage extends Component {
 
     // create new threads
     const newThreads = currentThreads.map(thread => {
-      if (
-        thread.id === threadId ||
-        (threadId === SELECTED_THREAD && thread.selected)
-      ) {
+      if (thread.id === threadId) {
         return threadFunc(thread);
+      } else if (threadId === SELECTED_THREAD && thread.selected) {
+        const updatedThread = threadFunc(thread);
+        this.setState({
+          currentThread: updatedThread
+        });
+        return updatedThread;
       }
+
       return thread;
     });
 
@@ -367,10 +381,6 @@ class HomePage extends Component {
         title: threadTitle
       };
     });
-
-    this.setState({
-      currentTitle: threadTitle
-    });
   }
 
   saveWorkspace() {
@@ -381,12 +391,8 @@ class HomePage extends Component {
       return {
         ...thread,
         date: timestamp,
-        text: thread.document.blocks[0].text
+        text: thread.document ? thread.document.blocks[0].text : ""
       };
-    });
-
-    this.setState({
-      updateTime: timestamp
     });
 
     ipcRenderer.send("save-workspace", this.state.channels);
@@ -422,8 +428,7 @@ class HomePage extends Component {
           toggleHandler={this.toggleEditor}
           isModalOpen={this.state.isModalOpen}
           currentDocument={this.state.currentDocument}
-          currentTitle={this.state.currentTitle}
-          updateTime={this.state.updateTime}
+          currentThread={this.state.currentThread}
           handleDocumentChange={this.handleDocumentChange}
           handleThreadTitleChange={this.handleThreadTitleChange}
           saveWorkspace={this.saveWorkspace}
