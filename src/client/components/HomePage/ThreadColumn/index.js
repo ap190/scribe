@@ -5,6 +5,7 @@ import ThreadList from "./ThreadList";
 import ColumnFooter from "../../common/ColumnFooter";
 import Icon from "../../common/Icon";
 import { Images } from "../../../themes";
+import { stringConstants } from "../../../utils/const";
 
 const divStyle = {
   position: "relative",
@@ -16,6 +17,8 @@ const divStyle = {
   borderLeft: "1px solid #979797",
   zIndex: "2"
 };
+
+const { ADD_A_THREAD } = stringConstants;
 
 class ThreadColumn extends Component {
   constructor(props) {
@@ -74,7 +77,7 @@ class ThreadColumn extends Component {
               className="add-flow-description"
               style={{ paddingLeft: "inherit" }}
             >
-              Start a Flow
+              {ADD_A_THREAD}
             </div>
           </ColumnFooter>
         )}

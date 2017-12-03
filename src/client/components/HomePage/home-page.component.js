@@ -12,13 +12,11 @@ import EditorColumn from "./EditorColumn";
 import ChannelModal from "../common/Modal/channelModal.component";
 import ThreadModal from "../common/Modal/threadModal.component";
 import { createFileStructure } from "../../utils/createFileTree";
-import {
-  ASIDE_CREATE_CHANNEL_MODAL,
-  HIGHLIGHT_THREAD_MODAL
-} from "../../utils/const";
+import { modals } from "../../utils/const";
 import { highlightColor } from "../../themes";
 
-const { PURPLE_HIGHLIGHT } = highlightColor;
+const { GREY_HIGHLIGHT } = highlightColor;
+const { ASIDE_CREATE_CHANNEL_MODAL, HIGHLIGHT_THREAD_MODAL } = modals;
 const electron = window.require("electron");
 const remote = electron.remote;
 const currentWindow = remote.getCurrentWindow();
@@ -216,19 +214,25 @@ class HomePage extends Component {
     if (!currentChannel) {
       return;
     }
+
     const updatedChannels = channels.map(channel => {
       if (currentChannel.id !== channel.id) {
         return channel;
       }
-      channel.threads.push({
-        text: "hey there~!",
-        title: "giraffe",
-        date: Date.now(),
+      const newThread = {
+        text: "New unsaved thread",
+        date: "Unsaved",
+        title: "Untitled",
         id: UUIDv4(),
-        highlightColor: PURPLE_HIGHLIGHT,
-        selected: false,
-        channelName: "# design stuff"
-      });
+        highlightColor: GREY_HIGHLIGHT,
+        selected: true,
+        channelName: channel.channelName,
+        document: undefined
+      };
+      channel.threads.forEach((thread, idx) => (thread.selected = false));
+      channel.threads.unshift(newThread);
+      this.setState({ currentThread: newThread });
+
       return channel;
     });
     this.setState({ channels: updatedChannels });
@@ -273,6 +277,7 @@ class HomePage extends Component {
     channels[channelIdx].threads.forEach((currThread, idx) => {
       if (idx === threadIdx) {
         currThread.selected = !currThread.selected;
+        console.log(currThread);
         currentDocument = currThread.document
           ? EditorState.createWithContent(convertFromRaw(currThread.document))
           : EditorState.createEmpty();
@@ -379,7 +384,7 @@ class HomePage extends Component {
       return {
         ...thread,
         date: timestamp,
-        text: thread.document.blocks[0].text
+        text: thread.document.blocks ? thread.document.blocks[0].text : ""
       };
     });
 

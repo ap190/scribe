@@ -65,7 +65,7 @@ class EditorColumn extends Component {
           }
         />
         <div className="update-time">
-          {currentThread === undefined
+          {currentThread === undefined || currentThread.date === "Unsaved"
             ? "New thread has not been saved yet."
             : `Last Saved: ${currentThread.date}`}
         </div>

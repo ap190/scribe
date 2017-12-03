@@ -4,7 +4,7 @@
         "channelType": "communication",
         "id": "6e55e4dd-d4de-436c-9f7f-956f4910d424",
         "lastPosted": "4 days ago",
-        "selected": true,
+        "selected": false,
         "threads": [
             {
                 "channelName": "# design stuff",
@@ -34,7 +34,7 @@
                 },
                 "highlightColor": "#DFDCE3",
                 "id": "6e0c304c-0885-43fd-b4c2-cf7a204437b4",
-                "selected": true,
+                "selected": false,
                 "text": "hello there friend",
                 "title": "has document"
             },
@@ -49,7 +49,7 @@
                             "entityRanges": [],
                             "inlineStyleRanges": [],
                             "key": "9kp26",
-                            "text": "hi hihi agaegaegawgeaw cnncnjshheasss ",
+                            "text": "hi hihi agaegawgeaw c ",
                             "type": "unstyled"
                         }
                     ],
@@ -63,7 +63,7 @@
             },
             {
                 "channelName": "# design stuff",
-                "date": "Friday, December 1, 2017 4:32 AM",
+                "date": "Sunday, December 3, 2017 4:29 PM",
                 "document": {
                     "blocks": [
                         {
@@ -151,7 +151,7 @@
                 "highlightColor": "#fc4a1a",
                 "id": "8e31155e-fa94-45f3-a721-e776e766539a",
                 "selected": false,
-                "text": "hey over there~!",
+                "text": "fab and jada",
                 "title": "penguin"
             },
             {
@@ -166,12 +166,25 @@
             },
             {
                 "channelName": "# design stuff",
-                "date": "6 Mar 2017 21:22:23 GMT",
-                "document": null,
+                "date": "Sunday, December 3, 2017 4:29 PM",
+                "document": {
+                    "blocks": [
+                        {
+                            "data": {},
+                            "depth": 0,
+                            "entityRanges": [],
+                            "inlineStyleRanges": [],
+                            "key": "fdk5c",
+                            "text": "hi Omer!",
+                            "type": "unstyled"
+                        }
+                    ],
+                    "entityMap": {}
+                },
                 "highlightColor": "#49306B",
                 "id": "5ae6af22-b13d-49c2-b33b-d9e470b57082",
-                "selected": false,
-                "text": "hey over there~!",
+                "selected": true,
+                "text": "hi Omer!",
                 "title": "penguin"
             },
             {
@@ -330,11 +343,20 @@
         "channelType": "communication",
         "id": "768c7062-2110-45df-99ef-63e0f0aad9c0",
         "lastPosted": "1 day ago",
-        "selected": false,
+        "selected": true,
         "threads": [
             {
                 "channelName": "# business clients",
-                "date": "Sunday, December 3, 2017 3:11 PM",
+                "date": "Unsaved",
+                "highlightColor": "#DFDCE3",
+                "id": "e0ddeaa0-a6e9-4b61-bc6d-6fbcfdd62c3b",
+                "selected": false,
+                "text": "New unsaved thread",
+                "title": "Untitled"
+            },
+            {
+                "channelName": "# business clients",
+                "date": "Sunday, December 3, 2017 5:45 PM",
                 "document": {
                     "blocks": [
                         {
@@ -342,149 +364,18 @@
                             "depth": 0,
                             "entityRanges": [],
                             "inlineStyleRanges": [],
-                            "key": "9g01v",
-                            "text": "yo",
-                            "type": "unstyled"
-                        },
-                        {
-                            "data": {},
-                            "depth": 0,
-                            "entityRanges": [],
-                            "inlineStyleRanges": [],
-                            "key": "a86g1",
-                            "text": "yoy",
-                            "type": "unstyled"
-                        },
-                        {
-                            "data": {},
-                            "depth": 0,
-                            "entityRanges": [],
-                            "inlineStyleRanges": [],
-                            "key": "e0oib",
-                            "text": "sdvaaergaweg ",
-                            "type": "unstyled"
-                        },
-                        {
-                            "data": {},
-                            "depth": 0,
-                            "entityRanges": [],
-                            "inlineStyleRanges": [],
-                            "key": "co0lt",
-                            "text": "",
-                            "type": "unstyled"
-                        },
-                        {
-                            "data": {},
-                            "depth": 0,
-                            "entityRanges": [],
-                            "inlineStyleRanges": [],
-                            "key": "5ddja",
-                            "text": "DveV",
-                            "type": "unstyled"
-                        },
-                        {
-                            "data": {},
-                            "depth": 0,
-                            "entityRanges": [],
-                            "inlineStyleRanges": [],
-                            "key": "89gh9",
-                            "text": "",
-                            "type": "unstyled"
-                        },
-                        {
-                            "data": {},
-                            "depth": 0,
-                            "entityRanges": [],
-                            "inlineStyleRanges": [],
-                            "key": "b0tge",
-                            "text": "",
-                            "type": "unstyled"
-                        },
-                        {
-                            "data": {},
-                            "depth": 0,
-                            "entityRanges": [],
-                            "inlineStyleRanges": [],
-                            "key": "58g43",
-                            "text": "",
+                            "key": "7fq0j",
+                            "text": "hello!",
                             "type": "unstyled"
                         }
                     ],
                     "entityMap": {}
                 },
                 "highlightColor": "#DFDCE3",
-                "id": "ee9da705-58cc-473d-b494-af5fd33c7718",
+                "id": "e61ffba1-8bb1-45aa-a2f9-99dd06945917",
                 "selected": true,
-                "text": "yo",
-                "title": "giraffe"
-            },
-            {
-                "channelName": "# business clients",
-                "date": "Sunday, December 3, 2017 3:03 PM",
-                "document": {
-                    "blocks": [
-                        {
-                            "data": {},
-                            "depth": 0,
-                            "entityRanges": [],
-                            "inlineStyleRanges": [],
-                            "key": "c4hq",
-                            "text": "gggg",
-                            "type": "unstyled"
-                        },
-                        {
-                            "data": {},
-                            "depth": 0,
-                            "entityRanges": [],
-                            "inlineStyleRanges": [],
-                            "key": "48h5p",
-                            "text": "",
-                            "type": "unstyled"
-                        },
-                        {
-                            "data": {},
-                            "depth": 0,
-                            "entityRanges": [],
-                            "inlineStyleRanges": [],
-                            "key": "7i92h",
-                            "text": "",
-                            "type": "unstyled"
-                        },
-                        {
-                            "data": {},
-                            "depth": 0,
-                            "entityRanges": [],
-                            "inlineStyleRanges": [],
-                            "key": "b6qoq",
-                            "text": "",
-                            "type": "unstyled"
-                        },
-                        {
-                            "data": {},
-                            "depth": 0,
-                            "entityRanges": [],
-                            "inlineStyleRanges": [],
-                            "key": "fc44h",
-                            "text": "lol",
-                            "type": "unstyled"
-                        },
-                        {
-                            "data": {},
-                            "depth": 0,
-                            "entityRanges": [],
-                            "inlineStyleRanges": [],
-                            "key": "btl6h",
-                            "text": "",
-                            "type": "unstyled"
-                        }
-                    ],
-                    "entityMap": {}
-                },
-                "highlightColor": "#fc4a1a",
-                "id": "f9144043-9100-4277-a057-d891092bd64e",
-                "selected": false,
-                "text": "gggg",
-                "title": "elephant"
+                "text": "hello!",
+                "title": "Untit"
             },
             {
                 "channelName": "# business clients",

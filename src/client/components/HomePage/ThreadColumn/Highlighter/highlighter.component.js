@@ -1,7 +1,8 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { HIGHLIGHT_THREAD_MODAL } from "../../../../utils/const";
+import { modals } from "../../../../utils/const";
 
+const { HIGHLIGHT_THREAD_MODAL } = modals;
 const styles = {
   height: "100px",
   width: "5px",
@@ -16,7 +17,8 @@ const Highlighter = props => (
       props.toggleModal(HIGHLIGHT_THREAD_MODAL, {
         threadColor: props.highlightColor,
         threadId: props.threadId
-      })}
+      })
+    }
   />
 );
 
