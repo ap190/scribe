@@ -215,27 +215,36 @@ class HomePage extends Component {
       return;
     }
 
+    const newThread = {
+      text: "New unsaved thread",
+      date: "Unsaved",
+      title: "Untitled",
+      id: UUIDv4(),
+      highlightColor: GREY_HIGHLIGHT,
+      selected: true,
+      document: undefined
+    };
+
     const updatedChannels = channels.map(channel => {
       if (currentChannel.id !== channel.id) {
         return channel;
       }
-      const newThread = {
-        text: "New unsaved thread",
-        date: "Unsaved",
-        title: "Untitled",
-        id: UUIDv4(),
-        highlightColor: GREY_HIGHLIGHT,
-        selected: true,
-        channelName: channel.channelName,
-        document: undefined
-      };
-      channel.threads.forEach((thread, idx) => (thread.selected = false));
-      channel.threads.unshift(newThread);
-      this.setState({ currentThread: newThread });
 
+      newThread.channelName = channel.channelName;
+
+      // Unselect threads.
+      channel.threads.forEach(thread => {
+        thread.selected = false;
+      });
+
+      channel.threads.unshift(newThread);
       return channel;
     });
-    this.setState({ channels: updatedChannels });
+    this.setState({
+      channels: updatedChannels,
+      currentThread: newThread,
+      currentDocument: newThread.document
+    });
   }
 
   handleDeleteThread(channelName, threadId) {
@@ -277,7 +286,6 @@ class HomePage extends Component {
     channels[channelIdx].threads.forEach((currThread, idx) => {
       if (idx === threadIdx) {
         currThread.selected = !currThread.selected;
-        console.log(currThread);
         currentDocument = currThread.document
           ? EditorState.createWithContent(convertFromRaw(currThread.document))
           : EditorState.createEmpty();
@@ -384,7 +392,7 @@ class HomePage extends Component {
       return {
         ...thread,
         date: timestamp,
-        text: thread.document.blocks ? thread.document.blocks[0].text : ""
+        text: thread.document ? thread.document.blocks[0].text : ""
       };
     });
 

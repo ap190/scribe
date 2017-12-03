@@ -8,7 +8,7 @@ const deleteIcon = "./assets/icons/delete.png";
 const Thread = props => (
   <div
     className="thread-container"
-    style={props.selected ? { opacity: "0.5" } : {}}
+    style={props.selected ? {} : { opacity: "0.5" }}
     onClick={() => props.selectThread(props)}
   >
     <Highlighter

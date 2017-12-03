@@ -335,28 +335,11 @@
         "channelType": "communication",
         "id": "38b0e50b-810e-4b41-9b9f-dabdbab392c7",
         "lastPosted": "21 minutes ago",
-        "selected": false,
-        "threads": []
-    },
-    {
-        "channelName": "# business clients",
-        "channelType": "communication",
-        "id": "768c7062-2110-45df-99ef-63e0f0aad9c0",
-        "lastPosted": "1 day ago",
         "selected": true,
         "threads": [
             {
-                "channelName": "# business clients",
-                "date": "Unsaved",
-                "highlightColor": "#DFDCE3",
-                "id": "e0ddeaa0-a6e9-4b61-bc6d-6fbcfdd62c3b",
-                "selected": false,
-                "text": "New unsaved thread",
-                "title": "Untitled"
-            },
-            {
-                "channelName": "# business clients",
-                "date": "Sunday, December 3, 2017 5:45 PM",
+                "channelName": "# backend",
+                "date": "Sunday, December 3, 2017 6:18 PM",
                 "document": {
                     "blocks": [
                         {
@@ -364,18 +347,50 @@
                             "depth": 0,
                             "entityRanges": [],
                             "inlineStyleRanges": [],
-                            "key": "7fq0j",
-                            "text": "hello!",
+                            "key": "a87m5",
+                            "text": "",
                             "type": "unstyled"
                         }
                     ],
                     "entityMap": {}
                 },
-                "highlightColor": "#DFDCE3",
-                "id": "e61ffba1-8bb1-45aa-a2f9-99dd06945917",
+                "highlightColor": "#49306B",
+                "id": "6c8f7681-9527-4519-9925-5102c3689cec",
                 "selected": true,
-                "text": "hello!",
-                "title": "Untit"
+                "text": "",
+                "title": "New!"
+            }
+        ]
+    },
+    {
+        "channelName": "# business clients",
+        "channelType": "communication",
+        "id": "768c7062-2110-45df-99ef-63e0f0aad9c0",
+        "lastPosted": "1 day ago",
+        "selected": false,
+        "threads": [
+            {
+                "channelName": "# business clients",
+                "date": "Sunday, December 3, 2017 6:08 PM",
+                "document": {
+                    "blocks": [
+                        {
+                            "data": {},
+                            "depth": 0,
+                            "entityRanges": [],
+                            "inlineStyleRanges": [],
+                            "key": "aar1",
+                            "text": "",
+                            "type": "unstyled"
+                        }
+                    ],
+                    "entityMap": {}
+                },
+                "highlightColor": "#4abdac",
+                "id": "27bfe304-b9bb-4db2-940f-f6203ea3639c",
+                "selected": true,
+                "text": "",
+                "title": "New thread!"
             },
             {
                 "channelName": "# business clients",
@@ -388,7 +403,7 @@
                             "entityRanges": [],
                             "inlineStyleRanges": [],
                             "key": "b7a9e",
-                            "text": "",
+                            "text": "hello!",
                             "type": "unstyled"
                         }
                     ],
