@@ -56,7 +56,7 @@ ThreadList.propTypes = {
     PropTypes.shape({
       text: PropTypes.string.isRequired,
       title: PropTypes.string.isRequired,
-      date: PropTypes.number.isRequired,
+      date: PropTypes.string.isRequired,
       id: PropTypes.string.isRequired,
       channelName: PropTypes.string,
       highlightColor: PropTypes.string.isRequired

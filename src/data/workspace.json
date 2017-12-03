@@ -40,7 +40,7 @@
             },
             {
                 "channelName": "# design stuff",
-                "date": "Friday, December 1, 2017 5:03 AM",
+                "date": "Sunday, December 3, 2017 2:13 PM",
                 "document": {
                     "blocks": [
                         {
@@ -334,7 +334,7 @@
         "threads": [
             {
                 "channelName": "# business clients",
-                "date": "Friday, December 1, 2017 4:48 AM",
+                "date": "Sunday, December 3, 2017 1:53 PM",
                 "document": {
                     "blocks": [
                         {
@@ -343,7 +343,43 @@
                             "entityRanges": [],
                             "inlineStyleRanges": [],
                             "key": "9g01v",
+                            "text": "yo",
+                            "type": "unstyled"
+                        },
+                        {
+                            "data": {},
+                            "depth": 0,
+                            "entityRanges": [],
+                            "inlineStyleRanges": [],
+                            "key": "a86g1",
+                            "text": "yoy",
+                            "type": "unstyled"
+                        },
+                        {
+                            "data": {},
+                            "depth": 0,
+                            "entityRanges": [],
+                            "inlineStyleRanges": [],
+                            "key": "e0oib",
+                            "text": "sdvaaergaweg ",
+                            "type": "unstyled"
+                        },
+                        {
+                            "data": {},
+                            "depth": 0,
+                            "entityRanges": [],
+                            "inlineStyleRanges": [],
+                            "key": "co0lt",
                             "text": "",
+                            "type": "unstyled"
+                        },
+                        {
+                            "data": {},
+                            "depth": 0,
+                            "entityRanges": [],
+                            "inlineStyleRanges": [],
+                            "key": "5ddja",
+                            "text": "DveV",
                             "type": "unstyled"
                         },
                         {
@@ -378,8 +414,8 @@
                 },
                 "highlightColor": "#DFDCE3",
                 "id": "ee9da705-58cc-473d-b494-af5fd33c7718",
-                "selected": false,
-                "text": "hey there~!",
+                "selected": true,
+                "text": "yo",
                 "title": "giraffe"
             },
             {
@@ -446,7 +482,7 @@
                 },
                 "highlightColor": "#fc4a1a",
                 "id": "f9144043-9100-4277-a057-d891092bd64e",
-                "selected": true,
+                "selected": false,
                 "text": "hey here!",
                 "title": "elephant"
             },

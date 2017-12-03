@@ -31,6 +31,8 @@ const Wrapper = styled.div`
   height: 100vh;
 `;
 
+const SELECTED_THREAD = -1;
+
 class HomePage extends Component {
   constructor(props) {
     super(props);
@@ -50,6 +52,7 @@ class HomePage extends Component {
       files: {}
     };
     this.toggleEditor = this.toggleEditor.bind(this);
+    this.applyThreadChange = this.applyThreadChange.bind(this);
     this.selectProjectDir = this.selectProjectDir.bind(this);
     this.selectChannelOrFile = this.selectChannelOrFile.bind(this);
     this.getUpdatedChannelsSelectedState = this.getUpdatedChannelsSelectedState.bind(
@@ -284,17 +287,16 @@ class HomePage extends Component {
     this.setState({ channels, currentDocument, currentTitle, savedTime });
   }
 
-  handleChangeThreadColor(threadObj) {
-    const { threadId, threadColor } = threadObj;
+  applyThreadChange(threadId, threadFunc) {
     const { currentChannel, currentThreads } = this.state;
 
     // create new threads
     const newThreads = currentThreads.map(thread => {
-      if (thread.id === threadId) {
-        return {
-          ...thread,
-          highlightColor: threadColor
-        };
+      if (
+        thread.id === threadId ||
+        (threadId === SELECTED_THREAD && thread.selected)
+      ) {
+        return threadFunc(thread);
       }
       return thread;
     });
@@ -309,12 +311,23 @@ class HomePage extends Component {
     });
 
     this.setState({
-      isModalOpen: false,
       channels,
-      currentChannel: channels.find(
-        channel => channel.id === currentChannel.id
-      ),
       currentThreads: newThreads
+    });
+  }
+
+  handleChangeThreadColor(threadObj) {
+    const { threadId, threadColor } = threadObj;
+
+    this.applyThreadChange(threadId, thread => {
+      return {
+        ...thread,
+        highlightColor: threadColor
+      };
+    });
+
+    this.setState({
+      isModalOpen: false
     });
   }
 
@@ -349,32 +362,14 @@ class HomePage extends Component {
   }
 
   handleThreadTitleChange(threadTitle) {
-    const { channels, currentChannel, currentThreads } = this.state;
-    if (!currentChannel || !currentThreads || !channels) return;
-
-    // create new threads
-    const newThreads = currentThreads.map(thread => {
-      if (thread.selected) {
-        return {
-          ...thread,
-          title: threadTitle
-        };
-      }
-      return thread;
-    });
-
-    // update channels with new threads
-    const newChannels = this.state.channels.map(channel => {
-      if (channel.id === currentChannel.id) {
-        channel.threads = newThreads;
-        return channel;
-      }
-      return channel;
+    this.applyThreadChange(SELECTED_THREAD, thread => {
+      return {
+        ...thread,
+        title: threadTitle
+      };
     });
 
     this.setState({
-      channels: newChannels,
-      currentThreads: newThreads,
       currentTitle: threadTitle
     });
   }
@@ -382,33 +377,16 @@ class HomePage extends Component {
   saveWorkspace() {
     // Get time of save.
     const timestamp = moment().format("LLLL");
-    const { channels, currentChannel, currentThreads } = this.state;
-    if (!currentChannel || !currentThreads || !channels) return;
 
-    // create new threads
-    const newThreads = currentThreads.map(thread => {
-      if (thread.selected) {
-        return {
-          ...thread,
-          date: timestamp,
-          text: thread.document.blocks[0].text
-        };
-      }
-      return thread;
-    });
-
-    // update channels with new threads
-    const newChannels = this.state.channels.map(channel => {
-      if (channel.id === currentChannel.id) {
-        channel.threads = newThreads;
-        return channel;
-      }
-      return channel;
+    this.applyThreadChange(SELECTED_THREAD, thread => {
+      return {
+        ...thread,
+        date: timestamp,
+        text: thread.document.blocks[0].text
+      };
     });
 
     this.setState({
-      channels: newChannels,
-      currentThreads: newThreads,
       updateTime: timestamp
     });
 
