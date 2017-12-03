@@ -352,7 +352,6 @@ class HomePage extends Component {
       currentDocument
     );
     currentThreads[currentThreadIdx].document = JSON.stringify(currentDocument);
-    console.log("content raw is ", contentRaw);
     channels[currentChannelIdx].threads[currentThreadIdx].document = contentRaw;
     this.setState({
       channels,

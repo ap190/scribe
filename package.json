@@ -18,7 +18,7 @@
     "bluebird": "^3.5.1",
     "classnames": "^2.2.5",
     "concurrently": "^3.5.0",
-    "draft-convert": "^2.0.0",
+    "draft-convert": "^2.0.1",
     "draft-js": "^0.10.4",
     "electron": "^1.4.14",
     "electron-devtools-installer": "^2.2.1",

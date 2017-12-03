@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import { EditorState, convertToRaw, convertFromRaw } from "draft-js";
+import { EditorState, convertToRaw } from "draft-js";
 import { Editor } from "medium-draft";
 import "medium-draft/lib/index.css";
 import "./editor.css";
@@ -22,11 +22,10 @@ class EditorColumn extends Component {
   }
 
   componentDidMount() {
-    this.refs.editor.focus();
+    // this.refs.editor.focus();
   }
 
   onChange(editorState) {
-    console.log("in editor", convertToRaw(editorState.getCurrentContent()));
     this.props.handleDocumentChange(
       editorState,
       convertToRaw(editorState.getCurrentContent())
@@ -37,9 +36,6 @@ class EditorColumn extends Component {
     return this.state.editorState;
   }
 
-  isEditorToggledStyles() {
-    return this.props.isEditorToggled ? { display: "none" } : { flex: "2" };
-  }
   render() {
     const {
       isModalOpen,
