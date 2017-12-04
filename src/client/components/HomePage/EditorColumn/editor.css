@@ -4,6 +4,7 @@
   overflow-y: auto;
   height: 90vh;
   margin-bottom: 20px;
+  padding: 15px 36px;
   /*z-index: 100;*/
 }
 
@@ -44,6 +45,7 @@
   justify-content: flex-end;
   padding-right: 60px;
   margin-top: 24px;
+  min-height: -webkit-min-content;
 }
 
 .editor-action-bar-icon-container {

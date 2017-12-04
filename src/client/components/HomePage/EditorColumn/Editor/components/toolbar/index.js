@@ -77,7 +77,6 @@ export default class Toolbar extends React.Component {
     * Main logic for setting the toolbar position.
     */
     toolbarNode.style.top = `${selectionBoundary.top -
-      parentBoundary.top -
       toolbarBoundary.height -
       5}px`;
     toolbarNode.style.width = `${toolbarBoundary.width}px`;
@@ -86,17 +85,8 @@ export default class Toolbar extends React.Component {
       toolbarNode.style.left = `${widthDiff / 2}px`;
     } else {
       const left = selectionBoundary.left - parentBoundary.left;
-      toolbarNode.style.left = `${left + widthDiff / 2}px`;
-      // toolbarNode.style.width = toolbarBoundary.width + 'px';
-      // if (left + toolbarBoundary.width > parentBoundary.width) {
-      // toolbarNode.style.right = '0px';
-      // toolbarNode.style.left = '';
-      // toolbarNode.style.width = toolbarBoundary.width + 'px';
-      // }
-      // else {
-      //   toolbarNode.style.left = (left + widthDiff / 2) + 'px';
-      //   toolbarNode.style.right = '';
-      // }
+      toolbarNode.style.left = `${left + 60 + widthDiff / 2}px`;
+      toolbarNode.style.width = `${toolbarBoundary.width}px`;
     }
   }
 
@@ -207,9 +197,9 @@ export default class Toolbar extends React.Component {
       isOpen = false;
     }
     if (showURLInput) {
-      let className = `md-editor-toolbar${isOpen
-        ? " md-editor-toolbar--isopen"
-        : ""}`;
+      let className = `md-editor-toolbar${
+        isOpen ? " md-editor-toolbar--isopen" : ""
+      }`;
       className += " md-editor-toolbar--linkinput";
       return (
         <div className={className}>
@@ -252,9 +242,9 @@ export default class Toolbar extends React.Component {
     }
     return (
       <div
-        className={`md-editor-toolbar${isOpen
-          ? " md-editor-toolbar--isopen"
-          : ""}`}
+        className={`md-editor-toolbar${
+          isOpen ? " md-editor-toolbar--isopen" : ""
+        }`}
       >
         {this.props.blockButtons.length > 0 ? (
           <BlockToolbar

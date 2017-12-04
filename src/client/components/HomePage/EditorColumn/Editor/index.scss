@@ -2,11 +2,9 @@
   background: #fff;
   box-sizing: border-box;
   //font-family: 'Georgia', serif;
-  padding: 15px 30px;
   position: relative;
   line-height: 1.4em;
 }
-
 
 .md-RichEditor-editor {
   cursor: text;
@@ -35,13 +33,13 @@
 }
 
 .md-RichEditor-editor .md-RichEditor-blockquote {
-  border-left: 5px solid #4CA8DE;
+  border-left: 5px solid #4ca8de;
   color: #555;
   //font-family: 'Hoefler Text', 'Georgia', serif;
   font-size: 1.2em;
   margin: 0;
   padding: 10px 0 10px 20px;
-  background-color: #E2F2FF;
+  background-color: #e2f2ff;
 }
 
 .md-RichEditor-blockquote {

@@ -122,7 +122,7 @@ class AddButton extends Component {
     this.setState({
       visible: true,
       style: {
-        top: node.offsetTop - 3
+        top: node.offsetTop
       }
     });
   }
@@ -135,9 +135,9 @@ class AddButton extends Component {
       <div className="md-side-toolbar" style={this.state.style}>
         <button
           onClick={this.openToolbar}
-          className={`md-sb-button md-add-button${this.state.isOpen
-            ? " md-open-button"
-            : ""}`}
+          className={`md-sb-button md-add-button${
+            this.state.isOpen ? " md-open-button" : ""
+          }`}
           type="button"
         >
           <svg viewBox="0 0 8 8" height="14" width="14">

@@ -27,6 +27,7 @@ const Wrapper = styled.div`
   display: flex;
   flex-direction: row;
   height: 100vh;
+  overflow: hidden;
 `;
 
 const SELECTED_THREAD = -1;
