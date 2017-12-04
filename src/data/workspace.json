@@ -448,7 +448,7 @@
         "channelType": "communication",
         "id": "768c7062-2110-45df-99ef-63e0f0aad9c0",
         "lastPosted": "1 day ago",
-        "selected": true,
+        "selected": false,
         "threads": [
             {
                 "channelId": "768c7062-2110-45df-99ef-63e0f0aad9c0",
@@ -725,6 +725,17 @@
                             "type": "todo"
                         },
                         {
+                            "data": {
+                                "src": "blob:http://localhost:3000/b8cec652-2122-4c07-b938-2102c61cf027"
+                            },
+                            "depth": 0,
+                            "entityRanges": [],
+                            "inlineStyleRanges": [],
+                            "key": "22mq9",
+                            "text": "",
+                            "type": "atomic:image"
+                        },
+                        {
                             "data": {},
                             "depth": 0,
                             "entityRanges": [],
@@ -801,10 +812,59 @@
                 },
                 "highlightColor": "#DFDCE3",
                 "id": "f4e8ee7c-3d36-45b0-9072-17907a341b02",
-                "selected": false,
+                "selected": true,
                 "text": "Immediate Features",
-                "title": "Goals"
+                "title": "Dogfooding!@!!!!!!!"
             }
         ]
+    },
+    {
+        "channelName": "# Omer's Todo",
+        "channelType": "communication",
+        "id": "2a4f247a-cc85-44e2-9958-008413a65d96",
+        "lastPosted": "4 days ago",
+        "selected": true,
+        "threads": [
+            {
+                "channelId": "2a4f247a-cc85-44e2-9958-008413a65d96",
+                "date": "Monday, December 4, 2017 5:14 PM",
+                "document": {
+                    "blocks": [
+                        {
+                            "data": {},
+                            "depth": 0,
+                            "entityRanges": [],
+                            "inlineStyleRanges": [],
+                            "key": "f9f7q",
+                            "text": "Save image",
+                            "type": "todo"
+                        },
+                        {
+                            "data": {},
+                            "depth": 0,
+                            "entityRanges": [],
+                            "inlineStyleRanges": [],
+                            "key": "9fl9n",
+                            "text": "Export to HTML",
+                            "type": "todo"
+                        }
+                    ],
+                    "entityMap": {}
+                },
+                "highlightColor": "#DFDCE3",
+                "id": "60af28fe-63d5-4c3a-9e50-a2a693d98bca",
+                "selected": true,
+                "text": "Save image",
+                "title": "Todo"
+            }
+        ]
+    },
+    {
+        "channelName": "# Ali's Todo",
+        "channelType": "communication",
+        "id": "55edf3eb-0ac2-4073-8716-fe02ef2a051b",
+        "lastPosted": "4 days ago",
+        "selected": false,
+        "threads": []
     }
 ]
