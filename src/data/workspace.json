@@ -237,15 +237,39 @@
     "channelType": "file",
     "id": "49ae8a8c-1fab-4f98-b944-3e65e2581xyz",
     "lastPosted": "21 minutes ago",
-    "module": ".git",
+    "channelName": ".git",
     "selected": false,
-    "threads": []
+    "threads": [
+      {
+        "channelId": "49ae8a8c-1fab-4f98-b944-3e65e2581xyz",
+        "date": "Monday, December 4, 2017 1:05 PM",
+        "document": {
+          "blocks": [
+            {
+              "data": {},
+              "depth": 0,
+              "entityRanges": [],
+              "inlineStyleRanges": [],
+              "key": "4mb9",
+              "text": "playing around",
+              "type": "unstyled"
+            }
+          ],
+          "entityMap": {}
+        },
+        "highlightColor": "#DFDCE3",
+        "id": "2745c098-b11b-4f33-a0ae-b7327a251bba",
+        "selected": true,
+        "text": "playing around",
+        "title": "Trying add file"
+      }
+    ]
   },
   {
     "channelType": "file",
     "id": "d328fecb-bcbf-4981-af48-b2baec8d3c53",
     "lastPosted": "1 day ago",
-    "module": ".gitignore",
+    "channelName": ".gitignore",
     "selected": false,
     "threads": [
       {
@@ -269,7 +293,7 @@
         "document": null,
         "highlightColor": "#DFDCE3",
         "id": "de9e0166-8947-4c8d-b4a0-2743a01866df",
-        "module": ".gitignore",
+        "channelName": ".gitignore",
         "selected": false,
         "text": "lala land!",
         "title": "code"
@@ -279,7 +303,7 @@
         "document": null,
         "highlightColor": "#fc4a1a",
         "id": "ea54b259-5dc1-4c65-b946-d351be42123e",
-        "module": ".gitignore",
+        "channelName": ".gitignore",
         "selected": false,
         "text": "scribe is king",
         "title": "elephant"
@@ -289,7 +313,7 @@
         "document": null,
         "highlightColor": "#fc4a1a",
         "id": "cd80dc27-7705-49ce-9934-a44303d246e8",
-        "module": ".gitignore",
+        "channelName": ".gitignore",
         "selected": false,
         "text": "the best thing ever",
         "title": "amazing tool"
@@ -300,7 +324,7 @@
     "channelType": "file",
     "id": "49ae8a8c-1fab-4f98-b944-3e65e25814xx",
     "lastPosted": "4 days ago",
-    "module": "README.md",
+    "channelName": "README.md",
     "selected": false,
     "threads": [
       {
@@ -308,7 +332,7 @@
         "document": null,
         "highlightColor": "#DFDCE3",
         "id": "49ae8a8c-1fab-4f98-b944-3e65e25814zz",
-        "module": "README.md",
+        "channelName": "README.md",
         "text": "Getting Started with npm",
         "title": "Set Up Guide"
       },
@@ -317,7 +341,7 @@
         "document": null,
         "highlightColor": "#fc4a1a",
         "id": "49ae8a8c-1fab-4f98-b944-3e65e25814ee",
-        "module": "README.md",
+        "channelName": "README.md",
         "text": "hey here!",
         "title": "elephant"
       },
@@ -326,7 +350,7 @@
         "document": null,
         "highlightColor": "#fc4a1a",
         "id": "49ae8a8c-1fab-4f98-b944-3e65e25814aa",
-        "module": "README.md",
+        "channelName": "README.md",
         "text": "hey over there~!",
         "title": "penguin"
       },
@@ -335,7 +359,7 @@
         "document": null,
         "highlightColor": "#49306B",
         "id": "49ae8a8c-1fab-4f98-b944-3e65e25814dd",
-        "module": "README.md",
+        "channelName": "README.md",
         "text": "hey over there~!",
         "title": "penguin"
       },
@@ -344,7 +368,7 @@
         "document": null,
         "highlightColor": "#fc4a1a",
         "id": "49ae8a8c-1fab-4f98-b944-3e65e25814rr",
-        "module": "README.md",
+        "channelName": "README.md",
         "text": "hey over there~!",
         "title": "penguin"
       }
@@ -387,7 +411,7 @@
     "channelType": "communication",
     "id": "768c7062-2110-45df-99ef-63e0f0aad9c0",
     "lastPosted": "1 day ago",
-    "selected": true,
+    "selected": false,
     "threads": [
       {
         "channelId": "768c7062-2110-45df-99ef-63e0f0aad9c0",
@@ -408,7 +432,7 @@
         },
         "highlightColor": "#DFDCE3",
         "id": "5f878b04-a268-4c45-8e9c-42df27bada95",
-        "selected": true,
+        "selected": false,
         "text": "trying again",
         "title": "Try two"
       },
@@ -431,7 +455,7 @@
         },
         "highlightColor": "#4abdac",
         "id": "27bfe304-b9bb-4db2-940f-f6203ea3639c",
-        "selected": false,
+        "selected": true,
         "text": "",
         "title": "New thread!"
       },
