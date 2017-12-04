@@ -8,7 +8,7 @@
         "threads": [
             {
                 "channelId": "6e55e4dd-d4de-436c-9f7f-956f4910d424",
-                "date": "Monday, December 4, 2017 3:49 PM",
+                "date": "Monday, December 4, 2017 5:48 PM",
                 "document": {
                     "blocks": [
                         {
@@ -22,12 +22,12 @@
                         },
                         {
                             "data": {
-                                "src": "blob:http://localhost:3000/7d37ee88-8518-492a-aa8b-b4e220d3d0ee"
+                                "src": "/Users/omergoldberg/Desktop/medium_profile.jpg"
                             },
                             "depth": 0,
                             "entityRanges": [],
                             "inlineStyleRanges": [],
-                            "key": "5mmgm",
+                            "key": "aa9tj",
                             "text": "",
                             "type": "unstyled"
                         },
@@ -39,6 +39,17 @@
                             "key": "am4ml",
                             "text": "hello",
                             "type": "unstyled"
+                        },
+                        {
+                            "data": {
+                                "src": "/Users/omergoldberg/Desktop/medium_profile.jpg"
+                            },
+                            "depth": 0,
+                            "entityRanges": [],
+                            "inlineStyleRanges": [],
+                            "key": "6fm10",
+                            "text": "",
+                            "type": "atomic:image"
                         },
                         {
                             "data": {},
@@ -672,7 +683,7 @@
         "channelType": "communication",
         "id": "60569731-ab1e-43b9-bd87-30303d6c4c4f",
         "lastPosted": "4 days ago",
-        "selected": false,
+        "selected": true,
         "threads": [
             {
                 "channelId": "60569731-ab1e-43b9-bd87-30303d6c4c4f",
@@ -685,7 +696,7 @@
             },
             {
                 "channelId": "60569731-ab1e-43b9-bd87-30303d6c4c4f",
-                "date": "Monday, December 4, 2017 5:03 PM",
+                "date": "Monday, December 4, 2017 7:20 PM",
                 "document": {
                     "blocks": [
                         {
@@ -723,17 +734,6 @@
                             "key": "3slt9",
                             "text": "Welcome Guide",
                             "type": "todo"
-                        },
-                        {
-                            "data": {
-                                "src": "blob:http://localhost:3000/b8cec652-2122-4c07-b938-2102c61cf027"
-                            },
-                            "depth": 0,
-                            "entityRanges": [],
-                            "inlineStyleRanges": [],
-                            "key": "22mq9",
-                            "text": "",
-                            "type": "atomic:image"
                         },
                         {
                             "data": {},

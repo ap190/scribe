@@ -317,6 +317,7 @@ class ExtendedEditor extends React.Component {
     if (file.type.indexOf("image/") === 0) {
       // eslint-disable-next-line no-undef
       const src = URL.createObjectURL(file);
+      console.log("src is", src);
       this.onChange(
         addNewBlockAt(
           this.state.editorState,

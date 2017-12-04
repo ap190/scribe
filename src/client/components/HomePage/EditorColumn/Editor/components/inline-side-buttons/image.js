@@ -30,7 +30,10 @@ class ImageButton extends Component {
     if (file.type.indexOf("image/") === 0) {
       // console.log(this.props.getEditorState());
       // eslint-disable-next-line no-undef
-      const src = URL.createObjectURL(file);
+      // const src = URL.createObjectURL(file);
+      const src =
+        "file:///Users/omergoldberg/Library/Application%20Support/MindFlow.ai/mfimg/kiosp9xqqr.png";
+      console.log("src is ", src);
       this.props.setEditorState(
         addNewBlock(this.props.getEditorState(), Block.IMAGE, {
           src
