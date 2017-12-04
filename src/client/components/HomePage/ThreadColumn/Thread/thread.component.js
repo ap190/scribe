@@ -25,7 +25,7 @@ const Thread = props => (
       <img
         className="delete-icon"
         src={deleteIcon}
-        onClick={() => props.onDeleteThreadHandler(props.channelName, props.id)}
+        onClick={() => props.onDeleteThreadHandler(props.channelId, props.id)}
         alt="Delete a thread button"
       />
     </div>
@@ -42,7 +42,7 @@ Thread.propTypes = {
   highlightColor: PropTypes.string.isRequired,
   selected: PropTypes.bool,
   selectThread: PropTypes.func.isRequired,
-  channelName: PropTypes.any
+  channelId: PropTypes.any
 };
 
 export default Thread;

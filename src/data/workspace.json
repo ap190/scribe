@@ -7,7 +7,7 @@
     "selected": false,
     "threads": [
       {
-        "channelName": "# design stuff",
+        "channelId": "6e55e4dd-d4de-436c-9f7f-956f4910d424",
         "date": "Sunday, December 3, 2017 3:11 PM",
         "document": {
           "blocks": [
@@ -17,7 +17,7 @@
               "entityRanges": [],
               "inlineStyleRanges": [],
               "key": "9kp26",
-              "text": "Ali is back!",
+              "text": "hello there friend",
               "type": "unstyled"
             },
             {
@@ -34,12 +34,12 @@
         },
         "highlightColor": "#DFDCE3",
         "id": "6e0c304c-0885-43fd-b4c2-cf7a204437b4",
-        "selected": true,
-        "text": "hey there~!",
+        "selected": false,
+        "text": "hello there friend",
         "title": "has document"
       },
       {
-        "channelName": "# design stuff",
+        "channelId": "6e55e4dd-d4de-436c-9f7f-956f4910d424",
         "date": "Sunday, December 3, 2017 2:13 PM",
         "document": {
           "blocks": [
@@ -62,7 +62,7 @@
         "title": "elephant"
       },
       {
-        "channelName": "# design stuff",
+        "channelId": "6e55e4dd-d4de-436c-9f7f-956f4910d424",
         "date": "Sunday, December 3, 2017 4:29 PM",
         "document": {
           "blocks": [
@@ -156,7 +156,7 @@
         "title": "penguin"
       },
       {
-        "channelName": "# design stuff",
+        "channelId": "6e55e4dd-d4de-436c-9f7f-956f4910d424",
         "date": "6 Mar 2017 21:22:23 GMT",
         "document": null,
         "highlightColor": "#4abdac",
@@ -166,7 +166,7 @@
         "title": "penguin"
       },
       {
-        "channelName": "# design stuff",
+        "channelId": "6e55e4dd-d4de-436c-9f7f-956f4910d424",
         "date": "Sunday, December 3, 2017 4:29 PM",
         "document": {
           "blocks": [
@@ -184,22 +184,22 @@
         },
         "highlightColor": "#49306B",
         "id": "5ae6af22-b13d-49c2-b33b-d9e470b57082",
-        "selected": true,
+        "selected": false,
         "text": "hi Omer!",
         "title": "penguin"
       },
       {
-        "channelName": "# design stuff",
+        "channelId": "6e55e4dd-d4de-436c-9f7f-956f4910d424",
         "date": "6 Mar 2017 21:22:23 GMT",
         "document": null,
         "highlightColor": "#f7b733",
         "id": "ad7ebda8-c76e-4e54-987f-a6e9d3d53ce5",
-        "selected": false,
+        "selected": true,
         "text": "hey over there~!",
         "title": "penguin"
       },
       {
-        "channelName": "# design stuff",
+        "channelId": "6e55e4dd-d4de-436c-9f7f-956f4910d424",
         "date": "6 Mar 2017 21:22:23 GMT",
         "document": null,
         "highlightColor": "#49306B",
@@ -209,7 +209,7 @@
         "title": "penguin"
       },
       {
-        "channelName": "# design stuff",
+        "channelId": "6e55e4dd-d4de-436c-9f7f-956f4910d424",
         "date": "6 Mar 2017 21:22:23 GMT",
         "document": {
           "blocks": [
@@ -237,23 +237,64 @@
     "channelType": "file",
     "id": "49ae8a8c-1fab-4f98-b944-3e65e2581xyz",
     "lastPosted": "21 minutes ago",
-    "module": ".git",
+    "channelName": ".git",
     "selected": false,
-    "threads": []
+    "threads": [
+      {
+        "channelId": "49ae8a8c-1fab-4f98-b944-3e65e2581xyz",
+        "date": "Monday, December 4, 2017 1:05 PM",
+        "document": {
+          "blocks": [
+            {
+              "data": {},
+              "depth": 0,
+              "entityRanges": [],
+              "inlineStyleRanges": [],
+              "key": "4mb9",
+              "text": "playing around",
+              "type": "unstyled"
+            }
+          ],
+          "entityMap": {}
+        },
+        "highlightColor": "#DFDCE3",
+        "id": "2745c098-b11b-4f33-a0ae-b7327a251bba",
+        "selected": true,
+        "text": "playing around",
+        "title": "Trying add file"
+      }
+    ]
   },
   {
     "channelType": "file",
     "id": "d328fecb-bcbf-4981-af48-b2baec8d3c53",
     "lastPosted": "1 day ago",
-    "module": ".gitignore",
+    "channelName": ".gitignore",
     "selected": false,
     "threads": [
+      {
+        "date": "Sunday, December 3, 2017 6:24 PM",
+        "highlightColor": "#DFDCE3",
+        "id": "582a2049-a47c-452d-943c-a52cde6e609c",
+        "selected": true,
+        "text": "",
+        "title": "Untitled"
+      },
+      {
+        "date": "Unsaved",
+        "highlightColor": "#DFDCE3",
+        "id": "2b42e6c1-6334-4df9-83d8-fc1815d159e5",
+        "selected": false,
+        "text": "New unsaved thread",
+        "title": "Untitled"
+      },
       {
         "date": "6 Mar 2017 21:22:23 GMT",
         "document": null,
         "highlightColor": "#DFDCE3",
         "id": "de9e0166-8947-4c8d-b4a0-2743a01866df",
-        "module": ".gitignore",
+        "channelName": ".gitignore",
+        "selected": false,
         "text": "lala land!",
         "title": "code"
       },
@@ -262,7 +303,8 @@
         "document": null,
         "highlightColor": "#fc4a1a",
         "id": "ea54b259-5dc1-4c65-b946-d351be42123e",
-        "module": ".gitignore",
+        "channelName": ".gitignore",
+        "selected": false,
         "text": "scribe is king",
         "title": "elephant"
       },
@@ -271,7 +313,8 @@
         "document": null,
         "highlightColor": "#fc4a1a",
         "id": "cd80dc27-7705-49ce-9934-a44303d246e8",
-        "module": ".gitignore",
+        "channelName": ".gitignore",
+        "selected": false,
         "text": "the best thing ever",
         "title": "amazing tool"
       }
@@ -281,7 +324,7 @@
     "channelType": "file",
     "id": "49ae8a8c-1fab-4f98-b944-3e65e25814xx",
     "lastPosted": "4 days ago",
-    "module": "README.md",
+    "channelName": "README.md",
     "selected": false,
     "threads": [
       {
@@ -289,7 +332,7 @@
         "document": null,
         "highlightColor": "#DFDCE3",
         "id": "49ae8a8c-1fab-4f98-b944-3e65e25814zz",
-        "module": "README.md",
+        "channelName": "README.md",
         "text": "Getting Started with npm",
         "title": "Set Up Guide"
       },
@@ -298,7 +341,7 @@
         "document": null,
         "highlightColor": "#fc4a1a",
         "id": "49ae8a8c-1fab-4f98-b944-3e65e25814ee",
-        "module": "README.md",
+        "channelName": "README.md",
         "text": "hey here!",
         "title": "elephant"
       },
@@ -307,7 +350,7 @@
         "document": null,
         "highlightColor": "#fc4a1a",
         "id": "49ae8a8c-1fab-4f98-b944-3e65e25814aa",
-        "module": "README.md",
+        "channelName": "README.md",
         "text": "hey over there~!",
         "title": "penguin"
       },
@@ -316,7 +359,7 @@
         "document": null,
         "highlightColor": "#49306B",
         "id": "49ae8a8c-1fab-4f98-b944-3e65e25814dd",
-        "module": "README.md",
+        "channelName": "README.md",
         "text": "hey over there~!",
         "title": "penguin"
       },
@@ -325,7 +368,7 @@
         "document": null,
         "highlightColor": "#fc4a1a",
         "id": "49ae8a8c-1fab-4f98-b944-3e65e25814rr",
-        "module": "README.md",
+        "channelName": "README.md",
         "text": "hey over there~!",
         "title": "penguin"
       }
@@ -336,10 +379,10 @@
     "channelType": "communication",
     "id": "38b0e50b-810e-4b41-9b9f-dabdbab392c7",
     "lastPosted": "21 minutes ago",
-    "selected": true,
+    "selected": false,
     "threads": [
       {
-        "channelName": "# backend",
+        "channelId": "38b0e50b-810e-4b41-9b9f-dabdbab392c7",
         "date": "Sunday, December 3, 2017 6:18 PM",
         "document": {
           "blocks": [
@@ -357,7 +400,7 @@
         },
         "highlightColor": "#49306B",
         "id": "6c8f7681-9527-4519-9925-5102c3689cec",
-        "selected": true,
+        "selected": false,
         "text": "",
         "title": "New!"
       }
@@ -371,7 +414,30 @@
     "selected": false,
     "threads": [
       {
-        "channelName": "# business clients",
+        "channelId": "768c7062-2110-45df-99ef-63e0f0aad9c0",
+        "date": "Monday, December 4, 2017 12:26 PM",
+        "document": {
+          "blocks": [
+            {
+              "data": {},
+              "depth": 0,
+              "entityRanges": [],
+              "inlineStyleRanges": [],
+              "key": "e0r49",
+              "text": "trying again",
+              "type": "unstyled"
+            }
+          ],
+          "entityMap": {}
+        },
+        "highlightColor": "#DFDCE3",
+        "id": "5f878b04-a268-4c45-8e9c-42df27bada95",
+        "selected": false,
+        "text": "trying again",
+        "title": "Try two"
+      },
+      {
+        "channelId": "768c7062-2110-45df-99ef-63e0f0aad9c0",
         "date": "Sunday, December 3, 2017 6:08 PM",
         "document": {
           "blocks": [
@@ -394,7 +460,7 @@
         "title": "New thread!"
       },
       {
-        "channelName": "# business clients",
+        "channelId": "768c7062-2110-45df-99ef-63e0f0aad9c0",
         "date": "Friday, December 1, 2017 4:33 AM",
         "document": {
           "blocks": [
@@ -415,33 +481,6 @@
         "selected": false,
         "text": "hey over there~!",
         "title": "penguin"
-      }
-    ]
-  },
-  {
-    "channelName": "# brown uni",
-    "channelType": "communication",
-    "id": "5b91b395-82b6-48fa-9c2e-272c5b49341f",
-    "lastPosted": "4 days ago",
-    "selected": false,
-    "threads": [
-      {
-        "channelName": "# design stuff",
-        "date": 1511953029822,
-        "highlightColor": "#49306B",
-        "id": "177d7416-9d4c-4446-a996-a4e0b4d22b1e",
-        "selected": false,
-        "text": "hey there~!",
-        "title": "giraffe"
-      },
-      {
-        "channelName": "# design stuff",
-        "date": 1511953030759,
-        "highlightColor": "#49306B",
-        "id": "829c003e-9f95-45ba-93e3-d8c1fbef6c06",
-        "selected": false,
-        "text": "hey there~!",
-        "title": "giraffe"
       }
     ]
   }
