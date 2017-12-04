@@ -215,22 +215,21 @@ class HomePage extends Component {
       return;
     }
 
-    const newThread = {
+    let newThread = {
       text: "New unsaved thread",
       date: "Unsaved",
       title: "Untitled",
       id: UUIDv4(),
       highlightColor: GREY_HIGHLIGHT,
       selected: true,
-      document: undefined
+      document: undefined,
+      channelId: currentChannel.id
     };
 
     const updatedChannels = channels.map(channel => {
       if (currentChannel.id !== channel.id) {
         return channel;
       }
-
-      newThread.channelName = channel.channelName;
 
       // Unselect threads.
       channel.threads.forEach(thread => {
@@ -247,16 +246,14 @@ class HomePage extends Component {
     });
   }
 
-  handleDeleteThread(channelName, threadId) {
+  handleDeleteThread(channelId, threadId) {
     const { channels } = this.state;
-    const currentChannel = channels.find(
-      channel => channel.channelName === channelName
-    );
+    const currentChannel = channels.find(channel => channel.id === channelId);
     const currentThreads = currentChannel.threads.filter(
       thread => thread.id !== threadId
     );
     const channelToReplaceIdx = channels.findIndex(
-      channel => channel.channelName === channelName
+      channel => channel.id === channelId
     );
     currentChannel.threads = currentThreads;
     channels[channelToReplaceIdx] = currentChannel;
@@ -272,7 +269,7 @@ class HomePage extends Component {
     let currentDocument;
     let currentThread;
     const channelIdx = channels.findIndex(
-      channel => channel.channelName === thread.channelName
+      channel => channel.id === thread.channelId
     );
     const threadIdx = channels[channelIdx].threads.findIndex(
       currentThread => thread.id === currentThread.id
@@ -356,7 +353,7 @@ class HomePage extends Component {
     const { channels, currentChannel, currentThreads } = this.state;
     if (!currentChannel || !currentThreads || !channels) return;
     const currentChannelIdx = channels.findIndex(
-      channel => channel.channelName === currentChannel.channelName
+      channel => channel.id === currentChannel.id
     );
     const currentThreadIdx = currentThreads.findIndex(
       thread => thread.selected

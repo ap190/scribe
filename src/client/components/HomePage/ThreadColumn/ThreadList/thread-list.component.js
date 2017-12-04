@@ -40,7 +40,7 @@ const ThreadList = props =>
                 id={thread.id}
                 selected={thread.selected}
                 selectThread={props.selectThread}
-                channelName={thread.channelName}
+                channelId={thread.channelId}
                 onDeleteThreadHandler={props.handleDeleteThread}
                 toggleModal={props.toggleModal}
                 highlightColor={thread.highlightColor}
@@ -58,7 +58,7 @@ ThreadList.propTypes = {
       title: PropTypes.string.isRequired,
       date: PropTypes.string.isRequired,
       id: PropTypes.string.isRequired,
-      channelName: PropTypes.string,
+      channelId: PropTypes.string,
       highlightColor: PropTypes.string.isRequired
     })
   ),
