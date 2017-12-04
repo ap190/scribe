@@ -1,16 +1,13 @@
+import React, { Component } from "react";
 import PropTypes from "prop-types";
-// import './addbutton.scss';
-
-import React from "react";
 import CSSTransitionGroup from "react-transition-group/CSSTransitionGroup";
-
 import { getSelectedBlockNode } from "../../util";
 
 /*
 Implementation of the medium-link side `+` button to insert various rich blocks
 like Images/Embeds/Videos.
 */
-export default class AddButton extends React.Component {
+class AddButton extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -22,7 +19,6 @@ export default class AddButton extends React.Component {
     this.blockKey = "";
     this.blockType = "";
     this.blockLength = -1;
-
     this.findNode = this.findNode.bind(this);
     this.hideBlock = this.hideBlock.bind(this);
     this.openToolbar = this.openToolbar.bind(this);
@@ -78,32 +74,6 @@ export default class AddButton extends React.Component {
     }
     setTimeout(this.findNode, 0);
   }
-
-  // Show + button regardless of block length
-  // componentWillReceiveProps(newProps) {
-  //   const { editorState } = newProps;
-  //   const contentState = editorState.getCurrentContent();
-  //   const selectionState = editorState.getSelection();
-  //   if (!selectionState.isCollapsed() || selectionState.anchorKey != selectionState.focusKey) {
-  //     this.hideBlock();
-  //     return;
-  //   }
-  //   const block = contentState.getBlockForKey(selectionState.anchorKey);
-  //   const bkey = block.getKey();
-  //   if (block.getType() !== this.blockType) {
-  //     this.blockType = block.getType();
-  //     setTimeout(this.findNode, 0);
-  //     return;
-  //   }
-  //   if (this.blockKey === bkey) {
-  //     this.setState({
-  //       visible: true
-  //     });
-  //     return;
-  //   }
-  //   this.blockKey = bkey;
-  //   setTimeout(this.findNode, 0);
-  // }
 
   hideBlock() {
     if (this.state.visible) {
@@ -189,6 +159,7 @@ export default class AddButton extends React.Component {
                 <Button
                   key={button.title}
                   {...extraProps}
+                  editorState={this.props.editorState}
                   getEditorState={this.props.getEditorState}
                   setEditorState={this.props.setEditorState}
                   close={this.openToolbar}
@@ -206,5 +177,8 @@ AddButton.propTypes = {
   focus: PropTypes.func,
   getEditorState: PropTypes.func.isRequired,
   setEditorState: PropTypes.func.isRequired,
-  sideButtons: PropTypes.arrayOf(PropTypes.object)
+  sideButtons: PropTypes.arrayOf(PropTypes.object),
+  editorState: PropTypes.any
 };
+
+export default AddButton;

@@ -1,487 +1,545 @@
 [
-  {
-    "channelName": "# design stuff",
-    "channelType": "communication",
-    "id": "6e55e4dd-d4de-436c-9f7f-956f4910d424",
-    "lastPosted": "4 days ago",
-    "selected": false,
-    "threads": [
-      {
-        "channelId": "6e55e4dd-d4de-436c-9f7f-956f4910d424",
-        "date": "Sunday, December 3, 2017 3:11 PM",
-        "document": {
-          "blocks": [
-            {
-              "data": {},
-              "depth": 0,
-              "entityRanges": [],
-              "inlineStyleRanges": [],
-              "key": "9kp26",
-              "text": "hello there friend",
-              "type": "unstyled"
-            },
-            {
-              "data": {},
-              "depth": 0,
-              "entityRanges": [],
-              "inlineStyleRanges": [],
-              "key": "551fo",
-              "text": "",
-              "type": "unstyled"
-            }
-          ],
-          "entityMap": {}
-        },
-        "highlightColor": "#DFDCE3",
-        "id": "6e0c304c-0885-43fd-b4c2-cf7a204437b4",
-        "selected": false,
-        "text": "hello there friend",
-        "title": "has document"
-      },
-      {
-        "channelId": "6e55e4dd-d4de-436c-9f7f-956f4910d424",
-        "date": "Sunday, December 3, 2017 2:13 PM",
-        "document": {
-          "blocks": [
-            {
-              "data": {},
-              "depth": 0,
-              "entityRanges": [],
-              "inlineStyleRanges": [],
-              "key": "9kp26",
-              "text": "hi hihi agaegawgeaw c ",
-              "type": "unstyled"
-            }
-          ],
-          "entityMap": {}
-        },
-        "highlightColor": "#fc4a1a",
-        "id": "60c9c04c-0fd4-4463-a0cb-36b7ca4095cd",
-        "selected": false,
-        "text": "hi hihi agaegaegawgeaw cnncnjshheasss ",
-        "title": "elephant"
-      },
-      {
-        "channelId": "6e55e4dd-d4de-436c-9f7f-956f4910d424",
-        "date": "Sunday, December 3, 2017 4:29 PM",
-        "document": {
-          "blocks": [
-            {
-              "data": {},
-              "depth": 0,
-              "entityRanges": [],
-              "inlineStyleRanges": [],
-              "key": "6m116",
-              "text": "fab and jada",
-              "type": "header-three"
-            },
-            {
-              "data": {
-                "src":
-                  "blob:http://localhost:3000/ae1d4e35-87ed-46a0-b229-db7faad75f68"
-              },
-              "depth": 0,
-              "entityRanges": [],
-              "inlineStyleRanges": [],
-              "key": "2kv2t",
-              "text": "that thing tho",
-              "type": "atomic:image"
-            },
-            {
-              "data": {},
-              "depth": 0,
-              "entityRanges": [],
-              "inlineStyleRanges": [],
-              "key": "cascn",
-              "text": "hey there friends!",
-              "type": "todo"
-            },
-            {
-              "data": {},
-              "depth": 0,
-              "entityRanges": [],
-              "inlineStyleRanges": [],
-              "key": "29bjj",
-              "text": "yes",
-              "type": "todo"
-            },
-            {
-              "data": {},
-              "depth": 0,
-              "entityRanges": [],
-              "inlineStyleRanges": [],
-              "key": "9hvl",
-              "text": "cool",
-              "type": "todo"
-            },
-            {
-              "data": {},
-              "depth": 0,
-              "entityRanges": [
-                {
-                  "key": 0,
-                  "length": 9,
-                  "offset": 0
-                }
-              ],
-              "inlineStyleRanges": [],
-              "key": "cr9b6",
-              "text": "highlught",
-              "type": "unstyled"
-            },
-            {
-              "data": {},
-              "depth": 0,
-              "entityRanges": [],
-              "inlineStyleRanges": [],
-              "key": "a0pip",
-              "text": "yalla",
-              "type": "blockquote"
-            }
-          ],
-          "entityMap": {
-            "0": {
-              "data": {
-                "url": "http://nba.com"
-              },
-              "mutability": "MUTABLE",
-              "type": "LINK"
-            }
-          }
-        },
-        "highlightColor": "#fc4a1a",
-        "id": "8e31155e-fa94-45f3-a721-e776e766539a",
-        "selected": false,
-        "text": "fab and jada",
-        "title": "penguin"
-      },
-      {
-        "channelId": "6e55e4dd-d4de-436c-9f7f-956f4910d424",
-        "date": "6 Mar 2017 21:22:23 GMT",
-        "document": null,
-        "highlightColor": "#4abdac",
-        "id": "c2a2057e-b324-41c5-80ed-12eed7f42053",
-        "selected": false,
-        "text": "hey over there~!",
-        "title": "penguin"
-      },
-      {
-        "channelId": "6e55e4dd-d4de-436c-9f7f-956f4910d424",
-        "date": "Sunday, December 3, 2017 4:29 PM",
-        "document": {
-          "blocks": [
-            {
-              "data": {},
-              "depth": 0,
-              "entityRanges": [],
-              "inlineStyleRanges": [],
-              "key": "fdk5c",
-              "text": "hi Omer!",
-              "type": "unstyled"
-            }
-          ],
-          "entityMap": {}
-        },
-        "highlightColor": "#49306B",
-        "id": "5ae6af22-b13d-49c2-b33b-d9e470b57082",
-        "selected": false,
-        "text": "hi Omer!",
-        "title": "penguin"
-      },
-      {
-        "channelId": "6e55e4dd-d4de-436c-9f7f-956f4910d424",
-        "date": "6 Mar 2017 21:22:23 GMT",
-        "document": null,
-        "highlightColor": "#f7b733",
-        "id": "ad7ebda8-c76e-4e54-987f-a6e9d3d53ce5",
+    {
+        "channelName": "# design stuff",
+        "channelType": "communication",
+        "id": "6e55e4dd-d4de-436c-9f7f-956f4910d424",
+        "lastPosted": "4 days ago",
         "selected": true,
-        "text": "hey over there~!",
-        "title": "penguin"
-      },
-      {
-        "channelId": "6e55e4dd-d4de-436c-9f7f-956f4910d424",
-        "date": "6 Mar 2017 21:22:23 GMT",
-        "document": null,
-        "highlightColor": "#49306B",
-        "id": "d7e2f819-2d6c-4f64-a15f-08fcf87f5452",
-        "selected": false,
-        "text": "hey over there~!",
-        "title": "penguin"
-      },
-      {
-        "channelId": "6e55e4dd-d4de-436c-9f7f-956f4910d424",
-        "date": "6 Mar 2017 21:22:23 GMT",
-        "document": {
-          "blocks": [
+        "threads": [
             {
-              "data": {},
-              "depth": 0,
-              "entityRanges": [],
-              "inlineStyleRanges": [],
-              "key": "d6sd2",
-              "text": "",
-              "type": "unstyled"
-            }
-          ],
-          "entityMap": {}
-        },
-        "highlightColor": "#fc4a1a",
-        "id": "49ae8a8c-1fab-4f98-b944-3e65e25814ff",
-        "selected": false,
-        "text": "hey over there~!",
-        "title": "penguin"
-      }
-    ]
-  },
-  {
-    "channelType": "file",
-    "id": "49ae8a8c-1fab-4f98-b944-3e65e2581xyz",
-    "lastPosted": "21 minutes ago",
-    "channelName": ".git",
-    "selected": false,
-    "threads": [
-      {
-        "channelId": "49ae8a8c-1fab-4f98-b944-3e65e2581xyz",
-        "date": "Monday, December 4, 2017 1:05 PM",
-        "document": {
-          "blocks": [
+                "channelId": "6e55e4dd-d4de-436c-9f7f-956f4910d424",
+                "date": "Monday, December 4, 2017 3:49 PM",
+                "document": {
+                    "blocks": [
+                        {
+                            "data": {},
+                            "depth": 0,
+                            "entityRanges": [],
+                            "inlineStyleRanges": [],
+                            "key": "9kp26",
+                            "text": "check 1",
+                            "type": "unstyled"
+                        },
+                        {
+                            "data": {},
+                            "depth": 0,
+                            "entityRanges": [
+                                {
+                                    "key": 0,
+                                    "length": 1,
+                                    "offset": 0
+                                }
+                            ],
+                            "inlineStyleRanges": [],
+                            "key": "6vhdf",
+                            "text": "-",
+                            "type": "atomic"
+                        },
+                        {
+                            "data": {
+                                "src": "blob:http://localhost:3000/7d37ee88-8518-492a-aa8b-b4e220d3d0ee"
+                            },
+                            "depth": 0,
+                            "entityRanges": [],
+                            "inlineStyleRanges": [],
+                            "key": "5mmgm",
+                            "text": "",
+                            "type": "atomic:image"
+                        },
+                        {
+                            "data": {},
+                            "depth": 0,
+                            "entityRanges": [],
+                            "inlineStyleRanges": [],
+                            "key": "am4ml",
+                            "text": "hello",
+                            "type": "unstyled"
+                        },
+                        {
+                            "data": {},
+                            "depth": 0,
+                            "entityRanges": [],
+                            "inlineStyleRanges": [],
+                            "key": "5dnl8",
+                            "text": "",
+                            "type": "unstyled"
+                        },
+                        {
+                            "data": {},
+                            "depth": 0,
+                            "entityRanges": [],
+                            "inlineStyleRanges": [],
+                            "key": "dj9ia",
+                            "text": "",
+                            "type": "unstyled"
+                        },
+                        {
+                            "data": {},
+                            "depth": 0,
+                            "entityRanges": [],
+                            "inlineStyleRanges": [],
+                            "key": "551fo",
+                            "text": "",
+                            "type": "unstyled"
+                        }
+                    ],
+                    "entityMap": {
+                        "0": {
+                            "data": {},
+                            "mutability": "IMMUTABLE",
+                            "type": "separator"
+                        }
+                    }
+                },
+                "highlightColor": "#DFDCE3",
+                "id": "6e0c304c-0885-43fd-b4c2-cf7a204437b4",
+                "selected": true,
+                "text": "check 1",
+                "title": "has document"
+            },
             {
-              "data": {},
-              "depth": 0,
-              "entityRanges": [],
-              "inlineStyleRanges": [],
-              "key": "4mb9",
-              "text": "playing around",
-              "type": "unstyled"
+                "channelId": "6e55e4dd-d4de-436c-9f7f-956f4910d424",
+                "date": "Sunday, December 3, 2017 2:13 PM",
+                "document": {
+                    "blocks": [
+                        {
+                            "data": {},
+                            "depth": 0,
+                            "entityRanges": [],
+                            "inlineStyleRanges": [],
+                            "key": "9kp26",
+                            "text": "hi hihi agaegawgeaw c ",
+                            "type": "unstyled"
+                        }
+                    ],
+                    "entityMap": {}
+                },
+                "highlightColor": "#fc4a1a",
+                "id": "60c9c04c-0fd4-4463-a0cb-36b7ca4095cd",
+                "selected": false,
+                "text": "hi hihi agaegaegawgeaw cnncnjshheasss ",
+                "title": "elephant"
+            },
+            {
+                "channelId": "6e55e4dd-d4de-436c-9f7f-956f4910d424",
+                "date": "Sunday, December 3, 2017 4:29 PM",
+                "document": {
+                    "blocks": [
+                        {
+                            "data": {},
+                            "depth": 0,
+                            "entityRanges": [],
+                            "inlineStyleRanges": [],
+                            "key": "6m116",
+                            "text": "fab and jada",
+                            "type": "header-three"
+                        },
+                        {
+                            "data": {
+                                "src": "blob:http://localhost:3000/ae1d4e35-87ed-46a0-b229-db7faad75f68"
+                            },
+                            "depth": 0,
+                            "entityRanges": [],
+                            "inlineStyleRanges": [],
+                            "key": "2kv2t",
+                            "text": "that thing tho",
+                            "type": "atomic:image"
+                        },
+                        {
+                            "data": {},
+                            "depth": 0,
+                            "entityRanges": [],
+                            "inlineStyleRanges": [],
+                            "key": "cascn",
+                            "text": "hey there friends!",
+                            "type": "todo"
+                        },
+                        {
+                            "data": {},
+                            "depth": 0,
+                            "entityRanges": [],
+                            "inlineStyleRanges": [],
+                            "key": "29bjj",
+                            "text": "yes",
+                            "type": "todo"
+                        },
+                        {
+                            "data": {},
+                            "depth": 0,
+                            "entityRanges": [],
+                            "inlineStyleRanges": [],
+                            "key": "9hvl",
+                            "text": "cool",
+                            "type": "todo"
+                        },
+                        {
+                            "data": {},
+                            "depth": 0,
+                            "entityRanges": [
+                                {
+                                    "key": 0,
+                                    "length": 9,
+                                    "offset": 0
+                                }
+                            ],
+                            "inlineStyleRanges": [],
+                            "key": "cr9b6",
+                            "text": "highlught",
+                            "type": "unstyled"
+                        },
+                        {
+                            "data": {},
+                            "depth": 0,
+                            "entityRanges": [],
+                            "inlineStyleRanges": [],
+                            "key": "a0pip",
+                            "text": "yalla",
+                            "type": "blockquote"
+                        }
+                    ],
+                    "entityMap": {
+                        "0": {
+                            "data": {
+                                "url": "http://nba.com"
+                            },
+                            "mutability": "MUTABLE",
+                            "type": "LINK"
+                        }
+                    }
+                },
+                "highlightColor": "#fc4a1a",
+                "id": "8e31155e-fa94-45f3-a721-e776e766539a",
+                "selected": false,
+                "text": "fab and jada",
+                "title": "penguin"
+            },
+            {
+                "channelId": "6e55e4dd-d4de-436c-9f7f-956f4910d424",
+                "date": "6 Mar 2017 21:22:23 GMT",
+                "document": null,
+                "highlightColor": "#4abdac",
+                "id": "c2a2057e-b324-41c5-80ed-12eed7f42053",
+                "selected": false,
+                "text": "hey over there~!",
+                "title": "penguin"
+            },
+            {
+                "channelId": "6e55e4dd-d4de-436c-9f7f-956f4910d424",
+                "date": "Sunday, December 3, 2017 4:29 PM",
+                "document": {
+                    "blocks": [
+                        {
+                            "data": {},
+                            "depth": 0,
+                            "entityRanges": [],
+                            "inlineStyleRanges": [],
+                            "key": "fdk5c",
+                            "text": "hi Omer!",
+                            "type": "unstyled"
+                        }
+                    ],
+                    "entityMap": {}
+                },
+                "highlightColor": "#49306B",
+                "id": "5ae6af22-b13d-49c2-b33b-d9e470b57082",
+                "selected": false,
+                "text": "hi Omer!",
+                "title": "penguin"
+            },
+            {
+                "channelId": "6e55e4dd-d4de-436c-9f7f-956f4910d424",
+                "date": "6 Mar 2017 21:22:23 GMT",
+                "document": null,
+                "highlightColor": "#f7b733",
+                "id": "ad7ebda8-c76e-4e54-987f-a6e9d3d53ce5",
+                "selected": false,
+                "text": "hey over there~!",
+                "title": "penguin"
+            },
+            {
+                "channelId": "6e55e4dd-d4de-436c-9f7f-956f4910d424",
+                "date": "6 Mar 2017 21:22:23 GMT",
+                "document": null,
+                "highlightColor": "#49306B",
+                "id": "d7e2f819-2d6c-4f64-a15f-08fcf87f5452",
+                "selected": false,
+                "text": "hey over there~!",
+                "title": "penguin"
+            },
+            {
+                "channelId": "6e55e4dd-d4de-436c-9f7f-956f4910d424",
+                "date": "6 Mar 2017 21:22:23 GMT",
+                "document": {
+                    "blocks": [
+                        {
+                            "data": {},
+                            "depth": 0,
+                            "entityRanges": [],
+                            "inlineStyleRanges": [],
+                            "key": "d6sd2",
+                            "text": "",
+                            "type": "unstyled"
+                        }
+                    ],
+                    "entityMap": {}
+                },
+                "highlightColor": "#fc4a1a",
+                "id": "49ae8a8c-1fab-4f98-b944-3e65e25814ff",
+                "selected": false,
+                "text": "hey over there~!",
+                "title": "penguin"
             }
-          ],
-          "entityMap": {}
-        },
-        "highlightColor": "#DFDCE3",
-        "id": "2745c098-b11b-4f33-a0ae-b7327a251bba",
-        "selected": true,
-        "text": "playing around",
-        "title": "Trying add file"
-      }
-    ]
-  },
-  {
-    "channelType": "file",
-    "id": "d328fecb-bcbf-4981-af48-b2baec8d3c53",
-    "lastPosted": "1 day ago",
-    "channelName": ".gitignore",
-    "selected": false,
-    "threads": [
-      {
-        "date": "Sunday, December 3, 2017 6:24 PM",
-        "highlightColor": "#DFDCE3",
-        "id": "582a2049-a47c-452d-943c-a52cde6e609c",
-        "selected": true,
-        "text": "",
-        "title": "Untitled"
-      },
-      {
-        "date": "Unsaved",
-        "highlightColor": "#DFDCE3",
-        "id": "2b42e6c1-6334-4df9-83d8-fc1815d159e5",
+        ]
+    },
+    {
+        "channelName": ".git",
+        "channelType": "file",
+        "id": "49ae8a8c-1fab-4f98-b944-3e65e2581xyz",
+        "lastPosted": "21 minutes ago",
         "selected": false,
-        "text": "New unsaved thread",
-        "title": "Untitled"
-      },
-      {
-        "date": "6 Mar 2017 21:22:23 GMT",
-        "document": null,
-        "highlightColor": "#DFDCE3",
-        "id": "de9e0166-8947-4c8d-b4a0-2743a01866df",
+        "threads": [
+            {
+                "channelId": "49ae8a8c-1fab-4f98-b944-3e65e2581xyz",
+                "date": "Monday, December 4, 2017 1:05 PM",
+                "document": {
+                    "blocks": [
+                        {
+                            "data": {},
+                            "depth": 0,
+                            "entityRanges": [],
+                            "inlineStyleRanges": [],
+                            "key": "4mb9",
+                            "text": "playing around",
+                            "type": "unstyled"
+                        }
+                    ],
+                    "entityMap": {}
+                },
+                "highlightColor": "#DFDCE3",
+                "id": "2745c098-b11b-4f33-a0ae-b7327a251bba",
+                "selected": true,
+                "text": "playing around",
+                "title": "Trying add file"
+            }
+        ]
+    },
+    {
         "channelName": ".gitignore",
+        "channelType": "file",
+        "id": "d328fecb-bcbf-4981-af48-b2baec8d3c53",
+        "lastPosted": "1 day ago",
         "selected": false,
-        "text": "lala land!",
-        "title": "code"
-      },
-      {
-        "date": "6 Mar 2017 21:22:23 GMT",
-        "document": null,
-        "highlightColor": "#fc4a1a",
-        "id": "ea54b259-5dc1-4c65-b946-d351be42123e",
-        "channelName": ".gitignore",
-        "selected": false,
-        "text": "scribe is king",
-        "title": "elephant"
-      },
-      {
-        "date": "6 Mar 2017 21:22:23 GMT",
-        "document": null,
-        "highlightColor": "#fc4a1a",
-        "id": "cd80dc27-7705-49ce-9934-a44303d246e8",
-        "channelName": ".gitignore",
-        "selected": false,
-        "text": "the best thing ever",
-        "title": "amazing tool"
-      }
-    ]
-  },
-  {
-    "channelType": "file",
-    "id": "49ae8a8c-1fab-4f98-b944-3e65e25814xx",
-    "lastPosted": "4 days ago",
-    "channelName": "README.md",
-    "selected": false,
-    "threads": [
-      {
-        "date": "6 Mar 2017 21:22:23 GMT",
-        "document": null,
-        "highlightColor": "#DFDCE3",
-        "id": "49ae8a8c-1fab-4f98-b944-3e65e25814zz",
-        "channelName": "README.md",
-        "text": "Getting Started with npm",
-        "title": "Set Up Guide"
-      },
-      {
-        "date": "6 Mar 2017 21:22:23 GMT",
-        "document": null,
-        "highlightColor": "#fc4a1a",
-        "id": "49ae8a8c-1fab-4f98-b944-3e65e25814ee",
-        "channelName": "README.md",
-        "text": "hey here!",
-        "title": "elephant"
-      },
-      {
-        "date": "6 Mar 2017 21:22:23 GMT",
-        "document": null,
-        "highlightColor": "#fc4a1a",
-        "id": "49ae8a8c-1fab-4f98-b944-3e65e25814aa",
-        "channelName": "README.md",
-        "text": "hey over there~!",
-        "title": "penguin"
-      },
-      {
-        "date": "6 Mar 2017 21:22:23 GMT",
-        "document": null,
-        "highlightColor": "#49306B",
-        "id": "49ae8a8c-1fab-4f98-b944-3e65e25814dd",
-        "channelName": "README.md",
-        "text": "hey over there~!",
-        "title": "penguin"
-      },
-      {
-        "date": "6 Mar 2017 21:22:23 GMT",
-        "document": null,
-        "highlightColor": "#fc4a1a",
-        "id": "49ae8a8c-1fab-4f98-b944-3e65e25814rr",
-        "channelName": "README.md",
-        "text": "hey over there~!",
-        "title": "penguin"
-      }
-    ]
-  },
-  {
-    "channelName": "# backend",
-    "channelType": "communication",
-    "id": "38b0e50b-810e-4b41-9b9f-dabdbab392c7",
-    "lastPosted": "21 minutes ago",
-    "selected": false,
-    "threads": [
-      {
-        "channelId": "38b0e50b-810e-4b41-9b9f-dabdbab392c7",
-        "date": "Sunday, December 3, 2017 6:18 PM",
-        "document": {
-          "blocks": [
+        "threads": [
             {
-              "data": {},
-              "depth": 0,
-              "entityRanges": [],
-              "inlineStyleRanges": [],
-              "key": "a87m5",
-              "text": "",
-              "type": "unstyled"
-            }
-          ],
-          "entityMap": {}
-        },
-        "highlightColor": "#49306B",
-        "id": "6c8f7681-9527-4519-9925-5102c3689cec",
-        "selected": false,
-        "text": "",
-        "title": "New!"
-      }
-    ]
-  },
-  {
-    "channelName": "# business clients",
-    "channelType": "communication",
-    "id": "768c7062-2110-45df-99ef-63e0f0aad9c0",
-    "lastPosted": "1 day ago",
-    "selected": false,
-    "threads": [
-      {
-        "channelId": "768c7062-2110-45df-99ef-63e0f0aad9c0",
-        "date": "Monday, December 4, 2017 12:26 PM",
-        "document": {
-          "blocks": [
+                "date": "Sunday, December 3, 2017 6:24 PM",
+                "highlightColor": "#DFDCE3",
+                "id": "582a2049-a47c-452d-943c-a52cde6e609c",
+                "selected": true,
+                "text": "",
+                "title": "Untitled"
+            },
             {
-              "data": {},
-              "depth": 0,
-              "entityRanges": [],
-              "inlineStyleRanges": [],
-              "key": "e0r49",
-              "text": "trying again",
-              "type": "unstyled"
-            }
-          ],
-          "entityMap": {}
-        },
-        "highlightColor": "#DFDCE3",
-        "id": "5f878b04-a268-4c45-8e9c-42df27bada95",
-        "selected": false,
-        "text": "trying again",
-        "title": "Try two"
-      },
-      {
-        "channelId": "768c7062-2110-45df-99ef-63e0f0aad9c0",
-        "date": "Sunday, December 3, 2017 6:08 PM",
-        "document": {
-          "blocks": [
+                "date": "Unsaved",
+                "highlightColor": "#DFDCE3",
+                "id": "2b42e6c1-6334-4df9-83d8-fc1815d159e5",
+                "selected": false,
+                "text": "New unsaved thread",
+                "title": "Untitled"
+            },
             {
-              "data": {},
-              "depth": 0,
-              "entityRanges": [],
-              "inlineStyleRanges": [],
-              "key": "aar1",
-              "text": "",
-              "type": "unstyled"
-            }
-          ],
-          "entityMap": {}
-        },
-        "highlightColor": "#4abdac",
-        "id": "27bfe304-b9bb-4db2-940f-f6203ea3639c",
-        "selected": true,
-        "text": "",
-        "title": "New thread!"
-      },
-      {
-        "channelId": "768c7062-2110-45df-99ef-63e0f0aad9c0",
-        "date": "Friday, December 1, 2017 4:33 AM",
-        "document": {
-          "blocks": [
+                "channelName": ".gitignore",
+                "date": "6 Mar 2017 21:22:23 GMT",
+                "document": null,
+                "highlightColor": "#DFDCE3",
+                "id": "de9e0166-8947-4c8d-b4a0-2743a01866df",
+                "selected": false,
+                "text": "lala land!",
+                "title": "code"
+            },
             {
-              "data": {},
-              "depth": 0,
-              "entityRanges": [],
-              "inlineStyleRanges": [],
-              "key": "b7a9e",
-              "text": "hello!",
-              "type": "unstyled"
+                "channelName": ".gitignore",
+                "date": "6 Mar 2017 21:22:23 GMT",
+                "document": null,
+                "highlightColor": "#fc4a1a",
+                "id": "ea54b259-5dc1-4c65-b946-d351be42123e",
+                "selected": false,
+                "text": "scribe is king",
+                "title": "elephant"
+            },
+            {
+                "channelName": ".gitignore",
+                "date": "6 Mar 2017 21:22:23 GMT",
+                "document": null,
+                "highlightColor": "#fc4a1a",
+                "id": "cd80dc27-7705-49ce-9934-a44303d246e8",
+                "selected": false,
+                "text": "the best thing ever",
+                "title": "amazing tool"
             }
-          ],
-          "entityMap": {}
-        },
-        "highlightColor": "#fc4a1a",
-        "id": "75500add-0ef5-492e-82b2-335587959851",
+        ]
+    },
+    {
+        "channelName": "README.md",
+        "channelType": "file",
+        "id": "49ae8a8c-1fab-4f98-b944-3e65e25814xx",
+        "lastPosted": "4 days ago",
         "selected": false,
-        "text": "hey over there~!",
-        "title": "penguin"
-      }
-    ]
-  }
+        "threads": [
+            {
+                "channelName": "README.md",
+                "date": "6 Mar 2017 21:22:23 GMT",
+                "document": null,
+                "highlightColor": "#DFDCE3",
+                "id": "49ae8a8c-1fab-4f98-b944-3e65e25814zz",
+                "text": "Getting Started with npm",
+                "title": "Set Up Guide"
+            },
+            {
+                "channelName": "README.md",
+                "date": "6 Mar 2017 21:22:23 GMT",
+                "document": null,
+                "highlightColor": "#fc4a1a",
+                "id": "49ae8a8c-1fab-4f98-b944-3e65e25814ee",
+                "text": "hey here!",
+                "title": "elephant"
+            },
+            {
+                "channelName": "README.md",
+                "date": "6 Mar 2017 21:22:23 GMT",
+                "document": null,
+                "highlightColor": "#fc4a1a",
+                "id": "49ae8a8c-1fab-4f98-b944-3e65e25814aa",
+                "text": "hey over there~!",
+                "title": "penguin"
+            },
+            {
+                "channelName": "README.md",
+                "date": "6 Mar 2017 21:22:23 GMT",
+                "document": null,
+                "highlightColor": "#49306B",
+                "id": "49ae8a8c-1fab-4f98-b944-3e65e25814dd",
+                "text": "hey over there~!",
+                "title": "penguin"
+            },
+            {
+                "channelName": "README.md",
+                "date": "6 Mar 2017 21:22:23 GMT",
+                "document": null,
+                "highlightColor": "#fc4a1a",
+                "id": "49ae8a8c-1fab-4f98-b944-3e65e25814rr",
+                "text": "hey over there~!",
+                "title": "penguin"
+            }
+        ]
+    },
+    {
+        "channelName": "# backend",
+        "channelType": "communication",
+        "id": "38b0e50b-810e-4b41-9b9f-dabdbab392c7",
+        "lastPosted": "21 minutes ago",
+        "selected": false,
+        "threads": [
+            {
+                "channelId": "38b0e50b-810e-4b41-9b9f-dabdbab392c7",
+                "date": "Sunday, December 3, 2017 6:18 PM",
+                "document": {
+                    "blocks": [
+                        {
+                            "data": {},
+                            "depth": 0,
+                            "entityRanges": [],
+                            "inlineStyleRanges": [],
+                            "key": "a87m5",
+                            "text": "",
+                            "type": "unstyled"
+                        }
+                    ],
+                    "entityMap": {}
+                },
+                "highlightColor": "#49306B",
+                "id": "6c8f7681-9527-4519-9925-5102c3689cec",
+                "selected": false,
+                "text": "",
+                "title": "New!"
+            }
+        ]
+    },
+    {
+        "channelName": "# business clients",
+        "channelType": "communication",
+        "id": "768c7062-2110-45df-99ef-63e0f0aad9c0",
+        "lastPosted": "1 day ago",
+        "selected": false,
+        "threads": [
+            {
+                "channelId": "768c7062-2110-45df-99ef-63e0f0aad9c0",
+                "date": "Monday, December 4, 2017 12:26 PM",
+                "document": {
+                    "blocks": [
+                        {
+                            "data": {},
+                            "depth": 0,
+                            "entityRanges": [],
+                            "inlineStyleRanges": [],
+                            "key": "e0r49",
+                            "text": "trying again",
+                            "type": "unstyled"
+                        }
+                    ],
+                    "entityMap": {}
+                },
+                "highlightColor": "#DFDCE3",
+                "id": "5f878b04-a268-4c45-8e9c-42df27bada95",
+                "selected": false,
+                "text": "trying again",
+                "title": "Try two"
+            },
+            {
+                "channelId": "768c7062-2110-45df-99ef-63e0f0aad9c0",
+                "date": "Sunday, December 3, 2017 6:08 PM",
+                "document": {
+                    "blocks": [
+                        {
+                            "data": {},
+                            "depth": 0,
+                            "entityRanges": [],
+                            "inlineStyleRanges": [],
+                            "key": "aar1",
+                            "text": "",
+                            "type": "unstyled"
+                        }
+                    ],
+                    "entityMap": {}
+                },
+                "highlightColor": "#4abdac",
+                "id": "27bfe304-b9bb-4db2-940f-f6203ea3639c",
+                "selected": true,
+                "text": "",
+                "title": "New thread!"
+            },
+            {
+                "channelId": "768c7062-2110-45df-99ef-63e0f0aad9c0",
+                "date": "Friday, December 1, 2017 4:33 AM",
+                "document": {
+                    "blocks": [
+                        {
+                            "data": {},
+                            "depth": 0,
+                            "entityRanges": [],
+                            "inlineStyleRanges": [],
+                            "key": "b7a9e",
+                            "text": "hello!",
+                            "type": "unstyled"
+                        }
+                    ],
+                    "entityMap": {}
+                },
+                "highlightColor": "#fc4a1a",
+                "id": "75500add-0ef5-492e-82b2-335587959851",
+                "selected": false,
+                "text": "hey over there~!",
+                "title": "penguin"
+            }
+        ]
+    }
 ]

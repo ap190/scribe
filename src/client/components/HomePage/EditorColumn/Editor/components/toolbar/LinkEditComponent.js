@@ -25,6 +25,9 @@ class LinkEditComponent extends React.Component {
       position: {}
     };
     this.renderedOnce = false;
+    this.calculatePosition = this.calculatePosition.bind(this);
+    this.removeLink = this.removeLink.bind(this);
+    this.editLink = this.editLink.bind(this);
   }
 
   componentDidMount() {
@@ -49,7 +52,7 @@ class LinkEditComponent extends React.Component {
     setTimeout(this.calculatePosition, 0);
   }
 
-  calculatePosition = () => {
+  calculatePosition() {
     if (!this.toolbar) {
       return;
     }
@@ -67,19 +70,19 @@ class LinkEditComponent extends React.Component {
       transform: "translate(-50%) scale(1)"
     };
     this.setState({ position });
-  };
+  }
 
-  removeLink = e => {
+  removeLink(e) {
     e.preventDefault();
     e.stopPropagation();
     this.props.removeLink(this.props.blockKey, this.props.entityKey);
-  };
+  }
 
-  editLink = e => {
+  editLink(e) {
     e.preventDefault();
     e.stopPropagation();
     this.props.editLink(this.props.blockKey, this.props.entityKey);
-  };
+  }
 
   render() {
     let url = this.props.url;
@@ -120,7 +123,7 @@ class LinkEditComponent extends React.Component {
 }
 
 LinkEditComponent.propTypes = {
-  editorState: PropTypes.object.isRequired,
+  editorState: PropTypes.object,
   url: PropTypes.string.isRequired,
   blockKey: PropTypes.string.isRequired,
   entityKey: PropTypes.string.isRequired,

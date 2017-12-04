@@ -10,31 +10,33 @@ class EmbedSideButton extends Component {
   }
 
   onClick() {
-    const url = window.prompt(
-      "Enter a URL",
-      "https://www.youtube.com/watch?v=PMNFaAUs2mo"
-    );
+    // const url = window.prompt(
+    //   "Enter a URL",
+    //   "https://www.youtube.com/watch?v=PMNFaAUs2mo"
+    // );
     this.props.close();
-    if (!url) {
-      return;
-    }
-    this.addEmbedURL(url);
+    // if (!url) {
+    //   return;
+    // }
+    this.addEmbedURL(
+      "https://www.youtube.com/watch?v=VEpMj-tqixs&list=RD6u0DGIh3wLA&index=11"
+    );
   }
 
   addEmbedURL(url) {
-    let editorState = this.props.getEditorState();
-    const content = editorState.getCurrentContent();
+    // let editorState = this.props.getEditorState();
+    const content = this.props.editorState.getCurrentContent();
     const contentWithEntity = content.createEntity("embed", "IMMUTABLE", {
       url
     });
     const entityKey = contentWithEntity.getLastCreatedEntityKey();
-    editorState = EditorState.push(
-      editorState,
+    const newEditorState = EditorState.push(
+      this.props.editorState,
       contentWithEntity,
       "create-entity"
     );
     this.props.setEditorState(
-      AtomicBlockUtils.insertAtomicBlock(editorState, entityKey, "E")
+      AtomicBlockUtils.insertAtomicBlock(newEditorState, entityKey, "E")
     );
   }
 
@@ -55,7 +57,8 @@ class EmbedSideButton extends Component {
 EmbedSideButton.propTypes = {
   setEditorState: PropTypes.func,
   getEditorState: PropTypes.func,
-  close: PropTypes.func
+  close: PropTypes.func,
+  editorState: PropTypes.any
 };
 
 export default EmbedSideButton;

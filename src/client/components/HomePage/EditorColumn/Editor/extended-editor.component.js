@@ -1,19 +1,13 @@
-import PropTypes from "prop-types";
-/* eslint-disable */
-
 import React from "react";
-import ReactDOM from "react-dom";
+import PropTypes from "prop-types";
 import {
   EditorState,
   convertToRaw,
   convertFromRaw,
   KeyBindingUtil,
-  Modifier,
-  AtomicBlockUtils
+  Modifier
 } from "draft-js";
-
 import "draft-js/dist/Draft.css";
-import "hint.css/hint.min.css";
 
 import "./index.scss";
 import "./components/toolbar/addbutton.scss";
@@ -39,7 +33,7 @@ import {
   ImageSideButton,
   SeparatorSideButton,
   EmbedSideButton,
-  rendererFn,
+  customRendererFn,
   HANDLED,
   NOT_HANDLED
 } from "./index";
@@ -62,7 +56,6 @@ const SQUOTE_END = "’";
 
 // seems to be for the renderHTML functionality
 const newBlockToHTML = block => {
-  const blockType = block.type;
   if (block.type === Block.ATOMIC) {
     if (block.text === "E") {
       return {
@@ -153,40 +146,14 @@ const handleBeforeInput = (editorState, str, onChange) => {
 
 const AtomicSeparatorComponent = props => <hr />;
 
-class ExtendedEdtior extends React.Component {
+class ExtendedEditor extends React.Component {
   constructor(props) {
     super(props);
-
     this.state = {
       editorState: createEditorState(),
       editorEnabled: true,
-      placeholder: "Write here..."
+      placeholder: "Add notes here..."
     };
-
-    this.onChange = (editorState, callback = null) => {
-      if (this.state.editorEnabled) {
-        this.setState({ editorState }, () => {
-          if (callback) {
-            callback();
-          }
-        });
-      }
-    };
-
-    this.sideButtons = [
-      {
-        title: "Image",
-        component: ImageSideButton
-      },
-      {
-        title: "Embed",
-        component: EmbedSideButton
-      },
-      {
-        title: "Separator",
-        component: SeparatorSideButton
-      }
-    ];
 
     this.exporter = setRenderOptions({
       styleToHTML,
@@ -204,6 +171,36 @@ class ExtendedEdtior extends React.Component {
     this.handleKeyCommand = this.handleKeyCommand.bind(this);
     this.handleDroppedFiles = this.handleDroppedFiles.bind(this);
     this.handleReturn = this.handleReturn.bind(this);
+    this.rendererFn = this.rendererFn.bind(this);
+    this.getSideButtons = this.getSideButtons.bind(this);
+    this.onChange = this.onChange.bind(this);
+  }
+
+  onChange(editorState, callback = null) {
+    if (this.state.editorEnabled) {
+      this.setState({ editorState }, () => {
+        if (callback) {
+          callback();
+        }
+      });
+    }
+  }
+
+  getSideButtons() {
+    return [
+      {
+        title: "Image",
+        component: ImageSideButton
+      },
+      {
+        title: "Embed",
+        component: EmbedSideButton
+      },
+      {
+        title: "Separator",
+        component: SeparatorSideButton
+      }
+    ];
   }
 
   rendererFn(setEditorState, getEditorState) {
@@ -211,7 +208,8 @@ class ExtendedEdtior extends React.Component {
       embed: AtomicEmbedComponent,
       separator: AtomicSeparatorComponent
     };
-    const rFnOld = rendererFn(setEditorState, getEditorState);
+    const rFnOld = customRendererFn(setEditorState, getEditorState);
+    const editorState = this.state.editorState;
     const rFnNew = contentBlock => {
       const type = contentBlock.getType();
       switch (type) {
@@ -221,7 +219,8 @@ class ExtendedEdtior extends React.Component {
             editable: false,
             props: {
               components: atomicRenderers,
-              getEditorState
+              getEditorState,
+              editorState: editorState.getCurrentContent()
             }
           };
         default:
@@ -243,10 +242,9 @@ class ExtendedEdtior extends React.Component {
     }
     if (e.altKey === true) {
       if (e.shiftKey === true) {
-        switch (e.which) {
+        if (e.which === 76) {
           /* Alt + Shift + L */
-          case 76:
-            return "load-saved-data";
+          return "load-saved-data";
           /* Key E */
           // case 69: return 'toggle-edit-mode';
         }
@@ -283,7 +281,7 @@ class ExtendedEdtior extends React.Component {
   renderHTML(e) {
     const currentContent = this.state.editorState.getCurrentContent();
     const eHTML = this.exporter(currentContent);
-    var newWin = window.open(
+    const newWin = window.open(
       `${window.location.pathname}rendered.html`,
       "windowName",
       `height=${window.screen.height},width=${window.screen.wdith}`
@@ -342,8 +340,8 @@ class ExtendedEdtior extends React.Component {
     const { editorState, editorEnabled } = this.state;
     return (
       <Editor
-        editorState={editorState}
-        onChange={this.onChange}
+        editorState={this.props.editorState}
+        onChange={this.props.onChange}
         editorEnabled={editorEnabled}
         handleDroppedFiles={this.handleDroppedFiles}
         handleKeyCommand={this.handleKeyCommand}
@@ -351,11 +349,16 @@ class ExtendedEdtior extends React.Component {
         keyBindingFn={this.keyBinding}
         beforeInput={handleBeforeInput}
         handleReturn={this.handleReturn}
-        sideButtons={this.sideButtons}
+        sideButtons={this.getSideButtons()}
         rendererFn={this.rendererFn}
       />
     );
   }
 }
 
-export default ExtendedEdtior;
+ExtendedEditor.proTypes = {
+  onChange: PropTypes.func.isRequired,
+  editorState: PropTypes.any
+};
+
+export default ExtendedEditor;

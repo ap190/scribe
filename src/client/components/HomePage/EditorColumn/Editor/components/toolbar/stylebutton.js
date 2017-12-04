@@ -1,9 +1,9 @@
 import PropTypes from "prop-types";
-import React from "react";
+import React, { Component } from "react";
 
-import { HYPERLINK } from "../../util/constants.js";
+import { HYPERLINK } from "../../util/constants";
 
-export default class StyleButton extends React.Component {
+export default class StyleButton extends Component {
   constructor(props) {
     super(props);
     this.onToggle = e => {

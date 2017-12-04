@@ -1,10 +1,11 @@
 /*
 Returns the `boundingClientRect` of the passed selection.
 */
-export const getSelectionRect = (selected) => {
+export const getSelectionRect = selected => {
   const _rect = selected.getRangeAt(0).getBoundingClientRect();
   // selected.getRangeAt(0).getBoundingClientRect()
-  let rect = _rect && _rect.top ? _rect : selected.getRangeAt(0).getClientRects()[0];
+  let rect =
+    _rect && _rect.top ? _rect : selected.getRangeAt(0).getClientRects()[0];
   if (!rect) {
     if (selected.anchorNode && selected.anchorNode.getBoundingClientRect) {
       rect = selected.anchorNode.getBoundingClientRect();
@@ -19,7 +20,7 @@ export const getSelectionRect = (selected) => {
 /*
 Returns the native selection node.
 */
-export const getSelection = (root) => {
+export const getSelection = root => {
   let t = null;
   if (root.getSelection) {
     t = root.getSelection();
@@ -35,7 +36,7 @@ export const getSelection = (root) => {
 Recursively finds the DOM Element of the block where the cursor is currently present.
 If not found, returns null.
 */
-export const getSelectedBlockNode = (root) => {
+export const getSelectedBlockNode = root => {
   const selection = root.getSelection();
   if (selection.rangeCount === 0) {
     return null;
@@ -43,7 +44,7 @@ export const getSelectedBlockNode = (root) => {
   let node = selection.getRangeAt(0).startContainer;
   // console.log(node);
   do {
-    if (node.getAttribute && node.getAttribute('data-block') === 'true') {
+    if (node.getAttribute && node.getAttribute("data-block") === "true") {
       return node;
     }
     node = node.parentNode;

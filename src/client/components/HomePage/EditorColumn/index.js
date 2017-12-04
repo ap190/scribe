@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { EditorState, convertToRaw } from "draft-js";
-import { Editor } from "medium-draft";
+import ExtendedEditor from "./Editor/extended-editor.component";
+// import { Editor } from "medium-draft";
 import "medium-draft/lib/index.css";
 import "./editor.css";
 import EditorActionBar from "./EditorActionBar";
@@ -24,11 +25,16 @@ class EditorColumn extends Component {
     // this.refs.editor.focus();
   }
 
-  onChange(editorState) {
-    this.props.handleDocumentChange(
-      editorState,
-      convertToRaw(editorState.getCurrentContent())
-    );
+  onChange(editorState, callback) {
+    if (this.state.editorEnabled) {
+      this.props.handleDocumentChange(
+        editorState,
+        convertToRaw(editorState.getCurrentContent())
+      );
+      if (callback) {
+        callback();
+      }
+    }
   }
 
   getEditorState() {
@@ -41,8 +47,8 @@ class EditorColumn extends Component {
       toggleHandler,
       isEditorToggled,
       saveWorkspace,
-      currentDocument,
-      currentThread
+      currentThread,
+      currentDocument
     } = this.props;
     return (
       <div className="editor">
@@ -64,11 +70,11 @@ class EditorColumn extends Component {
             ? "New thread has not been saved yet."
             : `Last Saved: ${currentThread.date}`}
         </div>
-        <Editor
+        <ExtendedEditor
           ref="editor"
+          style={{ justifySelf: "flex-start" }}
           editorState={currentDocument}
           onChange={this.onChange}
-          style={{ justifySelf: "flex-start" }}
         />
         {!isModalOpen && <ColumnFooter />}
       </div>

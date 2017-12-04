@@ -50,7 +50,7 @@ class AtomicEmbedComponent extends Component {
   }
 
   render() {
-    const { url } = this.props.data;
+    const url = this.props.data;
     const innerHTML = `<div><a class="embedly-card" href="${url}" data-card-controls="0" data-card-theme="dark">Embedded ― ${url}</a></div>`;
     return (
       <div className="md-block-atomic-embed">
@@ -61,7 +61,7 @@ class AtomicEmbedComponent extends Component {
 }
 
 AtomicEmbedComponent.propTypes = {
-  data: PropTypes.object.isRequired
+  data: PropTypes.string.isRequired
 };
 
 export default AtomicEmbedComponent;

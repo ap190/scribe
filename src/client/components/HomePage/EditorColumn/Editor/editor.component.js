@@ -11,12 +11,10 @@ import {
 } from "draft-js";
 import isSoftNewlineEvent from "draft-js/lib/isSoftNewlineEvent";
 import { OrderedMap } from "immutable";
-
-import AddButton from "./components/addbutton";
+import AddButton from "./components/toolbar/addbutton";
 import Toolbar, { BLOCK_BUTTONS, INLINE_BUTTONS } from "./components/toolbar";
-import LinkEditComponent from "./components/LinkEditComponent";
-
-import rendererFn from "./components/customrenderer";
+import LinkEditComponent from "./components/toolbar/LinkEditComponent";
+import customRendererFn from "./components/customrenderer";
 import customStyleMap from "./util/customstylemap";
 import RenderMap from "./util/rendermap";
 import keyBindingFn from "./util/keybinding";
@@ -36,7 +34,7 @@ import {
   isCursorBetweenLink
 } from "./model";
 
-import ImageButton from "./components/sides/image";
+import ImageButton from "./components/inline-side-buttons/image";
 
 /*
 A wrapper over `draft-js`'s default **Editor** component which provides
@@ -52,7 +50,9 @@ class MediumDraftEditor extends React.Component {
       this.props.onChange(editorState, cb);
     };
 
-    this.getEditorState = () => this.props.editorState;
+    this.getEditorState = () => {
+      return this.props.editorState;
+    };
 
     this.onTab = this.onTab.bind(this);
     this.handleKeyCommand = this.handleKeyCommand.bind(this);
@@ -618,7 +618,7 @@ MediumDraftEditor.defaultProps = {
   keyBindingFn,
   customStyleMap,
   blockStyleFn,
-  rendererFn,
+  rendererFn: customRendererFn,
   editorEnabled: true,
   spellCheck: true,
   stringToTypeMap: StringToTypeMap,

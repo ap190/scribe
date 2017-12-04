@@ -1,7 +1,19 @@
 import React from "react";
-import { HYPERLINK } from "../util/constants";
+import { HYPERLINK } from "../../util/constants";
 
 export const BLOCK_BUTTONS = [
+  {
+    label: "H1",
+    style: "header-one",
+    icon: "header",
+    description: "Heading 1"
+  },
+  {
+    label: "H2",
+    style: "header-two",
+    icon: "header",
+    description: "Heading 2"
+  },
   {
     label: "H3",
     style: "header-three",

@@ -359,7 +359,6 @@ class HomePage extends Component {
     const currentThreadIdx = currentThreads.findIndex(
       thread => thread.selected
     );
-
     currentChannel.threads[currentThreadIdx].document = JSON.stringify(
       currentDocument
     );

@@ -1,22 +1,31 @@
-import PropTypes from 'prop-types';
-// import './atomic.scss';
+import PropTypes from "prop-types";
+import React from "react";
+import AtomicEmbedComponent from "./atomic-embed.component";
 
-import React from 'react';
-
-const AtomicBlock = (props) => {
-  const content = props.getEditorState().getCurrentContent();
+const AtomicBlock = props => {
+  const content = props.contentState;
   const entity = content.getEntity(props.block.getEntityAt(0));
   const data = entity.getData();
   const type = entity.getType();
-  if (type === 'image') {
+  if (type === "image") {
     return (
       <div className="md-block-atomic-wrapper">
-        <img role="presentation" src={data.src} />
+        <img alt="presentation" src={data.src} />
         <div className="md-block-atomic-controls">
           <button>&times;</button>
         </div>
       </div>
     );
+  } else if (type === "embed") {
+    return (
+      <AtomicEmbedComponent
+        data={
+          "https://www.youtube.com/watch?v=GsPq9mzFNGY&list=RD6u0DGIh3wLA&index=27"
+        }
+      />
+    );
+  } else if (type === "separator") {
+    return <hr />;
   }
   return <p>No supported block for {type}</p>;
 };
@@ -24,6 +33,7 @@ const AtomicBlock = (props) => {
 AtomicBlock.propTypes = {
   block: PropTypes.object,
   getEditorState: PropTypes.func,
+  editorState: PropTypes.any
 };
 
 export default AtomicBlock;

@@ -39,7 +39,7 @@ class ImageBlock extends Component {
             className="md-block-image-inner-container"
             onClick={this.focusBlock}
           >
-            <img role="presentation" src={src} />
+            <img alt="presentation" src={src} />
           </div>
           <figcaption>
             <EditorBlock {...this.props} />
