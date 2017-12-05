@@ -28,7 +28,7 @@ class AtomicEmbedComponent extends Component {
   getScript() {
     const script = document.createElement("script");
     script.async = 1;
-    script.src = "//cdn.embedly.com/widgets/platform.js";
+    script.src = "https://cdn.embedly.com/widgets/platform.js";
     script.onload = () => {
       window.embedly();
     };

@@ -32,7 +32,10 @@ function createWindow() {
     titleBarStyle: "hidden",
     width: 1281,
     height: 800,
-    icon: path.join(__dirname, "../public/icons/png/64x64.png")
+    icon: path.join(__dirname, "../public/icons/png/64x64.png"),
+    webPreferences: {
+      webSecurity: false
+    }
   });
   const startUrl =
     process.env.ELECTRON_START_URL ||
@@ -43,7 +46,7 @@ function createWindow() {
     });
   mainWindow.loadURL(startUrl);
   // Open the DevTools.
-  // mainWindow.webContents.openDevTools();
+  mainWindow.webContents.openDevTools();
 
   // React DevTools
   installExtension(REACT_DEVELOPER_TOOLS)
