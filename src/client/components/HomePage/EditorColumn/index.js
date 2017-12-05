@@ -47,7 +47,6 @@ class EditorColumn extends Component {
       toggleEditorHandler,
       isEditorToggled,
       saveWorkspace,
-      currentThread,
       currentDocument
     } = this.props;
     return (
@@ -64,8 +63,8 @@ class EditorColumn extends Component {
           editorState={currentDocument}
           onChange={this.onChange}
           toggleModal={this.props.toggleModal}
-          currentThread={currentThread}
-          handleDocTitleChange={this.props.handleThreadTitleChange}
+          handleAddEmbeddedContent={this.props.handleAddEmbeddedContent}
+          lastEmbeddedURL={this.props.lastEmbeddedURL}
         />
         {!isModalOpen && <ColumnFooter />}
       </div>
@@ -75,7 +74,7 @@ class EditorColumn extends Component {
 
 EditorColumn.defaultProps = {
   currentDocument: EditorState.createEmpty(),
-  currentTitle: "Untitled"
+  currentTitle: "Untitledd"
 };
 
 EditorColumn.propTypes = {
@@ -85,9 +84,10 @@ EditorColumn.propTypes = {
   isModalOpen: PropTypes.bool.isRequired,
   saveWorkspace: PropTypes.func.isRequired,
   handleDocumentChange: PropTypes.func.isRequired,
-  handleThreadTitleChange: PropTypes.func.isRequired,
   currentDocument: PropTypes.any,
-  currentThread: PropTypes.any
+  currentThread: PropTypes.any,
+  handleAddEmbeddedContent: PropTypes.func.isRequired,
+  lastEmbeddedURL: PropTypes.string
 };
 
 export default EditorColumn;

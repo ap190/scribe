@@ -11,22 +11,14 @@ class EmbedSideButton extends Component {
   }
 
   onClick() {
-    // const url = window.prompt(
-    //   "Enter a URL",
-    //   "https://www.youtube.com/watch?v=PMNFaAUs2mo"
-    // );
     this.props.toggleModal(modals.EMBED_CONTENT_MODAL);
     this.props.close();
-    // if (!url) {
-    //   return;
-    // }
-    this.addEmbedURL(
-      "https://www.youtube.com/watch?v=VEpMj-tqixs&list=RD6u0DGIh3wLA&index=11"
-    );
+    if (!this.props.lastEmbeddedURL) return;
+    this.addEmbedURL(this.props.lastEmbeddedURL);
   }
 
   addEmbedURL(url) {
-    // let editorState = this.props.getEditorState();
+    if (!url) return;
     const content = this.props.editorState.getCurrentContent();
     const contentWithEntity = content.createEntity("embed", "IMMUTABLE", {
       url

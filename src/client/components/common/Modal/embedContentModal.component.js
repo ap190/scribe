@@ -57,6 +57,9 @@ class EmbedContentModal extends Component {
 
   handleSubmit(event) {
     event.preventDefault();
+    this.props.handleOnClose();
+    console.log("EMBEDED CONTENT MODAL", this.state.value);
+    this.props.handleAddEmbeddedContent(this.state.value);
   }
 
   render() {
@@ -88,7 +91,8 @@ class EmbedContentModal extends Component {
 }
 
 EmbedContentModal.propTypes = {
-  handleOnClose: PropTypes.func.isRequired
+  handleOnClose: PropTypes.func.isRequired,
+  handleAddEmbeddedContent: PropTypes.func.isRequired
 };
 
 export default EmbedContentModal;

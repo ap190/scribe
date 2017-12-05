@@ -52,6 +52,7 @@ class HomePage extends Component {
       currentThread: undefined,
       currentDocument: undefined,
       activeNode: undefined,
+      lastEmbeddedURL: undefined,
       files: {}
     };
     this.toggleEditor = this.toggleEditor.bind(this);
@@ -64,6 +65,7 @@ class HomePage extends Component {
     this.selectThread = this.selectThread.bind(this);
     this.toggleModal = this.toggleModal.bind(this);
     this.handleAddChannel = this.handleAddChannel.bind(this);
+    this.handleAddEmbeddedContent = this.handleAddEmbeddedContent.bind(this);
     this.handleAddThread = this.handleAddThread.bind(this);
     this.handleChangeThreadColor = this.handleChangeThreadColor.bind(this);
     this.handleDeleteThread = this.handleDeleteThread.bind(this);
@@ -108,7 +110,12 @@ class HomePage extends Component {
           />
         );
       case EMBED_CONTENT_MODAL:
-        return <EmbedContentModal handleOnClose={this.toggleModal} />;
+        return (
+          <EmbedContentModal
+            handleOnClose={this.toggleModal}
+            handleAddEmbeddedContent={this.handleAddEmbeddedContent}
+          />
+        );
       default:
         return null;
     }
@@ -179,7 +186,8 @@ class HomePage extends Component {
       currentModal: modalType,
       ...modalStateObject
     });
-    return this.getModalContent();
+    this.getModalContent();
+    return modalStateObject;
   }
 
   selectChannelOrFile(channelType, channelId = null, activeFile = null) {
@@ -214,6 +222,14 @@ class HomePage extends Component {
     this.setState({
       isModalOpen: false,
       channels: [...this.state.channels, newChannel]
+    });
+  }
+
+  handleAddEmbeddedContent(url = null) {
+    if (!url) return;
+    console.log(`HANDLE EMBEDDED CONTENT ${url}`);
+    this.setState({
+      lastEmbeddedURL: url
     });
   }
 
@@ -438,6 +454,8 @@ class HomePage extends Component {
           handleDocumentChange={this.handleDocumentChange}
           handleThreadTitleChange={this.handleThreadTitleChange}
           saveWorkspace={this.saveWorkspace}
+          handleAddEmbeddedContent={this.handleAddEmbeddedContent}
+          lastEmbeddedURL={this.state.lastEmbeddedURL}
         />
       </Wrapper>
     );

@@ -488,9 +488,9 @@ class MediumDraftEditor extends React.Component {
       handleDocTitleChange
     } = this.props;
     const showAddButton = editorEnabled;
-    const editorClass = `md-RichEditor-editor${
-      !editorEnabled ? " md-RichEditor-readonly" : ""
-    }`;
+    const editorClass = `md-RichEditor-editor${!editorEnabled
+      ? " md-RichEditor-readonly"
+      : ""}`;
     let isCursorLink = false;
     if (editorEnabled && showLinkEditToolbar) {
       isCursorLink = isCursorBetweenLink(editorState);

@@ -17,13 +17,8 @@ const AtomicBlock = props => {
       </div>
     );
   } else if (type === "embed") {
-    return (
-      <AtomicEmbedComponent
-        data={
-          "https://www.youtube.com/watch?v=GsPq9mzFNGY&list=RD6u0DGIh3wLA&index=27"
-        }
-      />
-    );
+    console.log("ATOMIC.JS", data.url);
+    return <AtomicEmbedComponent data={data.url} />;
   } else if (type === "separator") {
     return <hr />;
   }

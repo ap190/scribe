@@ -164,6 +164,8 @@ class AddButton extends Component {
                   setEditorState={this.props.setEditorState}
                   close={this.openToolbar}
                   toggleModal={button.toggleModal}
+                  handleAddEmbeddedContent={button.handleAddEmbeddedContent}
+                  lastEmbeddedURL={button.lastEmbeddedURL}
                 />
               );
             })}

@@ -195,7 +195,9 @@ class ExtendedEditor extends React.Component {
       {
         title: "Embed",
         component: EmbedSideButton,
-        toggleModal: this.props.toggleModal
+        toggleModal: this.props.toggleModal,
+        handleAddEmbeddedContent: this.props.handleAddEmbeddedContent,
+        lastEmbeddedURL: this.props.lastEmbeddedURL
       },
       {
         title: "Separator",
@@ -359,9 +361,12 @@ class ExtendedEditor extends React.Component {
   }
 }
 
-ExtendedEditor.proTypes = {
+ExtendedEditor.propTypes = {
   onChange: PropTypes.func.isRequired,
-  editorState: PropTypes.any
+  editorState: PropTypes.any,
+  currentThread: PropTypes.any,
+  handleDocTitleChange: PropTypes.any,
+  lastEmbeddedURL: PropTypes.string
 };
 
 export default ExtendedEditor;
