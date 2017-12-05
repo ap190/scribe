@@ -44,7 +44,7 @@ class EditorColumn extends Component {
   render() {
     const {
       isModalOpen,
-      toggleHandler,
+      toggleEditorHandler,
       isEditorToggled,
       saveWorkspace,
       currentThread,
@@ -54,7 +54,7 @@ class EditorColumn extends Component {
       <div className="editor">
         <EditorActionBar
           handleSave={saveWorkspace}
-          handleMaximize={toggleHandler}
+          handleMaximize={toggleEditorHandler}
           handleNextThread={() => console.log("next thread...")}
           isEditorToggled={isEditorToggled}
         />
@@ -75,6 +75,7 @@ class EditorColumn extends Component {
           style={{ justifySelf: "flex-start" }}
           editorState={currentDocument}
           onChange={this.onChange}
+          toggleModal={this.props.toggleModal}
         />
         {!isModalOpen && <ColumnFooter />}
       </div>
@@ -89,7 +90,8 @@ EditorColumn.defaultProps = {
 
 EditorColumn.propTypes = {
   isEditorToggled: PropTypes.bool.isRequired,
-  toggleHandler: PropTypes.func.isRequired,
+  toggleEditorHandler: PropTypes.func.isRequired,
+  toggleModal: PropTypes.func.isRequired,
   isModalOpen: PropTypes.bool.isRequired,
   saveWorkspace: PropTypes.func.isRequired,
   handleDocumentChange: PropTypes.func.isRequired,

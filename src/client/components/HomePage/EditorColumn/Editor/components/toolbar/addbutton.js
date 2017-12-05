@@ -135,9 +135,9 @@ class AddButton extends Component {
       <div className="md-side-toolbar" style={this.state.style}>
         <button
           onClick={this.openToolbar}
-          className={`md-sb-button md-add-button${
-            this.state.isOpen ? " md-open-button" : ""
-          }`}
+          className={`md-sb-button md-add-button${this.state.isOpen
+            ? " md-open-button"
+            : ""}`}
           type="button"
         >
           <svg viewBox="0 0 8 8" height="14" width="14">
@@ -163,6 +163,7 @@ class AddButton extends Component {
                   getEditorState={this.props.getEditorState}
                   setEditorState={this.props.setEditorState}
                   close={this.openToolbar}
+                  toggleModal={button.toggleModal}
                 />
               );
             })}
