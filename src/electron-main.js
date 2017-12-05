@@ -6,7 +6,7 @@ const electron = require("electron");
 const { genLoadData } = require("./server/readData");
 const { genSaveWorkspace } = require("./server/saveWorkspace");
 
-// require("electron-context-menu")();
+require("electron-context-menu")();
 
 const BrowserWindow = electron.BrowserWindow;
 const {
@@ -46,7 +46,7 @@ function createWindow() {
     });
   mainWindow.loadURL(startUrl);
   // Open the DevTools.
-  mainWindow.webContents.openDevTools();
+  // mainWindow.webContents.openDevTools();
 
   // React DevTools
   installExtension(REACT_DEVELOPER_TOOLS)

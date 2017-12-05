@@ -1,4 +1,4 @@
-import Editor from "./editor.component";
+import MediumDraftEditor from "./editor.component";
 import beforeInput, { StringToTypeMap } from "./util/beforeinput";
 import RenderMap from "./util/rendermap";
 import Link, { findLinkEntities } from "./components/entities/link";
@@ -29,7 +29,7 @@ export {
 } from "./model";
 
 export {
-  Editor,
+  MediumDraftEditor,
   createEditorState,
   StringToTypeMap,
   RenderMap,
@@ -50,4 +50,4 @@ export {
   BreakSideButton
 };
 
-export default Editor;
+export default MediumDraftEditor;

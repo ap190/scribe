@@ -20,7 +20,7 @@ import "./components/blocks/todo.scss";
 import "./components/blocks/image.scss";
 
 import {
-  Editor,
+  MediumDraftEditor,
   StringToTypeMap,
   Block,
   keyBindingFn,
@@ -340,7 +340,7 @@ class ExtendedEditor extends React.Component {
   render() {
     const { editorState, editorEnabled } = this.state;
     return (
-      <Editor
+      <MediumDraftEditor
         editorState={this.props.editorState}
         onChange={this.props.onChange}
         editorEnabled={editorEnabled}
@@ -352,6 +352,8 @@ class ExtendedEditor extends React.Component {
         handleReturn={this.handleReturn}
         sideButtons={this.getSideButtons()}
         rendererFn={this.rendererFn}
+        currentThread={this.props.currentThread}
+        handleDocTitleChange={this.props.handleDocTitleChange}
       />
     );
   }
@@ -359,7 +361,9 @@ class ExtendedEditor extends React.Component {
 
 ExtendedEditor.proTypes = {
   onChange: PropTypes.func.isRequired,
-  editorState: PropTypes.any
+  editorState: PropTypes.any,
+  currentThread: PropTypes.any,
+  handleDocTitleChange: PropTypes.function
 };
 
 export default ExtendedEditor;

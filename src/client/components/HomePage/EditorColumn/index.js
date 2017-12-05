@@ -58,23 +58,13 @@ class EditorColumn extends Component {
           handleNextThread={() => console.log("next thread...")}
           isEditorToggled={isEditorToggled}
         />
-        <input
-          className="doc-title"
-          type="text"
-          value={currentThread === undefined ? "Untitled" : currentThread.title}
-          onChange={event =>
-            this.props.handleThreadTitleChange(event.target.value)}
-        />
-        <div className="update-time">
-          {currentThread === undefined || currentThread.date === "Unsaved"
-            ? "New thread has not been saved yet."
-            : `Last Saved: ${currentThread.date}`}
-        </div>
         <ExtendedEditor
           ref="editor"
           style={{ justifySelf: "flex-start" }}
           editorState={currentDocument}
           onChange={this.onChange}
+          currentThread={currentThread}
+          handleDocTitleChange={this.props.handleThreadTitleChange}
         />
         {!isModalOpen && <ColumnFooter />}
       </div>

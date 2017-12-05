@@ -483,7 +483,9 @@ class MediumDraftEditor extends React.Component {
       editorEnabled,
       disableToolbar,
       showLinkEditToolbar,
-      toolbarConfig
+      toolbarConfig,
+      currentThread,
+      handleDocTitleChange
     } = this.props;
     const showAddButton = editorEnabled;
     const editorClass = `md-RichEditor-editor${
@@ -514,6 +516,19 @@ class MediumDraftEditor extends React.Component {
           />
         )}
         <div className="md-RichEditor-root">
+          <input
+            className="doc-title"
+            type="text"
+            value={
+              currentThread === undefined ? "Untitled" : currentThread.title
+            }
+            onChange={event => handleDocTitleChange(event.target.value)}
+          />
+          <div className="update-time">
+            {currentThread === undefined || currentThread.date === "Unsaved"
+              ? "New thread has not been saved yet."
+              : `Last Saved: ${currentThread.date}`}
+          </div>
           <div className={editorClass}>
             <Editor
               ref={node => {
@@ -612,7 +627,9 @@ MediumDraftEditor.propTypes = {
   disableToolbar: PropTypes.bool,
   showLinkEditToolbar: PropTypes.bool,
   toolbarConfig: PropTypes.object,
-  processURL: PropTypes.func
+  processURL: PropTypes.func,
+  handleDocTitleChange: PropTypes.func,
+  currentThread: PropTypes.any
 };
 
 MediumDraftEditor.defaultProps = {
