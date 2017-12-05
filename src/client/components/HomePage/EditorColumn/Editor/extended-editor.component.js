@@ -194,7 +194,8 @@ class ExtendedEditor extends React.Component {
       },
       {
         title: "Embed",
-        component: EmbedSideButton
+        component: EmbedSideButton,
+        toggleModal: this.props.toggleModal
       },
       {
         title: "Separator",
@@ -315,7 +316,6 @@ class ExtendedEditor extends React.Component {
   handleDroppedFiles(selection, files) {
     const file = files[0];
     if (file.type.indexOf("image/") === 0) {
-      // eslint-disable-next-line no-undef
       const src = URL.createObjectURL(file);
       console.log("src is", src);
       this.onChange(
@@ -338,7 +338,7 @@ class ExtendedEditor extends React.Component {
   }
 
   render() {
-    const { editorState, editorEnabled } = this.state;
+    const { editorEnabled } = this.state;
     return (
       <MediumDraftEditor
         editorState={this.props.editorState}
@@ -361,9 +361,7 @@ class ExtendedEditor extends React.Component {
 
 ExtendedEditor.proTypes = {
   onChange: PropTypes.func.isRequired,
-  editorState: PropTypes.any,
-  currentThread: PropTypes.any,
-  handleDocTitleChange: PropTypes.function
+  editorState: PropTypes.any
 };
 
 export default ExtendedEditor;

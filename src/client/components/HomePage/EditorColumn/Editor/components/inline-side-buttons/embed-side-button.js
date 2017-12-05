@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { EditorState, AtomicBlockUtils } from "draft-js";
+import { modals } from "../../../../../../utils/const";
 
 class EmbedSideButton extends Component {
   constructor(props) {
@@ -14,6 +15,7 @@ class EmbedSideButton extends Component {
     //   "Enter a URL",
     //   "https://www.youtube.com/watch?v=PMNFaAUs2mo"
     // );
+    this.props.toggleModal(modals.EMBED_CONTENT_MODAL);
     this.props.close();
     // if (!url) {
     //   return;
@@ -56,7 +58,7 @@ class EmbedSideButton extends Component {
 
 EmbedSideButton.propTypes = {
   setEditorState: PropTypes.func,
-  getEditorState: PropTypes.func,
+  toggleModal: PropTypes.func.isRequired,
   close: PropTypes.func,
   editorState: PropTypes.any
 };

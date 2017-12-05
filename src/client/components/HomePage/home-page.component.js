@@ -10,13 +10,18 @@ import ThreadColumn from "./ThreadColumn";
 import Aside from "./AsideColumn";
 import EditorColumn from "./EditorColumn";
 import ChannelModal from "../common/Modal/channelModal.component";
+import EmbedContentModal from "../common/Modal/embedContentModal.component";
 import ThreadModal from "../common/Modal/threadModal.component";
 import { createFileStructure } from "../../utils/createFileTree";
 import { modals } from "../../utils/const";
 import { highlightColor } from "../../themes";
 
 const { GREY_HIGHLIGHT } = highlightColor;
-const { ASIDE_CREATE_CHANNEL_MODAL, HIGHLIGHT_THREAD_MODAL } = modals;
+const {
+  ASIDE_CREATE_CHANNEL_MODAL,
+  HIGHLIGHT_THREAD_MODAL,
+  EMBED_CONTENT_MODAL
+} = modals;
 const electron = window.require("electron");
 const remote = electron.remote;
 const currentWindow = remote.getCurrentWindow();
@@ -105,6 +110,8 @@ class HomePage extends Component {
             handleOnClose={this.toggleModal}
           />
         );
+      case EMBED_CONTENT_MODAL:
+        return <EmbedContentModal handleOnClose={this.toggleModal} />;
       default:
         return null;
     }
@@ -169,7 +176,7 @@ class HomePage extends Component {
     });
   }
 
-  toggleModal(modalType, modalStateObject) {
+  toggleModal(modalType, modalStateObject = null) {
     this.setState({
       isModalOpen: !this.state.isModalOpen,
       currentModal: modalType,
@@ -447,7 +454,8 @@ class HomePage extends Component {
         />
         <EditorColumn
           isEditorToggled={this.state.isEditorToggled}
-          toggleHandler={this.toggleEditor}
+          toggleEditorHandler={this.toggleEditor}
+          toggleModal={this.toggleModal}
           isModalOpen={this.state.isModalOpen}
           currentDocument={this.state.currentDocument}
           currentThread={this.state.currentThread}
