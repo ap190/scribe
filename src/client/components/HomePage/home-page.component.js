@@ -59,6 +59,9 @@ class HomePage extends Component {
     this.applyThreadChange = this.applyThreadChange.bind(this);
     this.selectProjectDir = this.selectProjectDir.bind(this);
     this.selectChannelOrFile = this.selectChannelOrFile.bind(this);
+    this.updateEditorOnChannelChange = this.updateEditorOnChannelChange.bind(
+      this
+    );
     this.getUpdatedChannelsSelectedState = this.getUpdatedChannelsSelectedState.bind(
       this
     );
@@ -143,7 +146,8 @@ class HomePage extends Component {
 
   getUpdatedChannelAndThreadsIfSelectionIsFile(activeFile, threads) {
     const currentChannel = this.state.channels.find(
-      file => file.channelType === "file" && activeFile.module === file.module
+      file =>
+        file.channelType === "file" && activeFile.module === file.channelName
     );
 
     // currentFile has threads
@@ -206,12 +210,33 @@ class HomePage extends Component {
       threads = updateChannelIsFileData.threads;
     }
 
+    // Get current document for selected thread.
+    this.updateEditorOnChannelChange(currentChannel);
+
     this.setState({
       channels,
       currentChannel,
       activeNode: activeFile,
       currentThreads: threads
     });
+  }
+
+  updateEditorOnChannelChange(channel) {
+    if (!channel || !channel.threads) {
+      // TODO: Put a default document.
+      return;
+    }
+    const currentThreadIdx = channel.threads.findIndex(
+      thread => thread.selected
+    );
+
+    this.selectThread(
+      channel.threads[
+        currentThreadIdx === -1
+          ? 0 /* If no thread is selected, select the first thread. */
+          : currentThreadIdx
+      ]
+    );
   }
 
   selectFile(file) {
