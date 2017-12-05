@@ -291,7 +291,7 @@ class HomePage extends Component {
 
     channels[channelIdx].threads.forEach((currThread, idx) => {
       if (idx === threadIdx) {
-        currThread.selected = !currThread.selected;
+        currThread.selected = true;
         currentDocument = currThread.document
           ? EditorState.createWithContent(convertFromRaw(currThread.document))
           : EditorState.createEmpty();
