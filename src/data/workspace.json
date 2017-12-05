@@ -868,7 +868,7 @@
         "threads": [
             {
                 "channelId": "55edf3eb-0ac2-4073-8716-fe02ef2a051b",
-                "date": "Tuesday, December 5, 2017 12:28 PM",
+                "date": "Tuesday, December 5, 2017 1:23 PM",
                 "document": {
                     "blocks": [
                         {
@@ -909,12 +909,32 @@
                             "type": "todo"
                         },
                         {
-                            "data": {},
+                            "data": {
+                                "checked": true
+                            },
                             "depth": 0,
                             "entityRanges": [],
                             "inlineStyleRanges": [],
                             "key": "74kvn",
-                            "text": "selection",
+                            "text": "selection stays selected",
+                            "type": "todo"
+                        },
+                        {
+                            "data": {},
+                            "depth": 0,
+                            "entityRanges": [],
+                            "inlineStyleRanges": [],
+                            "key": "41llv",
+                            "text": "first switch the editor to get the state from the current thread",
+                            "type": "todo"
+                        },
+                        {
+                            "data": {},
+                            "depth": 0,
+                            "entityRanges": [],
+                            "inlineStyleRanges": [],
+                            "key": "ms2o",
+                            "text": "then get rid of current thread in editor ",
                             "type": "todo"
                         },
                         {
