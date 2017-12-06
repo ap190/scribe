@@ -21,8 +21,6 @@ import {
   addNewBlockAt,
   beforeInput,
   getCurrentBlock,
-  AtomicEmbedComponent,
-  AtomicBlock,
   ImageSideButton,
   SeparatorSideButton,
   EmbedSideButton,
@@ -137,8 +135,6 @@ const handleBeforeInput = (editorState, str, onChange) => {
   return beforeInput(editorState, str, onChange, newTypeMap);
 };
 
-const AtomicSeparatorComponent = props => <hr />;
-
 class ExtendedEditor extends React.Component {
   constructor(props) {
     super(props);
@@ -170,16 +166,12 @@ class ExtendedEditor extends React.Component {
         component: SeparatorSideButton
       }
     ];
-
-    this.getEditorState = () => this.state.editorState;
-
     this.logData = this.logData.bind(this);
     this.renderHTML = this.renderHTML.bind(this);
     this.toggleEdit = this.toggleEdit.bind(this);
     this.keyBinding = this.keyBinding.bind(this);
     this.handleDroppedFiles = this.handleDroppedFiles.bind(this);
     this.handleReturn = this.handleReturn.bind(this);
-    this.rendererFn = this.rendererFn.bind(this);
     this.onChange = this.onChange.bind(this);
   }
 
@@ -264,33 +256,6 @@ class ExtendedEditor extends React.Component {
     newWin.onload = () => newWin.postMessage(eHTML, window.location.origin);
   }
 
-  rendererFn(setEditorState, getEditorState) {
-    const atomicRenderers = {
-      embed: AtomicEmbedComponent,
-      separator: AtomicSeparatorComponent
-    };
-    const rFnOld = customRendererFn(setEditorState, getEditorState);
-    const editorState = this.state.editorState;
-    const rFnNew = contentBlock => {
-      const type = contentBlock.getType();
-      switch (type) {
-        case Block.ATOMIC:
-          return {
-            component: AtomicBlock,
-            editable: false,
-            props: {
-              components: atomicRenderers,
-              getEditorState,
-              editorState: editorState.getCurrentContent()
-            }
-          };
-        default:
-          return rFnOld(contentBlock);
-      }
-    };
-    return rFnNew;
-  }
-
   render() {
     const { editorEnabled } = this.state;
     return (
@@ -305,7 +270,7 @@ class ExtendedEditor extends React.Component {
         beforeInput={handleBeforeInput}
         handleReturn={this.handleReturn}
         sideButtons={this.sideButtons}
-        rendererFn={this.rendererFn}
+        rendererFn={customRendererFn}
         currentThread={this.props.currentThread}
         handleDocTitleChange={this.props.handleDocTitleChange}
       />

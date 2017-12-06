@@ -1,7 +1,7 @@
 import PropTypes from "prop-types";
 import React from "react";
 import AtomicEmbedComponent from "./atomic-embed.component";
-
+import AtomicSeparatorComponent from "./atomic-seperator.component";
 /*
 This strategy is straight out of the official docs
 https://draftjs.org/docs/advanced-topics-block-components.html#content
@@ -24,7 +24,7 @@ const AtomicBlock = props => {
   } else if (type === "embed") {
     return <AtomicEmbedComponent data={data.url} />;
   } else if (type === "separator") {
-    return <hr />;
+    return <AtomicSeparatorComponent />;
   }
   return <p>No supported block for {type}</p>;
 };

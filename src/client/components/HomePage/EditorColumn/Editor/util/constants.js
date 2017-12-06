@@ -1,8 +1,3 @@
-/*
-Some of the constants which are used throughout this project instead of
-directly using string.
-*/
-
 export const Block = {
   UNSTYLED: "unstyled",
   PARAGRAPH: "unstyled",

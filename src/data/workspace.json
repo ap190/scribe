@@ -4,7 +4,7 @@
         "channelType": "communication",
         "id": "6e55e4dd-d4de-436c-9f7f-956f4910d424",
         "lastPosted": "4 days ago",
-        "selected": true,
+        "selected": false,
         "threads": [
             {
                 "channelId": "6e55e4dd-d4de-436c-9f7f-956f4910d424",
@@ -630,11 +630,11 @@
         "channelType": "communication",
         "id": "2a4f247a-cc85-44e2-9958-008413a65d96",
         "lastPosted": "4 days ago",
-        "selected": false,
+        "selected": true,
         "threads": [
             {
                 "channelId": "2a4f247a-cc85-44e2-9958-008413a65d96",
-                "date": "Tuesday, December 5, 2017 1:34 PM",
+                "date": "Wednesday, December 6, 2017 4:21 PM",
                 "document": {
                     "blocks": [
                         {
@@ -658,7 +658,9 @@
                             "type": "todo"
                         },
                         {
-                            "data": {},
+                            "data": {
+                                "checked": true
+                            },
                             "depth": 0,
                             "entityRanges": [],
                             "inlineStyleRanges": [],

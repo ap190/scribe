@@ -5,12 +5,25 @@ import AtomicBlock from "./blocks/atomic";
 import TodoBlock from "./blocks/todo";
 import ImageBlock from "./blocks/image";
 import { Block } from "../util/constants";
-
-const BreakBlock = () => <div> LOL </div>;
+import AtomicEmbedComponent from "./blocks/atomic-embed.component";
+import AtomicSeparatorComponent from "./blocks/atomic-seperator.component";
 
 export default (setEditorState, getEditorState) => contentBlock => {
   const type = contentBlock.getType();
   switch (type) {
+    case Block.ATOMIC:
+      return {
+        component: AtomicBlock,
+        editable: false,
+        props: {
+          components: {
+            embed: AtomicEmbedComponent,
+            separator: AtomicSeparatorComponent
+          },
+          getEditorState,
+          editorState: getEditorState().getCurrentContent()
+        }
+      };
     case Block.BLOCKQUOTE_CAPTION:
       return {
         component: QuoteCaptionBlock
@@ -18,14 +31,6 @@ export default (setEditorState, getEditorState) => contentBlock => {
     case Block.CAPTION:
       return {
         component: CaptionBlock
-      };
-    case Block.ATOMIC:
-      return {
-        component: AtomicBlock,
-        editable: false,
-        props: {
-          getEditorState
-        }
       };
     case Block.TODO:
       return {
@@ -45,7 +50,7 @@ export default (setEditorState, getEditorState) => contentBlock => {
       };
     case Block.BREAK:
       return {
-        component: BreakBlock,
+        component: AtomicSeparatorComponent,
         editable: false
       };
     default:
