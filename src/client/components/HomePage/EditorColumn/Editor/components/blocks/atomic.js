@@ -2,6 +2,11 @@ import PropTypes from "prop-types";
 import React from "react";
 import AtomicEmbedComponent from "./atomic-embed.component";
 
+/*
+This strategy is straight out of the official docs
+https://draftjs.org/docs/advanced-topics-block-components.html#content
+*/
+
 const AtomicBlock = props => {
   const content = props.contentState;
   const entity = content.getEntity(props.block.getEntityAt(0));
@@ -17,7 +22,6 @@ const AtomicBlock = props => {
       </div>
     );
   } else if (type === "embed") {
-    console.log("ATOMIC.JS", data.url);
     return <AtomicEmbedComponent data={data.url} />;
   } else if (type === "separator") {
     return <hr />;
@@ -27,8 +31,7 @@ const AtomicBlock = props => {
 
 AtomicBlock.propTypes = {
   block: PropTypes.object,
-  getEditorState: PropTypes.func,
-  editorState: PropTypes.any
+  contentState: PropTypes.any
 };
 
 export default AtomicBlock;

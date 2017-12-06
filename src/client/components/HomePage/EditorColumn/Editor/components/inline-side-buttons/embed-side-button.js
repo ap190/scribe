@@ -13,8 +13,6 @@ class EmbedSideButton extends Component {
   onClick() {
     this.props.toggleModal(modals.EMBED_CONTENT_MODAL);
     this.props.close();
-    if (!this.props.lastEmbeddedURL) return;
-    this.addEmbedURL(this.props.lastEmbeddedURL);
   }
 
   addEmbedURL(url) {

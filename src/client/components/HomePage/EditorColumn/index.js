@@ -1,9 +1,8 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import { EditorState, convertToRaw } from "draft-js";
-import ExtendedEditor from "./Editor/extended-editor.component";
-// import { Editor } from "medium-draft";
+import { EditorState } from "draft-js";
 import "medium-draft/lib/index.css";
+import ExtendedEditor from "./Editor/extended-editor.component";
 import "./editor.css";
 import EditorActionBar from "./EditorActionBar";
 import ColumnFooter from "../../common/ColumnFooter";
@@ -25,15 +24,9 @@ class EditorColumn extends Component {
     // this.refs.editor.focus();
   }
 
-  onChange(editorState, callback) {
+  onChange(editorState) {
     if (this.state.editorEnabled) {
-      this.props.handleDocumentChange(
-        editorState,
-        convertToRaw(editorState.getCurrentContent())
-      );
-      if (callback) {
-        callback();
-      }
+      this.props.handleDocumentChange(editorState);
     }
   }
 
@@ -64,7 +57,6 @@ class EditorColumn extends Component {
           onChange={this.onChange}
           toggleModal={this.props.toggleModal}
           handleAddEmbeddedContent={this.props.handleAddEmbeddedContent}
-          lastEmbeddedURL={this.props.lastEmbeddedURL}
         />
         {!isModalOpen && <ColumnFooter />}
       </div>
@@ -86,8 +78,7 @@ EditorColumn.propTypes = {
   handleDocumentChange: PropTypes.func.isRequired,
   currentDocument: PropTypes.any,
   currentThread: PropTypes.any,
-  handleAddEmbeddedContent: PropTypes.func.isRequired,
-  lastEmbeddedURL: PropTypes.string
+  handleAddEmbeddedContent: PropTypes.func.isRequired
 };
 
 export default EditorColumn;

@@ -4,11 +4,11 @@
         "channelType": "communication",
         "id": "6e55e4dd-d4de-436c-9f7f-956f4910d424",
         "lastPosted": "4 days ago",
-        "selected": false,
+        "selected": true,
         "threads": [
             {
                 "channelId": "6e55e4dd-d4de-436c-9f7f-956f4910d424",
-                "date": "Monday, December 4, 2017 5:48 PM",
+                "date": "Wednesday, December 6, 2017 12:30 PM",
                 "document": {
                     "blocks": [
                         {
@@ -21,52 +21,12 @@
                             "type": "unstyled"
                         },
                         {
-                            "data": {
-                                "src": "/Users/omergoldberg/Desktop/medium_profile.jpg"
-                            },
-                            "depth": 0,
-                            "entityRanges": [],
-                            "inlineStyleRanges": [],
-                            "key": "aa9tj",
-                            "text": "",
-                            "type": "unstyled"
-                        },
-                        {
-                            "data": {},
-                            "depth": 0,
-                            "entityRanges": [],
-                            "inlineStyleRanges": [],
-                            "key": "am4ml",
-                            "text": "hello",
-                            "type": "unstyled"
-                        },
-                        {
-                            "data": {
-                                "src": "/Users/omergoldberg/Desktop/medium_profile.jpg"
-                            },
-                            "depth": 0,
-                            "entityRanges": [],
-                            "inlineStyleRanges": [],
-                            "key": "6fm10",
-                            "text": "",
-                            "type": "atomic:image"
-                        },
-                        {
-                            "data": {},
-                            "depth": 0,
-                            "entityRanges": [],
-                            "inlineStyleRanges": [],
-                            "key": "5dnl8",
-                            "text": "",
-                            "type": "unstyled"
-                        },
-                        {
                             "data": {},
                             "depth": 0,
                             "entityRanges": [],
                             "inlineStyleRanges": [],
                             "key": "dj9ia",
-                            "text": "",
+                            "text": "halan",
                             "type": "unstyled"
                         },
                         {
@@ -109,175 +69,6 @@
                 "selected": false,
                 "text": "hi hihi agaegaegawgeaw cnncnjshheasss ",
                 "title": "elephant"
-            },
-            {
-                "channelId": "6e55e4dd-d4de-436c-9f7f-956f4910d424",
-                "date": "Sunday, December 3, 2017 4:29 PM",
-                "document": {
-                    "blocks": [
-                        {
-                            "data": {},
-                            "depth": 0,
-                            "entityRanges": [],
-                            "inlineStyleRanges": [],
-                            "key": "6m116",
-                            "text": "fab and jada",
-                            "type": "header-three"
-                        },
-                        {
-                            "data": {
-                                "src": "blob:http://localhost:3000/ae1d4e35-87ed-46a0-b229-db7faad75f68"
-                            },
-                            "depth": 0,
-                            "entityRanges": [],
-                            "inlineStyleRanges": [],
-                            "key": "2kv2t",
-                            "text": "that thing tho",
-                            "type": "atomic:image"
-                        },
-                        {
-                            "data": {},
-                            "depth": 0,
-                            "entityRanges": [],
-                            "inlineStyleRanges": [],
-                            "key": "cascn",
-                            "text": "hey there friends!",
-                            "type": "todo"
-                        },
-                        {
-                            "data": {},
-                            "depth": 0,
-                            "entityRanges": [],
-                            "inlineStyleRanges": [],
-                            "key": "29bjj",
-                            "text": "yes",
-                            "type": "todo"
-                        },
-                        {
-                            "data": {},
-                            "depth": 0,
-                            "entityRanges": [],
-                            "inlineStyleRanges": [],
-                            "key": "9hvl",
-                            "text": "cool",
-                            "type": "todo"
-                        },
-                        {
-                            "data": {},
-                            "depth": 0,
-                            "entityRanges": [
-                                {
-                                    "key": 0,
-                                    "length": 9,
-                                    "offset": 0
-                                }
-                            ],
-                            "inlineStyleRanges": [],
-                            "key": "cr9b6",
-                            "text": "highlught",
-                            "type": "unstyled"
-                        },
-                        {
-                            "data": {},
-                            "depth": 0,
-                            "entityRanges": [],
-                            "inlineStyleRanges": [],
-                            "key": "a0pip",
-                            "text": "yalla",
-                            "type": "blockquote"
-                        }
-                    ],
-                    "entityMap": {
-                        "0": {
-                            "data": {
-                                "url": "http://nba.com"
-                            },
-                            "mutability": "MUTABLE",
-                            "type": "LINK"
-                        }
-                    }
-                },
-                "highlightColor": "#fc4a1a",
-                "id": "8e31155e-fa94-45f3-a721-e776e766539a",
-                "selected": false,
-                "text": "fab and jada",
-                "title": "penguin"
-            },
-            {
-                "channelId": "6e55e4dd-d4de-436c-9f7f-956f4910d424",
-                "date": "6 Mar 2017 21:22:23 GMT",
-                "document": null,
-                "highlightColor": "#4abdac",
-                "id": "c2a2057e-b324-41c5-80ed-12eed7f42053",
-                "selected": false,
-                "text": "hey over there~!",
-                "title": "penguin"
-            },
-            {
-                "channelId": "6e55e4dd-d4de-436c-9f7f-956f4910d424",
-                "date": "Sunday, December 3, 2017 4:29 PM",
-                "document": {
-                    "blocks": [
-                        {
-                            "data": {},
-                            "depth": 0,
-                            "entityRanges": [],
-                            "inlineStyleRanges": [],
-                            "key": "fdk5c",
-                            "text": "hi Omer!",
-                            "type": "unstyled"
-                        }
-                    ],
-                    "entityMap": {}
-                },
-                "highlightColor": "#49306B",
-                "id": "5ae6af22-b13d-49c2-b33b-d9e470b57082",
-                "selected": false,
-                "text": "hi Omer!",
-                "title": "penguin"
-            },
-            {
-                "channelId": "6e55e4dd-d4de-436c-9f7f-956f4910d424",
-                "date": "6 Mar 2017 21:22:23 GMT",
-                "document": null,
-                "highlightColor": "#f7b733",
-                "id": "ad7ebda8-c76e-4e54-987f-a6e9d3d53ce5",
-                "selected": false,
-                "text": "hey over there~!",
-                "title": "penguin"
-            },
-            {
-                "channelId": "6e55e4dd-d4de-436c-9f7f-956f4910d424",
-                "date": "6 Mar 2017 21:22:23 GMT",
-                "document": null,
-                "highlightColor": "#49306B",
-                "id": "d7e2f819-2d6c-4f64-a15f-08fcf87f5452",
-                "selected": false,
-                "text": "hey over there~!",
-                "title": "penguin"
-            },
-            {
-                "channelId": "6e55e4dd-d4de-436c-9f7f-956f4910d424",
-                "date": "6 Mar 2017 21:22:23 GMT",
-                "document": {
-                    "blocks": [
-                        {
-                            "data": {},
-                            "depth": 0,
-                            "entityRanges": [],
-                            "inlineStyleRanges": [],
-                            "key": "d6sd2",
-                            "text": "",
-                            "type": "unstyled"
-                        }
-                    ],
-                    "entityMap": {}
-                },
-                "highlightColor": "#fc4a1a",
-                "id": "49ae8a8c-1fab-4f98-b944-3e65e25814ff",
-                "selected": false,
-                "text": "hey over there~!",
-                "title": "penguin"
             }
         ]
     },
@@ -823,7 +614,7 @@
         "channelType": "communication",
         "id": "2a4f247a-cc85-44e2-9958-008413a65d96",
         "lastPosted": "4 days ago",
-        "selected": true,
+        "selected": false,
         "threads": [
             {
                 "channelId": "2a4f247a-cc85-44e2-9958-008413a65d96",

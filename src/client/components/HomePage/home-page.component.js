@@ -2,7 +2,13 @@ import React, { Component } from "react";
 import UUIDv4 from "uuid/v4";
 import styled from "styled-components";
 import { compose } from "recompose";
-import { convertFromRaw, EditorState } from "draft-js";
+import {
+  convertToRaw,
+  convertFromRaw,
+  EditorState,
+  ContentState,
+  AtomicBlockUtils
+} from "draft-js";
 import moment from "moment";
 import HomeContainer from "../../containers/Home";
 import Modal from "../common/Modal";
@@ -52,7 +58,6 @@ class HomePage extends Component {
       currentThread: undefined,
       currentDocument: undefined,
       activeNode: undefined,
-      lastEmbeddedURL: undefined,
       files: {}
     };
     this.toggleEditor = this.toggleEditor.bind(this);
@@ -251,10 +256,47 @@ class HomePage extends Component {
   }
 
   handleAddEmbeddedContent(url = null) {
-    if (!url) return;
-    console.log(`HANDLE EMBEDDED CONTENT ${url}`);
+    if (!url || !this.state.currentDocument) return;
+    const { currentDocument } = this.state;
+    const contentWithEntity = currentDocument
+      .getCurrentContent()
+      .createEntity("embed", "IMMUTABLE", {
+        url
+      });
+    const entityKey = contentWithEntity.getLastCreatedEntityKey();
+    const updatedEditorState = EditorState.push(
+      currentDocument,
+      contentWithEntity,
+      "create-entity"
+    );
+    const newEditorState = AtomicBlockUtils.insertAtomicBlock(
+      updatedEditorState,
+      entityKey,
+      "E"
+    );
+    this.handleDocumentChange(newEditorState);
+  }
+
+  handleDocumentChange(currentDocument) {
+    const { channels, currentChannel, currentThreads } = this.state;
+    if (!currentChannel || !currentThreads || !channels) return;
+    const currentChannelIdx = channels.findIndex(
+      channel => channel.id === currentChannel.id
+    );
+    const currentThreadIdx = currentThreads.findIndex(
+      thread => thread.selected
+    );
+    currentChannel.threads[currentThreadIdx].document = JSON.stringify(
+      currentDocument
+    );
+    currentThreads[currentThreadIdx].document = JSON.stringify(currentDocument);
+    channels[currentChannelIdx].threads[
+      currentThreadIdx
+    ].document = convertToRaw(currentDocument.getCurrentContent());
     this.setState({
-      lastEmbeddedURL: url
+      channels,
+      currentDocument,
+      currentThreads
     });
   }
 
@@ -399,27 +441,6 @@ class HomePage extends Component {
     });
   }
 
-  handleDocumentChange(currentDocument, contentRaw) {
-    const { channels, currentChannel, currentThreads } = this.state;
-    if (!currentChannel || !currentThreads || !channels) return;
-    const currentChannelIdx = channels.findIndex(
-      channel => channel.id === currentChannel.id
-    );
-    const currentThreadIdx = currentThreads.findIndex(
-      thread => thread.selected
-    );
-    currentChannel.threads[currentThreadIdx].document = JSON.stringify(
-      currentDocument
-    );
-    currentThreads[currentThreadIdx].document = JSON.stringify(currentDocument);
-    channels[currentChannelIdx].threads[currentThreadIdx].document = contentRaw;
-    this.setState({
-      channels,
-      currentDocument,
-      currentThreads
-    });
-  }
-
   handleThreadTitleChange(threadTitle) {
     this.applyThreadChange(SELECTED_THREAD, thread => {
       return {
@@ -480,7 +501,6 @@ class HomePage extends Component {
           handleThreadTitleChange={this.handleThreadTitleChange}
           saveWorkspace={this.saveWorkspace}
           handleAddEmbeddedContent={this.handleAddEmbeddedContent}
-          lastEmbeddedURL={this.state.lastEmbeddedURL}
         />
       </Wrapper>
     );
