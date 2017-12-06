@@ -165,7 +165,6 @@ class AddButton extends Component {
                   close={this.openToolbar}
                   toggleModal={button.toggleModal}
                   handleAddEmbeddedContent={button.handleAddEmbeddedContent}
-                  lastEmbeddedURL={button.lastEmbeddedURL}
                 />
               );
             })}

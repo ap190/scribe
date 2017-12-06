@@ -215,14 +215,7 @@ class MediumDraftEditor extends React.Component {
     togglled.
   */
   handleKeyCommand(command) {
-    // console.log(command);
     const { editorState } = this.props;
-    if (this.props.handleKeyCommand) {
-      const behaviour = this.props.handleKeyCommand(command);
-      if (behaviour === HANDLED || behaviour === true) {
-        return HANDLED;
-      }
-    }
     if (command === KEY_COMMANDS.showLinkInput()) {
       if (!this.props.disableToolbar && this.toolbar) {
         // For some reason, scroll is jumping sometimes for the below code.
@@ -542,7 +535,6 @@ class MediumDraftEditor extends React.Component {
               onTab={this.onTab}
               onUpArrow={this.onUpArrow}
               blockRenderMap={this.props.blockRenderMap}
-              handleKeyCommand={this.handleKeyCommand}
               handleBeforeInput={this.handleBeforeInput}
               handleReturn={this.handleReturn}
               handlePastedText={this.handlePastedText}
@@ -621,7 +613,6 @@ MediumDraftEditor.propTypes = {
   ),
   editorState: PropTypes.object.isRequired,
   onChange: PropTypes.func.isRequired,
-  handleKeyCommand: PropTypes.func,
   handleReturn: PropTypes.func,
   handlePastedText: PropTypes.func,
   disableToolbar: PropTypes.bool,

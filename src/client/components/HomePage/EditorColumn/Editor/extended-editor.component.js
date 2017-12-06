@@ -1,12 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import {
-  EditorState,
-  convertToRaw,
-  convertFromRaw,
-  KeyBindingUtil,
-  Modifier
-} from "draft-js";
+import { EditorState, convertToRaw, KeyBindingUtil, Modifier } from "draft-js";
 import "draft-js/dist/Draft.css";
 
 import "./index.scss";
@@ -161,18 +155,32 @@ class ExtendedEditor extends React.Component {
       entityToHTML: newEntityToHTML
     });
 
+    this.sideButtons = [
+      {
+        title: "Image",
+        component: ImageSideButton
+      },
+      {
+        title: "Embed",
+        component: EmbedSideButton,
+        toggleModal: props.toggleModal,
+        handleAddEmbeddedContent: props.handleAddEmbeddedContent
+      },
+      {
+        title: "Separator",
+        component: SeparatorSideButton
+      }
+    ];
+
     this.getEditorState = () => this.state.editorState;
 
     this.logData = this.logData.bind(this);
     this.renderHTML = this.renderHTML.bind(this);
     this.toggleEdit = this.toggleEdit.bind(this);
-    this.loadSavedData = this.loadSavedData.bind(this);
     this.keyBinding = this.keyBinding.bind(this);
-    this.handleKeyCommand = this.handleKeyCommand.bind(this);
     this.handleDroppedFiles = this.handleDroppedFiles.bind(this);
     this.handleReturn = this.handleReturn.bind(this);
     this.rendererFn = this.rendererFn.bind(this);
-    this.getSideButtons = this.getSideButtons.bind(this);
     this.onChange = this.onChange.bind(this);
   }
 
@@ -186,23 +194,75 @@ class ExtendedEditor extends React.Component {
     }
   }
 
-  getSideButtons() {
-    return [
-      {
-        title: "Image",
-        component: ImageSideButton
-      },
-      {
-        title: "Embed",
-        component: EmbedSideButton,
-        toggleModal: this.props.toggleModal,
-        handleAddEmbeddedContent: this.props.handleAddEmbeddedContent
-      },
-      {
-        title: "Separator",
-        component: SeparatorSideButton
+  keyBinding(e) {
+    if (hasCommandModifier(e)) {
+      if (e.which === 83) {
+        /* Key S */
+        return "editor-save";
       }
-    ];
+      // else if (e.which === 74 /* Key J */) {
+      //  return 'do-nothing';
+      //}
+    }
+    if (e.altKey === true) {
+      if (e.shiftKey === true) {
+        console.log("alt and shift held on text");
+      }
+      if (e.which === 72 /* Key H */) {
+        console.log("i wrok!");
+        return "toggleinline:HIGHLIGHT";
+      }
+    }
+    return keyBindingFn(e);
+  }
+
+  logData() {
+    const currentContent = this.state.editorState.getCurrentContent();
+    const es = convertToRaw(currentContent);
+    console.log(es);
+    console.log(this.state.editorState.getSelection().toJS());
+  }
+
+  toggleEdit() {
+    this.setState({
+      editorEnabled: !this.state.editorEnabled
+    });
+  }
+
+  handleDroppedFiles(selection, files) {
+    const file = files[0];
+    if (file.type.indexOf("image/") === 0) {
+      const src = URL.createObjectURL(file);
+      console.log("src is", src);
+      this.onChange(
+        addNewBlockAt(
+          this.state.editorState,
+          selection.getAnchorKey(),
+          Block.IMAGE,
+          {
+            src
+          }
+        )
+      );
+      return HANDLED;
+    }
+    return NOT_HANDLED;
+  }
+
+  handleReturn() {
+    return NOT_HANDLED;
+  }
+
+  renderHTML() {
+    const currentContent = this.state.editorState.getCurrentContent();
+    const eHTML = this.exporter(currentContent);
+    const newWin = window.open(
+      `${window.location.pathname}rendered.html`,
+      "windowName",
+      `height=${window.screen.height},width=${window.screen.wdith}`
+    );
+    // passes rendered html to new window
+    newWin.onload = () => newWin.postMessage(eHTML, window.location.origin);
   }
 
   rendererFn(setEditorState, getEditorState) {
@@ -232,112 +292,6 @@ class ExtendedEditor extends React.Component {
     return rFnNew;
   }
 
-  keyBinding(e) {
-    if (hasCommandModifier(e)) {
-      if (e.which === 83) {
-        /* Key S */
-        return "editor-save";
-      }
-      // else if (e.which === 74 /* Key J */) {
-      //  return 'do-nothing';
-      //}
-    }
-    if (e.altKey === true) {
-      if (e.shiftKey === true) {
-        if (e.which === 76) {
-          /* Alt + Shift + L */
-          return "load-saved-data";
-          /* Key E */
-          // case 69: return 'toggle-edit-mode';
-        }
-      }
-      if (e.which === 72 /* Key H */) {
-        return "toggleinline:HIGHLIGHT";
-      }
-    }
-    return keyBindingFn(e);
-  }
-
-  handleKeyCommand(command) {
-    if (command === "editor-save") {
-      window.localStorage["editor"] = JSON.stringify(
-        convertToRaw(this.state.editorState.getCurrentContent())
-      );
-      return true;
-    } else if (command === "load-saved-data") {
-      this.loadSavedData();
-      return true;
-    } else if (command === "toggle-edit-mode") {
-      this.toggleEdit();
-    }
-    return false;
-  }
-
-  logData(e) {
-    const currentContent = this.state.editorState.getCurrentContent();
-    const es = convertToRaw(currentContent);
-    console.log(es);
-    console.log(this.state.editorState.getSelection().toJS());
-  }
-
-  renderHTML(e) {
-    const currentContent = this.state.editorState.getCurrentContent();
-    const eHTML = this.exporter(currentContent);
-    const newWin = window.open(
-      `${window.location.pathname}rendered.html`,
-      "windowName",
-      `height=${window.screen.height},width=${window.screen.wdith}`
-    );
-    // passes rendered html to new window
-    newWin.onload = () => newWin.postMessage(eHTML, window.location.origin);
-  }
-
-  loadSavedData() {
-    const data = window.localStorage.getItem("editor");
-    if (data === null) {
-      return;
-    }
-    try {
-      const blockData = JSON.parse(data);
-      console.log(blockData);
-      this.onChange(
-        EditorState.push(this.state.editorState, convertFromRaw(blockData))
-      );
-    } catch (e) {
-      console.log(e);
-    }
-  }
-
-  toggleEdit(e) {
-    this.setState({
-      editorEnabled: !this.state.editorEnabled
-    });
-  }
-
-  handleDroppedFiles(selection, files) {
-    const file = files[0];
-    if (file.type.indexOf("image/") === 0) {
-      const src = URL.createObjectURL(file);
-      console.log("src is", src);
-      this.onChange(
-        addNewBlockAt(
-          this.state.editorState,
-          selection.getAnchorKey(),
-          Block.IMAGE,
-          {
-            src
-          }
-        )
-      );
-      return HANDLED;
-    }
-    return NOT_HANDLED;
-  }
-
-  handleReturn(e) {
-    return NOT_HANDLED;
-  }
-
   render() {
     const { editorEnabled } = this.state;
     return (
@@ -351,7 +305,7 @@ class ExtendedEditor extends React.Component {
         keyBindingFn={this.keyBinding}
         beforeInput={handleBeforeInput}
         handleReturn={this.handleReturn}
-        sideButtons={this.getSideButtons()}
+        sideButtons={this.sideButtons}
         rendererFn={this.rendererFn}
         currentThread={this.props.currentThread}
         handleDocTitleChange={this.props.handleDocTitleChange}
@@ -364,7 +318,9 @@ ExtendedEditor.propTypes = {
   onChange: PropTypes.func.isRequired,
   editorState: PropTypes.any,
   currentThread: PropTypes.any,
-  handleDocTitleChange: PropTypes.any
+  handleDocTitleChange: PropTypes.any,
+  toggleModal: PropTypes.func.isRequired,
+  handleAddEmbeddedContent: PropTypes.func.isRequired
 };
 
 export default ExtendedEditor;

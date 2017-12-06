@@ -8,7 +8,7 @@
         "threads": [
             {
                 "channelId": "6e55e4dd-d4de-436c-9f7f-956f4910d424",
-                "date": "Wednesday, December 6, 2017 12:30 PM",
+                "date": "Wednesday, December 6, 2017 2:22 PM",
                 "document": {
                     "blocks": [
                         {
@@ -17,7 +17,55 @@
                             "entityRanges": [],
                             "inlineStyleRanges": [],
                             "key": "9kp26",
-                            "text": "check 1",
+                            "text": "",
+                            "type": "unstyled"
+                        },
+                        {
+                            "data": {},
+                            "depth": 0,
+                            "entityRanges": [
+                                {
+                                    "key": 0,
+                                    "length": 1,
+                                    "offset": 0
+                                }
+                            ],
+                            "inlineStyleRanges": [],
+                            "key": "1r089",
+                            "text": "E",
+                            "type": "atomic"
+                        },
+                        {
+                            "data": {},
+                            "depth": 0,
+                            "entityRanges": [],
+                            "inlineStyleRanges": [],
+                            "key": "4vr9m",
+                            "text": "",
+                            "type": "unstyled"
+                        },
+                        {
+                            "data": {},
+                            "depth": 0,
+                            "entityRanges": [
+                                {
+                                    "key": 1,
+                                    "length": 1,
+                                    "offset": 0
+                                }
+                            ],
+                            "inlineStyleRanges": [],
+                            "key": "5pde4",
+                            "text": "-",
+                            "type": "atomic"
+                        },
+                        {
+                            "data": {},
+                            "depth": 0,
+                            "entityRanges": [],
+                            "inlineStyleRanges": [],
+                            "key": "fo9vc",
+                            "text": "",
                             "type": "unstyled"
                         },
                         {
@@ -25,26 +73,30 @@
                             "depth": 0,
                             "entityRanges": [],
                             "inlineStyleRanges": [],
-                            "key": "dj9ia",
-                            "text": "halan",
-                            "type": "unstyled"
-                        },
-                        {
-                            "data": {},
-                            "depth": 0,
-                            "entityRanges": [],
-                            "inlineStyleRanges": [],
-                            "key": "551fo",
+                            "key": "esm0e",
                             "text": "",
                             "type": "unstyled"
                         }
                     ],
-                    "entityMap": {}
+                    "entityMap": {
+                        "0": {
+                            "data": {
+                                "url": "https://www.youtube.com/watch?v=ezvTXN6vXRM"
+                            },
+                            "mutability": "IMMUTABLE",
+                            "type": "embed"
+                        },
+                        "1": {
+                            "data": {},
+                            "mutability": "IMMUTABLE",
+                            "type": "separator"
+                        }
+                    }
                 },
                 "highlightColor": "#DFDCE3",
                 "id": "6e0c304c-0885-43fd-b4c2-cf7a204437b4",
                 "selected": true,
-                "text": "check 1",
+                "text": "",
                 "title": "has document"
             },
             {

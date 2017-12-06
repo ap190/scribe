@@ -6,12 +6,9 @@ import TodoBlock from "./blocks/todo";
 import ImageBlock from "./blocks/image";
 import { Block } from "../util/constants";
 
-// import BreakBlock from "./blocks/break";
-
 const BreakBlock = () => <div> LOL </div>;
 
 export default (setEditorState, getEditorState) => contentBlock => {
-  // console.log(editorState, onChange);
   const type = contentBlock.getType();
   switch (type) {
     case Block.BLOCKQUOTE_CAPTION:
