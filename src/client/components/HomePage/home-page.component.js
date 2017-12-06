@@ -307,7 +307,7 @@ class HomePage extends Component {
       return;
     }
 
-    let newThread = {
+    const newThread = {
       text: "New unsaved thread",
       date: "Unsaved",
       title: "Untitled",

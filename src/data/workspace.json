@@ -8,17 +8,19 @@
         "threads": [
             {
                 "channelId": "6e55e4dd-d4de-436c-9f7f-956f4910d424",
-                "date": "Wednesday, December 6, 2017 2:22 PM",
+                "date": "Wednesday, December 6, 2017 3:42 PM",
                 "document": {
                     "blocks": [
                         {
-                            "data": {},
+                            "data": {
+                                "src": "file:////Users/omergoldberg/Downloads/22016414_10154792755767073_2050960037_n.png"
+                            },
                             "depth": 0,
                             "entityRanges": [],
                             "inlineStyleRanges": [],
                             "key": "9kp26",
                             "text": "",
-                            "type": "unstyled"
+                            "type": "atomic:image"
                         },
                         {
                             "data": {},
@@ -31,7 +33,7 @@
                                 }
                             ],
                             "inlineStyleRanges": [],
-                            "key": "1r089",
+                            "key": "77oev",
                             "text": "E",
                             "type": "atomic"
                         },
@@ -40,40 +42,7 @@
                             "depth": 0,
                             "entityRanges": [],
                             "inlineStyleRanges": [],
-                            "key": "4vr9m",
-                            "text": "",
-                            "type": "unstyled"
-                        },
-                        {
-                            "data": {},
-                            "depth": 0,
-                            "entityRanges": [
-                                {
-                                    "key": 1,
-                                    "length": 1,
-                                    "offset": 0
-                                }
-                            ],
-                            "inlineStyleRanges": [],
-                            "key": "5pde4",
-                            "text": "-",
-                            "type": "atomic"
-                        },
-                        {
-                            "data": {},
-                            "depth": 0,
-                            "entityRanges": [],
-                            "inlineStyleRanges": [],
-                            "key": "fo9vc",
-                            "text": "",
-                            "type": "unstyled"
-                        },
-                        {
-                            "data": {},
-                            "depth": 0,
-                            "entityRanges": [],
-                            "inlineStyleRanges": [],
-                            "key": "esm0e",
+                            "key": "cf4ii",
                             "text": "",
                             "type": "unstyled"
                         }
@@ -85,11 +54,6 @@
                             },
                             "mutability": "IMMUTABLE",
                             "type": "embed"
-                        },
-                        "1": {
-                            "data": {},
-                            "mutability": "IMMUTABLE",
-                            "type": "separator"
                         }
                     }
                 },
@@ -683,7 +647,9 @@
                             "type": "todo"
                         },
                         {
-                            "data": {},
+                            "data": {
+                                "checked": true
+                            },
                             "depth": 0,
                             "entityRanges": [],
                             "inlineStyleRanges": [],

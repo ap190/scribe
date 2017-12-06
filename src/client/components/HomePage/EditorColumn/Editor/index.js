@@ -11,7 +11,7 @@ import CaptionBlock from "./components/blocks/caption";
 import AtomicBlock from "./components/blocks/atomic";
 import TodoBlock from "./components/blocks/todo";
 import ImageBlock from "./components/blocks/image";
-import ImageSideButton from "./components/inline-side-buttons/image";
+import ImageSideButton from "./components/inline-side-buttons/image-side-button";
 import EmbedSideButton from "./components/inline-side-buttons/embed-side-button";
 import SeparatorSideButton from "./components/inline-side-buttons/separator-side-button";
 import BreakSideButton from "./components/inline-side-buttons/break";

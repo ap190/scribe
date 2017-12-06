@@ -34,7 +34,7 @@ import {
   isCursorBetweenLink
 } from "./model";
 
-import ImageButton from "./components/inline-side-buttons/image";
+import ImageButton from "./components/inline-side-buttons/image-side-button";
 
 /*
 A wrapper over `draft-js`'s default **Editor** component which provides

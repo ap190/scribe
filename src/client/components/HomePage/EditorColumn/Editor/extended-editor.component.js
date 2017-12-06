@@ -2,7 +2,6 @@ import React from "react";
 import PropTypes from "prop-types";
 import { EditorState, convertToRaw, KeyBindingUtil, Modifier } from "draft-js";
 import "draft-js/dist/Draft.css";
-
 import "./index.scss";
 import "./components/toolbar/addbutton.scss";
 import "./components/toolbar/toolbar.scss";
