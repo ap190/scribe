@@ -6,7 +6,6 @@ import {
   convertToRaw,
   convertFromRaw,
   EditorState,
-  ContentState,
   AtomicBlockUtils
 } from "draft-js";
 import moment from "moment";
@@ -21,6 +20,7 @@ import ThreadModal from "../common/Modal/threadModal.component";
 import { createFileStructure } from "../../utils/createFileTree";
 import { modals } from "../../utils/const";
 import { highlightColor } from "../../themes";
+import { setRenderOptions } from "./EditorColumn/Editor/exportToHTML";
 
 const { GREY_HIGHLIGHT } = highlightColor;
 const {
@@ -82,6 +82,7 @@ class HomePage extends Component {
     this.getModalContent = this.getModalContent.bind(this);
     this.selectFile = this.selectFile.bind(this);
     this.saveWorkspace = this.saveWorkspace.bind(this);
+    this.exportCurrentDocAsHTML = this.exportCurrentDocAsHTML.bind(this);
     this.currentWindow = currentWindow;
   }
 
@@ -451,7 +452,6 @@ class HomePage extends Component {
   }
 
   saveWorkspace() {
-    // Get time of save.
     const timestamp = moment().format("LLLL");
 
     this.applyThreadChange(SELECTED_THREAD, thread => {
@@ -463,6 +463,17 @@ class HomePage extends Component {
     });
 
     ipcRenderer.send("save-workspace", this.state.channels);
+  }
+
+  exportCurrentDocAsHTML() {
+    const HTML = setRenderOptions()(
+      this.state.currentDocument.getCurrentContent()
+    );
+    ipcRenderer.send(
+      "export-current-doc",
+      HTML,
+      this.state.currentThread.title
+    );
   }
 
   render() {
@@ -500,6 +511,7 @@ class HomePage extends Component {
           handleDocumentChange={this.handleDocumentChange}
           handleThreadTitleChange={this.handleThreadTitleChange}
           saveWorkspace={this.saveWorkspace}
+          exportCurrentDocAsHTML={this.exportCurrentDocAsHTML}
           handleAddEmbeddedContent={this.handleAddEmbeddedContent}
         />
       </Wrapper>

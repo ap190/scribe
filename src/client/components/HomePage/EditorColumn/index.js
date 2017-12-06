@@ -40,12 +40,14 @@ class EditorColumn extends Component {
       toggleEditorHandler,
       isEditorToggled,
       saveWorkspace,
-      currentDocument
+      currentDocument,
+      exportCurrentDocAsHTML
     } = this.props;
     return (
       <div className="editor">
         <EditorActionBar
           handleSave={saveWorkspace}
+          handleExportToHTML={exportCurrentDocAsHTML}
           handleMaximize={toggleEditorHandler}
           handleNextThread={() => console.log("next thread...")}
           isEditorToggled={isEditorToggled}
@@ -78,7 +80,8 @@ EditorColumn.propTypes = {
   handleDocumentChange: PropTypes.func.isRequired,
   currentDocument: PropTypes.any,
   currentThread: PropTypes.any,
-  handleAddEmbeddedContent: PropTypes.func.isRequired
+  handleAddEmbeddedContent: PropTypes.func.isRequired,
+  exportCurrentDocAsHTML: PropTypes.func.isRequired
 };
 
 export default EditorColumn;

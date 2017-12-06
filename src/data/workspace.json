@@ -634,11 +634,13 @@
         "threads": [
             {
                 "channelId": "2a4f247a-cc85-44e2-9958-008413a65d96",
-                "date": "Wednesday, December 6, 2017 4:21 PM",
+                "date": "Wednesday, December 6, 2017 6:12 PM",
                 "document": {
                     "blocks": [
                         {
-                            "data": {},
+                            "data": {
+                                "checked": false
+                            },
                             "depth": 0,
                             "entityRanges": [],
                             "inlineStyleRanges": [],
@@ -669,7 +671,9 @@
                             "type": "todo"
                         },
                         {
-                            "data": {},
+                            "data": {
+                                "checked": true
+                            },
                             "depth": 0,
                             "entityRanges": [],
                             "inlineStyleRanges": [],

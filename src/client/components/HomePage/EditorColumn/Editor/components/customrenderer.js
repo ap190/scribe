@@ -1,4 +1,3 @@
-import React from "react";
 import QuoteCaptionBlock from "./blocks/blockquotecaption";
 import CaptionBlock from "./blocks/caption";
 import AtomicBlock from "./blocks/atomic";

@@ -1,9 +1,9 @@
-import React from 'react';
-import { convertToHTML } from 'draft-convert';
+import React from "react";
+import { convertToHTML } from "draft-convert";
 
-import { Inline, Block, Entity } from './util/constants';
+import { Inline, Block, Entity } from "./util/constants";
 
-export const styleToHTML = (style) => {
+export const styleToHTML = style => {
   switch (style) {
     case Inline.ITALIC:
       return <em className={`md-inline-${style.toLowerCase()}`} />;
@@ -22,7 +22,7 @@ export const styleToHTML = (style) => {
   }
 };
 
-export const blockToHTML = (block) => {
+export const blockToHTML = block => {
   const blockType = block.type;
   switch (blockType) {
     case Block.H1:
@@ -47,36 +47,36 @@ export const blockToHTML = (block) => {
     case Block.CAPTION:
       return {
         start: `<p class="md-block-${blockType.toLowerCase()}"><caption>`,
-        end: '</caption></p>',
+        end: "</caption></p>"
       };
     case Block.IMAGE: {
       const imgData = block.data;
       const text = block.text;
-      const extraClass = (text.length > 0 ? ' md-block-image-has-caption' : '');
+      const extraClass = text.length > 0 ? " md-block-image-has-caption" : "";
       return {
         start: `<figure class="md-block-image${extraClass}"><img src="${imgData.src}" alt="${block.text}" /><figcaption className="md-block-image-caption">`,
-        end: '</figcaption></figure>',
+        end: "</figcaption></figure>"
       };
     }
     case Block.ATOMIC:
       return {
         start: `<figure className="md-block-${blockType.toLowerCase()}">`,
-        end: '</figure>',
+        end: "</figure>"
       };
     case Block.TODO: {
       const checked = block.data.checked || false;
-      let inp = '';
-      let containerClass = '';
+      let inp = "";
+      let containerClass = "";
       if (checked) {
         inp = '<input type=checkbox disabled checked="checked" />';
-        containerClass = 'md-block-todo-checked';
+        containerClass = "md-block-todo-checked";
       } else {
-        inp = '<input type=checkbox disabled />';
-        containerClass = 'md-block-todo-unchecked';
+        inp = "<input type=checkbox disabled />";
+        containerClass = "md-block-todo-unchecked";
       }
       return {
         start: `<div class="md-block-${blockType.toLowerCase()} ${containerClass}">${inp}<p>`,
-        end: '</p></div>',
+        end: "</p></div>"
       };
     }
     case Block.BREAK:
@@ -86,22 +86,44 @@ export const blockToHTML = (block) => {
     case Block.OL:
       return {
         element: <li />,
-        nest: <ol className={`md-block-${blockType.toLowerCase()}`} />,
+        nest: <ol className={`md-block-${blockType.toLowerCase()}`} />
       };
     case Block.UL:
       return {
         element: <li />,
-        nest: <ul className={`md-block-${blockType.toLowerCase()}`} />,
+        nest: <ul className={`md-block-${blockType.toLowerCase()}`} />
       };
     case Block.UNSTYLED:
       if (block.text.length < 1) {
-        return <p className={`md-block-${blockType.toLowerCase()}`}><br /></p>;
+        return (
+          <p className={`md-block-${blockType.toLowerCase()}`}>
+            <br />
+          </p>
+        );
       }
       return <p className={`md-block-${blockType.toLowerCase()}`} />;
-    default: return null;
+    default:
+      return null;
   }
 };
 
+export const newBlockToHTML = block => {
+  if (block.type === Block.ATOMIC) {
+    if (block.text === "E") {
+      return {
+        start: '<figure class="md-block-atomic md-block-atomic-embed">',
+        end: "</figure>"
+      };
+    } else if (block.text === "-") {
+      return (
+        <div className="md-block-atomic md-block-atomic-break">
+          <hr />
+        </div>
+      );
+    }
+  }
+  return blockToHTML(block);
+};
 
 export const entityToHTML = (entity, originalText) => {
   if (entity.type === Entity.LINK) {
@@ -119,13 +141,38 @@ export const entityToHTML = (entity, originalText) => {
   return originalText;
 };
 
+const newEntityToHTML = (entity, originalText) => {
+  if (entity.type === "embed") {
+    return (
+      <div>
+        <a
+          className="embedly-card"
+          href={entity.data.url}
+          data-card-controls="0"
+          data-card-theme="dark"
+        >
+          Embedded ― {entity.data.url}
+        </a>
+      </div>
+    );
+  }
+  return entityToHTML(entity, originalText);
+};
+
 export const options = {
   styleToHTML,
   blockToHTML,
-  entityToHTML,
+  entityToHTML
 };
 
-export const setRenderOptions = (htmlOptions = options) => convertToHTML(htmlOptions);
+export const exampleOptions = {
+  styleToHTML,
+  blockToHTML: newBlockToHTML,
+  entityToHTML: newEntityToHTML
+};
 
+export const setRenderOptions = (htmlOptions = options) =>
+  convertToHTML(htmlOptions);
 
-export default (contentState, htmlOptions = options) => convertToHTML(htmlOptions)(contentState);
+export default (contentState, htmlOptions = options) =>
+  convertToHTML(htmlOptions)(contentState);

@@ -1,4 +1,3 @@
-const fs = require("fs");
 const path = require("path");
 const jsonfile = require("jsonfile");
 
@@ -9,6 +8,6 @@ exports.genSaveWorkspace = (event, workspace) => {
     if (err) {
       throw new Error("Could not save workspace");
     }
-    event.sender.send("save-workspace-res", data);
+    event.sender.send("save-workspace-res", "success saving");
   });
 };

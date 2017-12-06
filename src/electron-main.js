@@ -5,6 +5,7 @@ const { ipcMain } = require("electron");
 const electron = require("electron");
 const { genLoadData } = require("./server/readData");
 const { genSaveWorkspace } = require("./server/saveWorkspace");
+const { genExportCurrentDocument } = require("./server/exportCurrentDoc");
 
 require("electron-context-menu")();
 
@@ -15,8 +16,12 @@ const {
   REDUX_DEVTOOLS
 } = require("electron-devtools-installer");
 
-ipcMain.on("load-file-req", (event, arg) => {
+ipcMain.on("load-file-req", event => {
   genLoadData(event);
+});
+
+ipcMain.on("export-current-doc", (event, html, pdfName) => {
+  genExportCurrentDocument(event, html, pdfName);
 });
 
 ipcMain.on("save-workspace", (event, arg) => {

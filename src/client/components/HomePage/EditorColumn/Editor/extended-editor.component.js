@@ -11,7 +11,6 @@ import "./components/blocks/blockquotecaption.scss";
 import "./components/blocks/caption.scss";
 import "./components/blocks/todo.scss";
 import "./components/blocks/image.scss";
-
 import {
   MediumDraftEditor,
   StringToTypeMap,
@@ -29,13 +28,6 @@ import {
   NOT_HANDLED
 } from "./index";
 
-import {
-  setRenderOptions,
-  blockToHTML,
-  entityToHTML,
-  styleToHTML
-} from "./exporter";
-
 const newTypeMap = StringToTypeMap;
 newTypeMap["2."] = Block.OL;
 
@@ -44,43 +36,6 @@ const DQUOTE_START = "“";
 const DQUOTE_END = "”";
 const SQUOTE_START = "‘";
 const SQUOTE_END = "’";
-
-// seems to be for the renderHTML functionality
-const newBlockToHTML = block => {
-  if (block.type === Block.ATOMIC) {
-    if (block.text === "E") {
-      return {
-        start: '<figure class="md-block-atomic md-block-atomic-embed">',
-        end: "</figure>"
-      };
-    } else if (block.text === "-") {
-      return (
-        <div className="md-block-atomic md-block-atomic-break">
-          <hr />
-        </div>
-      );
-    }
-  }
-  return blockToHTML(block);
-};
-
-const newEntityToHTML = (entity, originalText) => {
-  if (entity.type === "embed") {
-    return (
-      <div>
-        <a
-          className="embedly-card"
-          href={entity.data.url}
-          data-card-controls="0"
-          data-card-theme="dark"
-        >
-          Embedded ― {entity.data.url}
-        </a>
-      </div>
-    );
-  }
-  return entityToHTML(entity, originalText);
-};
 
 const handleBeforeInput = (editorState, str, onChange) => {
   if (str === '"' || str === "'") {
@@ -144,12 +99,6 @@ class ExtendedEditor extends React.Component {
       placeholder: "Add notes here..."
     };
 
-    this.exporter = setRenderOptions({
-      styleToHTML,
-      blockToHTML: newBlockToHTML,
-      entityToHTML: newEntityToHTML
-    });
-
     this.sideButtons = [
       {
         title: "Image",
@@ -167,7 +116,6 @@ class ExtendedEditor extends React.Component {
       }
     ];
     this.logData = this.logData.bind(this);
-    this.renderHTML = this.renderHTML.bind(this);
     this.toggleEdit = this.toggleEdit.bind(this);
     this.keyBinding = this.keyBinding.bind(this);
     this.handleDroppedFiles = this.handleDroppedFiles.bind(this);
@@ -242,18 +190,6 @@ class ExtendedEditor extends React.Component {
 
   handleReturn() {
     return NOT_HANDLED;
-  }
-
-  renderHTML() {
-    const currentContent = this.state.editorState.getCurrentContent();
-    const eHTML = this.exporter(currentContent);
-    const newWin = window.open(
-      `${window.location.pathname}rendered.html`,
-      "windowName",
-      `height=${window.screen.height},width=${window.screen.wdith}`
-    );
-    // passes rendered html to new window
-    newWin.onload = () => newWin.postMessage(eHTML, window.location.origin);
   }
 
   render() {
