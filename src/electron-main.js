@@ -7,7 +7,7 @@ const { genSaveWorkspace } = require("./server/saveWorkspace");
 const { genExportCurrentDocument } = require("./server/exportCurrentDoc");
 const menuTemplate = require("./server/menu");
 
-// require("electron-context-menu")();
+require("electron-context-menu")();
 
 const BrowserWindow = electron.BrowserWindow;
 const {

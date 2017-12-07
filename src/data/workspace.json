@@ -1,919 +1,979 @@
 [
-    {
-        "channelName": "# design stuff",
-        "channelType": "communication",
-        "id": "6e55e4dd-d4de-436c-9f7f-956f4910d424",
-        "lastPosted": "4 days ago",
-        "selected": false,
-        "threads": [
+  {
+    "channelName": "# design stuff",
+    "channelType": "communication",
+    "id": "6e55e4dd-d4de-436c-9f7f-956f4910d424",
+    "lastPosted": "4 days ago",
+    "selected": false,
+    "threads": [
+      {
+        "channelId": "6e55e4dd-d4de-436c-9f7f-956f4910d424",
+        "date": "Wednesday, December 6, 2017 3:42 PM",
+        "document": {
+          "blocks": [
             {
-                "channelId": "6e55e4dd-d4de-436c-9f7f-956f4910d424",
-                "date": "Wednesday, December 6, 2017 3:42 PM",
-                "document": {
-                    "blocks": [
-                        {
-                            "data": {
-                                "src": "file:////Users/omergoldberg/Downloads/22016414_10154792755767073_2050960037_n.png"
-                            },
-                            "depth": 0,
-                            "entityRanges": [],
-                            "inlineStyleRanges": [],
-                            "key": "9kp26",
-                            "text": "",
-                            "type": "atomic:image"
-                        },
-                        {
-                            "data": {},
-                            "depth": 0,
-                            "entityRanges": [
-                                {
-                                    "key": 0,
-                                    "length": 1,
-                                    "offset": 0
-                                }
-                            ],
-                            "inlineStyleRanges": [],
-                            "key": "77oev",
-                            "text": "E",
-                            "type": "atomic"
-                        },
-                        {
-                            "data": {},
-                            "depth": 0,
-                            "entityRanges": [],
-                            "inlineStyleRanges": [],
-                            "key": "cf4ii",
-                            "text": "",
-                            "type": "unstyled"
-                        }
-                    ],
-                    "entityMap": {
-                        "0": {
-                            "data": {
-                                "url": "https://www.youtube.com/watch?v=ezvTXN6vXRM"
-                            },
-                            "mutability": "IMMUTABLE",
-                            "type": "embed"
-                        }
-                    }
-                },
-                "highlightColor": "#DFDCE3",
-                "id": "6e0c304c-0885-43fd-b4c2-cf7a204437b4",
-                "selected": true,
-                "text": "",
-                "title": "has document"
+              "data": {
+                "src":
+                  "file:////Users/omergoldberg/Downloads/22016414_10154792755767073_2050960037_n.png"
+              },
+              "depth": 0,
+              "entityRanges": [],
+              "inlineStyleRanges": [],
+              "key": "9kp26",
+              "text": "",
+              "type": "atomic:image"
             },
             {
-                "channelId": "6e55e4dd-d4de-436c-9f7f-956f4910d424",
-                "date": "Sunday, December 3, 2017 2:13 PM",
-                "document": {
-                    "blocks": [
-                        {
-                            "data": {},
-                            "depth": 0,
-                            "entityRanges": [],
-                            "inlineStyleRanges": [],
-                            "key": "9kp26",
-                            "text": "hi hihi agaegawgeaw c ",
-                            "type": "unstyled"
-                        }
-                    ],
-                    "entityMap": {}
-                },
-                "highlightColor": "#fc4a1a",
-                "id": "60c9c04c-0fd4-4463-a0cb-36b7ca4095cd",
-                "selected": false,
-                "text": "hi hihi agaegaegawgeaw cnncnjshheasss ",
-                "title": "elephant"
+              "data": {},
+              "depth": 0,
+              "entityRanges": [
+                {
+                  "key": 0,
+                  "length": 1,
+                  "offset": 0
+                }
+              ],
+              "inlineStyleRanges": [],
+              "key": "77oev",
+              "text": "E",
+              "type": "atomic"
+            },
+            {
+              "data": {},
+              "depth": 0,
+              "entityRanges": [],
+              "inlineStyleRanges": [],
+              "key": "cf4ii",
+              "text": "",
+              "type": "unstyled"
             }
-        ]
-    },
-    {
-        "channelName": ".git",
-        "channelType": "file",
-        "id": "49ae8a8c-1fab-4f98-b944-3e65e2581xyz",
-        "lastPosted": "21 minutes ago",
-        "selected": false,
-        "threads": [
-            {
-                "channelId": "49ae8a8c-1fab-4f98-b944-3e65e2581xyz",
-                "date": "Monday, December 4, 2017 1:05 PM",
-                "document": {
-                    "blocks": [
-                        {
-                            "data": {},
-                            "depth": 0,
-                            "entityRanges": [],
-                            "inlineStyleRanges": [],
-                            "key": "4mb9",
-                            "text": "playing around",
-                            "type": "unstyled"
-                        }
-                    ],
-                    "entityMap": {}
-                },
-                "highlightColor": "#DFDCE3",
-                "id": "2745c098-b11b-4f33-a0ae-b7327a251bba",
-                "selected": true,
-                "text": "playing around",
-                "title": "Trying add file"
+          ],
+          "entityMap": {
+            "0": {
+              "data": {
+                "url": "https://www.youtube.com/watch?v=ezvTXN6vXRM"
+              },
+              "mutability": "IMMUTABLE",
+              "type": "embed"
             }
-        ]
-    },
-    {
-        "channelName": ".gitignore",
-        "channelType": "file",
-        "id": "d328fecb-bcbf-4981-af48-b2baec8d3c53",
-        "lastPosted": "1 day ago",
-        "selected": false,
-        "threads": [
-            {
-                "date": "Sunday, December 3, 2017 6:24 PM",
-                "highlightColor": "#DFDCE3",
-                "id": "582a2049-a47c-452d-943c-a52cde6e609c",
-                "selected": true,
-                "text": "",
-                "title": "Untitled"
-            },
-            {
-                "date": "Unsaved",
-                "highlightColor": "#DFDCE3",
-                "id": "2b42e6c1-6334-4df9-83d8-fc1815d159e5",
-                "selected": false,
-                "text": "New unsaved thread",
-                "title": "Untitled"
-            },
-            {
-                "channelName": ".gitignore",
-                "date": "6 Mar 2017 21:22:23 GMT",
-                "document": null,
-                "highlightColor": "#DFDCE3",
-                "id": "de9e0166-8947-4c8d-b4a0-2743a01866df",
-                "selected": false,
-                "text": "lala land!",
-                "title": "code"
-            },
-            {
-                "channelName": ".gitignore",
-                "date": "6 Mar 2017 21:22:23 GMT",
-                "document": null,
-                "highlightColor": "#fc4a1a",
-                "id": "ea54b259-5dc1-4c65-b946-d351be42123e",
-                "selected": false,
-                "text": "scribe is king",
-                "title": "elephant"
-            },
-            {
-                "channelName": ".gitignore",
-                "date": "6 Mar 2017 21:22:23 GMT",
-                "document": null,
-                "highlightColor": "#fc4a1a",
-                "id": "cd80dc27-7705-49ce-9934-a44303d246e8",
-                "selected": false,
-                "text": "the best thing ever",
-                "title": "amazing tool"
-            }
-        ]
-    },
-    {
-        "channelName": "README.md",
-        "channelType": "file",
-        "id": "49ae8a8c-1fab-4f98-b944-3e65e25814xx",
-        "lastPosted": "4 days ago",
-        "selected": false,
-        "threads": [
-            {
-                "channelName": "README.md",
-                "date": "6 Mar 2017 21:22:23 GMT",
-                "document": null,
-                "highlightColor": "#DFDCE3",
-                "id": "49ae8a8c-1fab-4f98-b944-3e65e25814zz",
-                "text": "Getting Started with npm",
-                "title": "Set Up Guide"
-            },
-            {
-                "channelName": "README.md",
-                "date": "6 Mar 2017 21:22:23 GMT",
-                "document": null,
-                "highlightColor": "#fc4a1a",
-                "id": "49ae8a8c-1fab-4f98-b944-3e65e25814ee",
-                "text": "hey here!",
-                "title": "elephant"
-            },
-            {
-                "channelName": "README.md",
-                "date": "6 Mar 2017 21:22:23 GMT",
-                "document": null,
-                "highlightColor": "#fc4a1a",
-                "id": "49ae8a8c-1fab-4f98-b944-3e65e25814aa",
-                "text": "hey over there~!",
-                "title": "penguin"
-            },
-            {
-                "channelName": "README.md",
-                "date": "6 Mar 2017 21:22:23 GMT",
-                "document": null,
-                "highlightColor": "#49306B",
-                "id": "49ae8a8c-1fab-4f98-b944-3e65e25814dd",
-                "text": "hey over there~!",
-                "title": "penguin"
-            },
-            {
-                "channelName": "README.md",
-                "date": "6 Mar 2017 21:22:23 GMT",
-                "document": null,
-                "highlightColor": "#fc4a1a",
-                "id": "49ae8a8c-1fab-4f98-b944-3e65e25814rr",
-                "text": "hey over there~!",
-                "title": "penguin"
-            }
-        ]
-    },
-    {
-        "channelName": "# backend",
-        "channelType": "communication",
-        "id": "38b0e50b-810e-4b41-9b9f-dabdbab392c7",
-        "lastPosted": "21 minutes ago",
-        "selected": false,
-        "threads": [
-            {
-                "channelId": "38b0e50b-810e-4b41-9b9f-dabdbab392c7",
-                "date": "Sunday, December 3, 2017 6:18 PM",
-                "document": {
-                    "blocks": [
-                        {
-                            "data": {},
-                            "depth": 0,
-                            "entityRanges": [],
-                            "inlineStyleRanges": [],
-                            "key": "a87m5",
-                            "text": "",
-                            "type": "unstyled"
-                        }
-                    ],
-                    "entityMap": {}
-                },
-                "highlightColor": "#49306B",
-                "id": "6c8f7681-9527-4519-9925-5102c3689cec",
-                "selected": false,
-                "text": "",
-                "title": "New!"
-            }
-        ]
-    },
-    {
-        "channelName": "# business clients",
-        "channelType": "communication",
-        "id": "768c7062-2110-45df-99ef-63e0f0aad9c0",
-        "lastPosted": "1 day ago",
-        "selected": false,
-        "threads": [
-            {
-                "channelId": "768c7062-2110-45df-99ef-63e0f0aad9c0",
-                "date": "Monday, December 4, 2017 12:26 PM",
-                "document": {
-                    "blocks": [
-                        {
-                            "data": {},
-                            "depth": 0,
-                            "entityRanges": [],
-                            "inlineStyleRanges": [],
-                            "key": "e0r49",
-                            "text": "trying again",
-                            "type": "unstyled"
-                        }
-                    ],
-                    "entityMap": {}
-                },
-                "highlightColor": "#DFDCE3",
-                "id": "5f878b04-a268-4c45-8e9c-42df27bada95",
-                "selected": false,
-                "text": "trying again",
-                "title": "Try two"
-            },
-            {
-                "channelId": "768c7062-2110-45df-99ef-63e0f0aad9c0",
-                "date": "Monday, December 4, 2017 5:08 PM",
-                "document": {
-                    "blocks": [
-                        {
-                            "data": {},
-                            "depth": 0,
-                            "entityRanges": [],
-                            "inlineStyleRanges": [],
-                            "key": "4rrf8",
-                            "text": "Immediate Features",
-                            "type": "header-two"
-                        },
-                        {
-                            "data": {},
-                            "depth": 0,
-                            "entityRanges": [],
-                            "inlineStyleRanges": [],
-                            "key": "2a80",
-                            "text": "Save images",
-                            "type": "todo"
-                        },
-                        {
-                            "data": {},
-                            "depth": 0,
-                            "entityRanges": [],
-                            "inlineStyleRanges": [],
-                            "key": "d6n46",
-                            "text": "Document is not selectable without selected thread",
-                            "type": "todo"
-                        },
-                        {
-                            "data": {},
-                            "depth": 0,
-                            "entityRanges": [],
-                            "inlineStyleRanges": [],
-                            "key": "3slt9",
-                            "text": "Welcome Guide",
-                            "type": "todo"
-                        },
-                        {
-                            "data": {},
-                            "depth": 0,
-                            "entityRanges": [],
-                            "inlineStyleRanges": [],
-                            "key": "10u6a",
-                            "text": "If thread is selected don’t unselect on click",
-                            "type": "todo"
-                        },
-                        {
-                            "data": {},
-                            "depth": 0,
-                            "entityRanges": [],
-                            "inlineStyleRanges": [],
-                            "key": "2hvdh",
-                            "text": "Switching channels switches thread and doc",
-                            "type": "todo"
-                        },
-                        {
-                            "data": {},
-                            "depth": 0,
-                            "entityRanges": [],
-                            "inlineStyleRanges": [],
-                            "key": "bsbj4",
-                            "text": "Modals",
-                            "type": "todo"
-                        },
-                        {
-                            "data": {},
-                            "depth": 0,
-                            "entityRanges": [],
-                            "inlineStyleRanges": [],
-                            "key": "d7f4j",
-                            "text": "Features",
-                            "type": "header-two"
-                        },
-                        {
-                            "data": {},
-                            "depth": 0,
-                            "entityRanges": [],
-                            "inlineStyleRanges": [],
-                            "key": "2puob",
-                            "text": "Codepane ",
-                            "type": "todo"
-                        },
-                        {
-                            "data": {},
-                            "depth": 0,
-                            "entityRanges": [],
-                            "inlineStyleRanges": [],
-                            "key": "era74",
-                            "text": "Cloud Sync",
-                            "type": "todo"
-                        },
-                        {
-                            "data": {},
-                            "depth": 0,
-                            "entityRanges": [],
-                            "inlineStyleRanges": [],
-                            "key": "4njkq",
-                            "text": "Landing Page with Payment",
-                            "type": "todo"
-                        },
-                        {
-                            "data": {},
-                            "depth": 0,
-                            "entityRanges": [],
-                            "inlineStyleRanges": [],
-                            "key": "cbjaa",
-                            "text": "User accounts",
-                            "type": "todo"
-                        },
-                        {
-                            "data": {},
-                            "depth": 0,
-                            "entityRanges": [],
-                            "inlineStyleRanges": [],
-                            "key": "8qn7q",
-                            "text": "Auto updates ",
-                            "type": "todo"
-                        },
-                        {
-                            "data": {},
-                            "depth": 0,
-                            "entityRanges": [],
-                            "inlineStyleRanges": [],
-                            "key": "575lv",
-                            "text": "Saving workspace and additonal file",
-                            "type": "todo"
-                        },
-                        {
-                            "data": {},
-                            "depth": 0,
-                            "entityRanges": [],
-                            "inlineStyleRanges": [],
-                            "key": "11g06",
-                            "text": "Analytics",
-                            "type": "todo"
-                        },
-                        {
-                            "data": {
-                                "src": "blob:http://localhost:3000/499a788f-0caf-4e2b-ac8d-0ff1d142e586"
-                            },
-                            "depth": 0,
-                            "entityRanges": [],
-                            "inlineStyleRanges": [],
-                            "key": "7nbp6",
-                            "text": "",
-                            "type": "atomic:image"
-                        },
-                        {
-                            "data": {},
-                            "depth": 0,
-                            "entityRanges": [],
-                            "inlineStyleRanges": [],
-                            "key": "709c0",
-                            "text": "",
-                            "type": "unstyled"
-                        }
-                    ],
-                    "entityMap": {}
-                },
-                "highlightColor": "#4abdac",
-                "id": "27bfe304-b9bb-4db2-940f-f6203ea3639c",
-                "selected": true,
-                "text": "Immediate Features",
-                "title": "New thread!"
-            },
-            {
-                "channelId": "768c7062-2110-45df-99ef-63e0f0aad9c0",
-                "date": "Friday, December 1, 2017 4:33 AM",
-                "document": {
-                    "blocks": [
-                        {
-                            "data": {},
-                            "depth": 0,
-                            "entityRanges": [],
-                            "inlineStyleRanges": [],
-                            "key": "b7a9e",
-                            "text": "hello!",
-                            "type": "unstyled"
-                        }
-                    ],
-                    "entityMap": {}
-                },
-                "highlightColor": "#fc4a1a",
-                "id": "75500add-0ef5-492e-82b2-335587959851",
-                "selected": false,
-                "text": "hey over there~!",
-                "title": "penguin"
-            }
-        ]
-    },
-    {
-        "channelName": "# January Release",
-        "channelType": "communication",
-        "id": "60569731-ab1e-43b9-bd87-30303d6c4c4f",
-        "lastPosted": "4 days ago",
-        "selected": false,
-        "threads": [
-            {
-                "channelId": "60569731-ab1e-43b9-bd87-30303d6c4c4f",
-                "date": "Unsaved",
-                "highlightColor": "#DFDCE3",
-                "id": "bb57f8ba-ee76-44dd-8715-efd935e3a003",
-                "selected": false,
-                "text": "New unsaved thread",
-                "title": "Untitled"
-            },
-            {
-                "channelId": "60569731-ab1e-43b9-bd87-30303d6c4c4f",
-                "date": "Monday, December 4, 2017 7:20 PM",
-                "document": {
-                    "blocks": [
-                        {
-                            "data": {},
-                            "depth": 0,
-                            "entityRanges": [],
-                            "inlineStyleRanges": [],
-                            "key": "4rrf8",
-                            "text": "Immediate Features",
-                            "type": "header-two"
-                        },
-                        {
-                            "data": {},
-                            "depth": 0,
-                            "entityRanges": [],
-                            "inlineStyleRanges": [],
-                            "key": "2a80",
-                            "text": "Save images",
-                            "type": "todo"
-                        },
-                        {
-                            "data": {},
-                            "depth": 0,
-                            "entityRanges": [],
-                            "inlineStyleRanges": [],
-                            "key": "d6n46",
-                            "text": "Document is not selectable without selected thread",
-                            "type": "todo"
-                        },
-                        {
-                            "data": {},
-                            "depth": 0,
-                            "entityRanges": [],
-                            "inlineStyleRanges": [],
-                            "key": "3slt9",
-                            "text": "Welcome Guide",
-                            "type": "todo"
-                        },
-                        {
-                            "data": {},
-                            "depth": 0,
-                            "entityRanges": [],
-                            "inlineStyleRanges": [],
-                            "key": "d7f4j",
-                            "text": "Features",
-                            "type": "header-two"
-                        },
-                        {
-                            "data": {},
-                            "depth": 0,
-                            "entityRanges": [],
-                            "inlineStyleRanges": [],
-                            "key": "2puob",
-                            "text": "Codepane ",
-                            "type": "todo"
-                        },
-                        {
-                            "data": {},
-                            "depth": 0,
-                            "entityRanges": [],
-                            "inlineStyleRanges": [],
-                            "key": "era74",
-                            "text": "Cloud Sync",
-                            "type": "todo"
-                        },
-                        {
-                            "data": {},
-                            "depth": 0,
-                            "entityRanges": [],
-                            "inlineStyleRanges": [],
-                            "key": "4njkq",
-                            "text": "Landing Page with Payment",
-                            "type": "todo"
-                        },
-                        {
-                            "data": {},
-                            "depth": 0,
-                            "entityRanges": [],
-                            "inlineStyleRanges": [],
-                            "key": "cbjaa",
-                            "text": "User accounts",
-                            "type": "todo"
-                        },
-                        {
-                            "data": {},
-                            "depth": 0,
-                            "entityRanges": [],
-                            "inlineStyleRanges": [],
-                            "key": "8qn7q",
-                            "text": "Auto updates ",
-                            "type": "todo"
-                        },
-                        {
-                            "data": {},
-                            "depth": 0,
-                            "entityRanges": [],
-                            "inlineStyleRanges": [],
-                            "key": "11g06",
-                            "text": "Analytics",
-                            "type": "todo"
-                        },
-                        {
-                            "data": {},
-                            "depth": 0,
-                            "entityRanges": [],
-                            "inlineStyleRanges": [],
-                            "key": "709c0",
-                            "text": "",
-                            "type": "unstyled"
-                        }
-                    ],
-                    "entityMap": {}
-                },
-                "highlightColor": "#DFDCE3",
-                "id": "f4e8ee7c-3d36-45b0-9072-17907a341b02",
-                "selected": false,
-                "text": "Immediate Features",
-                "title": "Dogfooding!@!!!!!!!"
-            }
-        ]
-    },
-    {
-        "channelName": "# Omer's Todo",
-        "channelType": "communication",
-        "id": "2a4f247a-cc85-44e2-9958-008413a65d96",
-        "lastPosted": "4 days ago",
+          }
+        },
+        "highlightColor": "#DFDCE3",
+        "id": "6e0c304c-0885-43fd-b4c2-cf7a204437b4",
         "selected": true,
-        "threads": [
+        "text": "",
+        "title": "has document"
+      },
+      {
+        "channelId": "6e55e4dd-d4de-436c-9f7f-956f4910d424",
+        "date": "Sunday, December 3, 2017 2:13 PM",
+        "document": {
+          "blocks": [
             {
-                "channelId": "2a4f247a-cc85-44e2-9958-008413a65d96",
-                "date": "Thursday, December 7, 2017 12:31 PM",
-                "document": {
-                    "blocks": [
-                        {
-                            "data": {
-                                "checked": false
-                            },
-                            "depth": 0,
-                            "entityRanges": [],
-                            "inlineStyleRanges": [],
-                            "key": "f9f7q",
-                            "text": "hide tooltip off click on editor bug - this may be fixed with draggable issue",
-                            "type": "todo"
-                        },
-                        {
-                            "data": {},
-                            "depth": 0,
-                            "entityRanges": [],
-                            "inlineStyleRanges": [],
-                            "key": "f1ljn",
-                            "text": "Electron app menu -> save, color theme etc",
-                            "type": "todo"
-                        },
-                        {
-                            "data": {},
-                            "depth": 0,
-                            "entityRanges": [],
-                            "inlineStyleRanges": [],
-                            "key": "edsb1",
-                            "text": "Recent workspaces",
-                            "type": "todo"
-                        },
-                        {
-                            "data": {},
-                            "depth": 0,
-                            "entityRanges": [],
-                            "inlineStyleRanges": [],
-                            "key": "f08hr",
-                            "text": "on initial save prompt user what directory he wants us to save the work",
-                            "type": "todo"
-                        },
-                        {
-                            "data": {},
-                            "depth": 0,
-                            "entityRanges": [],
-                            "inlineStyleRanges": [],
-                            "key": "279eu",
-                            "text": "save images to selected dir",
-                            "type": "todo"
-                        },
-                        {
-                            "data": {},
-                            "depth": 0,
-                            "entityRanges": [],
-                            "inlineStyleRanges": [],
-                            "key": "e4m9p",
-                            "text": "accelerators with rich notifications for adding content via keyboard",
-                            "type": "todo"
-                        }
-                    ],
-                    "entityMap": {}
-                },
-                "highlightColor": "#DFDCE3",
-                "id": "60af28fe-63d5-4c3a-9e50-a2a693d98bca",
-                "selected": true,
-                "text": "hide tooltip off click on editor bug - this may be fixed with draggable issue",
-                "title": "Todo"
+              "data": {},
+              "depth": 0,
+              "entityRanges": [],
+              "inlineStyleRanges": [],
+              "key": "9kp26",
+              "text": "hi hihi agaegawgeaw c ",
+              "type": "unstyled"
             }
-        ]
-    },
-    {
-        "channelName": "# Ali's Todo",
-        "channelType": "communication",
-        "id": "55edf3eb-0ac2-4073-8716-fe02ef2a051b",
-        "lastPosted": "4 days ago",
+          ],
+          "entityMap": {}
+        },
+        "highlightColor": "#fc4a1a",
+        "id": "60c9c04c-0fd4-4463-a0cb-36b7ca4095cd",
         "selected": false,
-        "threads": [
+        "text": "hi hihi agaegaegawgeaw cnncnjshheasss ",
+        "title": "elephant"
+      }
+    ]
+  },
+  {
+    "channelName": ".git",
+    "channelType": "file",
+    "id": "49ae8a8c-1fab-4f98-b944-3e65e2581xyz",
+    "lastPosted": "21 minutes ago",
+    "selected": false,
+    "threads": [
+      {
+        "absolutePath": "/Users/ali_paul/Desktop/hackerScribe/.git",
+        "channelId": "49ae8a8c-1fab-4f98-b944-3e65e2581xyz",
+        "date": "Thursday, December 7, 2017 1:32 PM",
+        "document": {
+          "blocks": [
             {
-                "channelId": "55edf3eb-0ac2-4073-8716-fe02ef2a051b",
-                "date": "Tuesday, December 5, 2017 1:23 PM",
-                "document": {
-                    "blocks": [
-                        {
-                            "data": {
-                                "checked": true
-                            },
-                            "depth": 0,
-                            "entityRanges": [],
-                            "inlineStyleRanges": [
-                                {
-                                    "length": 2,
-                                    "offset": 0,
-                                    "style": "ITALIC"
-                                }
-                            ],
-                            "key": "1ln10",
-                            "text": "non-hidden tool tip",
-                            "type": "todo"
-                        },
-                        {
-                            "data": {
-                                "checked": true
-                            },
-                            "depth": 0,
-                            "entityRanges": [],
-                            "inlineStyleRanges": [],
-                            "key": "1aluv",
-                            "text": "AddButton is Md-side-toolbar",
-                            "type": "todo"
-                        },
-                        {
-                            "data": {},
-                            "depth": 0,
-                            "entityRanges": [],
-                            "inlineStyleRanges": [],
-                            "key": "8bhf0",
-                            "text": "get rid of current document and making it current thread",
-                            "type": "todo"
-                        },
-                        {
-                            "data": {
-                                "checked": true
-                            },
-                            "depth": 0,
-                            "entityRanges": [],
-                            "inlineStyleRanges": [],
-                            "key": "74kvn",
-                            "text": "selection stays selected",
-                            "type": "todo"
-                        },
-                        {
-                            "data": {},
-                            "depth": 0,
-                            "entityRanges": [],
-                            "inlineStyleRanges": [],
-                            "key": "41llv",
-                            "text": "first switch the editor to get the state from the current thread",
-                            "type": "todo"
-                        },
-                        {
-                            "data": {},
-                            "depth": 0,
-                            "entityRanges": [],
-                            "inlineStyleRanges": [],
-                            "key": "ms2o",
-                            "text": "then get rid of current thread in editor ",
-                            "type": "todo"
-                        },
-                        {
-                            "data": {},
-                            "depth": 0,
-                            "entityRanges": [],
-                            "inlineStyleRanges": [],
-                            "key": "cu9vv",
-                            "text": "welcome guides",
-                            "type": "todo"
-                        },
-                        {
-                            "data": {},
-                            "depth": 0,
-                            "entityRanges": [],
-                            "inlineStyleRanges": [
-                                {
-                                    "length": 4,
-                                    "offset": 14,
-                                    "style": "ITALIC"
-                                }
-                            ],
-                            "key": "8a7g8",
-                            "text": "add thread to file",
-                            "type": "todo"
-                        },
-                        {
-                            "data": {},
-                            "depth": 0,
-                            "entityRanges": [],
-                            "inlineStyleRanges": [],
-                            "key": "4u5tf",
-                            "text": "",
-                            "type": "unstyled"
-                        },
-                        {
-                            "data": {},
-                            "depth": 0,
-                            "entityRanges": [],
-                            "inlineStyleRanges": [],
-                            "key": "bde17",
-                            "text": "",
-                            "type": "unstyled"
-                        },
-                        {
-                            "data": {},
-                            "depth": 0,
-                            "entityRanges": [],
-                            "inlineStyleRanges": [],
-                            "key": "2i63t",
-                            "text": "",
-                            "type": "unstyled"
-                        },
-                        {
-                            "data": {},
-                            "depth": 0,
-                            "entityRanges": [],
-                            "inlineStyleRanges": [],
-                            "key": "55js7",
-                            "text": "",
-                            "type": "unstyled"
-                        },
-                        {
-                            "data": {},
-                            "depth": 0,
-                            "entityRanges": [],
-                            "inlineStyleRanges": [],
-                            "key": "rmjh",
-                            "text": "",
-                            "type": "unstyled"
-                        },
-                        {
-                            "data": {},
-                            "depth": 0,
-                            "entityRanges": [],
-                            "inlineStyleRanges": [],
-                            "key": "8vg7u",
-                            "text": "",
-                            "type": "unstyled"
-                        },
-                        {
-                            "data": {},
-                            "depth": 0,
-                            "entityRanges": [],
-                            "inlineStyleRanges": [],
-                            "key": "2u3ia",
-                            "text": "",
-                            "type": "unstyled"
-                        },
-                        {
-                            "data": {},
-                            "depth": 0,
-                            "entityRanges": [],
-                            "inlineStyleRanges": [],
-                            "key": "86fd1",
-                            "text": "",
-                            "type": "unstyled"
-                        },
-                        {
-                            "data": {},
-                            "depth": 0,
-                            "entityRanges": [],
-                            "inlineStyleRanges": [],
-                            "key": "6fss3",
-                            "text": "",
-                            "type": "unstyled"
-                        },
-                        {
-                            "data": {},
-                            "depth": 0,
-                            "entityRanges": [],
-                            "inlineStyleRanges": [],
-                            "key": "9bd0r",
-                            "text": "",
-                            "type": "unstyled"
-                        },
-                        {
-                            "data": {},
-                            "depth": 0,
-                            "entityRanges": [],
-                            "inlineStyleRanges": [],
-                            "key": "8kp1p",
-                            "text": "",
-                            "type": "unstyled"
-                        }
-                    ],
-                    "entityMap": {}
-                },
-                "highlightColor": "#DFDCE3",
-                "id": "0ba90f5e-0131-491e-852b-f339caff86cd",
-                "selected": true,
-                "text": "non-hidden tool tip",
-                "title": "Ali's TODO List"
+              "data": {},
+              "depth": 0,
+              "entityRanges": [],
+              "inlineStyleRanges": [],
+              "key": "ebuf0",
+              "text": "adding in absolute paths!",
+              "type": "unstyled"
             }
-        ]
-    }
+          ],
+          "entityMap": {}
+        },
+        "highlightColor": "#DFDCE3",
+        "id": "9efd8caf-897b-480e-bba1-64be698fd319",
+        "selected": true,
+        "text": "adding in absolute paths!",
+        "title": "Doing this right"
+      },
+      {
+        "channelId": "49ae8a8c-1fab-4f98-b944-3e65e2581xyz",
+        "date": "Thursday, December 7, 2017 12:55 PM",
+        "document": {
+          "blocks": [
+            {
+              "data": {},
+              "depth": 0,
+              "entityRanges": [],
+              "inlineStyleRanges": [],
+              "key": "99ldi",
+              "text": "hi",
+              "type": "unstyled"
+            }
+          ],
+          "entityMap": {}
+        },
+        "highlightColor": "#DFDCE3",
+        "id": "1bee9f71-6ede-4469-8f2c-325e54e905e0",
+        "selected": false,
+        "text": "hi",
+        "title": "Anotha one"
+      },
+      {
+        "channelId": "49ae8a8c-1fab-4f98-b944-3e65e2581xyz",
+        "date": "Monday, December 4, 2017 1:05 PM",
+        "document": {
+          "blocks": [
+            {
+              "data": {},
+              "depth": 0,
+              "entityRanges": [],
+              "inlineStyleRanges": [],
+              "key": "4mb9",
+              "text": "playing around",
+              "type": "unstyled"
+            }
+          ],
+          "entityMap": {}
+        },
+        "highlightColor": "#DFDCE3",
+        "id": "2745c098-b11b-4f33-a0ae-b7327a251bba",
+        "selected": false,
+        "text": "playing around",
+        "title": "Trying add file"
+      }
+    ]
+  },
+  {
+    "channelName": ".gitignore",
+    "channelType": "file",
+    "id": "d328fecb-bcbf-4981-af48-b2baec8d3c53",
+    "lastPosted": "1 day ago",
+    "selected": false,
+    "threads": [
+      {
+        "date": "Sunday, December 3, 2017 6:24 PM",
+        "highlightColor": "#DFDCE3",
+        "id": "582a2049-a47c-452d-943c-a52cde6e609c",
+        "selected": true,
+        "text": "",
+        "title": "Untitled",
+        "channelId": "d328fecb-bcbf-4981-af48-b2baec8d3c53"
+      },
+      {
+        "date": "Unsaved",
+        "highlightColor": "#DFDCE3",
+        "id": "2b42e6c1-6334-4df9-83d8-fc1815d159e5",
+        "selected": false,
+        "text": "New unsaved thread",
+        "title": "Untitled",
+        "channelId": "d328fecb-bcbf-4981-af48-b2baec8d3c53"
+      },
+      {
+        "channelName": ".gitignore",
+        "date": "6 Mar 2017 21:22:23 GMT",
+        "document": null,
+        "highlightColor": "#DFDCE3",
+        "id": "de9e0166-8947-4c8d-b4a0-2743a01866df",
+        "selected": false,
+        "text": "lala land!",
+        "title": "code",
+        "channelId": "d328fecb-bcbf-4981-af48-b2baec8d3c53"
+      },
+      {
+        "channelName": ".gitignore",
+        "date": "6 Mar 2017 21:22:23 GMT",
+        "document": null,
+        "highlightColor": "#fc4a1a",
+        "id": "ea54b259-5dc1-4c65-b946-d351be42123e",
+        "selected": false,
+        "text": "scribe is king",
+        "title": "elephant",
+        "channelId": "d328fecb-bcbf-4981-af48-b2baec8d3c53"
+      },
+      {
+        "channelName": ".gitignore",
+        "date": "6 Mar 2017 21:22:23 GMT",
+        "document": null,
+        "highlightColor": "#fc4a1a",
+        "id": "cd80dc27-7705-49ce-9934-a44303d246e8",
+        "selected": false,
+        "text": "the best thing ever",
+        "title": "amazing tool",
+        "channelId": "d328fecb-bcbf-4981-af48-b2baec8d3c53"
+      }
+    ]
+  },
+  {
+    "channelName": "README.md",
+    "channelType": "file",
+    "id": "49ae8a8c-1fab-4f98-b944-3e65e25814xx",
+    "lastPosted": "4 days ago",
+    "selected": false,
+    "threads": [
+      {
+        "channelName": "README.md",
+        "date": "6 Mar 2017 21:22:23 GMT",
+        "document": null,
+        "highlightColor": "#DFDCE3",
+        "id": "49ae8a8c-1fab-4f98-b944-3e65e25814zz",
+        "text": "Getting Started with npm",
+        "title": "Set Up Guide"
+      },
+      {
+        "channelName": "README.md",
+        "date": "6 Mar 2017 21:22:23 GMT",
+        "document": null,
+        "highlightColor": "#fc4a1a",
+        "id": "49ae8a8c-1fab-4f98-b944-3e65e25814ee",
+        "text": "hey here!",
+        "title": "elephant"
+      },
+      {
+        "channelName": "README.md",
+        "date": "6 Mar 2017 21:22:23 GMT",
+        "document": null,
+        "highlightColor": "#fc4a1a",
+        "id": "49ae8a8c-1fab-4f98-b944-3e65e25814aa",
+        "text": "hey over there~!",
+        "title": "penguin"
+      },
+      {
+        "channelName": "README.md",
+        "date": "6 Mar 2017 21:22:23 GMT",
+        "document": null,
+        "highlightColor": "#49306B",
+        "id": "49ae8a8c-1fab-4f98-b944-3e65e25814dd",
+        "text": "hey over there~!",
+        "title": "penguin"
+      },
+      {
+        "channelName": "README.md",
+        "date": "6 Mar 2017 21:22:23 GMT",
+        "document": null,
+        "highlightColor": "#fc4a1a",
+        "id": "49ae8a8c-1fab-4f98-b944-3e65e25814rr",
+        "text": "hey over there~!",
+        "title": "penguin"
+      }
+    ]
+  },
+  {
+    "channelName": "# backend",
+    "channelType": "communication",
+    "id": "38b0e50b-810e-4b41-9b9f-dabdbab392c7",
+    "lastPosted": "21 minutes ago",
+    "selected": false,
+    "threads": [
+      {
+        "channelId": "38b0e50b-810e-4b41-9b9f-dabdbab392c7",
+        "date": "Sunday, December 3, 2017 6:18 PM",
+        "document": {
+          "blocks": [
+            {
+              "data": {},
+              "depth": 0,
+              "entityRanges": [],
+              "inlineStyleRanges": [],
+              "key": "a87m5",
+              "text": "",
+              "type": "unstyled"
+            }
+          ],
+          "entityMap": {}
+        },
+        "highlightColor": "#49306B",
+        "id": "6c8f7681-9527-4519-9925-5102c3689cec",
+        "selected": false,
+        "text": "",
+        "title": "New!"
+      }
+    ]
+  },
+  {
+    "channelName": "# business clients",
+    "channelType": "communication",
+    "id": "768c7062-2110-45df-99ef-63e0f0aad9c0",
+    "lastPosted": "1 day ago",
+    "selected": false,
+    "threads": [
+      {
+        "channelId": "768c7062-2110-45df-99ef-63e0f0aad9c0",
+        "date": "Monday, December 4, 2017 12:26 PM",
+        "document": {
+          "blocks": [
+            {
+              "data": {},
+              "depth": 0,
+              "entityRanges": [],
+              "inlineStyleRanges": [],
+              "key": "e0r49",
+              "text": "trying again",
+              "type": "unstyled"
+            }
+          ],
+          "entityMap": {}
+        },
+        "highlightColor": "#DFDCE3",
+        "id": "5f878b04-a268-4c45-8e9c-42df27bada95",
+        "selected": false,
+        "text": "trying again",
+        "title": "Try two"
+      },
+      {
+        "channelId": "768c7062-2110-45df-99ef-63e0f0aad9c0",
+        "date": "Monday, December 4, 2017 5:08 PM",
+        "document": {
+          "blocks": [
+            {
+              "data": {},
+              "depth": 0,
+              "entityRanges": [],
+              "inlineStyleRanges": [],
+              "key": "4rrf8",
+              "text": "Immediate Features",
+              "type": "header-two"
+            },
+            {
+              "data": {},
+              "depth": 0,
+              "entityRanges": [],
+              "inlineStyleRanges": [],
+              "key": "2a80",
+              "text": "Save images",
+              "type": "todo"
+            },
+            {
+              "data": {},
+              "depth": 0,
+              "entityRanges": [],
+              "inlineStyleRanges": [],
+              "key": "d6n46",
+              "text": "Document is not selectable without selected thread",
+              "type": "todo"
+            },
+            {
+              "data": {},
+              "depth": 0,
+              "entityRanges": [],
+              "inlineStyleRanges": [],
+              "key": "3slt9",
+              "text": "Welcome Guide",
+              "type": "todo"
+            },
+            {
+              "data": {},
+              "depth": 0,
+              "entityRanges": [],
+              "inlineStyleRanges": [],
+              "key": "10u6a",
+              "text": "If thread is selected don’t unselect on click",
+              "type": "todo"
+            },
+            {
+              "data": {},
+              "depth": 0,
+              "entityRanges": [],
+              "inlineStyleRanges": [],
+              "key": "2hvdh",
+              "text": "Switching channels switches thread and doc",
+              "type": "todo"
+            },
+            {
+              "data": {},
+              "depth": 0,
+              "entityRanges": [],
+              "inlineStyleRanges": [],
+              "key": "bsbj4",
+              "text": "Modals",
+              "type": "todo"
+            },
+            {
+              "data": {},
+              "depth": 0,
+              "entityRanges": [],
+              "inlineStyleRanges": [],
+              "key": "d7f4j",
+              "text": "Features",
+              "type": "header-two"
+            },
+            {
+              "data": {},
+              "depth": 0,
+              "entityRanges": [],
+              "inlineStyleRanges": [],
+              "key": "2puob",
+              "text": "Codepane ",
+              "type": "todo"
+            },
+            {
+              "data": {},
+              "depth": 0,
+              "entityRanges": [],
+              "inlineStyleRanges": [],
+              "key": "era74",
+              "text": "Cloud Sync",
+              "type": "todo"
+            },
+            {
+              "data": {},
+              "depth": 0,
+              "entityRanges": [],
+              "inlineStyleRanges": [],
+              "key": "4njkq",
+              "text": "Landing Page with Payment",
+              "type": "todo"
+            },
+            {
+              "data": {},
+              "depth": 0,
+              "entityRanges": [],
+              "inlineStyleRanges": [],
+              "key": "cbjaa",
+              "text": "User accounts",
+              "type": "todo"
+            },
+            {
+              "data": {},
+              "depth": 0,
+              "entityRanges": [],
+              "inlineStyleRanges": [],
+              "key": "8qn7q",
+              "text": "Auto updates ",
+              "type": "todo"
+            },
+            {
+              "data": {},
+              "depth": 0,
+              "entityRanges": [],
+              "inlineStyleRanges": [],
+              "key": "575lv",
+              "text": "Saving workspace and additonal file",
+              "type": "todo"
+            },
+            {
+              "data": {},
+              "depth": 0,
+              "entityRanges": [],
+              "inlineStyleRanges": [],
+              "key": "11g06",
+              "text": "Analytics",
+              "type": "todo"
+            },
+            {
+              "data": {
+                "src":
+                  "blob:http://localhost:3000/499a788f-0caf-4e2b-ac8d-0ff1d142e586"
+              },
+              "depth": 0,
+              "entityRanges": [],
+              "inlineStyleRanges": [],
+              "key": "7nbp6",
+              "text": "",
+              "type": "atomic:image"
+            },
+            {
+              "data": {},
+              "depth": 0,
+              "entityRanges": [],
+              "inlineStyleRanges": [],
+              "key": "709c0",
+              "text": "",
+              "type": "unstyled"
+            }
+          ],
+          "entityMap": {}
+        },
+        "highlightColor": "#4abdac",
+        "id": "27bfe304-b9bb-4db2-940f-f6203ea3639c",
+        "selected": true,
+        "text": "Immediate Features",
+        "title": "New thread!"
+      },
+      {
+        "channelId": "768c7062-2110-45df-99ef-63e0f0aad9c0",
+        "date": "Friday, December 1, 2017 4:33 AM",
+        "document": {
+          "blocks": [
+            {
+              "data": {},
+              "depth": 0,
+              "entityRanges": [],
+              "inlineStyleRanges": [],
+              "key": "b7a9e",
+              "text": "hello!",
+              "type": "unstyled"
+            }
+          ],
+          "entityMap": {}
+        },
+        "highlightColor": "#fc4a1a",
+        "id": "75500add-0ef5-492e-82b2-335587959851",
+        "selected": false,
+        "text": "hey over there~!",
+        "title": "penguin"
+      }
+    ]
+  },
+  {
+    "channelName": "# January Release",
+    "channelType": "communication",
+    "id": "60569731-ab1e-43b9-bd87-30303d6c4c4f",
+    "lastPosted": "4 days ago",
+    "selected": false,
+    "threads": [
+      {
+        "channelId": "60569731-ab1e-43b9-bd87-30303d6c4c4f",
+        "date": "Unsaved",
+        "highlightColor": "#DFDCE3",
+        "id": "bb57f8ba-ee76-44dd-8715-efd935e3a003",
+        "selected": false,
+        "text": "New unsaved thread",
+        "title": "Untitled"
+      },
+      {
+        "channelId": "60569731-ab1e-43b9-bd87-30303d6c4c4f",
+        "date": "Monday, December 4, 2017 7:20 PM",
+        "document": {
+          "blocks": [
+            {
+              "data": {},
+              "depth": 0,
+              "entityRanges": [],
+              "inlineStyleRanges": [],
+              "key": "4rrf8",
+              "text": "Immediate Features",
+              "type": "header-two"
+            },
+            {
+              "data": {},
+              "depth": 0,
+              "entityRanges": [],
+              "inlineStyleRanges": [],
+              "key": "2a80",
+              "text": "Save images",
+              "type": "todo"
+            },
+            {
+              "data": {},
+              "depth": 0,
+              "entityRanges": [],
+              "inlineStyleRanges": [],
+              "key": "d6n46",
+              "text": "Document is not selectable without selected thread",
+              "type": "todo"
+            },
+            {
+              "data": {},
+              "depth": 0,
+              "entityRanges": [],
+              "inlineStyleRanges": [],
+              "key": "3slt9",
+              "text": "Welcome Guide",
+              "type": "todo"
+            },
+            {
+              "data": {},
+              "depth": 0,
+              "entityRanges": [],
+              "inlineStyleRanges": [],
+              "key": "d7f4j",
+              "text": "Features",
+              "type": "header-two"
+            },
+            {
+              "data": {},
+              "depth": 0,
+              "entityRanges": [],
+              "inlineStyleRanges": [],
+              "key": "2puob",
+              "text": "Codepane ",
+              "type": "todo"
+            },
+            {
+              "data": {},
+              "depth": 0,
+              "entityRanges": [],
+              "inlineStyleRanges": [],
+              "key": "era74",
+              "text": "Cloud Sync",
+              "type": "todo"
+            },
+            {
+              "data": {},
+              "depth": 0,
+              "entityRanges": [],
+              "inlineStyleRanges": [],
+              "key": "4njkq",
+              "text": "Landing Page with Payment",
+              "type": "todo"
+            },
+            {
+              "data": {},
+              "depth": 0,
+              "entityRanges": [],
+              "inlineStyleRanges": [],
+              "key": "cbjaa",
+              "text": "User accounts",
+              "type": "todo"
+            },
+            {
+              "data": {},
+              "depth": 0,
+              "entityRanges": [],
+              "inlineStyleRanges": [],
+              "key": "8qn7q",
+              "text": "Auto updates ",
+              "type": "todo"
+            },
+            {
+              "data": {},
+              "depth": 0,
+              "entityRanges": [],
+              "inlineStyleRanges": [],
+              "key": "11g06",
+              "text": "Analytics",
+              "type": "todo"
+            },
+            {
+              "data": {},
+              "depth": 0,
+              "entityRanges": [],
+              "inlineStyleRanges": [],
+              "key": "709c0",
+              "text": "",
+              "type": "unstyled"
+            }
+          ],
+          "entityMap": {}
+        },
+        "highlightColor": "#DFDCE3",
+        "id": "f4e8ee7c-3d36-45b0-9072-17907a341b02",
+        "selected": false,
+        "text": "Immediate Features",
+        "title": "Dogfooding!@!!!!!!!"
+      }
+    ]
+  },
+  {
+    "channelName": "# Omer's Todo",
+    "channelType": "communication",
+    "id": "2a4f247a-cc85-44e2-9958-008413a65d96",
+    "lastPosted": "4 days ago",
+    "selected": false,
+    "threads": [
+      {
+        "channelId": "2a4f247a-cc85-44e2-9958-008413a65d96",
+        "date": "Thursday, December 7, 2017 12:31 PM",
+        "document": {
+          "blocks": [
+            {
+              "data": {
+                "checked": false
+              },
+              "depth": 0,
+              "entityRanges": [],
+              "inlineStyleRanges": [],
+              "key": "f9f7q",
+              "text":
+                "hide tooltip off click on editor bug - this may be fixed with draggable issue",
+              "type": "todo"
+            },
+            {
+              "data": {},
+              "depth": 0,
+              "entityRanges": [],
+              "inlineStyleRanges": [],
+              "key": "f1ljn",
+              "text": "Electron app menu -> save, color theme etc",
+              "type": "todo"
+            },
+            {
+              "data": {},
+              "depth": 0,
+              "entityRanges": [],
+              "inlineStyleRanges": [],
+              "key": "edsb1",
+              "text": "Recent workspaces",
+              "type": "todo"
+            },
+            {
+              "data": {},
+              "depth": 0,
+              "entityRanges": [],
+              "inlineStyleRanges": [],
+              "key": "f08hr",
+              "text":
+                "on initial save prompt user what directory he wants us to save the work",
+              "type": "todo"
+            },
+            {
+              "data": {},
+              "depth": 0,
+              "entityRanges": [],
+              "inlineStyleRanges": [],
+              "key": "279eu",
+              "text": "save images to selected dir",
+              "type": "todo"
+            },
+            {
+              "data": {},
+              "depth": 0,
+              "entityRanges": [],
+              "inlineStyleRanges": [],
+              "key": "e4m9p",
+              "text":
+                "accelerators with rich notifications for adding content via keyboard",
+              "type": "todo"
+            }
+          ],
+          "entityMap": {}
+        },
+        "highlightColor": "#DFDCE3",
+        "id": "60af28fe-63d5-4c3a-9e50-a2a693d98bca",
+        "selected": true,
+        "text":
+          "hide tooltip off click on editor bug - this may be fixed with draggable issue",
+        "title": "Todo"
+      }
+    ]
+  },
+  {
+    "channelName": "# Ali's Todo",
+    "channelType": "communication",
+    "id": "55edf3eb-0ac2-4073-8716-fe02ef2a051b",
+    "lastPosted": "4 days ago",
+    "selected": false,
+    "threads": [
+      {
+        "channelId": "55edf3eb-0ac2-4073-8716-fe02ef2a051b",
+        "date": "Tuesday, December 5, 2017 1:23 PM",
+        "document": {
+          "blocks": [
+            {
+              "data": {
+                "checked": true
+              },
+              "depth": 0,
+              "entityRanges": [],
+              "inlineStyleRanges": [
+                {
+                  "length": 2,
+                  "offset": 0,
+                  "style": "ITALIC"
+                }
+              ],
+              "key": "1ln10",
+              "text": "non-hidden tool tip",
+              "type": "todo"
+            },
+            {
+              "data": {
+                "checked": true
+              },
+              "depth": 0,
+              "entityRanges": [],
+              "inlineStyleRanges": [],
+              "key": "1aluv",
+              "text": "AddButton is Md-side-toolbar",
+              "type": "todo"
+            },
+            {
+              "data": {},
+              "depth": 0,
+              "entityRanges": [],
+              "inlineStyleRanges": [],
+              "key": "8bhf0",
+              "text":
+                "get rid of current document and making it current thread",
+              "type": "todo"
+            },
+            {
+              "data": {
+                "checked": true
+              },
+              "depth": 0,
+              "entityRanges": [],
+              "inlineStyleRanges": [],
+              "key": "74kvn",
+              "text": "selection stays selected",
+              "type": "todo"
+            },
+            {
+              "data": {},
+              "depth": 0,
+              "entityRanges": [],
+              "inlineStyleRanges": [],
+              "key": "41llv",
+              "text":
+                "first switch the editor to get the state from the current thread",
+              "type": "todo"
+            },
+            {
+              "data": {},
+              "depth": 0,
+              "entityRanges": [],
+              "inlineStyleRanges": [],
+              "key": "ms2o",
+              "text": "then get rid of current thread in editor ",
+              "type": "todo"
+            },
+            {
+              "data": {},
+              "depth": 0,
+              "entityRanges": [],
+              "inlineStyleRanges": [],
+              "key": "cu9vv",
+              "text": "welcome guides",
+              "type": "todo"
+            },
+            {
+              "data": {},
+              "depth": 0,
+              "entityRanges": [],
+              "inlineStyleRanges": [
+                {
+                  "length": 4,
+                  "offset": 14,
+                  "style": "ITALIC"
+                }
+              ],
+              "key": "8a7g8",
+              "text": "add thread to file",
+              "type": "todo"
+            },
+            {
+              "data": {},
+              "depth": 0,
+              "entityRanges": [],
+              "inlineStyleRanges": [],
+              "key": "4u5tf",
+              "text": "",
+              "type": "unstyled"
+            },
+            {
+              "data": {},
+              "depth": 0,
+              "entityRanges": [],
+              "inlineStyleRanges": [],
+              "key": "bde17",
+              "text": "",
+              "type": "unstyled"
+            },
+            {
+              "data": {},
+              "depth": 0,
+              "entityRanges": [],
+              "inlineStyleRanges": [],
+              "key": "2i63t",
+              "text": "",
+              "type": "unstyled"
+            },
+            {
+              "data": {},
+              "depth": 0,
+              "entityRanges": [],
+              "inlineStyleRanges": [],
+              "key": "55js7",
+              "text": "",
+              "type": "unstyled"
+            },
+            {
+              "data": {},
+              "depth": 0,
+              "entityRanges": [],
+              "inlineStyleRanges": [],
+              "key": "rmjh",
+              "text": "",
+              "type": "unstyled"
+            },
+            {
+              "data": {},
+              "depth": 0,
+              "entityRanges": [],
+              "inlineStyleRanges": [],
+              "key": "8vg7u",
+              "text": "",
+              "type": "unstyled"
+            },
+            {
+              "data": {},
+              "depth": 0,
+              "entityRanges": [],
+              "inlineStyleRanges": [],
+              "key": "2u3ia",
+              "text": "",
+              "type": "unstyled"
+            },
+            {
+              "data": {},
+              "depth": 0,
+              "entityRanges": [],
+              "inlineStyleRanges": [],
+              "key": "86fd1",
+              "text": "",
+              "type": "unstyled"
+            },
+            {
+              "data": {},
+              "depth": 0,
+              "entityRanges": [],
+              "inlineStyleRanges": [],
+              "key": "6fss3",
+              "text": "",
+              "type": "unstyled"
+            },
+            {
+              "data": {},
+              "depth": 0,
+              "entityRanges": [],
+              "inlineStyleRanges": [],
+              "key": "9bd0r",
+              "text": "",
+              "type": "unstyled"
+            },
+            {
+              "data": {},
+              "depth": 0,
+              "entityRanges": [],
+              "inlineStyleRanges": [],
+              "key": "8kp1p",
+              "text": "",
+              "type": "unstyled"
+            }
+          ],
+          "entityMap": {}
+        },
+        "highlightColor": "#DFDCE3",
+        "id": "0ba90f5e-0131-491e-852b-f339caff86cd",
+        "selected": true,
+        "text": "non-hidden tool tip",
+        "title": "Ali's TODO List"
+      }
+    ]
+  }
 ]
