@@ -497,7 +497,7 @@
                 "date": "Unsaved",
                 "highlightColor": "#DFDCE3",
                 "id": "bb57f8ba-ee76-44dd-8715-efd935e3a003",
-                "selected": false,
+                "selected": true,
                 "text": "New unsaved thread",
                 "title": "Untitled"
             },
@@ -634,7 +634,7 @@
         "threads": [
             {
                 "channelId": "2a4f247a-cc85-44e2-9958-008413a65d96",
-                "date": "Thursday, December 7, 2017 12:31 PM",
+                "date": "Thursday, December 7, 2017 5:23 PM",
                 "document": {
                     "blocks": [
                         {
@@ -652,7 +652,13 @@
                             "data": {},
                             "depth": 0,
                             "entityRanges": [],
-                            "inlineStyleRanges": [],
+                            "inlineStyleRanges": [
+                                {
+                                    "length": 4,
+                                    "offset": 21,
+                                    "style": "HIGHLIGHT"
+                                }
+                            ],
                             "key": "f1ljn",
                             "text": "Electron app menu -> save, color theme etc",
                             "type": "todo"

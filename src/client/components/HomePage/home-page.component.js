@@ -95,6 +95,8 @@ class HomePage extends Component {
       });
     });
 
+    ipcRenderer.on("save-workspace-shortcut", () => this.saveWorkspace());
+
     ipcRenderer.on("save-workspace-res", () =>
       console.log("saved successfullyy...")
     );
@@ -453,6 +455,7 @@ class HomePage extends Component {
 
   saveWorkspace() {
     const timestamp = moment().format("LLLL");
+    console.log("saving and running....");
 
     this.applyThreadChange(SELECTED_THREAD, thread => {
       return {
