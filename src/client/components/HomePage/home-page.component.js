@@ -18,7 +18,7 @@ import ChannelModal from "../common/Modal/channelModal.component";
 import EmbedContentModal from "../common/Modal/embedContentModal.component";
 import ThreadModal from "../common/Modal/threadModal.component";
 import { createFileStructure } from "../../utils/createFileTree";
-import { modals } from "../../utils/const";
+import { modals, notifications } from "../../utils/const";
 import { highlightColor } from "../../themes";
 import { setRenderOptions } from "./EditorColumn/Editor/exportToHTML";
 
@@ -97,8 +97,13 @@ class HomePage extends Component {
 
     ipcRenderer.on("save-workspace-shortcut", () => this.saveWorkspace());
 
-    ipcRenderer.on("save-workspace-res", () =>
-      console.log("saved successfullyy...")
+    ipcRenderer.on(
+      "save-workspace-res",
+      () =>
+        new Notification(
+          notifications.SAVE_DOCUMENT_BASIC.title,
+          notifications.SAVE_DOCUMENT_BASIC
+        )
     );
   }
 
@@ -455,8 +460,6 @@ class HomePage extends Component {
 
   saveWorkspace() {
     const timestamp = moment().format("LLLL");
-    console.log("saving and running....");
-
     this.applyThreadChange(SELECTED_THREAD, thread => {
       return {
         ...thread,

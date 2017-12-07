@@ -634,7 +634,7 @@
         "threads": [
             {
                 "channelId": "2a4f247a-cc85-44e2-9958-008413a65d96",
-                "date": "Thursday, December 7, 2017 5:23 PM",
+                "date": "Thursday, December 7, 2017 7:08 PM",
                 "document": {
                     "blocks": [
                         {
@@ -654,20 +654,11 @@
                             "entityRanges": [],
                             "inlineStyleRanges": [
                                 {
-                                    "length": 4,
-                                    "offset": 21,
+                                    "length": 15,
+                                    "offset": 2,
                                     "style": "HIGHLIGHT"
                                 }
                             ],
-                            "key": "f1ljn",
-                            "text": "Electron app menu -> save, color theme etc",
-                            "type": "todo"
-                        },
-                        {
-                            "data": {},
-                            "depth": 0,
-                            "entityRanges": [],
-                            "inlineStyleRanges": [],
                             "key": "edsb1",
                             "text": "Recent workspaces",
                             "type": "todo"
@@ -719,7 +710,7 @@
         "threads": [
             {
                 "channelId": "55edf3eb-0ac2-4073-8716-fe02ef2a051b",
-                "date": "Tuesday, December 5, 2017 1:23 PM",
+                "date": "Thursday, December 7, 2017 7:04 PM",
                 "document": {
                     "blocks": [
                         {
