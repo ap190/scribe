@@ -634,7 +634,7 @@
         "threads": [
             {
                 "channelId": "2a4f247a-cc85-44e2-9958-008413a65d96",
-                "date": "Wednesday, December 6, 2017 6:12 PM",
+                "date": "Wednesday, December 6, 2017 6:50 PM",
                 "document": {
                     "blocks": [
                         {
@@ -645,40 +645,52 @@
                             "entityRanges": [],
                             "inlineStyleRanges": [],
                             "key": "f9f7q",
-                            "text": "hide tooltip off click on editor bug",
+                            "text": "hide tooltip off click on editor bug - this may be fixed with draggable issue",
                             "type": "todo"
                         },
                         {
-                            "data": {
-                                "checked": true
-                            },
+                            "data": {},
                             "depth": 0,
                             "entityRanges": [],
                             "inlineStyleRanges": [],
-                            "key": "938ef",
-                            "text": "Dynamically accept URL as input from Modal",
+                            "key": "f1ljn",
+                            "text": "Electron app menu -> save, color theme etc",
                             "type": "todo"
                         },
                         {
-                            "data": {
-                                "checked": true
-                            },
+                            "data": {},
                             "depth": 0,
                             "entityRanges": [],
                             "inlineStyleRanges": [],
-                            "key": "3phg0",
-                            "text": "Save image",
+                            "key": "edsb1",
+                            "text": "Recent workspaces",
                             "type": "todo"
                         },
                         {
-                            "data": {
-                                "checked": true
-                            },
+                            "data": {},
                             "depth": 0,
                             "entityRanges": [],
                             "inlineStyleRanges": [],
-                            "key": "9fl9n",
-                            "text": "Export to HTML",
+                            "key": "f08hr",
+                            "text": "on initial save prompt user what directory he wants us to save the work",
+                            "type": "todo"
+                        },
+                        {
+                            "data": {},
+                            "depth": 0,
+                            "entityRanges": [],
+                            "inlineStyleRanges": [],
+                            "key": "279eu",
+                            "text": "save images to selected dir",
+                            "type": "todo"
+                        },
+                        {
+                            "data": {},
+                            "depth": 0,
+                            "entityRanges": [],
+                            "inlineStyleRanges": [],
+                            "key": "e4m9p",
+                            "text": "accelerators with rich notifications for adding content via keyboard",
                             "type": "todo"
                         }
                     ],
@@ -687,7 +699,7 @@
                 "highlightColor": "#DFDCE3",
                 "id": "60af28fe-63d5-4c3a-9e50-a2a693d98bca",
                 "selected": true,
-                "text": "hide tooltip off click on editor bug",
+                "text": "hide tooltip off click on editor bug - this may be fixed with draggable issue",
                 "title": "Todo"
             }
         ]

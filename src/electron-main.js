@@ -1,13 +1,13 @@
-const { app } = require("electron");
+const electron = require("electron");
+const { app, Menu, ipcMain } = require("electron");
 const path = require("path");
 const url = require("url");
-const { ipcMain } = require("electron");
-const electron = require("electron");
 const { genLoadData } = require("./server/readData");
 const { genSaveWorkspace } = require("./server/saveWorkspace");
 const { genExportCurrentDocument } = require("./server/exportCurrentDoc");
+const menuTemplate = require("./server/menu");
 
-require("electron-context-menu")();
+// require("electron-context-menu")();
 
 const BrowserWindow = electron.BrowserWindow;
 const {
@@ -63,6 +63,9 @@ function createWindow() {
     .then(name => console.log(`Added Extension:  ${name}`))
     .catch(err => console.log("An error occurred: ", err));
 
+  // Create Menu Bar
+  Menu.setApplicationMenu(Menu.buildFromTemplate(menuTemplate));
+
   // Emitted when the window is closed.
   mainWindow.on("closed", () => {
     // Dereference the window object, usually you would store windows
@@ -93,3 +96,5 @@ app.on("activate", () => {
     createWindow();
   }
 });
+
+exports.mainWindow = mainWindow;
