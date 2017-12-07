@@ -1,5 +1,12 @@
 const electron = require("electron");
-const { app, Menu, ipcMain, clipboard, globalShortcut } = require("electron");
+const {
+  app,
+  Menu,
+  ipcMain,
+  clipboard,
+  globalShortcut,
+  shell
+} = require("electron");
 const path = require("path");
 const url = require("url");
 const { genLoadData } = require("./server/readData");

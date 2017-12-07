@@ -13,7 +13,7 @@ registerGlobalShortcuts = (globalShortcut, clipboard, mainWindow) => {
     mainWindow.webContents.send("create-new-clipping", copiedText); // need to open window first
   });
 
-  const saveWorkspace = globalShortcut.register("CommandOrControl+S", () => {
+  const saveWorkspace = globalShortcut.register("CommandOrControl+B", () => {
     mainWindow.webContents.send("save-workspace-shortcut");
   });
 
