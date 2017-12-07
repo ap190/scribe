@@ -1,11 +1,12 @@
 const electron = require("electron");
-const { app, Menu, ipcMain } = require("electron");
+const { app, Menu, ipcMain, clipboard, globalShortcut } = require("electron");
 const path = require("path");
 const url = require("url");
 const { genLoadData } = require("./server/readData");
 const { genSaveWorkspace } = require("./server/saveWorkspace");
 const { genExportCurrentDocument } = require("./server/exportCurrentDoc");
 const menuTemplate = require("./server/menu");
+const registerGlobalShortcuts = require("./server/accelerators");
 
 require("electron-context-menu")();
 
@@ -50,7 +51,6 @@ function createWindow() {
       slashes: true
     });
   mainWindow.loadURL(startUrl);
-  // Open the DevTools.
   // mainWindow.webContents.openDevTools();
 
   // React DevTools
@@ -63,35 +63,28 @@ function createWindow() {
     .then(name => console.log(`Added Extension:  ${name}`))
     .catch(err => console.log("An error occurred: ", err));
 
+  // Initializing accelerators
+  registerGlobalShortcuts(globalShortcut, clipboard, mainWindow);
+
   // Create Menu Bar
   Menu.setApplicationMenu(Menu.buildFromTemplate(menuTemplate));
 
   // Emitted when the window is closed.
   mainWindow.on("closed", () => {
-    // Dereference the window object, usually you would store windows
-    // in an array if your app supports multi windows, this is the time
-    // when you should delete the corresponding element.
     mainWindow = null;
   });
 }
 
-// This method will be called when Electron has finished
-// initialization and is ready to create browser windows.
-// Some APIs can only be used after this event occurs.
 app.on("ready", createWindow);
 
 // Quit when all windows are closed.
 app.on("window-all-closed", () => {
-  // On OS X it is common for applications and their menu bar
-  // to stay active until the user quits explicitly with Cmd + Q
   if (process.platform !== "darwin") {
     app.quit();
   }
 });
 
 app.on("activate", () => {
-  // On OS X it's common to re-create a window in the app when the
-  // dock icon is clicked and there are no other windows open.
   if (mainWindow === null) {
     createWindow();
   }
