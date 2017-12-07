@@ -1,4 +1,4 @@
-import path from "path";
+import notifIcon from "../../../public/assets/rich-notifications/icon.png";
 
 exports.modals = {
   ASIDE_CREATE_CHANNEL_MODAL: "aside_create_channel_modal",
@@ -16,8 +16,8 @@ exports.notifications = {
     body: "Short message part"
   },
   SAVE_DOCUMENT_RICH: {
-    title: "Content-Image Notification",
-    body: "Short message plus a custom content image",
-    icon: path.join(__dirname, "../../../build/icons/png/1024x1024.png")
+    title: "Document Saved",
+    body: "Synced with cloud service",
+    icon: notifIcon
   }
 };

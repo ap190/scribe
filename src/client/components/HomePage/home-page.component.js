@@ -101,8 +101,8 @@ class HomePage extends Component {
       "save-workspace-res",
       () =>
         new Notification(
-          notifications.SAVE_DOCUMENT_BASIC.title,
-          notifications.SAVE_DOCUMENT_BASIC
+          notifications.SAVE_DOCUMENT_RICH.title,
+          notifications.SAVE_DOCUMENT_RICH
         )
     );
   }

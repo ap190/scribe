@@ -1,12 +1,5 @@
 const electron = require("electron");
-const {
-  app,
-  Menu,
-  ipcMain,
-  clipboard,
-  globalShortcut,
-  shell
-} = require("electron");
+const { app, Menu, ipcMain, clipboard, globalShortcut } = require("electron");
 const path = require("path");
 const url = require("url");
 const { genLoadData } = require("./server/readData");
@@ -15,7 +8,7 @@ const { genExportCurrentDocument } = require("./server/exportCurrentDoc");
 const menuTemplate = require("./server/menu");
 const registerGlobalShortcuts = require("./server/accelerators");
 
-require("electron-context-menu")();
+// require("electron-context-menu")();
 
 const BrowserWindow = electron.BrowserWindow;
 const {

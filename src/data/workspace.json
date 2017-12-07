@@ -255,7 +255,7 @@
                 },
                 "highlightColor": "#49306B",
                 "id": "6c8f7681-9527-4519-9925-5102c3689cec",
-                "selected": false,
+                "selected": true,
                 "text": "",
                 "title": "New!"
             }
@@ -293,7 +293,7 @@
             },
             {
                 "channelId": "768c7062-2110-45df-99ef-63e0f0aad9c0",
-                "date": "Monday, December 4, 2017 5:08 PM",
+                "date": "Thursday, December 7, 2017 11:20 PM",
                 "document": {
                     "blocks": [
                         {
@@ -490,15 +490,15 @@
         "channelType": "communication",
         "id": "60569731-ab1e-43b9-bd87-30303d6c4c4f",
         "lastPosted": "4 days ago",
-        "selected": false,
+        "selected": true,
         "threads": [
             {
                 "channelId": "60569731-ab1e-43b9-bd87-30303d6c4c4f",
-                "date": "Unsaved",
+                "date": "Thursday, December 7, 2017 11:30 PM",
                 "highlightColor": "#DFDCE3",
                 "id": "bb57f8ba-ee76-44dd-8715-efd935e3a003",
                 "selected": true,
-                "text": "New unsaved thread",
+                "text": "",
                 "title": "Untitled"
             },
             {
@@ -630,11 +630,11 @@
         "channelType": "communication",
         "id": "2a4f247a-cc85-44e2-9958-008413a65d96",
         "lastPosted": "4 days ago",
-        "selected": true,
+        "selected": false,
         "threads": [
             {
                 "channelId": "2a4f247a-cc85-44e2-9958-008413a65d96",
-                "date": "Thursday, December 7, 2017 7:08 PM",
+                "date": "Thursday, December 7, 2017 11:29 PM",
                 "document": {
                     "blocks": [
                         {
