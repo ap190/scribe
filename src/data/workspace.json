@@ -93,6 +93,7 @@
     "channelName": ".git",
     "channelType": "file",
     "id": "49ae8a8c-1fab-4f98-b944-3e65e2581xyz",
+    "absolutePath": "/Users/ali_paul/Desktop/hackerScribe/.git",
     "lastPosted": "21 minutes ago",
     "selected": false,
     "threads": [
@@ -124,6 +125,7 @@
   {
     "channelName": "README.md",
     "channelType": "file",
+    "absolutePath": "/Users/ali_paul/Desktop/hackerScribe/README.md",
     "id": "49ae8a8c-1fab-4f98-b944-3e65e25814xx",
     "lastPosted": "4 days ago",
     "selected": false,
@@ -657,11 +659,11 @@
     "channelType": "communication",
     "id": "55edf3eb-0ac2-4073-8716-fe02ef2a051b",
     "lastPosted": "4 days ago",
-    "selected": false,
+    "selected": true,
     "threads": [
       {
         "channelId": "55edf3eb-0ac2-4073-8716-fe02ef2a051b",
-        "date": "Thursday, December 7, 2017 7:04 PM",
+        "date": "Friday, December 8, 2017 3:40 PM",
         "document": {
           "blocks": [
             {
@@ -761,9 +763,9 @@
               "depth": 0,
               "entityRanges": [],
               "inlineStyleRanges": [],
-              "key": "4u5tf",
+              "key": "97rf9",
               "text": "",
-              "type": "unstyled"
+              "type": "todo"
             },
             {
               "data": {},
@@ -865,5 +867,14 @@
         "title": "Ali's TODO List"
       }
     ]
+  },
+  {
+    "absolutePath": "/Users/ali_paul/Desktop/hackerScribe/.eslintrc.json",
+    "channelName": ".eslintrc.json",
+    "channelType": "file",
+    "id": "70ad4e11-800f-4f29-8269-e26acd82e420",
+    "lastPosted": "4 days ago",
+    "selected": false,
+    "threads": []
   }
 ]

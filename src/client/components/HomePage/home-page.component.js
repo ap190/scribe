@@ -159,9 +159,11 @@ class HomePage extends Component {
   }
 
   getUpdatedChannelAndThreadsIfSelectionIsFile(activeFile, threads) {
+    const relativePath = activeFile.relativePath.join(`/`);
+    const absolutePath = `${this.state.absolutePath}/${relativePath}`;
+
     const currentChannel = this.state.channels.find(
-      file =>
-        file.channelType === "file" && activeFile.module === file.channelName
+      file => file.channelType === "file" && absolutePath === file.absolutePath
     );
 
     // currentFile has threads
