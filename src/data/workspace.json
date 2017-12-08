@@ -581,7 +581,7 @@
         "threads": [
             {
                 "channelId": "2a4f247a-cc85-44e2-9958-008413a65d96",
-                "date": "Friday, December 8, 2017 4:53 PM",
+                "date": "Friday, December 8, 2017 5:01 PM",
                 "document": {
                     "blocks": [
                         {
@@ -592,7 +592,7 @@
                             "entityRanges": [],
                             "inlineStyleRanges": [],
                             "key": "f9f7q",
-                            "text": "hide tooltip off click on editor bug - this may be fixed with draggable issue",
+                            "text": "",
                             "type": "todo"
                         },
                         {
@@ -606,7 +606,7 @@
                                     "style": "HIGHLIGHT"
                                 }
                             ],
-                            "key": "edsb1",
+                            "key": "8fo7u",
                             "text": "Recent workspaces",
                             "type": "todo"
                         },
@@ -616,7 +616,7 @@
                             "entityRanges": [],
                             "inlineStyleRanges": [],
                             "key": "f08hr",
-                            "text": "on initial save prompt user what directory he wants us to save the work",
+                            "text": "Initial save prompt user what directory he wants us to save the work",
                             "type": "todo"
                         },
                         {
@@ -643,7 +643,7 @@
                 "highlightColor": "#DFDCE3",
                 "id": "60af28fe-63d5-4c3a-9e50-a2a693d98bca",
                 "selected": true,
-                "text": "hide tooltip off click on editor bug - this may be fixed with draggable issue",
+                "text": "",
                 "title": "Todo"
             }
         ]
