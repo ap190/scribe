@@ -1,89 +1,221 @@
-const electron = require("electron");
+const { app, Menu, shell } = require("electron");
 const { mainWindow } = require("../../electron-main.js");
+const { showMessage, showSaveDialog, showOpenDialog } = require("../dialogs");
 
-const app = electron.app;
+function setMainMenu(mainWindow) {
+  const template = [
+    {
+      label: "Workspace",
+      submenu: [
+        {
+          label: "Open Workspace"
+        },
+        {
+          type: "separator"
+        },
+        {
+          label: "Save",
+          click() {
+            mainWindow.webContents.send("save-timeline");
+          }
+        },
+        {
+          label: "Save Memory Usage Info",
+          click() {
+            showSaveDialog(mainWindow);
+          }
+        },
+        {
+          label: "Open a File",
+          click() {
+            showOpenDialog(mainWindow);
+          }
+        },
+        {
+          label: "Clear Workspace",
+          click() {
+            showMessage(mainWindow);
+          }
+        }
+      ]
+    },
+    {
+      label: "Edit",
+      submenu: [
+        {
+          role: "undo",
+          label: "Undo"
+        },
+        {
+          role: "redo",
+          label: "Redo"
+        },
+        {
+          type: "separator"
+        },
+        {
+          role: "cut",
+          label: "Cut"
+        },
+        {
+          role: "copy",
+          label: "Copy"
+        },
+        {
+          role: "paste",
+          label: "Paste"
+        },
+        {
+          role: "delete",
+          label: "Delete"
+        },
+        {
+          role: "selectall",
+          label: "Select all"
+        }
+      ]
+    },
+    {
+      label: "View",
+      submenu: [
+        {
+          role: "resetzoom",
+          label: "Actual size"
+        },
+        {
+          role: "zoomin",
+          label: "Zoom in"
+        },
+        {
+          role: "zoomout",
+          label: "Zoom out"
+        },
+        {
+          type: "separator"
+        },
+        {
+          role: "togglefullscreen",
+          label: "Toggle fullscreen"
+        },
+        {
+          label: "Toggle Developer Tools",
+          accelerator:
+            process.platform === "darwin" ? "Alt+Command+I" : "Ctrl+Shift+I",
+          click(item, focusedWindow) {
+            if (focusedWindow) focusedWindow.webContents.toggleDevTools();
+          }
+        }
+      ]
+    },
+    {
+      label: "Inspect Element",
+      click: () => {
+        remote
+          .getCurrentWindow()
+          .inspectElement(rightClickPosition.x, rightClickPosition.y);
+      }
+    },
+    {
+      role: "window",
+      label: "Window",
+      submenu: [
+        {
+          role: "minimize",
+          label: "Minimize"
+        },
+        {
+          role: "close",
+          label: "Close"
+        }
+      ]
+    },
+    {
+      role: "help",
+      label: "Help",
+      submenu: [
+        {
+          label: "Learn more",
+          click() {
+            shell.openExternal("https://mindflowai.com");
+          }
+        }
+      ]
+    }
+  ];
 
-const template = [
-  {
-    label: "Workspace",
-    submenu: [
-      {
-        label: "Open Workspace"
-      },
-      {
-        type: "separator"
-      },
-      {
-        label: "Save",
-        click() {
-          mainWindow.webContents.send("save-timeline");
+  if (process.platform === "darwin") {
+    const name = app.getName();
+    template.unshift({
+      label: name,
+      submenu: [
+        {
+          role: "about",
+          label: "About" + " " + app.getName()
+        },
+        {
+          type: "separator"
+        },
+        {
+          role: "services",
+          label: "Services",
+          submenu: []
+        },
+        {
+          type: "separator"
+        },
+        {
+          role: "hide",
+          label: "Hide" + " " + app.getName()
+        },
+        {
+          role: "hideothers",
+          label: "Hide others"
+        },
+        {
+          role: "unhide",
+          label: "Unhide"
+        },
+        {
+          type: "separator"
+        },
+        {
+          role: "quit",
+          label: "Quit" + " " + app.getName()
         }
-      },
-      {
-        label: "Clear Workspace",
-        click() {
-          mainWindow.webContents.send("clear-timeline");
-        }
-      }
-    ]
-  },
-  {
-    label: "Edit",
-    submenu: [
-      {
-        role: "undo",
-        label: "Undo"
-      },
-      {
-        role: "redo",
-        label: "Redo"
-      },
+      ]
+    });
+    template[1].submenu.push(
       {
         type: "separator"
       },
       {
-        role: "cut",
-        label: "Cut"
-      },
-      {
-        role: "copy",
-        label: "Copy"
-      },
-      {
-        role: "paste",
-        label: "Paste"
-      },
-      {
-        role: "delete",
-        label: "Delete"
-      },
-      {
-        role: "selectall",
-        label: "Select all"
+        label: "Speech",
+        submenu: [
+          {
+            role: "startspeaking",
+            label: "Start speaking"
+          },
+          {
+            role: "stopspeaking",
+            label: "Stop speaking"
+          }
+        ]
       }
-    ]
-  },
-  {
-    label: "View",
-    submenu: [
+    );
+    template[3].submenu = [
       {
-        role: "resetzoom",
-        label: "Actual size"
+        label: "Close",
+        accelerator: "CmdOrCtrl+W",
+        role: "close"
       },
       {
-        role: "zoomin",
-        label: "Zoom in"
+        label: "Minimize",
+        accelerator: "CmdOrCtrl+M",
+        role: "minimize"
       },
       {
-        role: "zoomout",
-        label: "Zoom out"
-      },
-      {
-        type: "separator"
-      },
-      {
-        role: "togglefullscreen",
-        label: "Toggle fullscreen"
+        label: "Zoom",
+        role: "zoom"
       },
       {
         label: "Toggle Developer Tools",
@@ -92,137 +224,18 @@ const template = [
         click(item, focusedWindow) {
           if (focusedWindow) focusedWindow.webContents.toggleDevTools();
         }
-      }
-    ]
-  },
-  {
-    label: "Inspect Element",
-    click: () => {
-      remote
-        .getCurrentWindow()
-        .inspectElement(rightClickPosition.x, rightClickPosition.y);
-    }
-  },
-  {
-    role: "window",
-    label: "Window",
-    submenu: [
-      {
-        role: "minimize",
-        label: "Minimize"
       },
       {
-        role: "close",
-        label: "Close"
-      }
-    ]
-  },
-  {
-    role: "help",
-    label: "Help",
-    submenu: [
+        type: "separator"
+      },
       {
-        label: "Learn more",
-        click() {
-          require("electron").shell.openExternal(
-            "https://github.com/crilleengvall/electron-tutorial-app"
-          );
-        }
+        label: "Bring all to front",
+        role: "front"
       }
-    ]
+    ];
   }
-];
-
-if (process.platform === "darwin") {
-  const name = app.getName();
-  template.unshift({
-    label: name,
-    submenu: [
-      {
-        role: "about",
-        label: "About" + " " + app.getName()
-      },
-      {
-        type: "separator"
-      },
-      {
-        role: "services",
-        label: "Services",
-        submenu: []
-      },
-      {
-        type: "separator"
-      },
-      {
-        role: "hide",
-        label: "Hide" + " " + app.getName()
-      },
-      {
-        role: "hideothers",
-        label: "Hide others"
-      },
-      {
-        role: "unhide",
-        label: "Unhide"
-      },
-      {
-        type: "separator"
-      },
-      {
-        role: "quit",
-        label: "Quit" + " " + app.getName()
-      }
-    ]
-  });
-  template[1].submenu.push(
-    {
-      type: "separator"
-    },
-    {
-      label: "Speech",
-      submenu: [
-        {
-          role: "startspeaking",
-          label: "Start speaking"
-        },
-        {
-          role: "stopspeaking",
-          label: "Stop speaking"
-        }
-      ]
-    }
-  );
-  template[3].submenu = [
-    {
-      label: "Close",
-      accelerator: "CmdOrCtrl+W",
-      role: "close"
-    },
-    {
-      label: "Minimize",
-      accelerator: "CmdOrCtrl+M",
-      role: "minimize"
-    },
-    {
-      label: "Zoom",
-      role: "zoom"
-    },
-    {
-      label: "Toggle Developer Tools",
-      accelerator:
-        process.platform === "darwin" ? "Alt+Command+I" : "Ctrl+Shift+I",
-      click(item, focusedWindow) {
-        if (focusedWindow) focusedWindow.webContents.toggleDevTools();
-      }
-    },
-    {
-      type: "separator"
-    },
-    {
-      label: "Bring all to front",
-      role: "front"
-    }
-  ];
+  const menu = Menu.buildFromTemplate(template);
+  Menu.setApplicationMenu(menu);
 }
 
-module.exports = template;
+module.exports = setMainMenu;

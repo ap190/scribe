@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "devDependencies": {
+    "devtron": "^1.4.0",
     "electron-context-menu": "^0.9.1",
     "electron-icon-maker": "0.0.4",
     "eslint": "^4.8.0",

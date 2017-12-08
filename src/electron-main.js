@@ -1,14 +1,14 @@
 const electron = require("electron");
-const { app, Menu, ipcMain, clipboard, globalShortcut } = require("electron");
+const { app, ipcMain, clipboard, globalShortcut } = require("electron");
 const path = require("path");
 const url = require("url");
 const { genLoadData } = require("./server/readData");
 const { genSaveWorkspace } = require("./server/saveWorkspace");
 const { genExportCurrentDocument } = require("./server/exportCurrentDoc");
-const menuTemplate = require("./server/menu");
+const setMainMenu = require("./server/menu");
 const registerGlobalShortcuts = require("./server/accelerators");
 
-// require("electron-context-menu")();
+require("electron-context-menu")();
 
 const BrowserWindow = electron.BrowserWindow;
 const {
@@ -67,7 +67,7 @@ function createWindow() {
   registerGlobalShortcuts(globalShortcut, clipboard, mainWindow);
 
   // Create Menu Bar
-  Menu.setApplicationMenu(Menu.buildFromTemplate(menuTemplate));
+  setMainMenu(mainWindow);
 
   // Emitted when the window is closed.
   mainWindow.on("closed", () => {
