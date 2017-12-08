@@ -75,6 +75,7 @@ class HomePage extends Component {
     this.handleAddChannel = this.handleAddChannel.bind(this);
     this.handleAddEmbeddedContent = this.handleAddEmbeddedContent.bind(this);
     this.handleAddThread = this.handleAddThread.bind(this);
+    this.createNewFileChannel = this.createNewFileChannel.bind(this);
     this.handleChangeThreadColor = this.handleChangeThreadColor.bind(this);
     this.handleDeleteThread = this.handleDeleteThread.bind(this);
     this.handleDocumentChange = this.handleDocumentChange.bind(this);
@@ -158,9 +159,11 @@ class HomePage extends Component {
   }
 
   getUpdatedChannelAndThreadsIfSelectionIsFile(activeFile, threads) {
+    const relativePath = activeFile.relativePath.join(`/`);
+    const absolutePath = `${this.state.absolutePath}/${relativePath}`;
+
     const currentChannel = this.state.channels.find(
-      file =>
-        file.channelType === "file" && activeFile.module === file.channelName
+      file => file.channelType === "file" && absolutePath === file.absolutePath
     );
 
     // currentFile has threads
@@ -235,10 +238,11 @@ class HomePage extends Component {
   }
 
   updateEditorOnChannelChange(channel) {
-    if (!channel || !channel.threads) {
+    if (!channel || !channel.threads || channel.threads.length === 0) {
       // TODO: Put a default document.
       return;
     }
+
     const currentThreadIdx = channel.threads.findIndex(
       thread => thread.selected
     );
@@ -256,10 +260,20 @@ class HomePage extends Component {
     this.selectChannelOrFile("file", null, file);
   }
 
-  handleAddChannel(newChannel) {
+  async handleAddChannel(newChannel) {
+    // Unselect all other channels.
+    const unselectedChannels = this.state.channels.map(channel => {
+      channel.selected = false;
+      return channel;
+    });
+
     this.setState({
       isModalOpen: false,
-      channels: [...this.state.channels, newChannel]
+      currentThreads: [],
+      currentThread: undefined,
+      currentChannel: newChannel,
+      currentDocument: EditorState.createEmpty(),
+      channels: [...unselectedChannels, newChannel]
     });
   }
 
@@ -308,10 +322,28 @@ class HomePage extends Component {
     });
   }
 
-  handleAddThread() {
-    const { currentChannel, channels } = this.state;
-    if (!currentChannel) {
-      // Add a new channel if a file is selected.
+  async createNewFileChannel() {
+    const { activeNode, absolutePath } = this.state;
+    const relativePath = activeNode.relativePath.join(`/`);
+    const newChannel = {
+      channelName: `${activeNode.module}`,
+      lastPosted: "4 days ago",
+      id: UUIDv4(),
+      selected: true,
+      channelType: "file",
+      threads: [],
+      absolutePath: `${absolutePath}/${relativePath}`
+    };
+    await this.handleAddChannel(newChannel);
+  }
+
+  async handleAddThread() {
+    let { currentChannel, channels, activeNode } = this.state;
+    if (!currentChannel && activeNode) {
+      await this.createNewFileChannel();
+      currentChannel = this.state.currentChannel;
+      channels = this.state.channels;
+    } else if (!currentChannel) {
       return;
     }
 
@@ -323,11 +355,11 @@ class HomePage extends Component {
       highlightColor: GREY_HIGHLIGHT,
       selected: true,
       document: undefined,
-      channelId: currentChannel.id
+      channelId: this.state.currentChannel.id
     };
 
-    const updatedChannels = channels.map(channel => {
-      if (currentChannel.id !== channel.id) {
+    const updatedChannels = this.state.channels.map(channel => {
+      if (this.state.currentChannel.id !== channel.id) {
         return channel;
       }
 
@@ -341,6 +373,7 @@ class HomePage extends Component {
     });
     this.setState({
       channels: updatedChannels,
+      currentThreads: this.state.currentChannel.threads,
       currentThread: newThread,
       currentDocument: newThread.document
     });

@@ -53,7 +53,7 @@ const createFileStructure = (dirArr, relativePath) => {
         const file = {
           leaf: true,
           module: arr[i],
-          parent: arr[i - 1] ? arr[i - 1] : relativePath
+          relativePath: arr
         };
         let layer = output.children;
         for (let j = 0; j < i; j += 1) {
@@ -68,13 +68,12 @@ const createFileStructure = (dirArr, relativePath) => {
         module: arr[i],
         collapsed: true,
         children: [],
-        parent: relativePath
+        relativePath: arr
       };
       let layer = output.children;
       for (let j = 0; j < i; j += 1) {
         const parentIndex = findParentIndex(layer, arr[j]);
         layer = layer[parentIndex].children;
-        folder.parent = arr[j];
       }
       const doesFolderExist = layer.findIndex(
         element => element.module === folder.module
