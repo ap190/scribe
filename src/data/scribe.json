@@ -577,26 +577,17 @@
         "channelType": "communication",
         "id": "2a4f247a-cc85-44e2-9958-008413a65d96",
         "lastPosted": "4 days ago",
-        "selected": true,
+        "selected": false,
         "threads": [
             {
                 "channelId": "2a4f247a-cc85-44e2-9958-008413a65d96",
-                "date": "Friday, December 8, 2017 5:01 PM",
+                "date": "Saturday, December 9, 2017 11:14 AM",
                 "document": {
                     "blocks": [
                         {
                             "data": {
                                 "checked": false
                             },
-                            "depth": 0,
-                            "entityRanges": [],
-                            "inlineStyleRanges": [],
-                            "key": "f9f7q",
-                            "text": "",
-                            "type": "todo"
-                        },
-                        {
-                            "data": {},
                             "depth": 0,
                             "entityRanges": [],
                             "inlineStyleRanges": [
@@ -606,7 +597,7 @@
                                     "style": "HIGHLIGHT"
                                 }
                             ],
-                            "key": "8fo7u",
+                            "key": "f9f7q",
                             "text": "Recent workspaces",
                             "type": "todo"
                         },
@@ -643,7 +634,7 @@
                 "highlightColor": "#DFDCE3",
                 "id": "60af28fe-63d5-4c3a-9e50-a2a693d98bca",
                 "selected": true,
-                "text": "",
+                "text": "Recent workspaces",
                 "title": "Todo"
             }
         ]
@@ -868,5 +859,196 @@
         "lastPosted": "4 days ago",
         "selected": false,
         "threads": []
+    },
+    {
+        "channelName": "# leora",
+        "channelType": "communication",
+        "id": "4dea4d11-363d-48a2-ab91-a72d0f7a6d81",
+        "lastPosted": "4 days ago",
+        "selected": true,
+        "threads": [
+            {
+                "channelId": "4dea4d11-363d-48a2-ab91-a72d0f7a6d81",
+                "date": "Saturday, December 9, 2017 12:31 PM",
+                "document": {
+                    "blocks": [
+                        {
+                            "data": {},
+                            "depth": 0,
+                            "entityRanges": [],
+                            "inlineStyleRanges": [],
+                            "key": "b3an4",
+                            "text": "My board!",
+                            "type": "header-one"
+                        },
+                        {
+                            "data": {},
+                            "depth": 0,
+                            "entityRanges": [],
+                            "inlineStyleRanges": [
+                                {
+                                    "length": 10,
+                                    "offset": 0,
+                                    "style": "BOLD"
+                                },
+                                {
+                                    "length": 10,
+                                    "offset": 0,
+                                    "style": "UNDERLINE"
+                                }
+                            ],
+                            "key": "7n7m1",
+                            "text": "I love you",
+                            "type": "unstyled"
+                        },
+                        {
+                            "data": {},
+                            "depth": 0,
+                            "entityRanges": [],
+                            "inlineStyleRanges": [
+                                {
+                                    "length": 4,
+                                    "offset": 0,
+                                    "style": "BOLD"
+                                },
+                                {
+                                    "length": 4,
+                                    "offset": 0,
+                                    "style": "UNDERLINE"
+                                }
+                            ],
+                            "key": "91g4o",
+                            "text": "diet",
+                            "type": "todo"
+                        },
+                        {
+                            "data": {},
+                            "depth": 0,
+                            "entityRanges": [],
+                            "inlineStyleRanges": [
+                                {
+                                    "length": 5,
+                                    "offset": 0,
+                                    "style": "BOLD"
+                                },
+                                {
+                                    "length": 5,
+                                    "offset": 0,
+                                    "style": "UNDERLINE"
+                                }
+                            ],
+                            "key": "3ioci",
+                            "text": "vegan",
+                            "type": "todo"
+                        },
+                        {
+                            "data": {},
+                            "depth": 0,
+                            "entityRanges": [],
+                            "inlineStyleRanges": [
+                                {
+                                    "length": 5,
+                                    "offset": 0,
+                                    "style": "BOLD"
+                                },
+                                {
+                                    "length": 5,
+                                    "offset": 0,
+                                    "style": "UNDERLINE"
+                                }
+                            ],
+                            "key": "2a7js",
+                            "text": "bread",
+                            "type": "todo"
+                        },
+                        {
+                            "data": {},
+                            "depth": 0,
+                            "entityRanges": [],
+                            "inlineStyleRanges": [],
+                            "key": "4hotg",
+                            "text": "“i am not a genius, i am curious”",
+                            "type": "blockquote"
+                        },
+                        {
+                            "data": {
+                                "src": "file:////Users/omergoldberg/Downloads/22550474_10155817720949706_9203793871500197026_o.jpg"
+                            },
+                            "depth": 0,
+                            "entityRanges": [],
+                            "inlineStyleRanges": [],
+                            "key": "vcc0",
+                            "text": "beautiful",
+                            "type": "atomic:image"
+                        },
+                        {
+                            "data": {},
+                            "depth": 0,
+                            "entityRanges": [],
+                            "inlineStyleRanges": [],
+                            "key": "20kli",
+                            "text": "",
+                            "type": "unstyled"
+                        },
+                        {
+                            "data": {},
+                            "depth": 0,
+                            "entityRanges": [
+                                {
+                                    "key": 0,
+                                    "length": 1,
+                                    "offset": 0
+                                }
+                            ],
+                            "inlineStyleRanges": [],
+                            "key": "5fsu6",
+                            "text": "E",
+                            "type": "atomic"
+                        },
+                        {
+                            "data": {},
+                            "depth": 0,
+                            "entityRanges": [],
+                            "inlineStyleRanges": [],
+                            "key": "3en4p",
+                            "text": "",
+                            "type": "unstyled"
+                        },
+                        {
+                            "data": {},
+                            "depth": 0,
+                            "entityRanges": [],
+                            "inlineStyleRanges": [],
+                            "key": "1vebt",
+                            "text": "",
+                            "type": "unstyled"
+                        },
+                        {
+                            "data": {},
+                            "depth": 0,
+                            "entityRanges": [],
+                            "inlineStyleRanges": [],
+                            "key": "12i7v",
+                            "text": "",
+                            "type": "unstyled"
+                        }
+                    ],
+                    "entityMap": {
+                        "0": {
+                            "data": {
+                                "url": "https://www.youtube.com/watch?v=qqflFMhkqHM&list=RDGMEM6ijAnFTG9nX1G-kbWBUCJAVMqqflFMhkqHM"
+                            },
+                            "mutability": "IMMUTABLE",
+                            "type": "embed"
+                        }
+                    }
+                },
+                "highlightColor": "#DFDCE3",
+                "id": "dc76538b-8341-4689-bebf-97b229f9b355",
+                "selected": true,
+                "text": "My board!",
+                "title": "Leora intermettient fasting"
+            }
+        ]
     }
 ]

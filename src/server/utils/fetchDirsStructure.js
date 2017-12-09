@@ -1,12 +1,9 @@
 const path = require("path");
 const fs = require("fs");
 
-function ignore(filepath) {
-  return (
-    path.basename(filepath) === "node_modules" ||
-    path.basename(filepath) === ".git"
-  );
-}
+const ignore = filepath =>
+  path.basename(filepath) === "node_modules" ||
+  path.basename(filepath) === ".git";
 
 const getAllFiles = dir =>
   fs
