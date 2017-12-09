@@ -2,9 +2,8 @@ const electron = require("electron");
 const { app, ipcMain, clipboard, globalShortcut } = require("electron");
 const path = require("path");
 const url = require("url");
-const { genLoadData } = require("./server/readData");
-const { genSaveWorkspace } = require("./server/saveWorkspace");
-const { genExportCurrentDocument } = require("./server/exportCurrentDoc");
+const { genSaveWorkspace, genLoadData } = require("./server/fileHandlers");
+const { genExportCurrentDocument } = require("./server/export");
 const setMainMenu = require("./server/menu");
 const registerGlobalShortcuts = require("./server/accelerators");
 
