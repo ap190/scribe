@@ -26,6 +26,8 @@
   margin-top: 10px;
   border: 0;
   font-weight: bold;
+  width: 100%;
+  overflow: visible;
 }
 
 .update-time {

@@ -15,8 +15,12 @@ img.delete-icon:hover {
   font-family: AvenirNext-Bold;
   font-size: 24px;
   color: #4a4a4a;
-  line-height: 24px;
+  line-height: 26px;
   margin-top: 14px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  width: 310px;
 }
 
 .date {
@@ -34,7 +38,7 @@ img.delete-icon:hover {
   font-size: 14px;
   color: #4a4a4a;
   line-height: 32px;
-  max-width: 110px;
+  max-width: 70%;
 }
 
 .thread-container {
@@ -49,4 +53,9 @@ img.delete-icon:hover {
 .thread-content {
   margin-left: 16px;
   flex-grow: 1;
+  max-width: 90%;
+}
+
+.delete-icon {
+  min-width: 16px;
 }
