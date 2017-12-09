@@ -2,7 +2,7 @@ const fs = require("fs");
 const path = require("path");
 const jsonfile = require("jsonfile");
 const { SCRIBE_FILE_PATHS } = require("../consts");
-const { getDirSelectionFromUserOG } = require("../dialogs");
+const { getDirSelectionFromUser } = require("../dialogs");
 const { mainWindow } = require("../../electron-main");
 
 const jsonpath = path.join(
@@ -11,6 +11,15 @@ const jsonpath = path.join(
   "data",
   SCRIBE_FILE_PATHS.SCRIBE_DATA
 );
+
+const createLoadableWorkspacePath = userSelectedDir => {
+  if (!userSelectedDir) return null;
+  return path.join(
+    userSelectedDir,
+    SCRIBE_FILE_PATHS.SCRIBE_DIR,
+    SCRIBE_FILE_PATHS.SCRIBE_DATA
+  );
+};
 
 exports.genLoadData = event => {
   jsonfile.readFile(jsonpath, "utf8", (err, data) => {
@@ -21,32 +30,49 @@ exports.genLoadData = event => {
   });
 };
 
-exports.genSaveWorkspace = (event, workspace, userSelectedDir) => {
-  if (!userSelectedDir) {
-    userSelectedDir = getDirSelectionFromUserOG(mainWindow);
-    console.log(userSelectedDir);
-  }
-  if (
-    fs.existsSync(
-      `${userSelectedDir}/${SCRIBE_FILE_PATHS.SCRIBE_DIR}/${
-        SCRIBE_FILE_PATHS.SCRIBE_DATA
-      }`
-    )
-  ) {
-    jsonfile.writeFile(
-      `${userSelectedDir}/scribe/scribe.json`,
-      workspace,
-      { spaces: 4 },
-      (err, data) => {
-        console.error(err);
-      }
-    );
+exports.loadWorkspace = (targetWindow, dir) => {
+  const userSelectedScribePath = createLoadableWorkspacePath(dir);
+  if (!userSelectedScribePath || !dir) return;
+  if (fs.existsSync(userSelectedScribePath)) {
+    jsonfile.readFile(userSelectedScribePath, "utf8", (err, data) => {
+      targetWindow.webContents.send("load-file-res", data, `${dir}`);
+    });
   }
 };
 
-// jsonfile.writeFile(jsonpath, workspace, { spaces: 4 }, (err, data) => {
-//   if (err) {
-//     throw new Error("Could not save workspace");
-//   }
-//   event.sender.send("save-workspace-res", "success saving");
-// });
+exports.genSaveWorkspace = (event, workspace, userSelectedDir) => {
+  // Check if user is in session and has already selected dir
+  if (!userSelectedDir) {
+    userSelectedDir = getDirSelectionFromUser(mainWindow);
+  }
+
+  // Create write path
+  const userSelectedScribePath = createLoadableWorkspacePath(userSelectedDir);
+  if (!userSelectedScribePath) return;
+
+  if (fs.existsSync(userSelectedScribePath)) {
+    jsonfile.writeFile(
+      userSelectedScribePath,
+      workspace,
+      { spaces: 4 },
+      (err, data) => {
+        if (err) {
+          console.error("Could not save workspace");
+        }
+      }
+    );
+  } else {
+    fs.mkdir(`${userSelectedDir}/${SCRIBE_FILE_PATHS.SCRIBE_DIR}`, e => {
+      jsonfile.writeFile(
+        userSelectedScribePath,
+        workspace,
+        { spaces: 4 },
+        err => {
+          if (err) {
+            console.error("Could not save workspace");
+          }
+        }
+      );
+    });
+  }
+};

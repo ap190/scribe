@@ -1,6 +1,10 @@
 const { app, Menu, shell } = require("electron");
-const { mainWindow } = require("../../electron-main.js");
-const { showMessage, showSaveDialog, showOpenDialog } = require("../dialogs");
+const {
+  showMessage,
+  showSaveDialog,
+  openWorkspaceDialog
+} = require("../dialogs");
+const { loadWorkspace } = require("../fileHandlers");
 
 function setMainMenu(mainWindow) {
   const template = [
@@ -8,7 +12,12 @@ function setMainMenu(mainWindow) {
       label: "Workspace",
       submenu: [
         {
-          label: "Open Workspace"
+          label: "Open Workspace",
+          click() {
+            const directory = openWorkspaceDialog(mainWindow);
+            if (!directory) return;
+            loadWorkspace(mainWindow, directory);
+          }
         },
         {
           type: "separator"

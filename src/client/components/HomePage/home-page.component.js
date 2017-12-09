@@ -92,6 +92,8 @@ class HomePage extends Component {
     ipcRenderer.send("load-file-req");
 
     ipcRenderer.on("load-file-res", (event, channels) => {
+      console.log("channels is ");
+      console.log(channels);
       this.setState({
         channels
       });
@@ -181,12 +183,10 @@ class HomePage extends Component {
   }
 
   selectProjectDir() {
-    const { getDirSelectionFromUser } = mainProcessFileHandling;
-    const {
-      fileStructure,
-      relativePath,
-      absolutePath
-    } = getDirSelectionFromUser(this.currentWindow);
+    const { getDirData } = mainProcessFileHandling;
+    const { fileStructure, relativePath, absolutePath } = getDirData(
+      this.currentWindow
+    );
     if (!fileStructure || fileStructure.length < 1) {
       return;
     }

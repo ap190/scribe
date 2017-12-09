@@ -52,7 +52,7 @@ const showSaveDialog = browserWindow => {
   );
 };
 
-const getDirSelectionFromUser = browserWindow => {
+const getDirData = browserWindow => {
   const files = dialog.showOpenDialog(browserWindow, {
     properties: ["openDirectory"]
   });
@@ -65,8 +65,9 @@ const getDirSelectionFromUser = browserWindow => {
   };
 };
 
-const getDirSelectionFromUserOG = targetWindow => {
+const getDirSelectionFromUser = targetWindow => {
   const files = dialog.showOpenDialog(targetWindow, {
+    buttonLabel: "Save",
     properties: ["openDirectory"]
   });
 
@@ -75,19 +76,11 @@ const getDirSelectionFromUserOG = targetWindow => {
   return files[0];
 };
 
-const showOpenDialog = browserWindow => {
-  dialog.showOpenDialog(
-    browserWindow,
-    {
-      defaultPath: app.getPath("downloads"),
-      filters: [{ name: "Text Files", extensions: ["txt"] }] //"Text Files" displays on Windows in lower right, but not on Mac
-    },
-    filepaths => {
-      if (filepaths) {
-        console.log(filepaths, fs.readFileSync(filepaths[0], "utf8"));
-      }
-    }
-  );
+const openWorkspaceDialog = browserWindow => {
+  const directory = dialog.showOpenDialog(browserWindow, {
+    properties: ["openDirectory"]
+  });
+  return directory[0];
 };
 
 const openFile = (browserWindow, filePath) => {
@@ -103,9 +96,9 @@ const openFile = (browserWindow, filePath) => {
 module.exports = {
   showSaveDialog,
   showMessage,
-  showOpenDialog,
+  openWorkspaceDialog,
   getFileSelectionFromUser,
-  getDirSelectionFromUser,
+  getDirData,
   openFile,
-  getDirSelectionFromUserOG
+  getDirSelectionFromUser
 };

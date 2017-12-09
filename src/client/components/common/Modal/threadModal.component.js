@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import styled from "styled-components";
 import PropTypes from "prop-types";
 import ColorCircleList from "./ThreadHighlightModal/ColorCircleList/color-circle-list.component";
 import { highlightColor } from "../../../themes/colors";
