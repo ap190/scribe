@@ -4,7 +4,7 @@ import { modals } from "../../../../utils/const";
 
 const { HIGHLIGHT_THREAD_MODAL } = modals;
 const styles = {
-  height: "100px",
+  minHeight: "100px",
   width: "5px",
   borderRadius: "25px",
   cursor: "pointer"
