@@ -1,31 +1,71 @@
 .accept-btn {
+  min-width: 90px;
+  height: 40px;
   border: none;
-  font-family: Arial;
+  font-family: AvenirNext-Regular;
   color: #ffffff;
-  font-size: 20px;
-  background: #35a566;
+  font-size: 16px;
+  background: #3d94fc;
   padding: 10px 20px 10px 20px;
   text-decoration: none;
+  letter-spacing: 0.38px;
+  border-radius: 10px;
+  margin-left: 14px;
 }
 
 .accept-btn:hover {
-  background: #329b60;
+  background: #4080cd;
   text-decoration: none;
   cursor: pointer;
 }
 
 .cancel-btn {
-  border: none;
-  font-family: Arial;
-  color: #ffffff;
-  font-size: 20px;
-  background: #f0623a;
+  min-width: 90px;
+  height: 40px;
+  font-family: AvenirNext-Regular;
+  font-size: 16px;
+  color: #989898;
+  letter-spacing: 0.38px;
+  background: none;
   padding: 10px 20px 10px 20px;
   text-decoration: none;
+  border: 1px solid #969696;
+  border-radius: 10px;
 }
 
 .cancel-btn:hover {
-  background: #dd5c38;
+  color: #4080cd;
+  border: 1px solid #4080cd;
   text-decoration: none;
   cursor: pointer;
+}
+
+.modal-header {
+  width: 100%;
+  background: #f2f2f2;
+  border-radius: 12px 12px 0 0;
+  font-family: AvenirNext-Medium;
+  font-size: 20px;
+  padding: 18px;
+  color: #000000;
+  letter-spacing: 0.61px;
+}
+
+.modal {
+  background-color: #fff;
+  align-self: center;
+  box-shadow: 0 2px 16px 0 rgba(188, 188, 188, 0.5);
+  border-radius: 12px;
+  max-width: 500px;
+  min-height: 300px;
+  margin: 15% auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.modal-footer {
+  margin-bottom: 36px;
+  justify-content: center;
 }
