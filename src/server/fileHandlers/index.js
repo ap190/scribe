@@ -35,7 +35,11 @@ exports.loadWorkspace = (targetWindow, dir) => {
   if (!userSelectedScribePath || !dir) return;
   if (fs.existsSync(userSelectedScribePath)) {
     jsonfile.readFile(userSelectedScribePath, "utf8", (err, data) => {
-      targetWindow.webContents.send("load-file-res", data, `${dir}`);
+      targetWindow.webContents.send(
+        "load-file-res",
+        data,
+        userSelectedScribePath
+      );
     });
   }
 };
@@ -46,13 +50,9 @@ exports.genSaveWorkspace = (event, workspace, userSelectedDir) => {
     userSelectedDir = getDirSelectionFromUser(mainWindow);
   }
 
-  // Create write path
-  const userSelectedScribePath = createLoadableWorkspacePath(userSelectedDir);
-  if (!userSelectedScribePath) return;
-
-  if (fs.existsSync(userSelectedScribePath)) {
+  if (fs.existsSync(userSelectedDir)) {
     jsonfile.writeFile(
-      userSelectedScribePath,
+      userSelectedDir,
       workspace,
       { spaces: 4 },
       (err, data) => {
@@ -63,16 +63,11 @@ exports.genSaveWorkspace = (event, workspace, userSelectedDir) => {
     );
   } else {
     fs.mkdir(`${userSelectedDir}/${SCRIBE_FILE_PATHS.SCRIBE_DIR}`, e => {
-      jsonfile.writeFile(
-        userSelectedScribePath,
-        workspace,
-        { spaces: 4 },
-        err => {
-          if (err) {
-            console.error("Could not save workspace");
-          }
+      jsonfile.writeFile(userSelectedDir, workspace, { spaces: 4 }, err => {
+        if (err) {
+          console.error("Could not save workspace");
         }
-      );
+      });
     });
   }
 };

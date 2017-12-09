@@ -91,11 +91,10 @@ class HomePage extends Component {
   componentDidMount() {
     ipcRenderer.send("load-file-req");
 
-    ipcRenderer.on("load-file-res", (event, channels) => {
-      console.log("channels is ");
-      console.log(channels);
+    ipcRenderer.on("load-file-res", (event, channels, userSelectedDir) => {
       this.setState({
-        channels
+        channels,
+        userSelectedDir
       });
     });
 
