@@ -58,6 +58,7 @@ class HomePage extends Component {
       currentThread: undefined,
       currentDocument: undefined,
       activeNode: undefined,
+      userSelectedDir: undefined,
       files: {}
     };
     this.toggleEditor = this.toggleEditor.bind(this);
@@ -501,7 +502,11 @@ class HomePage extends Component {
       };
     });
 
-    ipcRenderer.send("save-workspace", this.state.channels);
+    ipcRenderer.send(
+      "save-workspace",
+      this.state.channels,
+      this.state.userSelectedDir
+    );
   }
 
   exportCurrentDocAsHTML() {

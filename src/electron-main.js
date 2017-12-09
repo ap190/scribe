@@ -24,8 +24,8 @@ ipcMain.on("export-current-doc", (event, html, pdfName) => {
   genExportCurrentDocument(event, html, pdfName);
 });
 
-ipcMain.on("save-workspace", (event, arg) => {
-  genSaveWorkspace(event, arg);
+ipcMain.on("save-workspace", (event, workspace, userSelectedDir) => {
+  genSaveWorkspace(event, workspace, userSelectedDir);
 });
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.

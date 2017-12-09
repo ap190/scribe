@@ -3,8 +3,8 @@ const fs = require("fs");
 const path = require("path");
 const getAllFiles = require("../utils/fetchDirsStructure").getAllFiles;
 
-const getFileSelectionFromUser = targetWindow => {
-  const files = dialog.showOpenDialog(targetWindow, {
+const getFileSelectionFromUser = browserWindow => {
+  const files = dialog.showOpenDialog(browserWindow, {
     properties: ["openFile"]
   });
 
@@ -52,8 +52,8 @@ const showSaveDialog = browserWindow => {
   );
 };
 
-const getDirSelectionFromUser = targetWindow => {
-  const files = dialog.showOpenDialog(targetWindow, {
+const getDirSelectionFromUser = browserWindow => {
+  const files = dialog.showOpenDialog(browserWindow, {
     properties: ["openDirectory"]
   });
 
@@ -63,6 +63,16 @@ const getDirSelectionFromUser = targetWindow => {
     relativePath: files[0].split("/").slice(1),
     absolutePath: files[0]
   };
+};
+
+const getDirSelectionFromUserOG = targetWindow => {
+  const files = dialog.showOpenDialog(targetWindow, {
+    properties: ["openDirectory"]
+  });
+
+  if (!files) return; // user cancelled file selection
+
+  return files[0];
 };
 
 const showOpenDialog = browserWindow => {
@@ -80,14 +90,14 @@ const showOpenDialog = browserWindow => {
   );
 };
 
-const openFile = (targetWindow, filePath) => {
-  const file = filePath || getFileSelectionFromUser(targetWindow);
+const openFile = (browserWindow, filePath) => {
+  const file = filePath || getFileSelectionFromUser(browserWindow);
   if (!file) return;
   const content = fs.readFileSync(file).toString();
 
   app.addRecentDocument(file);
-  targetWindow.webContents.send("file-opened", file, content);
-  targetWindow.setRepresentedFilename(file); // cmd click on app icon scroll down of tree structure effect
+  browserWindow.webContents.send("file-opened", file, content);
+  browserWindow.setRepresentedFilename(file); // cmd click on app icon scroll down of tree structure effect
 };
 
 module.exports = {
@@ -96,5 +106,6 @@ module.exports = {
   showOpenDialog,
   getFileSelectionFromUser,
   getDirSelectionFromUser,
-  openFile
+  openFile,
+  getDirSelectionFromUserOG
 };
