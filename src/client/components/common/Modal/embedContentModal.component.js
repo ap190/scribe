@@ -2,46 +2,23 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import styled from "styled-components";
 
-const Footer = styled.div`
-  display: flex;
-  flex-direction: row;
-  width: 100%;
-  justify-content: space-around;
-`;
-
 const Input = styled.input`
   display: flex;
   min-width: 240px;
   background: #ffffff;
-  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1), 0 4px 8px 0 rgba(0, 0, 0, 0.1);
-  border-radius: 3px;
-  border: 1px solid black;
+  border: 1px solid #979797;
   outline: none;
-  font-size: 16px;
-  line-height: 22px;
+  line-height: 36px;
+  width: 45vh;
   padding: 6px 12px 6px 12px;
+  font-family: AvenirNext-Regular;
+  font-size: 18px;
+  color: #a3a3a3;
+  letter-spacing: 0.61px;
   &:focus {
     outline: none;
   }
 `;
-
-const modalHeader = {
-  fontFamily: "AvenirNext-Bold",
-  fontSize: "-webkit-xxx-large"
-};
-
-const modalStyle = {
-  backgroundColor: "#fff",
-  borderRadius: 5,
-  maxWidth: 500,
-  minHeight: 300,
-  margin: "0 auto",
-  padding: 30,
-  display: "flex",
-  flexDirection: "column",
-  justifyContent: "space-between",
-  alignItems: "center"
-};
 
 class EmbedContentModal extends Component {
   constructor(props) {
@@ -64,10 +41,10 @@ class EmbedContentModal extends Component {
   render() {
     return (
       <form onSubmit={this.handleSubmit}>
-        <div className="modal" style={modalStyle}>
-          <div style={modalHeader}>Enter a URL</div>
+        <div className="modal">
+          <div className="modal-header">Embed Content From a URL</div>
           <div>
-            <label htmlFor="ChannelName">URL Name</label>
+            <label htmlFor="EmbeddedURL" />
             <Input
               type="text"
               value={this.state.value}
@@ -75,14 +52,14 @@ class EmbedContentModal extends Component {
               placeholder="Paste a URL to embed content..."
             />
           </div>
-          <Footer>
-            <button className="accept-btn" type="submit">
-              Embed Content
-            </button>
+          <div className="modal-footer">
             <button className="cancel-btn" onClick={this.props.handleOnClose}>
               Cancel
             </button>
-          </Footer>
+            <button className="accept-btn" type="submit">
+              Embed
+            </button>
+          </div>
         </div>
       </form>
     );
