@@ -98,16 +98,19 @@ class HomePage extends Component {
       });
     });
 
-    ipcRenderer.on("save-workspace-shortcut", () => this.saveWorkspace());
+    ipcRenderer.on("save-workspace", () => {
+      return this.saveWorkspace();
+    });
 
-    ipcRenderer.on(
-      "save-workspace-res",
-      () =>
-        new Notification(
-          notifications.SAVE_DOCUMENT_RICH.title,
-          notifications.SAVE_DOCUMENT_RICH
-        )
-    );
+    ipcRenderer.on("save-workspace-notification", (event, userSelectedDir) => {
+      this.setState({
+        userSelectedDir
+      });
+      new Notification(
+        notifications.SAVE_DOCUMENT_RICH.title,
+        notifications.SAVE_DOCUMENT_RICH
+      );
+    });
   }
 
   getModalContent() {
@@ -430,6 +433,8 @@ class HomePage extends Component {
   applyThreadChange(threadId, threadFunc) {
     const { currentChannel, currentThreads } = this.state;
 
+    if (!currentThreads || !currentChannel) return null;
+
     // create new threads
     const newThreads = currentThreads.map(thread => {
       if (thread.id === threadId) {
@@ -500,7 +505,6 @@ class HomePage extends Component {
         text: thread.document ? thread.document.blocks[0].text : ""
       };
     });
-
     ipcRenderer.send(
       "save-workspace",
       this.state.channels,

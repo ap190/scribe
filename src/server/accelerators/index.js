@@ -14,7 +14,7 @@ registerGlobalShortcuts = (globalShortcut, clipboard, mainWindow) => {
   });
 
   const saveWorkspace = globalShortcut.register("CommandOrControl+B", () => {
-    mainWindow.webContents.send("save-workspace-shortcut");
+    mainWindow.webContents.send("save-workspace");
   });
 
   const pasteImage = globalShortcut.register("CommandOrControl+I", () => {
