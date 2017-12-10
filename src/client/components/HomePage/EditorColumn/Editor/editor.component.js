@@ -1,5 +1,6 @@
-import PropTypes from "prop-types";
 import React from "react";
+import PropTypes from "prop-types";
+import Textarea from "react-textarea-autosize";
 import {
   Editor,
   EditorState,
@@ -509,8 +510,7 @@ class MediumDraftEditor extends React.Component {
           />
         )}
         <div className="md-RichEditor-root">
-          <textarea
-            rows="1"
+          <Textarea
             className="doc-title"
             type="text"
             value={
