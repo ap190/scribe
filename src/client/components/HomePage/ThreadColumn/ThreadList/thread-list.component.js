@@ -11,6 +11,17 @@ const divStyle = {
   paddingBottom: "60px"
 };
 
+const threadContainerTitle = {
+  height: "auto",
+  justifyContent: "space-between",
+  overflow: "auto",
+  flex: "1",
+  display: "flex",
+  padding: "10px",
+  paddingLeft: "10px",
+  paddingRight: "20px"
+};
+
 const filterThreadListItem = (query, thread) =>
   thread.text.includes(query) || thread.title.includes(query);
 
@@ -19,15 +30,18 @@ const ThreadList = props =>
     <div style={divStyle} />
   ) : (
     <div style={divStyle}>
-      <div
-        className="thread-list-header"
-        style={{
-          fontFamily: "AvenirNext-Bold",
-          padding: "10px"
-        }}
-      >
-        {props.currentChannel.channelName || props.currentChannel.module}
+      <div style={threadContainerTitle}>
+        <div
+          className="thread-list-header"
+          style={{
+            fontFamily: "AvenirNext-Bold",
+            padding: "10px"
+          }}
+        >
+          {props.currentChannel.channelName || props.currentChannel.module}
+        </div>
       </div>
+
       <div style={{ borderTop: "1px solid #979797" }}>
         {props.threads.map(
           thread =>

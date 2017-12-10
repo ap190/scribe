@@ -7,7 +7,7 @@ export default styled.div`
   left: 0;
   display: flex;
   flex-direction: row;
-  justify-content: flex-start;
+  justify-content: space-between;
   width: 100%;
   height: 60px;
   padding: 20px;

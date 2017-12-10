@@ -18,8 +18,10 @@
     "wait-on": "^2.0.2"
   },
   "dependencies": {
+    "@skidding/react-codemirror": "^1.0.2",
     "bluebird": "^3.5.1",
     "classnames": "^2.2.5",
+    "codemirror": "^5.32.0",
     "concurrently": "^3.5.0",
     "draft-convert": "^2.0.1",
     "draft-js": "^0.10.4",
@@ -49,6 +51,7 @@
     "react-router": "^4.2.0",
     "react-router-dom": "^4.2.2",
     "react-router-redux": "^4.0.8",
+    "react-toggle-button": "^2.2.0",
     "react-transition-group": "^1.1.2",
     "react-ui-tree": "^3.1.0",
     "recompose": "^0.26.0",
@@ -73,15 +76,11 @@
     "eject": "react-scripts eject",
     "electron": "electron .",
     "dev": "nf start -p 3000",
-    "dev-na":
-      "concurrently \"BROWSER=none yarn start\" \"wait-on http://localhost:3000 && electron .\"",
+    "dev-na": "concurrently \"BROWSER=none yarn start\" \"wait-on http://localhost:3000 && electron .\"",
     "dev:mac": "DEV=true electron .",
     "dev:win": "SET DEV=true&& electron .",
-    "package-mac":
-      "rm -rf release-builds && npm run build && electron-packager . --overwrite --asar=true --platform=darwin --arch=x64 --icon=public/icons/mac/icon.icns --prune=true --out=release-builds",
-    "package-win":
-      "electron-packager . --overwrite --asar=true --platform=win32 --arch=ia32 --icon=public/icons/win/icon.ico --prune=true --out=release-builds --version-string.CompanyName=CE --version-string.FileDescription=CE --version-string.ProductName=\"Electron Tutorial App\"",
-    "package-linux":
-      "electron-packager . --overwrite --asar=true --platform=linux --arch=x64 --icon=public/icons/png/1024x1024.png --prune=true --out=release-builds"
+    "package-mac": "rm -rf release-builds && npm run build && electron-packager . --overwrite --asar=true --platform=darwin --arch=x64 --icon=public/icons/mac/icon.icns --prune=true --out=release-builds",
+    "package-win": "electron-packager . --overwrite --asar=true --platform=win32 --arch=ia32 --icon=public/icons/win/icon.ico --prune=true --out=release-builds --version-string.CompanyName=CE --version-string.FileDescription=CE --version-string.ProductName=\"Electron Tutorial App\"",
+    "package-linux": "electron-packager . --overwrite --asar=true --platform=linux --arch=x64 --icon=public/icons/png/1024x1024.png --prune=true --out=release-builds"
   }
 }

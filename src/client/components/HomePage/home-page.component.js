@@ -49,6 +49,7 @@ class HomePage extends Component {
     this.state = {
       isEditorToggled: false,
       isModalOpen: false,
+      showCode: false,
       relativePath: undefined,
       absolutePath: undefined,
       currentModal: undefined,
@@ -62,6 +63,7 @@ class HomePage extends Component {
       files: {}
     };
     this.toggleEditor = this.toggleEditor.bind(this);
+    this.toggleShouldShowCode = this.toggleShouldShowCode.bind(this);
     this.applyThreadChange = this.applyThreadChange.bind(this);
     this.selectProjectDir = this.selectProjectDir.bind(this);
     this.selectChannelOrFile = this.selectChannelOrFile.bind(this);
@@ -211,6 +213,13 @@ class HomePage extends Component {
     });
     this.getModalContent();
     return modalStateObject;
+  }
+
+  toggleShouldShowCode() {
+    console.log("toggle should shoq code in homepage");
+    this.setState({
+      showCode: !this.state.showCode
+    });
   }
 
   selectChannelOrFile(channelType, channelId = null, activeFile = null) {
@@ -541,7 +550,9 @@ class HomePage extends Component {
         <ThreadColumn
           currentChannel={this.state.currentChannel}
           isEditorToggled={this.state.isEditorToggled}
+          shouldShowCode={this.state.showCode}
           toggleModal={this.toggleModal}
+          toggleShouldShowCode={this.toggleShouldShowCode}
           isModalOpen={this.state.isModalOpen}
           threads={this.state.currentThreads}
           selectThread={this.selectThread}

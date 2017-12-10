@@ -1,4 +1,4 @@
-import notifIcon from "../../../public/assets/rich-notifications/icon.png";
+import notifIcon from "../../../public/assets/rich-notifications/disk.png";
 
 exports.modals = {
   ASIDE_CREATE_CHANNEL_MODAL: "aside_create_channel_modal",
