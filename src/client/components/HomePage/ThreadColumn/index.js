@@ -29,7 +29,6 @@ class ThreadColumn extends Component {
       query: ""
     };
     this.onQueryChange = this.onQueryChange.bind(this);
-    this.renderColumnContent = this.renderColumnContent.bind(this);
   }
 
   onQueryChange(event) {
@@ -55,44 +54,31 @@ class ThreadColumn extends Component {
     return this.props.isEditorToggled ? { display: "none" } : { flex: "1.2" };
   }
 
-  renderColumnContent(currentChannel) {
-    if (!currentChannel) {
-      return null;
-    }
-    return this.props.shouldShowCode ? (
-      <CodeColumn toggleModal={this.props.toggleModal} />
-    ) : (
-      <div>
-        <Search
-          query={this.state.query}
-          onQueryChangeHandler={this.onQueryChange}
-        />
-        <ThreadList
-          threads={this.props.threads}
-          onDeleteThreadHandler={this.onDeleteThread}
-          shouldShowCode={this.props.shouldShowCode}
-          query={this.state.query}
-          toggleModal={this.props.toggleModal}
-          toggleShoudShowCode={this.props.toggleShouldShowCode}
-          selectThread={this.props.selectThread}
-          currentChannel={this.props.currentChannel}
-          handleDeleteThread={this.props.handleDeleteThread}
-        />
-      </div>
-    );
-  }
-
   render() {
-    const {
-      isModalOpen,
-      handleAddThread,
-      currentChannel,
-      activeNode
-    } = this.props;
-    console.log(`activeNode is ${activeNode}`);
+    const { isModalOpen, handleAddThread, activeNode, showCode } = this.props;
     return (
       <div style={{ ...divStyle, ...this.isEditorToggledStyles() }}>
-        {this.renderColumnContent(currentChannel)}
+        {showCode ? (
+          <CodeColumn toggleModal={this.props.toggleModal} />
+        ) : (
+          <div>
+            <Search
+              query={this.state.query}
+              onQueryChangeHandler={this.onQueryChange}
+            />
+            <ThreadList
+              threads={this.props.threads}
+              onDeleteThreadHandler={this.onDeleteThread}
+              shouldShowCode={this.props.showCode}
+              query={this.state.query}
+              toggleModal={this.props.toggleModal}
+              toggleShoudShowCode={this.props.toggleShouldShowCode}
+              selectThread={this.props.selectThread}
+              currentChannel={this.props.currentChannel}
+              handleDeleteThread={this.props.handleDeleteThread}
+            />
+          </div>
+        )}
         {!isModalOpen && (
           <ColumnFooter>
             <div
@@ -128,7 +114,7 @@ class ThreadColumn extends Component {
                 }}
                 thumbAnimateRange={[0, 36]}
                 thumbIcon={<Icon icon={Images.codeIcon} />}
-                value={this.props.shouldShowCode}
+                value={this.props.showCode}
                 onToggle={this.props.toggleShouldShowCode}
               />
             ) : null}
@@ -149,7 +135,7 @@ ThreadColumn.propTypes = {
   selectThread: PropTypes.func.isRequired,
   handleAddThread: PropTypes.func.isRequired,
   handleDeleteThread: PropTypes.func.isRequired,
-  shouldShowCode: PropTypes.bool.isRequired,
+  showCode: PropTypes.bool.isRequired,
   activeNode: PropTypes.any
 };
 

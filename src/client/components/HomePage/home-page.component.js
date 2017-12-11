@@ -550,7 +550,7 @@ class HomePage extends Component {
         <ThreadColumn
           currentChannel={this.state.currentChannel}
           isEditorToggled={this.state.isEditorToggled}
-          shouldShowCode={this.state.showCode}
+          showCode={this.state.showCode}
           toggleModal={this.toggleModal}
           toggleShouldShowCode={this.toggleShouldShowCode}
           isModalOpen={this.state.isModalOpen}
