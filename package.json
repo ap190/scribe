@@ -52,6 +52,7 @@
     "react-router-dom": "^4.2.2",
     "react-router-redux": "^4.0.8",
     "react-toggle-button": "^2.2.0",
+    "react-textarea-autosize": "^5.2.1",
     "react-transition-group": "^1.1.2",
     "react-ui-tree": "^3.1.0",
     "recompose": "^0.26.0",
