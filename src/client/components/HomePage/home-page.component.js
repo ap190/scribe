@@ -356,6 +356,7 @@ class HomePage extends Component {
       currentChannel = this.state.currentChannel;
       channels = this.state.channels;
     } else if (!currentChannel) {
+      // TODO: Put default document.
       return;
     }
 
@@ -370,8 +371,8 @@ class HomePage extends Component {
       channelId: this.state.currentChannel.id
     };
 
-    const updatedChannels = this.state.channels.map(channel => {
-      if (this.state.currentChannel.id !== channel.id) {
+    const updatedChannels = channels.map(channel => {
+      if (currentChannel.id !== channel.id) {
         return channel;
       }
 
@@ -385,7 +386,7 @@ class HomePage extends Component {
     });
     this.setState({
       channels: updatedChannels,
-      currentThreads: this.state.currentChannel.threads,
+      currentThreads: currentChannel.threads,
       currentThread: newThread,
       currentDocument: newThread.document
     });
@@ -400,8 +401,14 @@ class HomePage extends Component {
     const channelToReplaceIdx = channels.findIndex(
       channel => channel.id === channelId
     );
-    currentChannel.threads = currentThreads;
-    channels[channelToReplaceIdx] = currentChannel;
+
+    if (currentThreads.length === 0 && currentChannel.channelType === "file") {
+      channels.splice(channelToReplaceIdx, 1);
+    } else {
+      currentChannel.threads = currentThreads;
+      channels[channelToReplaceIdx] = currentChannel;
+    }
+
     this.setState({
       channels,
       currentChannel,
