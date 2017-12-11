@@ -2,7 +2,11 @@ const electron = require("electron");
 const { app, ipcMain, clipboard, globalShortcut } = require("electron");
 const path = require("path");
 const url = require("url");
-const { genSaveWorkspace, genLoadData } = require("./server/fileHandlers");
+const {
+  genSaveWorkspace,
+  genLoadData,
+  genFetchFileContent
+} = require("./server/fileHandlers");
 const { genExportCurrentDocument } = require("./server/export");
 const setMainMenu = require("./server/menu");
 const registerGlobalShortcuts = require("./server/accelerators");
@@ -18,6 +22,10 @@ const {
 
 ipcMain.on("load-file-req", event => {
   genLoadData(event);
+});
+
+ipcMain.on("fetch-file", (event, filePath) => {
+  genFetchFileContent(event, filePath);
 });
 
 ipcMain.on("export-current-doc", (event, html, pdfName) => {

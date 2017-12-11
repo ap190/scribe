@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import path from "path";
 import PropTypes from "prop-types";
 import CodeMirror from "@skidding/react-codemirror";
 
@@ -8,7 +9,6 @@ require("codemirror/mode/python/python");
 require("codemirror/mode/xml/xml");
 require("codemirror/mode/markdown/markdown");
 require("codemirror/theme/monokai.css");
-
 require("./code-column.css");
 
 class CodeColumn extends Component {
@@ -32,6 +32,9 @@ class CodeColumn extends Component {
       mode: "javascript",
       theme: "monokai"
     };
+    const value =
+      (this.props.currentFiles && this.props.currentFiles.filePath) ||
+      "Loading...";
     return (
       <div
         style={{
@@ -43,21 +46,7 @@ class CodeColumn extends Component {
         }}
       >
         <CodeMirror
-          value={`const component = {
-            name: "react-codemirror",
-            author: "Jed Watson",
-            repo: "https://github.com/JedWatson/react-codemirror"
-          };
-          const component2 = {
-            name: "react-codemirror",
-            author: "Jed Watson",
-            repo: "https://github.com/JedWatson/react-codemirror"
-          };
-          const test1 = {
-            name: "react-codemirror",
-            author: "Jed Watson",
-            repo: "https://github.com/JedWatson/react-codemirror"
-          };`}
+          value={value}
           onChange={this.updateCode}
           options={options}
           height="100%"
@@ -67,6 +56,11 @@ class CodeColumn extends Component {
   }
 }
 
-CodeColumn.propTypes = {};
+CodeColumn.propTypes = {
+  fetchSelectedFileContent: PropTypes.func.isRequired,
+  activeNode: PropTypes.any,
+  absolutePath: PropTypes.string,
+  currentFiles: PropTypes.any
+};
 
 export default CodeColumn;

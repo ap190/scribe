@@ -24,9 +24,17 @@ const createLoadableWorkspacePath = userSelectedDir => {
 exports.genLoadData = event => {
   jsonfile.readFile(jsonpath, "utf8", (err, data) => {
     if (err) {
-      throw new Error("failed to read file");
+      console.error("failed to read file");
     }
     event.sender.send("load-file-res", data);
+  });
+};
+
+exports.genFetchFileContent = (event, filePath) => {
+  fs.readFile(filePath, "utf8", (err, data) => {
+    if (err) console.error("Failed to fetch file content");
+    // TODO this should be a Map and not an object
+    event.sender.send("fetch-file-content-res", { filePath: data });
   });
 };
 
