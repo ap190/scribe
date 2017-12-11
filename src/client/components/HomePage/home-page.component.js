@@ -558,6 +558,7 @@ class HomePage extends Component {
           selectThread={this.selectThread}
           handleAddThread={this.handleAddThread}
           handleDeleteThread={this.handleDeleteThread}
+          activeNode={this.state.activeNode}
         />
         <EditorColumn
           isEditorToggled={this.state.isEditorToggled}

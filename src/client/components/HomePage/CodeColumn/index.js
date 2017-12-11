@@ -36,7 +36,8 @@ class CodeColumn extends Component {
       <div
         style={{
           height: "100%",
-          fontSize: "12px",
+          width: "550px",
+          fontSize: "16px",
           overflow: "auto",
           flex: "1"
         }}

@@ -83,7 +83,13 @@ class ThreadColumn extends Component {
   }
 
   render() {
-    const { isModalOpen, handleAddThread, currentChannel } = this.props;
+    const {
+      isModalOpen,
+      handleAddThread,
+      currentChannel,
+      activeNode
+    } = this.props;
+    console.log(`activeNode is ${activeNode}`);
     return (
       <div style={{ ...divStyle, ...this.isEditorToggledStyles() }}>
         {this.renderColumnContent(currentChannel)}
@@ -107,23 +113,25 @@ class ThreadColumn extends Component {
                 {ADD_A_THREAD}
               </div>
             </div>
-            <ToggleButton
-              inactiveLabel={""}
-              activeLabel={""}
-              colors={{
-                activeThumb: { base: "rgb(250,250,250)" },
-                inactiveThumb: { base: "rgb(207,221,245)" },
-                active: {
-                  base: "rgb(207,221,245)",
-                  hover: "rgb(177, 191, 215)"
-                },
-                inactive: { base: "rgb(65,66,68)", hover: "rgb(95,96,98)" }
-              }}
-              thumbAnimateRange={[0, 36]}
-              thumbIcon={<Icon icon={Images.codeIcon} />}
-              value={this.props.shouldShowCode}
-              onToggle={this.props.toggleShouldShowCode}
-            />
+            {activeNode ? (
+              <ToggleButton
+                inactiveLabel={""}
+                activeLabel={""}
+                colors={{
+                  activeThumb: { base: "rgb(250,250,250)" },
+                  inactiveThumb: { base: "rgb(207,221,245)" },
+                  active: {
+                    base: "rgb(207,221,245)",
+                    hover: "rgb(177, 191, 215)"
+                  },
+                  inactive: { base: "rgb(65,66,68)", hover: "rgb(95,96,98)" }
+                }}
+                thumbAnimateRange={[0, 36]}
+                thumbIcon={<Icon icon={Images.codeIcon} />}
+                value={this.props.shouldShowCode}
+                onToggle={this.props.toggleShouldShowCode}
+              />
+            ) : null}
           </ColumnFooter>
         )}
       </div>
@@ -141,7 +149,8 @@ ThreadColumn.propTypes = {
   selectThread: PropTypes.func.isRequired,
   handleAddThread: PropTypes.func.isRequired,
   handleDeleteThread: PropTypes.func.isRequired,
-  shouldShowCode: PropTypes.bool.isRequired
+  shouldShowCode: PropTypes.bool.isRequired,
+  activeNode: PropTypes.any
 };
 
 export default ThreadColumn;
