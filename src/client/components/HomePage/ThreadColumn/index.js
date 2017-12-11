@@ -43,11 +43,24 @@ class ThreadColumn extends Component {
   }
 
   render() {
-    const { isModalOpen, handleAddThread, activeNode, showCode } = this.props;
+    const {
+      isModalOpen,
+      handleAddThread,
+      activeNode,
+      showCode,
+      fetchSelectedFileContent,
+      absolutePath,
+      currentFiles
+    } = this.props;
     return (
       <div style={{ ...divStyle, ...this.isEditorToggledStyles() }}>
         {showCode ? (
-          <CodeColumn toggleModal={this.props.toggleModal} />
+          <CodeColumn
+            fetchSelectedFileContent={fetchSelectedFileContent}
+            activeNode={activeNode}
+            absolutePath={absolutePath}
+            currentFiles={currentFiles}
+          />
         ) : (
           <div>
             <Search
@@ -69,12 +82,7 @@ class ThreadColumn extends Component {
         )}
         {!isModalOpen && (
           <ColumnFooter>
-            <div
-              style={{
-                display: "flex",
-                justifyContent: "flexStart"
-              }}
-            >
+            <div style={{ display: "flex", justifyContent: "flexStart" }}>
               <Icon icon={Images.addIcon} handleClick={handleAddThread} />
               <div
                 className="add-flow-description"
@@ -116,6 +124,7 @@ class ThreadColumn extends Component {
 ThreadColumn.propTypes = {
   isEditorToggled: PropTypes.bool.isRequired,
   currentChannel: PropTypes.any,
+  currentFiles: PropTypes.any,
   threads: PropTypes.any,
   toggleModal: PropTypes.func.isRequired,
   toggleShouldShowCode: PropTypes.func.isRequired,
@@ -124,7 +133,9 @@ ThreadColumn.propTypes = {
   handleAddThread: PropTypes.func.isRequired,
   handleDeleteThread: PropTypes.func.isRequired,
   showCode: PropTypes.bool.isRequired,
-  activeNode: PropTypes.any
+  absolutePath: PropTypes.string,
+  activeNode: PropTypes.any,
+  fetchSelectedFileContent: PropTypes.func.isRequired
 };
 
 export default ThreadColumn;

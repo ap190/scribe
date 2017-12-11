@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import UUIDv4 from "uuid/v4";
+import path from "path";
 import styled from "styled-components";
 import { compose } from "recompose";
 import {
@@ -55,6 +56,7 @@ class HomePage extends Component {
       channels: undefined,
       currentThread: undefined,
       currentDocument: undefined,
+      currentFiles: {},
       activeNode: undefined,
       userSelectedDir: undefined,
       files: {}
@@ -64,6 +66,7 @@ class HomePage extends Component {
     this.applyThreadChange = this.applyThreadChange.bind(this);
     this.selectProjectDir = this.selectProjectDir.bind(this);
     this.selectChannelOrFile = this.selectChannelOrFile.bind(this);
+    this.fetchSelectedFileContent = this.fetchSelectedFileContent.bind(this);
     this.updateEditorOnChannelChange = this.updateEditorOnChannelChange.bind(
       this
     );
@@ -101,6 +104,11 @@ class HomePage extends Component {
 
     ipcRenderer.on("save-workspace", () => {
       return this.saveWorkspace();
+    });
+
+    ipcRenderer.on("fetch-file-content-res", (event, currentFile) => {
+      console.log(currentFile);
+      this.setState({ currentFile });
     });
 
     ipcRenderer.on("save-workspace-notification", (event, userSelectedDir) => {
@@ -233,11 +241,15 @@ class HomePage extends Component {
     return modalStateObject;
   }
 
-  toggleShouldShowCode() {
-    console.log("toggle should shoq code in homepage");
-    this.setState({
+  async toggleShouldShowCode() {
+    await this.setState({
       showCode: !this.state.showCode
     });
+    if (this.state.showCode) {
+      const { activeNode, absolutePath } = this.state;
+      const fullPath = path.join(absolutePath, activeNode.module);
+      this.fetchSelectedFileContent(fullPath);
+    }
   }
 
   selectChannelOrFile(channelType, channelId = null, activeFile = null) {
@@ -289,7 +301,6 @@ class HomePage extends Component {
   }
 
   async handleAddChannel(newChannel) {
-    // Unselect all other channels.
     const unselectedChannels = this.state.channels.map(channel => {
       channel.selected = false;
       return channel;
@@ -301,6 +312,11 @@ class HomePage extends Component {
       currentDocument: EditorState.createEmpty(),
       channels: [...unselectedChannels, newChannel]
     });
+  }
+
+  async fetchSelectedFileContent(filePath) {
+    ipcRenderer.send("fetch-file", filePath);
+    console.log(`homepage-file-content ${filePath}`);
   }
 
   handleAddEmbeddedContent(url = null) {
@@ -566,6 +582,7 @@ class HomePage extends Component {
           selectFile={this.selectFile}
         />
         <ThreadColumn
+          currentFiles={this.state.currentFile}
           currentChannel={this.getCurrentChannel()}
           isEditorToggled={this.state.isEditorToggled}
           showCode={this.state.showCode}
@@ -576,7 +593,9 @@ class HomePage extends Component {
           selectThread={this.selectThread}
           handleAddThread={this.handleAddThread}
           handleDeleteThread={this.handleDeleteThread}
+          absolutePath={this.state.absolutePath}
           activeNode={this.state.activeNode}
+          fetchSelectedFileContent={this.fetchSelectedFileContent}
         />
         <EditorColumn
           isEditorToggled={this.state.isEditorToggled}
