@@ -51,11 +51,9 @@ class HomePage extends Component {
       isEditorToggled: false,
       isModalOpen: false,
       showCode: false,
-      relativePath: undefined,
       absolutePath: undefined,
       currentModal: undefined,
       channels: undefined,
-      currentChannel: undefined,
       currentThreads: undefined,
       currentThread: undefined,
       currentDocument: undefined,
@@ -73,6 +71,7 @@ class HomePage extends Component {
     this.updateEditorOnChannelChange = this.updateEditorOnChannelChange.bind(
       this
     );
+    this.getCurrentChannel = this.getCurrentChannel.bind(this);
     this.getUpdatedChannelsSelectedState = this.getUpdatedChannelsSelectedState.bind(
       this
     );
@@ -121,6 +120,22 @@ class HomePage extends Component {
         notifications.SAVE_DOCUMENT_RICH
       );
     });
+  }
+
+  getCurrentThread(threads) {
+    return threads.filter(thread => thread.selected)[0];
+  }
+
+  getCurrentThreads(channel) {
+    return channel.threads;
+  }
+
+  getCurrentChannel() {
+    const { channels } = this.state;
+    if (!channels) {
+      return;
+    }
+    return channels.filter(channel => channel.selected)[0];
   }
 
   getModalContent() {
@@ -208,8 +223,7 @@ class HomePage extends Component {
     );
     this.setState({
       files: structureObject,
-      absolutePath,
-      relativePath
+      absolutePath
     });
   }
 
@@ -255,7 +269,6 @@ class HomePage extends Component {
 
     this.setState({
       channels,
-      currentChannel,
       activeNode: activeFile,
       currentThreads: threads
     });
@@ -294,7 +307,6 @@ class HomePage extends Component {
       isModalOpen: false,
       currentThreads: [],
       currentThread: undefined,
-      currentChannel: newChannel,
       currentDocument: EditorState.createEmpty(),
       channels: [...unselectedChannels, newChannel]
     });
@@ -328,7 +340,8 @@ class HomePage extends Component {
   }
 
   handleDocumentChange(currentDocument) {
-    const { channels, currentChannel, currentThreads } = this.state;
+    const { channels, currentThreads } = this.state;
+    const currentChannel = this.getCurrentChannel();
     if (!currentChannel || !currentThreads || !channels) return;
     const currentChannelIdx = channels.findIndex(
       channel => channel.id === currentChannel.id
@@ -366,12 +379,14 @@ class HomePage extends Component {
   }
 
   async handleAddThread() {
-    let { currentChannel, channels, activeNode } = this.state;
+    let { channels, activeNode } = this.state;
+    let currentChannel = this.getCurrentChannel();
     if (!currentChannel && activeNode) {
       await this.createNewFileChannel();
-      currentChannel = this.state.currentChannel;
+      currentChannel = this.getCurrentChannel();
       channels = this.state.channels;
     } else if (!currentChannel) {
+      // TODO: Put default document.
       return;
     }
 
@@ -383,11 +398,11 @@ class HomePage extends Component {
       highlightColor: GREY_HIGHLIGHT,
       selected: true,
       document: undefined,
-      channelId: this.state.currentChannel.id
+      channelId: currentChannel.id
     };
 
-    const updatedChannels = this.state.channels.map(channel => {
-      if (this.state.currentChannel.id !== channel.id) {
+    const updatedChannels = channels.map(channel => {
+      if (currentChannel.id !== channel.id) {
         return channel;
       }
 
@@ -401,7 +416,7 @@ class HomePage extends Component {
     });
     this.setState({
       channels: updatedChannels,
-      currentThreads: this.state.currentChannel.threads,
+      currentThreads: currentChannel.threads,
       currentThread: newThread,
       currentDocument: newThread.document
     });
@@ -409,18 +424,23 @@ class HomePage extends Component {
 
   handleDeleteThread(channelId, threadId) {
     const { channels } = this.state;
-    const currentChannel = channels.find(channel => channel.id === channelId);
+    const currentChannel = this.getCurrentChannel();
     const currentThreads = currentChannel.threads.filter(
       thread => thread.id !== threadId
     );
     const channelToReplaceIdx = channels.findIndex(
       channel => channel.id === channelId
     );
-    currentChannel.threads = currentThreads;
-    channels[channelToReplaceIdx] = currentChannel;
+
+    if (currentThreads.length === 0 && currentChannel.channelType === "file") {
+      channels.splice(channelToReplaceIdx, 1);
+    } else {
+      currentChannel.threads = currentThreads;
+      channels[channelToReplaceIdx] = currentChannel;
+    }
+
     this.setState({
       channels,
-      currentChannel,
       currentThreads
     });
   }
@@ -456,7 +476,8 @@ class HomePage extends Component {
   }
 
   applyThreadChange(threadId, threadFunc) {
-    const { currentChannel, currentThreads } = this.state;
+    const { currentThreads } = this.state;
+    const currentChannel = this.getCurrentChannel();
 
     if (!currentThreads || !currentChannel) return null;
 
@@ -564,8 +585,8 @@ class HomePage extends Component {
           selectFile={this.selectFile}
         />
         <ThreadColumn
-          currentChannel={this.state.currentChannel}
           currentFiles={this.state.currentFile}
+          currentChannel={this.getCurrentChannel()}
           isEditorToggled={this.state.isEditorToggled}
           showCode={this.state.showCode}
           toggleModal={this.toggleModal}
