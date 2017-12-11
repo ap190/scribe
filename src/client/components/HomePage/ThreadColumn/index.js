@@ -38,18 +38,6 @@ class ThreadColumn extends Component {
     });
   }
 
-  changeThreadColor(threadId, threadColor) {
-    this.setState({
-      ...this.state,
-      current_threads: this.state.current_threads.map(thread => {
-        if (thread.id === threadId) {
-          thread.highlightColor = threadColor;
-        }
-        return thread;
-      })
-    });
-  }
-
   isEditorToggledStyles() {
     return this.props.isEditorToggled ? { display: "none" } : { flex: "1.2" };
   }
@@ -128,10 +116,10 @@ class ThreadColumn extends Component {
 ThreadColumn.propTypes = {
   isEditorToggled: PropTypes.bool.isRequired,
   currentChannel: PropTypes.any,
+  threads: PropTypes.any,
   toggleModal: PropTypes.func.isRequired,
   toggleShouldShowCode: PropTypes.func.isRequired,
   isModalOpen: PropTypes.bool.isRequired,
-  threads: PropTypes.array,
   selectThread: PropTypes.func.isRequired,
   handleAddThread: PropTypes.func.isRequired,
   handleDeleteThread: PropTypes.func.isRequired,

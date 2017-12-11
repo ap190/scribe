@@ -50,7 +50,6 @@ class HomePage extends Component {
       isEditorToggled: false,
       isModalOpen: false,
       showCode: false,
-      relativePath: undefined,
       absolutePath: undefined,
       currentModal: undefined,
       channels: undefined,
@@ -113,6 +112,14 @@ class HomePage extends Component {
         notifications.SAVE_DOCUMENT_RICH
       );
     });
+  }
+
+  getCurrentThread(threads) {
+    return threads.filter(thread => thread.selected)[0];
+  }
+
+  getCurrentThreads(channel) {
+    return channel.threads;
   }
 
   getCurrentChannel() {
@@ -208,8 +215,7 @@ class HomePage extends Component {
     );
     this.setState({
       files: structureObject,
-      absolutePath,
-      relativePath
+      absolutePath
     });
   }
 
