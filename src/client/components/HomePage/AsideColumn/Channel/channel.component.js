@@ -4,13 +4,15 @@ import "./channel.css";
 
 const Channel = props =>
   props.channelType === "communication" ? (
-    <div
-      className="channel-list-item"
-      onClick={() => props.selectChannelOrFile(props.channelType, props.id)}
-      style={props.selected ? { backgroundColor: "#e0e6f6" } : null}
-    >
-      <div className="channel-list-item-title">{props.channelName}</div>
-      <div className="channel-list-item-last-post">{props.lastPosted}</div>
+    <div className="channel-container">
+      <div
+        className="channel-list-item"
+        onClick={() => props.selectChannelOrFile(props.channelType, props.id)}
+        style={props.selected ? { backgroundColor: "#e0e6f6" } : null}
+      >
+        <div className="channel-list-item-title">{props.channelName}</div>
+        <div className="channel-list-item-last-post">{props.lastPosted}</div>
+      </div>
     </div>
   ) : null;
 
