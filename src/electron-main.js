@@ -1,13 +1,8 @@
 const electron = require("electron");
-const { app, ipcMain, clipboard, globalShortcut } = require("electron");
+const { app, clipboard, globalShortcut } = require("electron");
 const path = require("path");
 const url = require("url");
-const {
-  genSaveWorkspace,
-  genLoadData,
-  genFetchFileContent
-} = require("./server/fileHandlers");
-const { genExportCurrentDocument } = require("./server/export");
+const { setIPCListeners } = require("./server/ipc");
 const setMainMenu = require("./server/menu");
 const registerGlobalShortcuts = require("./server/accelerators");
 
@@ -20,22 +15,7 @@ const {
   REDUX_DEVTOOLS
 } = require("electron-devtools-installer");
 
-ipcMain.on("load-file-req", event => {
-  genLoadData(event);
-});
-
-ipcMain.on("fetch-file", (event, filePath) => {
-  console.log(`sanity checkkkk`);
-  genFetchFileContent(event, filePath);
-});
-
-ipcMain.on("export-current-doc", (event, html, pdfName) => {
-  genExportCurrentDocument(event, html, pdfName);
-});
-
-ipcMain.on("save-workspace", (event, workspace, userSelectedDir) => {
-  genSaveWorkspace(event, workspace, userSelectedDir);
-});
+setIPCListeners();
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
 let mainWindow;
