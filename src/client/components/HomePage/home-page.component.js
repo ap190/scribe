@@ -95,6 +95,10 @@ class HomePage extends Component {
   componentDidMount() {
     ipcRenderer.send("load-file-req");
 
+    ipcRenderer.on("create-new-workspace", () => {
+      this.setState({ channels: [] });
+    });
+
     ipcRenderer.on("load-file-res", (event, channels, userSelectedDir) => {
       this.setState({
         channels,

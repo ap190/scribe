@@ -52,6 +52,10 @@ exports.loadWorkspace = (targetWindow, dir) => {
   }
 };
 
+exports.createNewWorkspace = targetWindow => {
+  targetWindow.webContents.send("create-new-workspace");
+};
+
 exports.genSaveWorkspace = (event, workspace, userSelectedDir) => {
   // Check if user is in session and has already selected dir
   if (!userSelectedDir) {
