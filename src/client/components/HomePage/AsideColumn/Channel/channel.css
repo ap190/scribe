@@ -5,14 +5,8 @@
   line-height: 36px;
   display: flex;
   justify-content: space-between;
-  border-bottom: 1px solid #c9cfdd;
+  border-bottom: 1.2px solid #b8b6bc;
   width: 100%;
-}
-
-.channel-list-item:hover {
-  background: #9ca1ac;
-  text-decoration: none;
-  cursor: pointer;
 }
 
 .channel-list-item-last-post {
@@ -25,4 +19,17 @@
   display: block;
   width: 100%;
   height: 100%;
+  padding: 0px 36px;
+}
+
+.channel-highlight {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.channel-highlight:hover {
+  background: #9ca1ac;
+  text-decoration: none;
+  cursor: pointer;
 }

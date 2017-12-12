@@ -19,10 +19,11 @@
   color: #000000;
   font-family: "AvenirNext-Bold";
   padding-top: 36px;
-  padding-right: 12px;
+  padding-right: 24px;
   padding-bottom: 12px;
-  padding-left: 12px;
+  padding-left: 24px;
   line-height: 28px;
+  font-size: 18px;
 }
 
 img.header-icon {

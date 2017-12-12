@@ -76,3 +76,7 @@
     display: block;
   }
 }
+
+.DraftEditor-root {
+  -webkit-app-region: no-drag;
+}

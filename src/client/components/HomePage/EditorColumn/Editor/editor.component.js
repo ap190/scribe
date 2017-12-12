@@ -523,7 +523,7 @@ class MediumDraftEditor extends React.Component {
               ? "New thread has not been saved yet."
               : `Last Saved: ${currentThread.date}`}
           </div>
-          <div className={editorClass}>
+          <div className={editorClass} style={{ WebkitAppRegion: "no-drag" }}>
             <Editor
               ref={node => {
                 this._editorNode = node;
