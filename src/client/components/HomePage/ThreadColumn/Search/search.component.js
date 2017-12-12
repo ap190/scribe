@@ -12,7 +12,8 @@ const divStyle = {
   outline: "none",
   lineHeight: "28px",
   width: "100%",
-  top: "0"
+  top: "0",
+  WebkitAppRegion: "no-drag"
 };
 
 const wrapperStyle = {
