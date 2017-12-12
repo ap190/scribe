@@ -31,9 +31,7 @@ class CodeColumn extends Component {
       mode: "javascript",
       theme: "monokai"
     };
-    const value =
-      (this.props.currentFiles && this.props.currentFiles.filePath) ||
-      "Loading...";
+    const value = this.props.currentFiles || "Loading...";
     return (
       <div
         style={{

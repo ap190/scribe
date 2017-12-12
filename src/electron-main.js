@@ -25,6 +25,7 @@ ipcMain.on("load-file-req", event => {
 });
 
 ipcMain.on("fetch-file", (event, filePath) => {
+  console.log(`sanity checkkkk`);
   genFetchFileContent(event, filePath);
 });
 

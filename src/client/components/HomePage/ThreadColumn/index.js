@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import path from "path";
 import PropTypes from "prop-types";
 import ToggleButton from "react-toggle-button";
 import { Images } from "../../../themes";
@@ -48,12 +49,19 @@ class ThreadColumn extends Component {
       handleAddThread,
       activeNode,
       showCode,
-      currentFiles
+      currentFiles,
+      absolutePath
     } = this.props;
+    let fileData = "";
+    if (absolutePath && activeNode) {
+      fileData = currentFiles.get(
+        path.join(absolutePath, activeNode.relativePath.join(`/`))
+      );
+    }
     return (
       <div style={{ ...divStyle, ...this.isEditorToggledStyles() }}>
         {showCode ? (
-          <CodeColumn currentFiles={currentFiles} />
+          <CodeColumn currentFiles={fileData} />
         ) : (
           <div>
             <Search
@@ -126,6 +134,7 @@ ThreadColumn.propTypes = {
   handleAddThread: PropTypes.func.isRequired,
   handleDeleteThread: PropTypes.func.isRequired,
   showCode: PropTypes.bool.isRequired,
+  absolutePath: PropTypes.string,
   activeNode: PropTypes.any
 };
 

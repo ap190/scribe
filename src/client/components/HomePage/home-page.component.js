@@ -52,12 +52,11 @@ class HomePage extends Component {
       isModalOpen: false,
       showCode: false,
       absolutePath: undefined,
-      relativePath: undefined,
       currentModal: undefined,
       channels: undefined,
       currentThread: undefined,
       currentDocument: undefined,
-      currentFiles: {},
+      currentFiles: new Map(),
       activeNode: undefined,
       userSelectedDir: undefined,
       files: {}
@@ -107,8 +106,12 @@ class HomePage extends Component {
       return this.saveWorkspace();
     });
 
-    ipcRenderer.on("fetch-file-content-res", (event, currentFile) => {
-      this.setState({ currentFile });
+    ipcRenderer.on("fetch-file-content-res", (event, file) => {
+      const updatedMap = this.state.currentFiles.set(
+        `${file.filePath}`,
+        `${file.data}`
+      );
+      this.setState({ currentFiles: updatedMap });
     });
 
     ipcRenderer.on("save-workspace-notification", (event, userSelectedDir) => {
@@ -316,7 +319,10 @@ class HomePage extends Component {
   }
 
   async fetchSelectedFileContent(filePath) {
-    ipcRenderer.send("fetch-file", filePath);
+    console.log(`fetching ...`);
+    console.log(this.state.currentFiles.set);
+    // path.join(absolutePath, activeNode.relativePath.join(`/`));
+    ipcRenderer.send("fetch-file", filePath, this.state.currentFiles);
   }
 
   handleAddEmbeddedContent(url = null) {
@@ -582,7 +588,7 @@ class HomePage extends Component {
           selectFile={this.selectFile}
         />
         <ThreadColumn
-          currentFiles={this.state.currentFile}
+          currentFiles={this.state.currentFiles}
           currentChannel={this.getCurrentChannel()}
           isEditorToggled={this.state.isEditorToggled}
           showCode={this.state.showCode}
@@ -594,6 +600,7 @@ class HomePage extends Component {
           handleAddThread={this.handleAddThread}
           handleDeleteThread={this.handleDeleteThread}
           activeNode={this.state.activeNode}
+          absolutePath={this.state.absolutePath}
         />
         <EditorColumn
           isEditorToggled={this.state.isEditorToggled}

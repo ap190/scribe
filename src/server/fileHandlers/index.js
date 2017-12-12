@@ -33,8 +33,7 @@ exports.genLoadData = event => {
 exports.genFetchFileContent = (event, filePath) => {
   fs.readFile(filePath, "utf8", (err, data) => {
     if (err) console.error("Failed to fetch file content");
-    // TODO this should be a Map and not an object
-    event.sender.send("fetch-file-content-res", { filePath: data });
+    event.sender.send("fetch-file-content-res", { filePath, data });
   });
 };
 
