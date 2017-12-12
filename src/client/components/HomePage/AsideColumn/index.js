@@ -78,7 +78,7 @@ class Aside extends Component {
     return (
       <div style={{ ...styles, ...this.isEditorToggledStyles() }}>
         <Channels
-          title={"Channels"}
+          title={"Notebooks"}
           toggleModal={toggleModal}
           channels={channels}
           selectChannelOrFile={selectChannelOrFile}
