@@ -54,7 +54,6 @@ class HomePage extends Component {
       absolutePath: undefined,
       currentModal: undefined,
       channels: undefined,
-      currentThreads: undefined,
       currentThread: undefined,
       currentDocument: undefined,
       currentFiles: {},
@@ -72,6 +71,7 @@ class HomePage extends Component {
       this
     );
     this.getCurrentChannel = this.getCurrentChannel.bind(this);
+    this.getCurrentThreads = this.getCurrentThreads.bind(this);
     this.getUpdatedChannelsSelectedState = this.getUpdatedChannelsSelectedState.bind(
       this
     );
@@ -126,7 +126,11 @@ class HomePage extends Component {
     return threads.filter(thread => thread.selected)[0];
   }
 
-  getCurrentThreads(channel) {
+  getCurrentThreads() {
+    const channel = this.getCurrentChannel();
+    if (!channel) {
+      return;
+    }
     return channel.threads;
   }
 
@@ -304,9 +308,8 @@ class HomePage extends Component {
       return channel;
     });
 
-    this.setState({
+    await this.setState({
       isModalOpen: false,
-      currentThreads: [],
       currentThread: undefined,
       currentDocument: EditorState.createEmpty(),
       channels: [...unselectedChannels, newChannel]
@@ -341,9 +344,10 @@ class HomePage extends Component {
   }
 
   handleDocumentChange(currentDocument) {
-    const { channels, currentThreads } = this.state;
+    const { channels } = this.state;
+    let currentThreads = this.getCurrentThreads();
     const currentChannel = this.getCurrentChannel();
-    if (!currentChannel || !currentThreads || !channels) return;
+    if (!currentChannel || !channels) return;
     const currentChannelIdx = channels.findIndex(
       channel => channel.id === currentChannel.id
     );
@@ -359,8 +363,7 @@ class HomePage extends Component {
     ].document = convertToRaw(currentDocument.getCurrentContent());
     this.setState({
       channels,
-      currentDocument,
-      currentThreads
+      currentDocument
     });
   }
 
@@ -417,7 +420,6 @@ class HomePage extends Component {
     });
     this.setState({
       channels: updatedChannels,
-      currentThreads: currentChannel.threads,
       currentThread: newThread,
       currentDocument: newThread.document
     });
@@ -426,9 +428,7 @@ class HomePage extends Component {
   handleDeleteThread(channelId, threadId) {
     const { channels } = this.state;
     const currentChannel = this.getCurrentChannel();
-    const currentThreads = currentChannel.threads.filter(
-      thread => thread.id !== threadId
-    );
+    const currentThreads = this.getCurrentThreads();
     const channelToReplaceIdx = channels.findIndex(
       channel => channel.id === channelId
     );
@@ -441,8 +441,7 @@ class HomePage extends Component {
     }
 
     this.setState({
-      channels,
-      currentThreads
+      channels
     });
   }
 
@@ -477,7 +476,7 @@ class HomePage extends Component {
   }
 
   applyThreadChange(threadId, threadFunc) {
-    const { currentThreads } = this.state;
+    const currentThreads = this.getCurrentThreads();
     const currentChannel = this.getCurrentChannel();
 
     if (!currentThreads || !currentChannel) return null;
@@ -507,8 +506,7 @@ class HomePage extends Component {
     });
 
     this.setState({
-      channels,
-      currentThreads: newThreads
+      channels
     });
   }
 
@@ -593,7 +591,7 @@ class HomePage extends Component {
           toggleModal={this.toggleModal}
           toggleShouldShowCode={this.toggleShouldShowCode}
           isModalOpen={this.state.isModalOpen}
-          threads={this.state.currentThreads}
+          threads={this.getCurrentThreads()}
           selectThread={this.selectThread}
           handleAddThread={this.handleAddThread}
           handleDeleteThread={this.handleDeleteThread}

@@ -1,5 +1,5 @@
 export default {
-  actionPrimary: "#e6e4eb"
+  actionPrimary: "#e0e6f6"
 };
 
 exports.highlightColor = {

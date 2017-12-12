@@ -22,6 +22,7 @@
   padding-right: 12px;
   padding-bottom: 12px;
   padding-left: 12px;
+  line-height: 28px;
 }
 
 img.header-icon {
@@ -99,4 +100,9 @@ img.header-icon {
 
 .projects-container {
   overflow-y: auto;
+}
+
+.channels {
+  display: flex;
+  flex-direction: column;
 }
