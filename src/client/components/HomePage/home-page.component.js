@@ -270,7 +270,8 @@ class HomePage extends Component {
     this.setState({
       channels,
       activeNode: activeFile,
-      currentThreads: threads
+      currentThreads: threads,
+      showCode: false
     });
   }
 

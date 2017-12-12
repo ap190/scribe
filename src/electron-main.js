@@ -40,10 +40,11 @@ ipcMain.on("save-workspace", (event, workspace, userSelectedDir) => {
 let mainWindow;
 
 function createWindow() {
-  app.setAboutPanelOptions({
-    applicationName: "Scribe",
-    applicationVersion: "0.0.1"
-  });
+  // TODO: Crashes on Windows
+  // app.setAboutPanelOptions({
+  //   applicationName: "Scribe",
+  //   applicationVersion: "0.0.1"
+  // });
 
   // Create the browser window.
   mainWindow = new BrowserWindow({
