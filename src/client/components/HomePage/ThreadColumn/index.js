@@ -48,19 +48,12 @@ class ThreadColumn extends Component {
       handleAddThread,
       activeNode,
       showCode,
-      fetchSelectedFileContent,
-      absolutePath,
       currentFiles
     } = this.props;
     return (
       <div style={{ ...divStyle, ...this.isEditorToggledStyles() }}>
         {showCode ? (
-          <CodeColumn
-            fetchSelectedFileContent={fetchSelectedFileContent}
-            activeNode={activeNode}
-            absolutePath={absolutePath}
-            currentFiles={currentFiles}
-          />
+          <CodeColumn currentFiles={currentFiles} />
         ) : (
           <div>
             <Search
@@ -133,9 +126,7 @@ ThreadColumn.propTypes = {
   handleAddThread: PropTypes.func.isRequired,
   handleDeleteThread: PropTypes.func.isRequired,
   showCode: PropTypes.bool.isRequired,
-  absolutePath: PropTypes.string,
-  activeNode: PropTypes.any,
-  fetchSelectedFileContent: PropTypes.func.isRequired
+  activeNode: PropTypes.any
 };
 
 export default ThreadColumn;

@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import path from "path";
 import PropTypes from "prop-types";
 import CodeMirror from "@skidding/react-codemirror";
 
@@ -57,9 +56,6 @@ class CodeColumn extends Component {
 }
 
 CodeColumn.propTypes = {
-  fetchSelectedFileContent: PropTypes.func.isRequired,
-  activeNode: PropTypes.any,
-  absolutePath: PropTypes.string,
   currentFiles: PropTypes.any
 };
 

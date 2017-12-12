@@ -52,6 +52,7 @@ class HomePage extends Component {
       isModalOpen: false,
       showCode: false,
       absolutePath: undefined,
+      relativePath: undefined,
       currentModal: undefined,
       channels: undefined,
       currentThread: undefined,
@@ -107,7 +108,6 @@ class HomePage extends Component {
     });
 
     ipcRenderer.on("fetch-file-content-res", (event, currentFile) => {
-      console.log(currentFile);
       this.setState({ currentFile });
     });
 
@@ -192,10 +192,9 @@ class HomePage extends Component {
     };
   }
 
-  getUpdatedChannelAndThreadsIfSelectionIsFile(activeFile, threads) {
+  async getUpdatedChannelAndThreadsIfSelectionIsFile(activeFile, threads) {
     const relativePath = activeFile.relativePath.join(`/`);
     const absolutePath = `${this.state.absolutePath}/${relativePath}`;
-
     const currentChannel = this.state.channels.find(
       file => file.channelType === "file" && absolutePath === file.absolutePath
     );
@@ -247,7 +246,7 @@ class HomePage extends Component {
     });
     if (this.state.showCode) {
       const { activeNode, absolutePath } = this.state;
-      const fullPath = path.join(absolutePath, activeNode.module);
+      const fullPath = path.join(absolutePath, ...activeNode.relativePath);
       this.fetchSelectedFileContent(fullPath);
     }
   }
@@ -318,7 +317,6 @@ class HomePage extends Component {
 
   async fetchSelectedFileContent(filePath) {
     ipcRenderer.send("fetch-file", filePath);
-    console.log(`homepage-file-content ${filePath}`);
   }
 
   handleAddEmbeddedContent(url = null) {
@@ -595,9 +593,7 @@ class HomePage extends Component {
           selectThread={this.selectThread}
           handleAddThread={this.handleAddThread}
           handleDeleteThread={this.handleDeleteThread}
-          absolutePath={this.state.absolutePath}
           activeNode={this.state.activeNode}
-          fetchSelectedFileContent={this.fetchSelectedFileContent}
         />
         <EditorColumn
           isEditorToggled={this.state.isEditorToggled}
