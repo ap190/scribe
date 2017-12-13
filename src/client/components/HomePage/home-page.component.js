@@ -32,7 +32,7 @@ const {
 const electron = window.require("electron");
 const remote = electron.remote;
 const currentWindow = remote.getCurrentWindow();
-const mainProcessFileHandling = remote.require("./server/dialogs");
+const mainProcessFileHandling = remote.require("./local_server/dialogs");
 const ipcRenderer = electron.ipcRenderer;
 
 const Wrapper = styled.div`

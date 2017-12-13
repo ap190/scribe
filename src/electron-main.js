@@ -2,11 +2,11 @@ const electron = require("electron");
 const { app, clipboard, globalShortcut } = require("electron");
 const path = require("path");
 const url = require("url");
-const { setIPCListeners } = require("./server/ipc");
-const setMainMenu = require("./server/menu");
-const registerGlobalShortcuts = require("./server/accelerators");
+const { setIPCListeners } = require("./local_server/ipc");
+const setMainMenu = require("./local_server/menu");
+const registerGlobalShortcuts = require("./local_server/accelerators");
 
-require("electron-context-menu")();
+// require("electron-context-menu")();
 
 const BrowserWindow = electron.BrowserWindow;
 const {
