@@ -179,18 +179,20 @@ class HomePage extends Component {
     }
   }
 
-  getUpdatedChannelsSelectedState(channelsWithOldState, channelId) {
-    const channels = channelsWithOldState.map(channel => {
+  getUpdatedChannelsSelectedState(channelId) {
+    const oldChannels = this.state.channels;
+    const newChannels = oldChannels.map(channel => {
       if (channel.id === channelId && !channel.selected) {
-        channel.selected = !channel.selected;
+        channel.selected = true;
+        // Get current document for selected thread.
+        this.updateEditorOnChannelChange(channel);
         return channel;
       }
       channel.selected = false;
       return channel;
     });
-    return {
-      channels
-    };
+
+    this.setState({ channels: newChannels });
   }
 
   getUpdatedChannelAndThreadsIfSelectionIsFile(activeFile) {
@@ -244,29 +246,19 @@ class HomePage extends Component {
   }
 
   selectChannelOrFile(channelType, channelId = null, activeFile = null) {
-    let { channels, currentChannel } = this.getUpdatedChannelsSelectedState(
-      this.state.channels,
-      channelId
-    );
-
     if (channelType === "file") {
-      currentChannel = this.getUpdatedChannelAndThreadsIfSelectionIsFile(
+      const fileChannel = this.getUpdatedChannelAndThreadsIfSelectionIsFile(
         activeFile
       );
-      if (!currentChannel) {
+      if (!fileChannel) {
         return;
       }
-      let { channels, currentChannel } = this.getUpdatedChannelsSelectedState(
-        this.state.channels,
-        currentChannel.id
-      );
+      this.getUpdatedChannelsSelectedState(fileChannel.id);
+    } else {
+      this.getUpdatedChannelsSelectedState(channelId);
     }
 
-    // Get current document for selected thread.
-    this.updateEditorOnChannelChange(currentChannel);
-
     this.setState({
-      channels,
       activeNode: activeFile,
       showCode: false
     });
