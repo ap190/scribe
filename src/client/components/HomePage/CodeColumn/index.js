@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import path from "path";
 import PropTypes from "prop-types";
 import CodeMirror from "@skidding/react-codemirror";
 
@@ -32,9 +31,7 @@ class CodeColumn extends Component {
       mode: "javascript",
       theme: "monokai"
     };
-    const value =
-      (this.props.currentFiles && this.props.currentFiles.filePath) ||
-      "Loading...";
+    const value = this.props.currentFiles || "Loading...";
     return (
       <div
         style={{
@@ -57,9 +54,6 @@ class CodeColumn extends Component {
 }
 
 CodeColumn.propTypes = {
-  fetchSelectedFileContent: PropTypes.func.isRequired,
-  activeNode: PropTypes.any,
-  absolutePath: PropTypes.string,
   currentFiles: PropTypes.any
 };
 

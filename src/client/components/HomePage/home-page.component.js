@@ -56,7 +56,7 @@ class HomePage extends Component {
       channels: undefined,
       currentThread: undefined,
       currentDocument: undefined,
-      currentFiles: {},
+      currentFiles: new Map(),
       activeNode: undefined,
       userSelectedDir: undefined,
       files: {}
@@ -95,6 +95,10 @@ class HomePage extends Component {
   componentDidMount() {
     ipcRenderer.send("load-file-req");
 
+    ipcRenderer.on("create-new-workspace", () => {
+      this.setState({ channels: [] });
+    });
+
     ipcRenderer.on("load-file-res", (event, channels, userSelectedDir) => {
       this.setState({
         channels,
@@ -106,9 +110,12 @@ class HomePage extends Component {
       return this.saveWorkspace();
     });
 
-    ipcRenderer.on("fetch-file-content-res", (event, currentFile) => {
-      console.log(currentFile);
-      this.setState({ currentFile });
+    ipcRenderer.on("fetch-file-content-res", (event, file) => {
+      const updatedMap = this.state.currentFiles.set(
+        `${file.filePath}`,
+        `${file.data}`
+      );
+      this.setState({ currentFiles: updatedMap });
     });
 
     ipcRenderer.on("save-workspace-notification", (event, userSelectedDir) => {
@@ -192,10 +199,9 @@ class HomePage extends Component {
     };
   }
 
-  getUpdatedChannelAndThreadsIfSelectionIsFile(activeFile, threads) {
+  async getUpdatedChannelAndThreadsIfSelectionIsFile(activeFile, threads) {
     const relativePath = activeFile.relativePath.join(`/`);
     const absolutePath = `${this.state.absolutePath}/${relativePath}`;
-
     const currentChannel = this.state.channels.find(
       file => file.channelType === "file" && absolutePath === file.absolutePath
     );
@@ -248,7 +254,7 @@ class HomePage extends Component {
     });
     if (this.state.showCode) {
       const { activeNode, absolutePath } = this.state;
-      const fullPath = path.join(absolutePath, activeNode.module);
+      const fullPath = path.join(absolutePath, ...activeNode.relativePath);
       this.fetchSelectedFileContent(fullPath);
     }
   }
@@ -318,8 +324,10 @@ class HomePage extends Component {
   }
 
   async fetchSelectedFileContent(filePath) {
-    ipcRenderer.send("fetch-file", filePath);
-    console.log(`homepage-file-content ${filePath}`);
+    console.log(`fetching ...`);
+    console.log(this.state.currentFiles.set);
+    // path.join(absolutePath, activeNode.relativePath.join(`/`));
+    ipcRenderer.send("fetch-file", filePath, this.state.currentFiles);
   }
 
   handleAddEmbeddedContent(url = null) {
@@ -585,7 +593,7 @@ class HomePage extends Component {
           selectFile={this.selectFile}
         />
         <ThreadColumn
-          currentFiles={this.state.currentFile}
+          currentFiles={this.state.currentFiles}
           currentChannel={this.getCurrentChannel()}
           isEditorToggled={this.state.isEditorToggled}
           showCode={this.state.showCode}
@@ -596,9 +604,8 @@ class HomePage extends Component {
           selectThread={this.selectThread}
           handleAddThread={this.handleAddThread}
           handleDeleteThread={this.handleDeleteThread}
-          absolutePath={this.state.absolutePath}
           activeNode={this.state.activeNode}
-          fetchSelectedFileContent={this.fetchSelectedFileContent}
+          absolutePath={this.state.absolutePath}
         />
         <EditorColumn
           isEditorToggled={this.state.isEditorToggled}

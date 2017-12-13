@@ -4,13 +4,19 @@ const {
   showSaveDialog,
   openWorkspaceDialog
 } = require("../dialogs");
-const { loadWorkspace } = require("../fileHandlers");
+const { loadWorkspace, createNewWorkspace } = require("../fileHandlers");
 
 function setMainMenu(mainWindow) {
   const template = [
     {
       label: "Workspace",
       submenu: [
+        {
+          label: "New Workspace",
+          click() {
+            createNewWorkspace(mainWindow);
+          }
+        },
         {
           label: "Open Workspace",
           click() {
