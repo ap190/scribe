@@ -225,6 +225,7 @@ class HomePage extends Component {
       fileStructure,
       relativePath[relativePath.length - 1]
     );
+
     this.setState({
       files: structureObject,
       absolutePath

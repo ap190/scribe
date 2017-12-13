@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import cx from "classnames";
-import FileTree from "react-ui-tree";
 import PropTypes from "prop-types";
 import Header from "../Header/header.component";
+import FileTree from "./react-ui-tree";
 
 const folderIcon = "./assets/icons/folder.png";
 
@@ -12,7 +12,6 @@ class Tree extends Component {
     this.renderNode = this.renderNode.bind(this);
     this.onClickNode = this.onClickNode.bind(this);
     this.handleChange = this.handleChange.bind(this);
-    this.updateTree = this.updateTree.bind(this);
   }
 
   onClickNode(file) {
@@ -20,14 +19,6 @@ class Tree extends Component {
   }
 
   handleChange(tree) {
-    this.setState({
-      tree
-    });
-  }
-
-  updateTree() {
-    const { tree } = this.state;
-    tree.children.push({ module: "test" });
     this.setState({
       tree
     });
@@ -60,7 +51,6 @@ class Tree extends Component {
         <div className="tree">
           <FileTree
             tree={this.props.tree}
-            activeNode={this.props.activeNode}
             onChange={this.handleChange}
             isNodeCollapsed={this.isNodeCollapsed}
             renderNode={this.renderNode}

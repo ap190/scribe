@@ -84,7 +84,7 @@ class Aside extends Component {
           selectChannelOrFile={selectChannelOrFile}
         />
         <Tree
-          title={"Projects"}
+          title={"Project"}
           tree={tree}
           handleOpenDir={selectProjectDir}
           selectFile={selectFile}
