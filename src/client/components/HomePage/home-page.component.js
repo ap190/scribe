@@ -180,12 +180,8 @@ class HomePage extends Component {
   }
 
   getUpdatedChannelsSelectedState(channelsWithOldState, channelId) {
-    let currentChannel;
-    let threads;
     const channels = channelsWithOldState.map(channel => {
       if (channel.id === channelId && !channel.selected) {
-        currentChannel = channel;
-        threads = currentChannel.threads;
         channel.selected = !channel.selected;
         return channel;
       }
@@ -193,30 +189,18 @@ class HomePage extends Component {
       return channel;
     });
     return {
-      channels,
-      currentChannel,
-      threads
+      channels
     };
   }
 
-  async getUpdatedChannelAndThreadsIfSelectionIsFile(activeFile, threads) {
+  getUpdatedChannelAndThreadsIfSelectionIsFile(activeFile) {
     const relativePath = activeFile.relativePath.join(`/`);
     const absolutePath = `${this.state.absolutePath}/${relativePath}`;
     const currentChannel = this.state.channels.find(
       file => file.channelType === "file" && absolutePath === file.absolutePath
     );
 
-    // currentFile has threads
-    if (currentChannel) {
-      threads = currentChannel.threads;
-    } else {
-      // currentFile has no threads yet
-      threads = null;
-    }
-    return {
-      currentChannel,
-      threads
-    };
+    return currentChannel;
   }
 
   selectProjectDir() {
@@ -260,19 +244,22 @@ class HomePage extends Component {
   }
 
   selectChannelOrFile(channelType, channelId = null, activeFile = null) {
-    let {
-      channels,
-      currentChannel,
-      threads
-    } = this.getUpdatedChannelsSelectedState(this.state.channels, channelId);
+    let { channels, currentChannel } = this.getUpdatedChannelsSelectedState(
+      this.state.channels,
+      channelId
+    );
 
     if (channelType === "file") {
-      const updateChannelIsFileData = this.getUpdatedChannelAndThreadsIfSelectionIsFile(
-        activeFile,
-        threads
+      currentChannel = this.getUpdatedChannelAndThreadsIfSelectionIsFile(
+        activeFile
       );
-      currentChannel = updateChannelIsFileData.currentChannel;
-      threads = updateChannelIsFileData.threads;
+      if (!currentChannel) {
+        return;
+      }
+      let { channels, currentChannel } = this.getUpdatedChannelsSelectedState(
+        this.state.channels,
+        currentChannel.id
+      );
     }
 
     // Get current document for selected thread.
@@ -281,7 +268,6 @@ class HomePage extends Component {
     this.setState({
       channels,
       activeNode: activeFile,
-      currentThreads: threads,
       showCode: false
     });
   }

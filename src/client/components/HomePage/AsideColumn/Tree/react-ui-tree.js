@@ -57,17 +57,13 @@ class UITree extends Component {
 
     return (
       <div className="m-tree">
-        {tree ? (
-          <Node
-            tree={tree}
-            index={tree.getIndex(1)}
-            key={1}
-            paddingLeft={this.props.paddingLeft}
-            onCollapse={this.toggleCollapse}
-          />
-        ) : (
-          <div> Loading ... </div>
-        )}
+        <Node
+          tree={tree}
+          index={tree.getIndex(1)}
+          key={1}
+          paddingLeft={this.props.paddingLeft}
+          onCollapse={this.toggleCollapse}
+        />
       </div>
     );
   }

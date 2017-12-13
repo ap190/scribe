@@ -50,7 +50,8 @@ class ThreadColumn extends Component {
       activeNode,
       showCode,
       currentFiles,
-      absolutePath
+      absolutePath,
+      threads
     } = this.props;
     let fileData = "";
     if (absolutePath && activeNode) {
@@ -69,7 +70,7 @@ class ThreadColumn extends Component {
               onQueryChangeHandler={this.onQueryChange}
             />
             <ThreadList
-              threads={this.props.threads}
+              threads={threads}
               onDeleteThreadHandler={this.onDeleteThread}
               shouldShowCode={this.props.showCode}
               query={this.state.query}
