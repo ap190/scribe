@@ -556,6 +556,9 @@ class HomePage extends Component {
   }
 
   render() {
+    if (!this.state.channels) {
+      return <div> Loading... </div>;
+    }
     return (
       <Wrapper>
         <Modal show={this.state.isModalOpen}>{this.getModalContent()}</Modal>

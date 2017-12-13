@@ -35,7 +35,8 @@ function createWindow() {
     icon: path.join(__dirname, "../public/icons/png/64x64.png"),
     webPreferences: {
       webSecurity: false
-    }
+    },
+    show: false
   });
   const startUrl =
     process.env.ELECTRON_START_URL ||
@@ -62,6 +63,10 @@ function createWindow() {
 
   // Create Menu Bar
   setMainMenu(mainWindow);
+
+  mainWindow.once("ready-to-show", () => {
+    mainWindow.show();
+  });
 
   // Emitted when the window is closed.
   mainWindow.on("closed", () => {
