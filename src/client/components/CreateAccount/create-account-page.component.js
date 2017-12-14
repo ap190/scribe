@@ -2,22 +2,14 @@ import React, { Component } from "react";
 import styled from "styled-components";
 import { compose } from "recompose";
 import LoginContainer from "../../containers/Login";
-import { graphcoolConstants, graphCoolConstants } from "../../utils/const";
+import { graphCoolConstants } from "../../utils/const";
+import "./style.css";
 
 const Background = styled.div`
   background-color: whitesmoke;
   display: flex;
   flex-direction: row;
   height: 100vh;
-`;
-
-//this.props.history.push("/home");
-const LeftImage = styled.div`
-  background-image: url("https://unsplash.com/photos/9WwWGeHEbmQ");
-  background-size: cover;
-  background-position: center center;
-  display: flex;
-  flex: 0.7;
 `;
 
 const Form = styled.div`
@@ -72,10 +64,10 @@ class CreateAccountPage extends Component {
   render() {
     return (
       <Background>
-        <LeftImage />
+        <div className="left-image" />
         <Form>
           <Section>
-            <div className="title">Log In</div>
+            <div className="title">Create New Account</div>
           </Section>
 
           <Section>
@@ -84,19 +76,26 @@ class CreateAccountPage extends Component {
           <Section>
             <Input type="text" placeholder="password" className="textfield" />
           </Section>
+          <Section>
+            <Input
+              type="text"
+              placeholder="confirm  password"
+              className="textfield"
+            />
+          </Section>
 
           <Section>
-            <button
-              className="btn btn-primary"
-              onClick={() => console.log("Log in ...")}
-            >
-              Login
-            </button>
             <button
               className="btn btn-primary"
               onClick={() => console.log("Creating account...")}
             >
               Create Account
+            </button>
+            <button
+              className="btn btn-primary"
+              onClick={() => this.props.history.push("/")}
+            >
+              Have an account? Log in
             </button>
           </Section>
         </Form>

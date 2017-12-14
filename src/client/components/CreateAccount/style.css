@@ -1,0 +1,7 @@
+.left-image {
+  background-image: url("../../../../public/img/singapore.jpg");
+  background-size: cover;
+  background-position: center center;
+  display: flex;
+  flex: 0.7;
+}

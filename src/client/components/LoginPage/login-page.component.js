@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import styled from "styled-components";
 import { compose } from "recompose";
 import LoginContainer from "../../containers/Login";
-import { graphcoolConstants, graphCoolConstants } from "../../utils/const";
+import { graphCoolConstants } from "../../utils/const";
 
 const Background = styled.div`
   background-color: whitesmoke;
