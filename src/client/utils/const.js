@@ -21,3 +21,8 @@ exports.notifications = {
     icon: notifIcon
   }
 };
+
+exports.graphCoolConstants = {
+  GC_USER_ID: "graphcool-user-id",
+  GC_AUTH_TOKEN: "graphcool-auth-token"
+};
