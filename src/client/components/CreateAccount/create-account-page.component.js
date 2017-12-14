@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import styled from "styled-components";
-import { compose } from "recompose";
-import LoginContainer from "../../containers/Login";
+import { graphql, compose } from "react-apollo";
+import gql from "graphql-tag";
 import { graphCoolConstants } from "../../utils/const";
 import "./style.css";
 
@@ -55,12 +55,39 @@ class CreateAccountPage extends Component {
     this.confirm = this.confirm.bind(this);
     this.saveUserData = this.saveUserData.bind(this);
   }
-  async confirm() {}
+
+  async confirm() {
+    const { name, email, password } = this.state;
+    console.log(this.state);
+    if (this.state.login) {
+      const result = await this.props.authenticateUserMutation({
+        variables: {
+          email,
+          password
+        }
+      });
+      const { id, token } = result.data.authenticateUser;
+      this.saveUserData(id, token);
+    } else {
+      const result = await this.props.signupUserMutation({
+        variables: {
+          name,
+          email,
+          password
+        }
+      });
+      const { id, token } = result.data.signupUser;
+      this.saveUserData(id, token);
+    }
+    this.props.history.push(`/home`);
+  }
+
   saveUserData(id, token) {
     const { GC_USER_ID, GC_AUTH_TOKEN } = graphCoolConstants;
     localStorage.setItem(GC_USER_ID, id);
     localStorage.setItem(GC_AUTH_TOKEN, token);
   }
+
   render() {
     return (
       <Background>
@@ -69,12 +96,29 @@ class CreateAccountPage extends Component {
           <Section>
             <div className="title">Create New Account</div>
           </Section>
-
           <Section>
-            <Input type="text" placeholder="email" className="textfield" />
+            <Input
+              type="text"
+              placeholder="name"
+              className="textfield"
+              onChange={e => this.setState({ name: e.target.value })}
+            />
           </Section>
           <Section>
-            <Input type="text" placeholder="password" className="textfield" />
+            <Input
+              type="text"
+              placeholder="email"
+              className="textfield"
+              onChange={e => this.setState({ email: e.target.value })}
+            />
+          </Section>
+          <Section>
+            <Input
+              type="text"
+              placeholder="password"
+              className="textfield"
+              onChange={e => this.setState({ password: e.target.value })}
+            />
           </Section>
           <Section>
             <Input
@@ -83,12 +127,8 @@ class CreateAccountPage extends Component {
               className="textfield"
             />
           </Section>
-
           <Section>
-            <button
-              className="btn btn-primary"
-              onClick={() => console.log("Creating account...")}
-            >
+            <button className="btn btn-primary" onClick={() => this.confirm()}>
               Create Account
             </button>
             <button
@@ -104,4 +144,29 @@ class CreateAccountPage extends Component {
   }
 }
 
-export default compose(LoginContainer)(CreateAccountPage);
+const SIGNUP_USER_MUTATION = gql`
+  mutation SignupUserMutation(
+    $email: String!
+    $password: String!
+    $name: String!
+  ) {
+    signupUser(email: $email, password: $password, name: $name) {
+      id
+      token
+    }
+  }
+`;
+
+const AUTHENTICATE_USER_MUTATION = gql`
+  mutation AuthenticateUserMutation($email: String!, $password: String!) {
+    authenticateUser(email: $email, password: $password) {
+      id
+      token
+    }
+  }
+`;
+
+export default compose(
+  graphql(SIGNUP_USER_MUTATION, { name: "signupUserMutation" }),
+  graphql(AUTHENTICATE_USER_MUTATION, { name: "authenticateUserMutation" })
+)(CreateAccountPage);

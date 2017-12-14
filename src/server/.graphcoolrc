@@ -1,0 +1,3 @@
+targets:
+  scribe: shared-eu-west-1/cjb6feu9323cp0133gc3vuant
+  default: scribe
