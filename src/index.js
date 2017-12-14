@@ -6,6 +6,7 @@ import { Provider } from "react-redux";
 import store from "./client/reducers";
 import HomePage from "./client/components/HomePage";
 import LoginPage from "./client/components/LoginPage";
+import CreateAccountPage from "./client/components/CreateAccount";
 import "./client/styles/index.css";
 
 ReactDOM.render(
@@ -15,6 +16,7 @@ ReactDOM.render(
         <Switch>
           <Route path="/home" component={HomePage} />
           <Route exact path="/" component={LoginPage} />
+          <Route exact path="/createAccount" component={CreateAccountPage} />
         </Switch>
       </div>
     </Router>

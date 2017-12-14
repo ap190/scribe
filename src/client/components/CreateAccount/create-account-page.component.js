@@ -13,7 +13,7 @@ const Background = styled.div`
 
 //this.props.history.push("/home");
 const LeftImage = styled.div`
-  background-image: url("https://images.unsplash.com/photo-1419407118704-43ccfda4036d?auto=format&fit=crop&w=2001&q=60&ixid=dW5zcGxhc2guY29tOzs7Ozs%3D");
+  background-image: url("https://unsplash.com/photos/9WwWGeHEbmQ");
   background-size: cover;
   background-position: center center;
   display: flex;
@@ -51,7 +51,7 @@ const Input = styled.input`
   }
 `;
 
-class LoginPage extends Component {
+class CreateAccountPage extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -88,13 +88,13 @@ class LoginPage extends Component {
           <Section>
             <button
               className="btn btn-primary"
-              onClick={() => this.props.history.push("/home")}
+              onClick={() => console.log("Log in ...")}
             >
               Login
             </button>
             <button
               className="btn btn-primary"
-              onClick={() => this.props.history.push("/createAccount")}
+              onClick={() => console.log("Creating account...")}
             >
               Create Account
             </button>
@@ -105,4 +105,4 @@ class LoginPage extends Component {
   }
 }
 
-export default compose(LoginContainer)(LoginPage);
+export default compose(LoginContainer)(CreateAccountPage);
