@@ -1,0 +1,26 @@
+.loading-box {
+  height: 75px;
+  width: 75px;
+  border: 10px solid #332667;
+  transform: rotate(180deg);
+}
+.loading-inner-box {
+  background: #332667;
+  height: 20px;
+  animation: fill 2s infinite ease-in;
+}
+
+@keyframes fill {
+  0% {
+    height: 0px;
+  }
+  40% {
+    height: 55px;
+  }
+  60% {
+    height: 55px;
+  }
+  100% {
+    height: 0px;
+  }
+}

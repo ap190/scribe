@@ -12,6 +12,7 @@ import {
 import moment from "moment";
 import HomeContainer from "../../containers/Home";
 import Modal from "../common/Modal";
+import Loading from "../common/Loading";
 import ThreadColumn from "./ThreadColumn";
 import Aside from "./AsideColumn";
 import EditorColumn from "./EditorColumn";
@@ -40,6 +41,17 @@ const Wrapper = styled.div`
   flex-direction: row;
   height: 100vh;
   overflow: hidden;
+`;
+
+const LoadingWrapper = styled.div`
+  display: flex;
+  display: justify-content;
+  height: 100vh;
+  width: 100%
+  overflow: hidden;
+  align-items: center;
+  justify-content: center;
+  background-color: white;
 `;
 
 const SELECTED_THREAD = -1;
@@ -557,7 +569,11 @@ class HomePage extends Component {
 
   render() {
     if (!this.state.channels) {
-      return <div> Loading... </div>;
+      return (
+        <LoadingWrapper>
+          <Loading />
+        </LoadingWrapper>
+      );
     }
     return (
       <Wrapper>
