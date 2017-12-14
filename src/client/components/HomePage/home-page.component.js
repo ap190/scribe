@@ -257,13 +257,14 @@ class HomePage extends Component {
     }
   }
 
-  selectChannelOrFile(channelType, channelId = null, activeFile = null) {
+  async selectChannelOrFile(channelType, channelId = null, activeFile = null) {
     if (channelType === "file") {
       const fileChannel = this.getUpdatedChannelAndThreadsIfSelectionIsFile(
         activeFile
       );
       if (!fileChannel) {
-        return;
+        await this.createNewFileChannel();
+        fileChannel = this.getCurrentChannel();
       }
       this.getUpdatedChannelsSelectedState(fileChannel.id);
     } else {
