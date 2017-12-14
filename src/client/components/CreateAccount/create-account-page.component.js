@@ -47,7 +47,7 @@ class CreateAccountPage extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      login: true,
+      login: false,
       email: "",
       password: "",
       name: ""
@@ -145,12 +145,8 @@ class CreateAccountPage extends Component {
 }
 
 const SIGNUP_USER_MUTATION = gql`
-  mutation SignupUserMutation(
-    $email: String!
-    $password: String!
-    $name: String!
-  ) {
-    signupUser(email: $email, password: $password, name: $name) {
+  mutation SignupUserMutation($email: String!, $password: String!) {
+    signupUser(email: $email, password: $password) {
       id
       token
     }

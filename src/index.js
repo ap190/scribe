@@ -8,13 +8,14 @@ import { HttpLink } from "apollo-link-http";
 import { InMemoryCache } from "apollo-cache-inmemory";
 import { WebSocketLink } from "apollo-link-ws";
 import { getMainDefinition } from "apollo-utilities";
+import registerServiceWorker from "./registerServiceWorker";
 
 // import store from "./client/reducers";
 import HomePage from "./client/components/HomePage";
 import LoginPage from "./client/components/LoginPage";
 import CreateAccountPage from "./client/components/CreateAccount";
-import "./client/styles/index.css";
 import { graphCoolConstants } from "./client/utils/const";
+import "./client/styles/index.css";
 
 const serviceId = "cjb6feu9323cp0133gc3vuant";
 
@@ -39,6 +40,7 @@ const wsLink = new WebSocketLink({
   uri: `wss://subscriptions.graph.cool/v1/${serviceId}`,
   options: {
     reconnect: true,
+    timeout: 600000,
     connectionParams: {
       authToken: localStorage.getItem(graphCoolConstants.GC_AUTH_TOKEN)
     }
@@ -73,3 +75,4 @@ ReactDOM.render(
   </ApolloProvider>,
   document.getElementById("root")
 );
+registerServiceWorker();
