@@ -361,6 +361,15 @@ class HomePage extends Component {
     const currentThreadIdx = currentThreads.findIndex(
       thread => thread.selected
     );
+
+    if (currentThreadIdx === -1) {
+      await this.setState({
+        currentThread: undefined,
+        currentDocument: EditorState.createEmpty()
+      });
+      return;
+    }
+
     currentChannel.threads[currentThreadIdx].document = JSON.stringify(
       currentDocument
     );
