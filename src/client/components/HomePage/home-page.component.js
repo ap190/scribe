@@ -433,6 +433,8 @@ class HomePage extends Component {
       channel => channel.id === channelId
     );
 
+    currentThreads.splice(threadId, 1);
+
     if (currentThreads.length === 0 && currentChannel.channelType === "file") {
       channels.splice(channelToReplaceIdx, 1);
     } else {
