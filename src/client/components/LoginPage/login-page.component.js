@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import styled from "styled-components";
-import { compose } from "recompose";
-import LoginContainer from "../../containers/Login";
+import { graphql, compose } from "react-apollo";
+import gql from "graphql-tag";
 import { graphCoolConstants } from "../../utils/const";
 
 const Background = styled.div`
@@ -55,15 +55,31 @@ class LoginPage extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      login: true,
       email: "",
       password: "",
-      name: ""
+      failedLogIn: false
     };
-    this.confirm = this.confirm.bind(this);
     this.saveUserData = this.saveUserData.bind(this);
+    this.authenticateUser = this.authenticateUser.bind(this);
   }
-  async confirm() {}
+
+  async authenticateUser() {
+    const { email, password } = this.state;
+    let response;
+    try {
+      response = await this.props.authenticateUserMutation({
+        variables: { email, password }
+      });
+    } catch (err) {
+      this.setState({ failedLogIn: true });
+    }
+    localStorage.setItem(
+      "graphcoolToken",
+      response.data.authenticateUser.token
+    );
+    this.props.history.push("/home");
+  }
+
   saveUserData(id, token) {
     const { GC_USER_ID, GC_AUTH_TOKEN } = graphCoolConstants;
     localStorage.setItem(GC_USER_ID, id);
@@ -79,17 +95,26 @@ class LoginPage extends Component {
           </Section>
 
           <Section>
-            <Input type="text" placeholder="email" className="textfield" />
+            <Input
+              type="text"
+              placeholder="email"
+              className="textfield"
+              onChange={e => this.setState({ email: e.target.value })}
+            />
           </Section>
           <Section>
-            <Input type="text" placeholder="password" className="textfield" />
+            <Input
+              type="text"
+              placeholder="password"
+              className="textfield"
+              onChange={e => this.setState({ password: e.target.value })}
+            />
           </Section>
-
+          {this.state.failedLogIn ? (
+            <h3>Incorrect email or password. Please try again. </h3>
+          ) : null}
           <Section>
-            <button
-              className="btn btn-primary"
-              onClick={() => this.props.history.push("/home")}
-            >
+            <button className="btn btn-primary" onClick={this.authenticateUser}>
               Login
             </button>
             <button
@@ -105,4 +130,25 @@ class LoginPage extends Component {
   }
 }
 
-export default compose(LoginContainer)(LoginPage);
+const AUTHENTICATE_USER_MUTATION = gql`
+  mutation AuthenticateUserMutation($email: String!, $password: String!) {
+    authenticateUser(email: $email, password: $password) {
+      token
+    }
+  }
+`;
+
+const LOGGED_IN_USER_QUERY = gql`
+  query LoggedInUserQuery {
+    loggedInUser {
+      id
+    }
+  }
+`;
+export default compose(
+  graphql(AUTHENTICATE_USER_MUTATION, { name: "authenticateUserMutation" }),
+  graphql(LOGGED_IN_USER_QUERY, {
+    name: "loggedInUserQuery",
+    options: { fetchPolicy: "network-only" }
+  })
+)(LoginPage);
