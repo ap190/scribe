@@ -82,10 +82,15 @@ img.header-icon {
 .m-node.placeholder {
   border: 1px dashed #ccc;
 }
+
 .m-node .inner {
+  width: 100%;
   position: relative;
   cursor: pointer;
   padding-left: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 .m-node .collapse {
   position: absolute;
@@ -93,10 +98,21 @@ img.header-icon {
   cursor: pointer;
 }
 .m-node .caret-right:before {
-  content: "\25B8";
+  content: "\276f";
 }
 .m-node .caret-down:before {
-  content: "\25BE";
+  content: "\276f";
+  display: inline-block;
+  -webkit-transform: rotate(90deg);
+  -moz-transform: rotate(90deg);
+  -o-transform: rotate(90deg);
+  -ms-transform: rotate(90deg);
+  transform: rotate(90deg);
+}
+
+.node-icon {
+  height: 16px;
+  width: 16px;
 }
 
 .projects-container {
@@ -106,4 +122,8 @@ img.header-icon {
 .channels {
   display: flex;
   flex-direction: column;
+}
+
+.inner {
+  display: flex;
 }

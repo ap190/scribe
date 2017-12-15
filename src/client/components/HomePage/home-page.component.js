@@ -259,7 +259,7 @@ class HomePage extends Component {
 
   async selectChannelOrFile(channelType, channelId = null, activeFile = null) {
     if (channelType === "file") {
-      const fileChannel = this.getUpdatedChannelAndThreadsIfSelectionIsFile(
+      let fileChannel = this.getUpdatedChannelAndThreadsIfSelectionIsFile(
         activeFile
       );
       if (!fileChannel) {
