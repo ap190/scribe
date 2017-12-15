@@ -267,7 +267,7 @@ class HomePage extends Component {
         activeFile
       );
       if (!fileChannel) {
-        await this.createNewFileChannel();
+        await this.createNewFileChannel(activeFile);
         fileChannel = this.getCurrentChannel();
       }
       this.getUpdatedChannelsSelectedState(fileChannel.id);
@@ -361,6 +361,15 @@ class HomePage extends Component {
     const currentThreadIdx = currentThreads.findIndex(
       thread => thread.selected
     );
+
+    if (currentThreadIdx === -1) {
+      await this.setState({
+        currentThread: undefined,
+        currentDocument: EditorState.createEmpty()
+      });
+      return;
+    }
+
     currentChannel.threads[currentThreadIdx].document = JSON.stringify(
       currentDocument
     );
@@ -373,11 +382,11 @@ class HomePage extends Component {
     });
   }
 
-  async createNewFileChannel() {
-    const { activeNode, absolutePath } = this.state;
-    const relativePath = activeNode.relativePath.join(`/`);
+  async createNewFileChannel(activeFile) {
+    const { absolutePath } = this.state;
+    const relativePath = activeFile.relativePath.join(`/`);
     const newChannel = {
-      channelName: `${activeNode.module}`,
+      channelName: `${activeFile.module}`,
       lastPosted: "4 days ago",
       id: UUIDv4(),
       selected: true,
@@ -392,7 +401,7 @@ class HomePage extends Component {
     let { channels, activeNode } = this.state;
     let currentChannel = this.getCurrentChannel();
     if (!currentChannel && activeNode) {
-      await this.createNewFileChannel();
+      await this.createNewFileChannel(activeNode);
       currentChannel = this.getCurrentChannel();
       channels = this.state.channels;
     } else if (!currentChannel) {
@@ -438,6 +447,8 @@ class HomePage extends Component {
     const channelToReplaceIdx = channels.findIndex(
       channel => channel.id === channelId
     );
+
+    currentThreads.splice(threadId, 1);
 
     if (currentThreads.length === 0 && currentChannel.channelType === "file") {
       channels.splice(channelToReplaceIdx, 1);
