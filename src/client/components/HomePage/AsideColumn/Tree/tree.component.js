@@ -48,7 +48,7 @@ class Tree extends Component {
           alternativeText="Select a Project"
           source={folderIcon}
         />
-        <div className="tree">
+        <div className="file-tree-container">
           <FileTree
             tree={this.props.tree}
             onChange={this.handleChange}

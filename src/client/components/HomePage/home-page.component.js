@@ -263,7 +263,7 @@ class HomePage extends Component {
       await this.handleDocumentChange(this.state.currentDocument);
     }
     if (channelType === "file") {
-      const fileChannel = this.getUpdatedChannelAndThreadsIfSelectionIsFile(
+      let fileChannel = this.getUpdatedChannelAndThreadsIfSelectionIsFile(
         activeFile
       );
       if (!fileChannel) {
