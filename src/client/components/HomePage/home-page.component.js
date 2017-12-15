@@ -259,9 +259,8 @@ class HomePage extends Component {
   }
 
   async selectChannelOrFile(channelType, channelId = null, activeFile = null) {
-    if (this.state.currentDocument) {
-      await this.handleDocumentChange(this.state.currentDocument);
-    }
+    this.state.currentDocument &&
+      this.handleDocumentChange(this.state.currentDocument);
     if (channelType === "file") {
       let fileChannel = this.getUpdatedChannelAndThreadsIfSelectionIsFile(
         activeFile
@@ -345,6 +344,7 @@ class HomePage extends Component {
   }
 
   async updateDocumentState(currentDocument) {
+    console.log(currentDocument.getCurrentContent());
     await this.setState({
       currentDocument
     });
@@ -463,6 +463,8 @@ class HomePage extends Component {
   }
 
   selectThread(thread) {
+    this.state.currentDocument &&
+      this.handleDocumentChange(this.state.currentDocument);
     const { channels } = this.state;
     let currentDocument;
     let currentThread;
@@ -559,6 +561,8 @@ class HomePage extends Component {
   }
 
   saveWorkspace() {
+    this.state.currentDocument &&
+      this.handleDocumentChange(this.state.currentDocument);
     const timestamp = moment().format("LLLL");
     this.applyThreadChange(SELECTED_THREAD, thread => {
       return {
