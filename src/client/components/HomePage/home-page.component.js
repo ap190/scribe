@@ -96,6 +96,7 @@ class HomePage extends Component {
     this.handleChangeThreadColor = this.handleChangeThreadColor.bind(this);
     this.handleDeleteThread = this.handleDeleteThread.bind(this);
     this.handleDocumentChange = this.handleDocumentChange.bind(this);
+    this.updateDocumentState = this.updateDocumentState.bind(this);
     this.handleThreadTitleChange = this.handleThreadTitleChange.bind(this);
     this.getModalContent = this.getModalContent.bind(this);
     this.selectFile = this.selectFile.bind(this);
@@ -258,6 +259,9 @@ class HomePage extends Component {
   }
 
   async selectChannelOrFile(channelType, channelId = null, activeFile = null) {
+    if (this.state.currentDocument) {
+      await this.handleDocumentChange(this.state.currentDocument);
+    }
     if (channelType === "file") {
       let fileChannel = this.getUpdatedChannelAndThreadsIfSelectionIsFile(
         activeFile
@@ -271,7 +275,7 @@ class HomePage extends Component {
       this.getUpdatedChannelsSelectedState(channelId);
     }
 
-    this.setState({
+    await this.setState({
       activeNode: activeFile,
       showCode: false
     });
@@ -315,9 +319,6 @@ class HomePage extends Component {
   }
 
   async fetchSelectedFileContent(filePath) {
-    console.log(`fetching ...`);
-    console.log(this.state.currentFiles.set);
-    // path.join(absolutePath, activeNode.relativePath.join(`/`));
     ipcRenderer.send("fetch-file", filePath, this.state.currentFiles);
   }
 
@@ -343,7 +344,13 @@ class HomePage extends Component {
     this.handleDocumentChange(newEditorState);
   }
 
-  handleDocumentChange(currentDocument) {
+  async updateDocumentState(currentDocument) {
+    await this.setState({
+      currentDocument
+    });
+  }
+
+  async handleDocumentChange(currentDocument) {
     const { channels } = this.state;
     let currentThreads = this.getCurrentThreads();
     const currentChannel = this.getCurrentChannel();
@@ -361,9 +368,8 @@ class HomePage extends Component {
     channels[currentChannelIdx].threads[
       currentThreadIdx
     ].document = convertToRaw(currentDocument.getCurrentContent());
-    this.setState({
-      channels,
-      currentDocument
+    await this.setState({
+      channels
     });
   }
 
@@ -614,7 +620,7 @@ class HomePage extends Component {
           isModalOpen={this.state.isModalOpen}
           currentDocument={this.state.currentDocument}
           currentThread={this.state.currentThread}
-          handleDocumentChange={this.handleDocumentChange}
+          updateDocumentState={this.updateDocumentState}
           handleThreadTitleChange={this.handleThreadTitleChange}
           saveWorkspace={this.saveWorkspace}
           exportCurrentDocAsHTML={this.exportCurrentDocAsHTML}
