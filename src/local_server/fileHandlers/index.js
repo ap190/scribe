@@ -14,11 +14,7 @@ const jsonpath = path.join(
 
 const createLoadableWorkspacePath = userSelectedDir => {
   if (!userSelectedDir) return null;
-  return path.join(
-    userSelectedDir,
-    SCRIBE_FILE_PATHS.SCRIBE_DIR,
-    SCRIBE_FILE_PATHS.SCRIBE_DATA
-  );
+  return path.join(userSelectedDir, SCRIBE_FILE_PATHS.SCRIBE_DATA);
 };
 
 exports.genLoadData = event => {
@@ -39,6 +35,8 @@ exports.genFetchFileContent = (event, filePath) => {
 
 exports.loadWorkspace = (targetWindow, dir) => {
   const userSelectedScribePath = createLoadableWorkspacePath(dir);
+  console.log("#############");
+  console.log(userSelectedScribePath);
   if (!userSelectedScribePath || !dir) return;
   if (fs.existsSync(userSelectedScribePath)) {
     jsonfile.readFile(userSelectedScribePath, "utf8", (err, data) => {
@@ -60,38 +58,18 @@ exports.genSaveWorkspace = (event, workspace, userSelectedDir) => {
   // Check if user is in session and has already selected dir
   if (!userSelectedDir) {
     userSelectedDir = getDirSelectionFromUser(mainWindow);
+    userSelectedDir = path.join(userSelectedDir, SCRIBE_FILE_PATHS.SCRIBE_DATA);
   }
 
   // User cancelled selection
   if (!userSelectedDir) return;
-
-  const userPathJoined = path.join(
-    userSelectedDir,
-    SCRIBE_FILE_PATHS.SCRIBE_DIR,
-    SCRIBE_FILE_PATHS.SCRIBE_DATA
-  );
-
-  if (fs.existsSync(path.join(userSelectedDir, SCRIBE_FILE_PATHS.SCRIBE_DIR))) {
-    console.log(`Dir does exist ${userSelectedDir}`);
-    jsonfile.writeFile(userPathJoined, workspace, err => {
-      console.log(`user path joined ${userPathJoined}`);
-      if (err) {
-        console.error("Directory exists. Could not save workspace", err);
-      }
-      event.sender.send("save-workspace-notification", userPathJoined);
-    });
-  } else {
-    console.log(`Dir does not exist ${userSelectedDir}`);
-    fs.mkdir(`${userSelectedDir}/${SCRIBE_FILE_PATHS.SCRIBE_DIR}`, e => {
-      jsonfile.writeFile(userSelectedDir, workspace, { spaces: 4 }, err => {
-        if (err) {
-          console.error(
-            "Directory does not exist. Could not save workspace",
-            err
-          );
-        }
-        event.sender.send("save-workspace-notification", userSelectedDir);
-      });
-    });
-  }
+  console.log("*******************");
+  console.log(userSelectedDir);
+  console.log(workspace);
+  jsonfile.writeFile(userSelectedDir, workspace, err => {
+    if (err) {
+      console.error("Directory exists. Could not save workspace", err);
+    }
+    event.sender.send("save-workspace-notification", userSelectedDir);
+  });
 };
