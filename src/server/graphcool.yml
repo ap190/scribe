@@ -19,11 +19,21 @@ functions:
     schema: src/email-password/loggedInUser.graphql
     handler:
       code: src/email-password/loggedInUser.js
-# Model/Relation permissions are used to limit the API access
-# To take the burden of thinking about those while development, we
-# preconfigured the wildcard ("*") permission that allows everything
-# Read more here:
-# https://docs-next.graph.cool/reference/auth/authorization/overview-iegoo0heez
+
+  facebookAuthentication:
+    handler:
+      code:
+        src: src/facebook/facebookAuthentication.js
+    type: resolver
+    schema: src/facebook/facebookAuthentication.graphql
+
+  facebookLoggedInUser:
+    handler:
+      code:
+        src: src/facebook/loggedInUser.js
+    type: resolver
+    schema: src/facebook/loggedInUser.graphql
+
 permissions:
 - operation: "*"
 
