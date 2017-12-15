@@ -49,7 +49,6 @@ class UITreeNode extends Component {
       return null;
     }
     let caretIcon;
-    const fileExtension = index.node.module.split(".").pop();
     if (index.children) {
       caretIcon = folderIcon;
     } else {

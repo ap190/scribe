@@ -1,10 +1,10 @@
-.tree {
+.file-tree-container {
   background-color: #f2f2f2;
-  padding-top: 5px;
   flex-grow: 1;
   margin-left: 2px;
   position: relative;
-  overflow-y: auto;
+  max-height: 50vh;
+  overflow-y: scroll;
 }
 
 .m-tree {
@@ -99,6 +99,7 @@ img.header-icon {
 }
 .m-node .caret-right:before {
   content: "\276f";
+  padding-left: 2px;
 }
 .m-node .caret-down:before {
   content: "\276f";
@@ -108,15 +109,13 @@ img.header-icon {
   -o-transform: rotate(90deg);
   -ms-transform: rotate(90deg);
   transform: rotate(90deg);
+  padding-left: 2px;
 }
 
 .node-icon {
   height: 16px;
   width: 16px;
-}
-
-.projects-container {
-  overflow-y: auto;
+  margin-left: 2px;
 }
 
 .channels {
