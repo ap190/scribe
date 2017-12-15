@@ -26,7 +26,7 @@ class EditorColumn extends Component {
 
   onChange(editorState) {
     if (this.state.editorEnabled) {
-      this.props.handleDocumentChange(editorState);
+      this.props.updateDocumentState(editorState);
     }
   }
 
@@ -40,8 +40,8 @@ class EditorColumn extends Component {
       toggleEditorHandler,
       isEditorToggled,
       saveWorkspace,
-      currentDocument,
       currentThread,
+      currentDocument,
       exportCurrentDocAsHTML
     } = this.props;
     return (
@@ -79,7 +79,7 @@ EditorColumn.propTypes = {
   toggleModal: PropTypes.func.isRequired,
   isModalOpen: PropTypes.bool.isRequired,
   saveWorkspace: PropTypes.func.isRequired,
-  handleDocumentChange: PropTypes.func.isRequired,
+  updateDocumentState: PropTypes.func.isRequired,
   currentDocument: PropTypes.any,
   handleThreadTitleChange: PropTypes.func.isRequired,
   currentThread: PropTypes.any,
