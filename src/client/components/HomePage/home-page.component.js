@@ -267,7 +267,7 @@ class HomePage extends Component {
         activeFile
       );
       if (!fileChannel) {
-        await this.createNewFileChannel();
+        await this.createNewFileChannel(activeFile);
         fileChannel = this.getCurrentChannel();
       }
       this.getUpdatedChannelsSelectedState(fileChannel.id);
@@ -373,11 +373,11 @@ class HomePage extends Component {
     });
   }
 
-  async createNewFileChannel() {
-    const { activeNode, absolutePath } = this.state;
-    const relativePath = activeNode.relativePath.join(`/`);
+  async createNewFileChannel(activeFile) {
+    const { absolutePath } = this.state;
+    const relativePath = activeFile.relativePath.join(`/`);
     const newChannel = {
-      channelName: `${activeNode.module}`,
+      channelName: `${activeFile.module}`,
       lastPosted: "4 days ago",
       id: UUIDv4(),
       selected: true,
@@ -392,7 +392,7 @@ class HomePage extends Component {
     let { channels, activeNode } = this.state;
     let currentChannel = this.getCurrentChannel();
     if (!currentChannel && activeNode) {
-      await this.createNewFileChannel();
+      await this.createNewFileChannel(activeNode);
       currentChannel = this.getCurrentChannel();
       channels = this.state.channels;
     } else if (!currentChannel) {
