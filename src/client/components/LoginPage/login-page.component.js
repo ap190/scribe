@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import styled from "styled-components";
-import { compose } from "recompose";
-import LoginContainer from "../../containers/Login";
+import { graphql, compose } from "react-apollo";
+import gql from "graphql-tag";
 import { graphCoolConstants } from "../../utils/const";
 
 const Background = styled.div`
@@ -51,19 +51,95 @@ const Input = styled.input`
   }
 `;
 
+// const FACEBOOK_APP_ID = "194063647811624";
+// const FACEBOOK_API_VERSION = "v2.11";
+
 class LoginPage extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      login: true,
       email: "",
       password: "",
-      name: ""
+      failedLogIn: false
     };
-    this.confirm = this.confirm.bind(this);
     this.saveUserData = this.saveUserData.bind(this);
+    this.authenticateUser = this.authenticateUser.bind(this);
+    this.componentDidMount = this.componentDidMount.bind(this);
+    this.initializeFacebookSDK = this.initializeFacebookSDK.bind(this);
+    this.handleFBLogin = this.handleFBLogin.bind(this);
+    this.facebookCallback = this.facebookCallback.bind(this);
   }
-  async confirm() {}
+
+  componentDidMount() {
+    this.initializeFacebookSDK();
+  }
+
+  initializeFacebookSDK() {
+    // window.fbAsyncInit = function() {
+    //   FB.init({
+    //     appId: FACEBOOK_APP_ID,
+    //     cookie: true, // enable cookies to allow the server to access the session
+    //     version: FACEBOOK_API_VERSION // use Facebook API version 2.10
+    //   });
+    // };
+
+    // // Load the SDK asynchronously
+    // (function(d, s, id) {
+    //   var js,
+    //     fjs = d.getElementsByTagName(s)[0];
+    //   if (d.getElementById(id)) return;
+    //   js = d.createElement(s);
+    //   js.id = id;
+    //   js.src = "//connect.facebook.net/en_US/sdk.js";
+    //   fjs.parentNode.insertBefore(js, fjs);
+    // })(document, "script", "facebook-jssdk");
+    console.log("initializing now..");
+  }
+
+  handleFBLogin() {
+    // FB.login(
+    //   response => {
+    //     this.facebookCallback(response);
+    //   },
+    //   { scope: "public_profile,email" }
+    // );
+    console.log("handling fb login");
+  }
+
+  async facebookCallback(facebookResponse) {
+    if (facebookResponse.status === "connected") {
+      const facebookToken = facebookResponse.authResponse.accessToken;
+      const graphcoolResponse = await this.props.authenticateFacebookUserMutation(
+        {
+          variables: { facebookToken }
+        }
+      );
+      const graphcoolToken = graphcoolResponse.data.authenticateUser.token;
+      localStorage.setItem("graphcoolToken", graphcoolToken);
+      this.props.history.push("/createAccount");
+    } else {
+      console.warn(`User did not authorize the Facebook application.`);
+    }
+  }
+
+  // User with unique id of email and password
+  async authenticateUser() {
+    const { email, password } = this.state;
+    let response;
+    try {
+      response = await this.props.authenticateUserMutation({
+        variables: { email, password }
+      });
+    } catch (err) {
+      this.setState({ failedLogIn: true });
+    }
+    localStorage.setItem(
+      "graphcoolToken",
+      response.data.authenticateUser.token
+    );
+    this.props.history.push("/home");
+  }
+
   saveUserData(id, token) {
     const { GC_USER_ID, GC_AUTH_TOKEN } = graphCoolConstants;
     localStorage.setItem(GC_USER_ID, id);
@@ -79,17 +155,26 @@ class LoginPage extends Component {
           </Section>
 
           <Section>
-            <Input type="text" placeholder="email" className="textfield" />
+            <Input
+              type="text"
+              placeholder="email"
+              className="textfield"
+              onChange={e => this.setState({ email: e.target.value })}
+            />
           </Section>
           <Section>
-            <Input type="text" placeholder="password" className="textfield" />
+            <Input
+              type="text"
+              placeholder="password"
+              className="textfield"
+              onChange={e => this.setState({ password: e.target.value })}
+            />
           </Section>
-
+          {this.state.failedLogIn ? (
+            <h3>Incorrect email or password. Please try again. </h3>
+          ) : null}
           <Section>
-            <button
-              className="btn btn-primary"
-              onClick={() => this.props.history.push("/home")}
-            >
+            <button className="btn btn-primary" onClick={this.authenticateUser}>
               Login
             </button>
             <button
@@ -98,6 +183,12 @@ class LoginPage extends Component {
             >
               Create Account
             </button>
+            <button
+              className="btn btn-primary"
+              onClick={() => this.handleFBLogin}
+            >
+              Log in with Facebook
+            </button>
           </Section>
         </Form>
       </Background>
@@ -105,4 +196,37 @@ class LoginPage extends Component {
   }
 }
 
-export default compose(LoginContainer)(LoginPage);
+const AUTHENTICATE_USER_MUTATION = gql`
+  mutation AuthenticateUserMutation($email: String!, $password: String!) {
+    authenticateUser(email: $email, password: $password) {
+      token
+    }
+  }
+`;
+
+const AUTHENTICATE_FACEBOOK_USER = gql`
+  mutation AuthenticateUserMutation($facebookToken: String!) {
+    authenticateUser(facebookToken: $facebookToken) {
+      token
+    }
+  }
+`;
+
+const LOGGED_IN_USER_QUERY = gql`
+  query LoggedInUserQuery {
+    loggedInUser {
+      id
+    }
+  }
+`;
+
+export default compose(
+  graphql(AUTHENTICATE_USER_MUTATION, { name: "authenticateUserMutation" }),
+  graphql(AUTHENTICATE_FACEBOOK_USER, {
+    name: "authenticateFacebookUserMutation"
+  }),
+  graphql(LOGGED_IN_USER_QUERY, {
+    name: "loggedInUserQuery",
+    options: { fetchPolicy: "network-only" }
+  })
+)(LoginPage);

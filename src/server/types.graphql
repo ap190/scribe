@@ -1,6 +1,3 @@
-# The following types define the data model of the example service
-# based on which the GraphQL API is generated
-
 # added by email-password template: (please uncomment)
 type User @model {
   # Required system field:
@@ -8,6 +5,17 @@ type User @model {
   # Optional system fields (remove if not needed):
   createdAt: DateTime! # read-only (managed by Graphcool)
   updatedAt: DateTime! # read-only (managed by Graphcool)
+  name: String
   email: String! @isUnique
   password: String!
+}
+
+type FacebookUser @model {
+  # Required system field:
+  id: ID! @isUnique # read-only (managed by Graphcool)
+  # Optional system fields (remove if not needed):
+  createdAt: DateTime! # read-only (managed by Graphcool)
+  updatedAt: DateTime! # read-only (managed by Graphcool)
+  facebookUserId: String @isUnique
+  facebookEmail: String
 }
