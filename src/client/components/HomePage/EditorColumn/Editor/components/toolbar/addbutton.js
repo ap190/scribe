@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import CSSTransitionGroup from "react-transition-group/CSSTransitionGroup";
 import { getSelectedBlockNode } from "../../util";
+import { lightTheme } from "../../../../../../utils/const";
 
 /*
 Implementation of the medium-link side `+` button to insert various rich blocks
@@ -135,14 +136,17 @@ class AddButton extends Component {
       <div className="md-side-toolbar" style={this.state.style}>
         <button
           onClick={this.openToolbar}
-          className={`md-sb-button md-add-button${this.state.isOpen
-            ? " md-open-button"
-            : ""}`}
+          className={`md-sb-button md-add-button${
+            this.state.isOpen ? " md-open-button" : ""
+          }`}
           type="button"
         >
-          <svg viewBox="0 0 8 8" height="14" width="14">
-            <path d="M3 0v3h-3v2h3v3h2v-3h3v-2h-3v-3h-2z" />
-          </svg>
+          <img
+            src={lightTheme.icons.addEditor}
+            alt="Embed content"
+            height="15"
+            width="15"
+          />
         </button>
         {this.state.isOpen ? (
           <CSSTransitionGroup

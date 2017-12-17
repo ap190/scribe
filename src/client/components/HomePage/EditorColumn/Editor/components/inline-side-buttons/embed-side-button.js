@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { EditorState, AtomicBlockUtils } from "draft-js";
 import { modals } from "../../../../../../utils/const";
+import { lightTheme } from "../../../../../../utils/const";
 
 class EmbedSideButton extends Component {
   constructor(props) {
@@ -40,7 +41,12 @@ class EmbedSideButton extends Component {
         title="Add an Embed"
         onClick={this.onClick}
       >
-        <i className="fa fa-code" />
+        <img
+          src={lightTheme.icons.contentEmbed}
+          alt="Embed content"
+          height="15"
+          width="15"
+        />
       </button>
     );
   }

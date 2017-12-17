@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { EditorState, AtomicBlockUtils } from "draft-js";
+import { lightTheme } from "../../../../../../utils/const";
 
 class SeparatorSideButton extends Component {
   constructor(props) {
@@ -36,7 +37,12 @@ class SeparatorSideButton extends Component {
         title="Add a separator"
         onClick={this.onClick}
       >
-        <i className="fa fa-minus" />
+        <img
+          src={lightTheme.icons.seperator}
+          alt="Embed img"
+          height="15"
+          width="15"
+        />
       </button>
     );
   }

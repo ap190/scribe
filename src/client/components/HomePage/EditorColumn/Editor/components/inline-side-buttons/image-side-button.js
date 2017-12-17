@@ -2,6 +2,7 @@ import PropTypes from "prop-types";
 import React, { Component } from "react";
 import { addNewBlock } from "../../model";
 import { Block } from "../../util/constants";
+import { lightTheme } from "../../../../../../utils/const";
 
 class ImageButton extends Component {
   constructor(props) {
@@ -37,7 +38,12 @@ class ImageButton extends Component {
         onClick={this.onClick}
         title="Add an Image"
       >
-        <i className="fa fa-image" />
+        <img
+          src={lightTheme.icons.imageEmbed}
+          alt="Embed img"
+          height="15"
+          width="15"
+        />
         <input
           type="file"
           accept="image/*"

@@ -1,4 +1,8 @@
 import notifIcon from "../../../public/assets/rich-notifications/disk.png";
+import seperatorLight from "../../../public/assets/icons/seperator.svg";
+import imageEmbedLight from "../../../public/assets/icons/image.svg";
+import contentEmbedLight from "../../../public/assets/icons/code.svg";
+import addEditorLight from "../../../public/assets/icons/add-editor-light.svg";
 
 exports.modals = {
   ASIDE_CREATE_CHANNEL_MODAL: "aside_create_channel_modal",
@@ -25,4 +29,13 @@ exports.notifications = {
 exports.graphCoolConstants = {
   GC_USER_ID: "graphcool-user-id",
   GC_AUTH_TOKEN: "graphcool-auth-token"
+};
+
+exports.lightTheme = {
+  icons: {
+    contentEmbed: contentEmbedLight,
+    imageEmbed: imageEmbedLight,
+    seperator: seperatorLight,
+    addEditor: addEditorLight
+  }
 };
