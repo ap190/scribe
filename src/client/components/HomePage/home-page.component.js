@@ -10,6 +10,7 @@ import {
   AtomicBlockUtils
 } from "draft-js";
 import moment from "moment";
+import "react-contexify/dist/ReactContexify.min.css";
 import HomeContainer from "../../containers/Home";
 import Modal from "../common/Modal";
 import Loading from "../common/Loading";
@@ -340,11 +341,10 @@ class HomePage extends Component {
       entityKey,
       "E"
     );
-    this.handleDocumentChange(newEditorState);
+    this.updateDocumentState(newEditorState);
   }
 
   async updateDocumentState(currentDocument) {
-    console.log(currentDocument.getCurrentContent());
     await this.setState({
       currentDocument
     });

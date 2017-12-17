@@ -63,9 +63,6 @@ exports.genSaveWorkspace = (event, workspace, userSelectedDir) => {
 
   // User cancelled selection
   if (!userSelectedDir) return;
-  console.log("*******************");
-  console.log(userSelectedDir);
-  console.log(workspace);
   jsonfile.writeFile(userSelectedDir, workspace, err => {
     if (err) {
       console.error("Directory exists. Could not save workspace", err);
