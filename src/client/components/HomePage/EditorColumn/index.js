@@ -34,6 +34,10 @@ class EditorColumn extends Component {
     return this.state.editorState;
   }
 
+  isEditorToggledStyle() {
+    return this.props.isEditorToggled ? null : { maxWidth: "48%" };
+  }
+
   render() {
     const {
       isModalOpen,
@@ -45,7 +49,7 @@ class EditorColumn extends Component {
       exportCurrentDocAsHTML
     } = this.props;
     return (
-      <div className="editor">
+      <div className="editor" style={this.isEditorToggledStyle()}>
         <EditorActionBar
           handleSave={saveWorkspace}
           handleExportToHTML={exportCurrentDocAsHTML}
