@@ -3,6 +3,10 @@ import seperatorLight from "../../../public/assets/icons/seperator.svg";
 import imageEmbedLight from "../../../public/assets/icons/image.svg";
 import contentEmbedLight from "../../../public/assets/icons/code.svg";
 import addEditorLight from "../../../public/assets/icons/add-editor-light.svg";
+import editorActionBarSaveLight from "../../../public/assets/icons/save.svg";
+import editorActionBarExportLight from "../../../public/assets/icons/export.svg";
+import editorActionBarNextLight from "../../../public/assets/icons/next.svg";
+import editorActionBarMaximizeLight from "../../../public/assets/icons/maximize.svg";
 
 exports.modals = {
   ASIDE_CREATE_CHANNEL_MODAL: "aside_create_channel_modal",
@@ -36,6 +40,10 @@ exports.lightTheme = {
     contentEmbed: contentEmbedLight,
     imageEmbed: imageEmbedLight,
     seperator: seperatorLight,
-    addEditor: addEditorLight
+    addEditor: addEditorLight,
+    save: editorActionBarSaveLight,
+    export: editorActionBarExportLight,
+    next: editorActionBarNextLight,
+    maximize: editorActionBarMaximizeLight
   }
 };
