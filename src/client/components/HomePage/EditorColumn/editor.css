@@ -28,6 +28,7 @@
   font-weight: bold;
   width: 100%;
   overflow: visible;
+  resize: none;
 }
 
 .update-time {

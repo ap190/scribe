@@ -9,6 +9,7 @@ import {
   EditorState,
   AtomicBlockUtils
 } from "draft-js";
+import SplitPane from "react-split-pane";
 import moment from "moment";
 import "react-contexify/dist/ReactContexify.min.css";
 import HomeContainer from "../../containers/Home";
@@ -24,6 +25,7 @@ import { createFileStructure } from "../../utils/createFileTree";
 import { modals, notifications } from "../../utils/const";
 import { highlightColor } from "../../themes";
 import { setRenderOptions } from "./EditorColumn/Editor/exportToHTML";
+import "./home-page.css";
 
 const { GREY_HIGHLIGHT } = highlightColor;
 const {
@@ -600,45 +602,49 @@ class HomePage extends Component {
     return (
       <Wrapper>
         <Modal show={this.state.isModalOpen}>{this.getModalContent()}</Modal>
-        <Aside
-          isEditorToggled={this.state.isEditorToggled}
-          selectProjectDir={this.selectProjectDir}
-          tree={this.state.files}
-          activeNode={this.state.activeNode}
-          toggleModal={this.toggleModal}
-          channels={this.state.channels}
-          isModalOpen={this.state.isModalOpen}
-          selectChannelOrFile={this.selectChannelOrFile}
-          selectFile={this.selectFile}
-        />
-        <ThreadColumn
-          currentFiles={this.state.currentFiles}
-          currentChannel={this.getCurrentChannel()}
-          isEditorToggled={this.state.isEditorToggled}
-          showCode={this.state.showCode}
-          toggleModal={this.toggleModal}
-          toggleShouldShowCode={this.toggleShouldShowCode}
-          isModalOpen={this.state.isModalOpen}
-          threads={this.getCurrentThreads()}
-          selectThread={this.selectThread}
-          handleAddThread={this.handleAddThread}
-          handleDeleteThread={this.handleDeleteThread}
-          activeNode={this.state.activeNode}
-          absolutePath={this.state.absolutePath}
-        />
-        <EditorColumn
-          isEditorToggled={this.state.isEditorToggled}
-          toggleEditorHandler={this.toggleEditor}
-          toggleModal={this.toggleModal}
-          isModalOpen={this.state.isModalOpen}
-          currentDocument={this.state.currentDocument}
-          currentThread={this.state.currentThread}
-          updateDocumentState={this.updateDocumentState}
-          handleThreadTitleChange={this.handleThreadTitleChange}
-          saveWorkspace={this.saveWorkspace}
-          exportCurrentDocAsHTML={this.exportCurrentDocAsHTML}
-          handleAddEmbeddedContent={this.handleAddEmbeddedContent}
-        />
+        <SplitPane split="vertical" size="22%" allowResize={false}>
+          <Aside
+            isEditorToggled={this.state.isEditorToggled}
+            selectProjectDir={this.selectProjectDir}
+            tree={this.state.files}
+            activeNode={this.state.activeNode}
+            toggleModal={this.toggleModal}
+            channels={this.state.channels}
+            isModalOpen={this.state.isModalOpen}
+            selectChannelOrFile={this.selectChannelOrFile}
+            selectFile={this.selectFile}
+          />
+          <SplitPane split="vertical" defaultSize="35%">
+            <ThreadColumn
+              currentFiles={this.state.currentFiles}
+              currentChannel={this.getCurrentChannel()}
+              isEditorToggled={this.state.isEditorToggled}
+              showCode={this.state.showCode}
+              toggleModal={this.toggleModal}
+              toggleShouldShowCode={this.toggleShouldShowCode}
+              isModalOpen={this.state.isModalOpen}
+              threads={this.getCurrentThreads()}
+              selectThread={this.selectThread}
+              handleAddThread={this.handleAddThread}
+              handleDeleteThread={this.handleDeleteThread}
+              activeNode={this.state.activeNode}
+              absolutePath={this.state.absolutePath}
+            />
+            <EditorColumn
+              isEditorToggled={this.state.isEditorToggled}
+              toggleEditorHandler={this.toggleEditor}
+              toggleModal={this.toggleModal}
+              isModalOpen={this.state.isModalOpen}
+              currentDocument={this.state.currentDocument}
+              currentThread={this.state.currentThread}
+              updateDocumentState={this.updateDocumentState}
+              handleThreadTitleChange={this.handleThreadTitleChange}
+              saveWorkspace={this.saveWorkspace}
+              exportCurrentDocAsHTML={this.exportCurrentDocAsHTML}
+              handleAddEmbeddedContent={this.handleAddEmbeddedContent}
+            />
+          </SplitPane>
+        </SplitPane>
       </Wrapper>
     );
   }
