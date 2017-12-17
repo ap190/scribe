@@ -48,6 +48,7 @@ img.header-icon {
 }
 .m-node .node.is-active {
   background-color: #e0e6f6;
+  outline: none;
 }
 
 .f-no-select {

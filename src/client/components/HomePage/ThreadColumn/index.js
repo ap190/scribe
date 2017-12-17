@@ -41,7 +41,7 @@ class ThreadColumn extends Component {
   }
 
   isEditorToggledStyles() {
-    return this.props.isEditorToggled ? { display: "none" } : { flex: "1.2" };
+    return this.props.isEditorToggled ? { display: "none" } : { flex: "1" };
   }
 
   render() {

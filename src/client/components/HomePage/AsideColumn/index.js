@@ -32,7 +32,7 @@ class Aside extends Component {
   }
 
   isEditorToggledStyles() {
-    return this.props.isEditorToggled ? { display: "none" } : null;
+    return this.props.isEditorToggled ? { display: "none" } : { flex: "1" };
   }
 
   handleChange(tree) {
