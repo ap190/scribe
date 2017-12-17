@@ -1,9 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import ActionBarIcon from "../../../common/ActionBarIcon";
-import saveIcon from "../../../../../../public/assets/icons/save.png";
-import nextIcon from "../../../../../../public/assets/icons/next.png";
-import exportIcon from "../../../../../../public/assets/icons/export.png";
+import { lightTheme } from "../../../../utils/const";
 import fullScreenIcon from "../../../../../../public/assets/icons/full_screen.png";
 
 const EditorActionBar = ({
@@ -15,20 +13,24 @@ const EditorActionBar = ({
 }) => (
   <div className="editor-action-bar">
     <div className="editor-action-bar-icon-container">
-      <ActionBarIcon icon={saveIcon} title={"Save"} handleClick={handleSave} />
       <ActionBarIcon
-        icon={exportIcon}
+        icon={lightTheme.icons.save}
+        title={"Save"}
+        handleClick={handleSave}
+      />
+      <ActionBarIcon
+        icon={lightTheme.icons.export}
         title={"Export"}
         handleClick={() => handleExportToHTML()}
       />
       <ActionBarIcon
         title={isEditorToggled ? "Minimize" : "Maximize"}
-        icon={fullScreenIcon}
+        icon={lightTheme.icons.maximize}
         handleClick={handleMaximize}
       />
       <ActionBarIcon
         title={"Next"}
-        icon={nextIcon}
+        icon={lightTheme.icons.next}
         handleClick={handleNextThread}
       />
     </div>
