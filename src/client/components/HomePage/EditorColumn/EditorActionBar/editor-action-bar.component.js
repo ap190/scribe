@@ -2,7 +2,6 @@ import React from "react";
 import PropTypes from "prop-types";
 import ActionBarIcon from "../../../common/ActionBarIcon";
 import { lightTheme } from "../../../../utils/const";
-import fullScreenIcon from "../../../../../../public/assets/icons/full_screen.png";
 
 const EditorActionBar = ({
   handleSave,

@@ -1,9 +1,15 @@
+const electron = require("electron");
 const fs = require("fs");
 const path = require("path");
 const jsonfile = require("jsonfile");
 const { SCRIBE_FILE_PATHS } = require("../consts");
 const { getDirSelectionFromUser } = require("../dialogs");
 const { mainWindow } = require("../../electron-main");
+
+// Get path to store images
+const userDataPath = (electron.app || electron.remote.app).getPath("userData");
+const scribeImgDir = path.join(userDataPath, "img");
+const getScribeImgPath = imgID => path.join(userDataPath, "img", imgID);
 
 const jsonpath = path.join(
   __dirname,
@@ -15,6 +21,14 @@ const jsonpath = path.join(
 const createLoadableWorkspacePath = userSelectedDir => {
   if (!userSelectedDir) return null;
   return path.join(userSelectedDir, SCRIBE_FILE_PATHS.SCRIBE_DATA);
+};
+
+const copyImageToScribeDir = (imgID, srcPath, finalPath) => {
+  console.log("src path", srcPath);
+  console.log("final path", finalPath);
+  const inStr = fs.createReadStream(srcPath);
+  const outStr = fs.createWriteStream(finalPath);
+  inStr.pipe(outStr);
 };
 
 exports.genLoadData = event => {
@@ -35,8 +49,6 @@ exports.genFetchFileContent = (event, filePath) => {
 
 exports.loadWorkspace = (targetWindow, dir) => {
   const userSelectedScribePath = createLoadableWorkspacePath(dir);
-  console.log("#############");
-  console.log(userSelectedScribePath);
   if (!userSelectedScribePath || !dir) return;
   if (fs.existsSync(userSelectedScribePath)) {
     jsonfile.readFile(userSelectedScribePath, "utf8", (err, data) => {
@@ -52,6 +64,20 @@ exports.loadWorkspace = (targetWindow, dir) => {
 
 exports.createNewWorkspace = targetWindow => {
   targetWindow.webContents.send("create-new-workspace");
+};
+
+exports.genSaveImage = (event, imgID, imgPath) => {
+  console.log("###########");
+  const scribeImgPath = getScribeImgPath(imgID);
+  if (fs.existsSync(scribeImgDir)) {
+    console.log("2");
+    copyImageToScribeDir(imgID, imgPath, scribeImgPath);
+    return;
+  }
+  fs.mkdir(scribeImgDir, e => {
+    console.log("3");
+    copyImageToScribeDir(imgID, imgPath, scribeImgPath);
+  });
 };
 
 exports.genSaveWorkspace = (event, workspace, userSelectedDir) => {
