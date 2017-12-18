@@ -1,17 +1,20 @@
-import notifIcon from "../../../public/assets/rich-notifications/disk.png";
-import seperatorLight from "../../../public/assets/icons/seperator.svg";
-import imageEmbedLight from "../../../public/assets/icons/image.svg";
-import contentEmbedLight from "../../../public/assets/icons/code.svg";
 import addEditorLight from "../../../public/assets/icons/add-editor-light.svg";
+import contentEmbedLight from "../../../public/assets/icons/code.svg";
 import editorActionBarSaveLight from "../../../public/assets/icons/save.svg";
 import editorActionBarExportLight from "../../../public/assets/icons/export.svg";
 import editorActionBarNextLight from "../../../public/assets/icons/next.svg";
 import editorActionBarMaximizeLight from "../../../public/assets/icons/maximize.svg";
+import folderLight from "../../../public/assets/icons/folder-light.svg";
+import imageEmbedLight from "../../../public/assets/icons/image.svg";
+import imageFileLight from "../../../public/assets/icons/image-file-light.svg";
+import notifIcon from "../../../public/assets/rich-notifications/disk.png";
+import seperatorLight from "../../../public/assets/icons/seperator.svg";
+import textFileLight from "../../../public/assets/icons/text-file-light.svg";
 
 exports.modals = {
   ASIDE_CREATE_CHANNEL_MODAL: "aside_create_channel_modal",
-  HIGHLIGHT_THREAD_MODAL: "highlight_thread_modal",
-  EMBED_CONTENT_MODAL: "embed_content_modal"
+  EMBED_CONTENT_MODAL: "embed_content_modal",
+  HIGHLIGHT_THREAD_MODAL: "highlight_thread_modal"
 };
 
 exports.stringConstants = {
@@ -37,13 +40,16 @@ exports.graphCoolConstants = {
 
 exports.lightTheme = {
   icons: {
-    contentEmbed: contentEmbedLight,
-    imageEmbed: imageEmbedLight,
-    seperator: seperatorLight,
     addEditor: addEditorLight,
-    save: editorActionBarSaveLight,
+    contentEmbed: contentEmbedLight,
     export: editorActionBarExportLight,
+    folder: folderLight,
+    imageEmbed: imageEmbedLight,
+    imageFile: imageFileLight,
+    maximize: editorActionBarMaximizeLight,
     next: editorActionBarNextLight,
-    maximize: editorActionBarMaximizeLight
+    save: editorActionBarSaveLight,
+    seperator: seperatorLight,
+    textFile: textFileLight
   }
 };
