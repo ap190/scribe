@@ -23,12 +23,27 @@ const createLoadableWorkspacePath = userSelectedDir => {
   return path.join(userSelectedDir, SCRIBE_FILE_PATHS.SCRIBE_DATA);
 };
 
-const copyImageToScribeDir = (imgID, srcPath, finalPath) => {
-  console.log("src path", srcPath);
-  console.log("final path", finalPath);
+const copyImageToScribeDir = async (srcPath, finalPath) => {
   const inStr = fs.createReadStream(srcPath);
   const outStr = fs.createWriteStream(finalPath);
-  inStr.pipe(outStr);
+  await inStr.pipe(outStr);
+  return;
+};
+
+const copyFile = (source, target) => {
+  return new Promise(function(resolve, reject) {
+    var rd = fs.createReadStream(source);
+    rd.on("error", rejectCleanup);
+    var wr = fs.createWriteStream(target);
+    wr.on("error", rejectCleanup);
+    function rejectCleanup(err) {
+      rd.destroy();
+      wr.end();
+      reject(err);
+    }
+    wr.on("finish", resolve);
+    rd.pipe(wr);
+  });
 };
 
 exports.genLoadData = event => {
@@ -66,18 +81,25 @@ exports.createNewWorkspace = targetWindow => {
   targetWindow.webContents.send("create-new-workspace");
 };
 
-exports.genSaveImage = (event, imgID, imgPath) => {
-  console.log("###########");
+exports.genSaveImage = async (event, imgID, imgPath) => {
   const scribeImgPath = getScribeImgPath(imgID);
   if (fs.existsSync(scribeImgDir)) {
-    console.log("2");
-    copyImageToScribeDir(imgID, imgPath, scribeImgPath);
+    try {
+      await copyFile(imgPath, scribeImgPath);
+    } catch (e) {
+      console.error("Copying image failed", e);
+    }
+    event.sender.send("img-saved", scribeImgPath);
     return;
   }
-  fs.mkdir(scribeImgDir, e => {
-    console.log("3");
-    copyImageToScribeDir(imgID, imgPath, scribeImgPath);
-  });
+  fs.mkdirSync(scribeImgDir);
+  try {
+    await copyFile(imgPath, scribeImgPath);
+  } catch (e) {
+    console.error("Copying image failed", e);
+  }
+  event.sender.send("img-saved", scribeImgPath);
+  return;
 };
 
 exports.genSaveWorkspace = (event, workspace, userSelectedDir) => {

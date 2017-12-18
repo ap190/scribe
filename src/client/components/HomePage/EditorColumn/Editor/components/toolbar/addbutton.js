@@ -28,8 +28,8 @@ class AddButton extends Component {
   // To show + button only when text length == 0
   componentWillReceiveProps(newProps) {
     const { editorState } = newProps;
-    const contentState = editorState.getCurrentContent();
     const selectionState = editorState.getSelection();
+    const contentState = editorState.getCurrentContent();
     if (
       !selectionState.isCollapsed() ||
       selectionState.anchorKey !== selectionState.focusKey ||
