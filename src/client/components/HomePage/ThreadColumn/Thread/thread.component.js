@@ -21,7 +21,7 @@ const Thread = props => (
       <div className="date">{props.date}</div>
       <div className="body-content">{props.text}</div>
     </div>
-    <div>
+    <div className="delete-container">
       <img
         className="delete-icon"
         src={deleteIcon}

@@ -602,7 +602,7 @@ class HomePage extends Component {
     return (
       <Wrapper>
         <Modal show={this.state.isModalOpen}>{this.getModalContent()}</Modal>
-        <SplitPane split="vertical" size="22%" allowResize={false}>
+        <SplitPane split="vertical" size="22%">
           <Aside
             isEditorToggled={this.state.isEditorToggled}
             selectProjectDir={this.selectProjectDir}
