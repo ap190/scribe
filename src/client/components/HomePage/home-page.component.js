@@ -18,6 +18,9 @@ import Loading from "../common/Loading";
 import ThreadColumn from "./ThreadColumn";
 import Aside from "./AsideColumn";
 import EditorColumn from "./EditorColumn";
+import { addNewBlock } from "./editor.api";
+import { handleDeleteChannel } from "./channels.api";
+import { Block } from "./EditorColumn/Editor/util/constants";
 import ChannelModal from "../common/Modal/channelModal.component";
 import EmbedContentModal from "../common/Modal/embedContentModal.component";
 import ThreadModal from "../common/Modal/threadModal.component";
@@ -93,6 +96,9 @@ class HomePage extends Component {
     this.selectThread = this.selectThread.bind(this);
     this.toggleModal = this.toggleModal.bind(this);
     this.handleAddChannel = this.handleAddChannel.bind(this);
+    this.handleDeleteChannelWrapper = this.handleDeleteChannelWrapper.bind(
+      this
+    );
     this.handleAddEmbeddedContent = this.handleAddEmbeddedContent.bind(this);
     this.handleAddThread = this.handleAddThread.bind(this);
     this.createNewFileChannel = this.createNewFileChannel.bind(this);
@@ -113,6 +119,10 @@ class HomePage extends Component {
 
     ipcRenderer.on("create-new-workspace", () => {
       this.setState({ channels: [] });
+    });
+
+    ipcRenderer.on("img-saved", (event, filePath) => {
+      this.handleAddImage(filePath);
     });
 
     ipcRenderer.on("load-file-res", (event, channels, userSelectedDir) => {
@@ -320,11 +330,36 @@ class HomePage extends Component {
     });
   }
 
+  async handleDeleteChannelWrapper(id = null) {
+    if (!id || typeof id !== "string" || !this.state.channels) return;
+    const updatedChannels = handleDeleteChannel(id, this.state.channels);
+    console.log(updatedChannels);
+    await this.setState({
+      isModalOpen: false,
+      currentThread: undefined,
+      currentDocument: EditorState.createEmpty(),
+      channels: updatedChannels
+    });
+    return;
+  }
+
   async fetchSelectedFileContent(filePath) {
     ipcRenderer.send("fetch-file", filePath, this.state.currentFiles);
   }
 
-  handleAddEmbeddedContent(url = null) {
+  async handleAddImage(src = null) {
+    if (!src || !this.state.currentDocument) return;
+    const newEditorState = addNewBlock(
+      this.state.currentDocument,
+      Block.IMAGE,
+      {
+        src: `file:///${src}`
+      }
+    );
+    await this.updateDocumentState(newEditorState);
+  }
+
+  async handleAddEmbeddedContent(url = null) {
     if (!url || !this.state.currentDocument) return;
     const { currentDocument } = this.state;
     const contentWithEntity = currentDocument
@@ -343,7 +378,7 @@ class HomePage extends Component {
       entityKey,
       "E"
     );
-    this.updateDocumentState(newEditorState);
+    await this.updateDocumentState(newEditorState);
   }
 
   async updateDocumentState(currentDocument) {
@@ -613,6 +648,7 @@ class HomePage extends Component {
             isModalOpen={this.state.isModalOpen}
             selectChannelOrFile={this.selectChannelOrFile}
             selectFile={this.selectFile}
+            handleDeleteChannel={this.handleDeleteChannelWrapper}
           />
           <SplitPane split="vertical" defaultSize="35%">
             <ThreadColumn

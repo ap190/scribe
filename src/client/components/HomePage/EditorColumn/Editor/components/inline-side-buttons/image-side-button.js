@@ -1,8 +1,6 @@
 import PropTypes from "prop-types";
 import React, { Component } from "react";
 import UUIDv4 from "uuid/v4";
-import { addNewBlock } from "../../model";
-import { Block } from "../../util/constants";
 import { lightTheme } from "../../../../../../utils/const";
 
 const electron = window.require("electron");
@@ -25,13 +23,13 @@ class ImageButton extends Component {
     const file = e.target.files[0];
     if (file.type.indexOf("image/") === 0) {
       const imgID = UUIDv4(10);
-      const src = `file:///${file.path}`;
       ipcRenderer.send("save-img", imgID, file.path);
-      this.props.setEditorState(
-        addNewBlock(this.props.getEditorState(), Block.IMAGE, {
-          src
-        })
-      );
+      // const src = `file:///${file.path}`;
+      // this.props.setEditorState(
+      //   addNewBlock(this.props.getEditorState(), Block.IMAGE, {
+      //     src
+      //   })
+      // );
     }
     this.props.close();
   }

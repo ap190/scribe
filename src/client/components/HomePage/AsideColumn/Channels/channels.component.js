@@ -20,6 +20,7 @@ const Channels = props => (
     <ChannelList
       channels={props.channels}
       selectChannelOrFile={props.selectChannelOrFile}
+      handleDeleteChannel={props.handleDeleteChannel}
     />
   </div>
 );
@@ -28,7 +29,8 @@ Channels.propTypes = {
   title: PropTypes.string.isRequired,
   toggleModal: PropTypes.func.isRequired,
   channels: PropTypes.array.isRequired,
-  selectChannelOrFile: PropTypes.func.isRequired
+  selectChannelOrFile: PropTypes.func.isRequired,
+  handleDeleteChannel: PropTypes.func.isRequired
 };
 
 export default Channels;
