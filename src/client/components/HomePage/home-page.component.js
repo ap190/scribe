@@ -331,8 +331,15 @@ class HomePage extends Component {
   }
 
   async handleDeleteChannelWrapper(id = null) {
-    if (!id || !this.state.channels) return;
+    if (!id || typeof id !== "string" || !this.state.channels) return;
     const updatedChannels = handleDeleteChannel(id, this.state.channels);
+    console.log(updatedChannels);
+    await this.setState({
+      isModalOpen: false,
+      currentThread: undefined,
+      currentDocument: EditorState.createEmpty(),
+      channels: updatedChannels
+    });
     return;
   }
 
