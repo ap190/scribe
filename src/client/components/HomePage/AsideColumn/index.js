@@ -73,7 +73,8 @@ class Aside extends Component {
       selectProjectDir,
       selectFile,
       activeNode,
-      selectChannelOrFile
+      selectChannelOrFile,
+      handleDeleteChannel
     } = this.props;
     return (
       <div style={{ ...styles, ...this.isEditorToggledStyles() }}>
@@ -82,6 +83,7 @@ class Aside extends Component {
           toggleModal={toggleModal}
           channels={channels}
           selectChannelOrFile={selectChannelOrFile}
+          handleDeleteChannel={handleDeleteChannel}
         />
         <Tree
           title={"Project"}
@@ -109,7 +111,8 @@ Aside.propTypes = {
   selectChannelOrFile: PropTypes.func.isRequired,
   selectFile: PropTypes.func.isRequired,
   activeNode: PropTypes.any,
-  isModalOpen: PropTypes.bool
+  isModalOpen: PropTypes.bool,
+  handleDeleteChannel: PropTypes.func.isRequired
 };
 
 export default Aside;

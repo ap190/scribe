@@ -18,6 +18,7 @@ import ThreadColumn from "./ThreadColumn";
 import Aside from "./AsideColumn";
 import EditorColumn from "./EditorColumn";
 import { addNewBlock } from "./editor.api";
+import { handleDeleteChannel } from "./channels.api";
 import { Block } from "./EditorColumn/Editor/util/constants";
 import ChannelModal from "../common/Modal/channelModal.component";
 import EmbedContentModal from "../common/Modal/embedContentModal.component";
@@ -93,6 +94,9 @@ class HomePage extends Component {
     this.selectThread = this.selectThread.bind(this);
     this.toggleModal = this.toggleModal.bind(this);
     this.handleAddChannel = this.handleAddChannel.bind(this);
+    this.handleDeleteChannelWrapper = this.handleDeleteChannelWrapper.bind(
+      this
+    );
     this.handleAddEmbeddedContent = this.handleAddEmbeddedContent.bind(this);
     this.handleAddThread = this.handleAddThread.bind(this);
     this.createNewFileChannel = this.createNewFileChannel.bind(this);
@@ -324,13 +328,18 @@ class HomePage extends Component {
     });
   }
 
+  async handleDeleteChannelWrapper(id = null) {
+    if (!id || !this.state.channels) return;
+    const updatedChannels = handleDeleteChannel(id, this.state.channels);
+    return;
+  }
+
   async fetchSelectedFileContent(filePath) {
     ipcRenderer.send("fetch-file", filePath, this.state.currentFiles);
   }
 
   async handleAddImage(src = null) {
     if (!src || !this.state.currentDocument) return;
-    console.log("src is", src);
     const newEditorState = addNewBlock(
       this.state.currentDocument,
       Block.IMAGE,
@@ -629,6 +638,7 @@ class HomePage extends Component {
           isModalOpen={this.state.isModalOpen}
           selectChannelOrFile={this.selectChannelOrFile}
           selectFile={this.selectFile}
+          handleDeleteChannel={this.handleDeleteChannelWrapper}
         />
         <ThreadColumn
           currentFiles={this.state.currentFiles}

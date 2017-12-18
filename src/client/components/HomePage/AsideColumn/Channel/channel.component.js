@@ -1,14 +1,18 @@
 import React from "react";
 import PropTypes from "prop-types";
+import { ContextMenuProvider } from "react-contexify";
+import ChannelContextMenu from "../../../common/ChannelContextMenu";
+import "react-contexify/dist/ReactContexify.min.css";
 import "./channel.css";
 
 const Channel = props =>
   props.channelType === "communication" ? (
-    <div
-      className="channel-highlight"
+    <ContextMenuProvider
+      id="menu_id"
+      className="channel-container"
       style={props.selected ? { backgroundColor: "#e0e6f6" } : null}
     >
-      <div className="channel-container">
+      <div onClick={props.handleDeleteChannel}>
         <div
           className="channel-list-item"
           onClick={() => props.selectChannelOrFile(props.channelType, props.id)}
@@ -17,7 +21,11 @@ const Channel = props =>
           <div className="channel-list-item-last-post">{props.lastPosted}</div>
         </div>
       </div>
-    </div>
+      <ChannelContextMenu
+        channelID={props.id}
+        handleDeleteChannel={props.handleDeleteChannel}
+      />
+    </ContextMenuProvider>
   ) : null;
 
 Channel.defaultProps = {
@@ -31,7 +39,8 @@ Channel.propTypes = {
   lastPosted: PropTypes.string.isRequired,
   channelType: PropTypes.string.isRequired,
   selectChannelOrFile: PropTypes.func.isRequired,
-  selected: PropTypes.bool
+  selected: PropTypes.bool,
+  handleDeleteChannel: PropTypes.func.isRequired
 };
 
 export default Channel;
