@@ -49,7 +49,7 @@ class EditorColumn extends Component {
       exportCurrentDocAsHTML
     } = this.props;
     return (
-      <div className="editor" style={this.isEditorToggledStyle()}>
+      <div className="editor">
         <EditorActionBar
           handleSave={saveWorkspace}
           handleExportToHTML={exportCurrentDocAsHTML}

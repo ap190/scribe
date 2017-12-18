@@ -6,6 +6,7 @@ const { HIGHLIGHT_THREAD_MODAL } = modals;
 const styles = {
   minHeight: "100px",
   width: "5px",
+  minWidth: "5px",
   borderRadius: "25px",
   cursor: "pointer"
 };
