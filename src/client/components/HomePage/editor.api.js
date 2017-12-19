@@ -1,4 +1,4 @@
-import { EditorState } from "draft-js";
+import { EditorState, Modifier } from "draft-js";
 import { Block } from "./EditorColumn/Editor/util/constants";
 
 export const getCurrentBlock = editorState => {
@@ -49,3 +49,13 @@ export const addNewBlock = (
   }
   return editorState;
 };
+
+export const handleAddText = (currentEditorState, text) =>
+  EditorState.push(
+    currentEditorState,
+    Modifier.insertText(
+      currentEditorState.getCurrentContent(),
+      currentEditorState.getSelection(),
+      text
+    )
+  );
