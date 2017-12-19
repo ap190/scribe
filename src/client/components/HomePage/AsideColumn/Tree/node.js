@@ -2,10 +2,7 @@ import cx from "classnames";
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import mime from "mime-types";
-
-const folderIcon = "./assets/icons/folder.png";
-const imageFileIcon = "./assets/icons/image_file.png";
-const textFileIcon = "./assets/icons/text_file.png";
+import { lightTheme } from "../../../../utils/const";
 
 class UITreeNode extends Component {
   constructor(props) {
@@ -50,13 +47,13 @@ class UITreeNode extends Component {
     }
     let caretIcon;
     if (index.children) {
-      caretIcon = folderIcon;
+      caretIcon = lightTheme.icons.folder;
     } else {
       const mimeType = mime.lookup(index.node.module);
       caretIcon =
         mimeType && mimeType.split("/")[0] === "image"
-          ? imageFileIcon
-          : textFileIcon;
+          ? lightTheme.icons.imageFile
+          : lightTheme.icons.textFile;
     }
     return <img className="node-icon" src={caretIcon} />;
   }
