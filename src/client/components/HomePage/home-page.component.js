@@ -7,9 +7,11 @@ import {
   convertToRaw,
   convertFromRaw,
   EditorState,
-  AtomicBlockUtils
+  AtomicBlockUtils,
+  Modifier
 } from "draft-js";
 import SplitPane from "react-split-pane";
+import R from "ramda";
 import moment from "moment";
 import "react-contexify/dist/ReactContexify.min.css";
 import HomeContainer from "../../containers/Home";
@@ -18,7 +20,7 @@ import Loading from "../common/Loading";
 import ThreadColumn from "./ThreadColumn";
 import Aside from "./AsideColumn";
 import EditorColumn from "./EditorColumn";
-import { addNewBlock } from "./editor.api";
+import { addNewBlock, handleAddText } from "./editor.api";
 import { handleDeleteChannel } from "./channels.api";
 import { Block } from "./EditorColumn/Editor/util/constants";
 import ChannelModal from "../common/Modal/channelModal.component";
@@ -100,6 +102,7 @@ class HomePage extends Component {
       this
     );
     this.handleAddEmbeddedContent = this.handleAddEmbeddedContent.bind(this);
+    this.handleAddTextWrapper = this.handleAddTextWrapper.bind(this);
     this.handleAddThread = this.handleAddThread.bind(this);
     this.createNewFileChannel = this.createNewFileChannel.bind(this);
     this.handleChangeThreadColor = this.handleChangeThreadColor.bind(this);
@@ -121,16 +124,23 @@ class HomePage extends Component {
       this.setState({ channels: [] });
     });
 
+    ipcRenderer.on("create-new-clipping", (event, copiedText) => {
+      this.handleAddTextWrapper(copiedText);
+    });
+
     ipcRenderer.on("img-saved", (event, filePath) => {
       this.handleAddImage(filePath);
     });
 
-    ipcRenderer.on("load-file-res", (event, channels, userSelectedDir) => {
-      this.setState({
-        channels,
-        userSelectedDir
-      });
-    });
+    ipcRenderer.on(
+      "load-file-res",
+      async (event, channels, userSelectedDir) => {
+        await this.setState({
+          channels,
+          userSelectedDir
+        });
+      }
+    );
 
     ipcRenderer.on("save-workspace", () => {
       return this.saveWorkspace();
@@ -357,6 +367,12 @@ class HomePage extends Component {
       }
     );
     await this.updateDocumentState(newEditorState);
+  }
+
+  async handleAddTextWrapper(text = null) {
+    if (!text || !this.state.currentDocument) return;
+    const updatedEditorState = handleAddText(this.state.currentDocument, text);
+    await this.updateDocumentState(updatedEditorState);
   }
 
   async handleAddEmbeddedContent(url = null) {
