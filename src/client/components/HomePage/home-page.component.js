@@ -125,6 +125,7 @@ class HomePage extends Component {
     });
 
     ipcRenderer.on("create-new-clipping", (event, copiedText) => {
+      console.log("CREATING NEW CLIPPING");
       this.handleAddTextWrapper(copiedText);
     });
 

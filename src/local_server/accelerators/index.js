@@ -7,10 +7,34 @@ const electron = require("electron");
 const userDataPath = (electron.app || electron.remote.app).getPath("userData");
 const imgpath = path.join(userDataPath, "scribeimg");
 
+const textHasDiff = (a, b) => b !== a;
+const imageHasDiff = (a, b) =>
+  (b && !a) ||
+  (typeof a.toDataURL === "function" &&
+    typeof b.toDataURL === "function" &&
+    b.toDataURL() !== a.toDataURL());
+let lastText = undefined;
+let lastImg = undefined;
+
 registerGlobalShortcuts = (globalShortcut, clipboard, mainWindow) => {
   const createClipping = globalShortcut.register("CommandOrControl+H", () => {
-    let copiedText = clipboard.readText();
-    mainWindow.webContents.send("create-new-clipping", copiedText); // need to open window first
+    const text = clipboard.readText();
+    const image = clipboard.readImage();
+
+    console.log("*********");
+
+    if (imageHasDiff(lastImg, image)) {
+      console.log(`image is ${image}`);
+      mainWindow.webContents.send("img-saved", image);
+      lastImg = image;
+      return;
+    }
+
+    if (textHasDiff(lastText, text)) {
+      console.log(`text is ${text}`);
+      mainWindow.webContents.send("create-new-clipping", text);
+      lastText = text;
+    }
   });
 
   const saveWorkspace = globalShortcut.register("CommandOrControl+B", () => {
