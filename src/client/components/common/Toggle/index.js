@@ -6,9 +6,7 @@ import "./index.css";
 class Toggle extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      on: false
-    };
+    this.state = { on: props.value };
     this.toggle = this.toggle.bind(this);
   }
   toggle() {
@@ -20,7 +18,7 @@ class Toggle extends Component {
     );
   }
   render() {
-    const { on } = this.state;
+    const on = this.props.value;
     return <Switch on={on} onClick={this.toggle} />;
   }
 }
@@ -30,7 +28,8 @@ Toggle.defaultProps = {
 };
 
 Toggle.propTypes = {
-  onToggle: PropTypes.bool.isRequired
+  value: PropTypes.bool.isRequired,
+  onToggle: PropTypes.func.isRequired
 };
 
 export default Toggle;
