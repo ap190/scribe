@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import styled from "styled-components";
+import axios from "axios";
 import { graphql, compose } from "react-apollo";
 import gql from "graphql-tag";
 import { graphCoolConstants } from "../../utils/const";
@@ -68,6 +69,7 @@ class LoginPage extends Component {
     this.componentDidMount = this.componentDidMount.bind(this);
     this.handleFBLogin = this.handleFBLogin.bind(this);
     this.facebookCallback = this.facebookCallback.bind(this);
+    this.syncToCloud = this.syncToCloud.bind(this);
   }
 
   componentDidMount() {
@@ -131,6 +133,23 @@ class LoginPage extends Component {
     localStorage.setItem(GC_USER_ID, id);
     localStorage.setItem(GC_AUTH_TOKEN, token);
   }
+
+  syncToCloud(e) {
+    let data = new FormData();
+    console.log(`file si `, e.target.files[0]);
+    data.append("data", e.target.files[0]);
+    axios
+      .post("https://api.graph.cool/file/v1/cjb6feu9323cp0133gc3vuant", data, {
+        headers: {
+          "Content-Type": "multipart/form-data"
+        }
+      })
+      .then(response => {
+        console.log("file upload response", response);
+      })
+      .catch(err => console.log(`Err msg is ${err}`));
+  }
+
   render() {
     return (
       <Background>
@@ -175,6 +194,9 @@ class LoginPage extends Component {
             >
               Log in with Facebook
             </button>
+          </Section>
+          <Section>
+            <input name="Cloud Sync" type="file" onChange={this.syncToCloud} />
           </Section>
         </Form>
       </Background>

@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import UUIDv4 from "uuid/v4";
 import path from "path";
+import axios from "axios";
 import styled from "styled-components";
 import { compose } from "recompose";
 import {
@@ -111,6 +112,7 @@ class HomePage extends Component {
     this.getModalContent = this.getModalContent.bind(this);
     this.selectFile = this.selectFile.bind(this);
     this.saveWorkspace = this.saveWorkspace.bind(this);
+    this.uploadFile = this.uploadFile.bind(this);
     this.exportCurrentDocAsHTML = this.exportCurrentDocAsHTML.bind(this);
     this.currentWindow = currentWindow;
   }
@@ -131,9 +133,15 @@ class HomePage extends Component {
       this.handleAddImage(filePath);
     });
 
+    ipcRenderer.on("sync-to-cloud", (event, files) => {
+      this.uploadFile(files);
+    });
+
     ipcRenderer.on(
       "load-file-res",
       async (event, channels, userSelectedDir) => {
+        console.log(`user seelected dir is `, channels);
+        // this.uploadFile(JSON.stringify(channels));
         await this.setState({
           channels,
           userSelectedDir
@@ -162,6 +170,22 @@ class HomePage extends Component {
         notifications.SAVE_DOCUMENT_RICH
       );
     });
+  }
+
+  uploadFile(files) {
+    let data = new FormData();
+    console.log(`file si `, files[0]);
+    data.append("data", files[0]);
+    axios
+      .post("https://api.graph.cool/file/v1/cjb6feu9323cp0133gc3vuant", data, {
+        headers: {
+          "Content-Type": "multipart/form-data"
+        }
+      })
+      .then(response => {
+        console.log("file upload response", response);
+      })
+      .catch(err => console.log(`Err msg is ${err}`));
   }
 
   getCurrentThread(threads) {

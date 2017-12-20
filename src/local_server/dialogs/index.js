@@ -76,6 +76,14 @@ const getDirSelectionFromUser = targetWindow => {
   return files[0];
 };
 
+const getFileForCloudSync = targetWindow => {
+  const files = dialog.showOpenDialog(targetWindow, {
+    buttonLabel: "File to Sync"
+  });
+  if (!files) return;
+  targetWindow.webContents.send("sync-to-cloud", files);
+};
+
 const openWorkspaceDialog = browserWindow => {
   const directory = dialog.showOpenDialog(browserWindow, {
     properties: ["openDirectory"]
@@ -100,5 +108,6 @@ module.exports = {
   getFileSelectionFromUser,
   getDirData,
   openFile,
-  getDirSelectionFromUser
+  getDirSelectionFromUser,
+  getFileForCloudSync
 };

@@ -1,6 +1,7 @@
 const electron = require("electron");
 const { BrowserWindow, ipcMain } = electron;
 const fs = require("fs");
+const axios = require("axios");
 const path = require("path");
 const jsonfile = require("jsonfile");
 const { SCRIBE_FILE_PATHS } = require("../consts");

@@ -2,7 +2,8 @@ const { app, Menu, shell } = require("electron");
 const {
   showMessage,
   showSaveDialog,
-  openWorkspaceDialog
+  openWorkspaceDialog,
+  getFileForCloudSync
 } = require("../dialogs");
 const { loadWorkspace, createNewWorkspace } = require("../fileHandlers");
 
@@ -25,9 +26,7 @@ function setMainMenu(mainWindow) {
             loadWorkspace(mainWindow, directory);
           }
         },
-        {
-          type: "separator"
-        },
+        { type: "separator" },
         {
           label: "Save",
           click() {
@@ -38,6 +37,12 @@ function setMainMenu(mainWindow) {
           label: "Save Memory Usage Info",
           click() {
             showSaveDialog(mainWindow);
+          }
+        },
+        {
+          label: "Sync to Cloud",
+          click() {
+            getFileForCloudSync(mainWindow);
           }
         },
         {
@@ -57,61 +62,24 @@ function setMainMenu(mainWindow) {
     {
       label: "Edit",
       submenu: [
-        {
-          role: "undo",
-          label: "Undo"
-        },
-        {
-          role: "redo",
-          label: "Redo"
-        },
-        {
-          type: "separator"
-        },
-        {
-          role: "cut",
-          label: "Cut"
-        },
-        {
-          role: "copy",
-          label: "Copy"
-        },
-        {
-          role: "paste",
-          label: "Paste"
-        },
-        {
-          role: "delete",
-          label: "Delete"
-        },
-        {
-          role: "selectall",
-          label: "Select all"
-        }
+        { role: "undo", label: "Undo" },
+        { role: "redo", label: "Redo" },
+        { type: "separator" },
+        { role: "cut", label: "Cut" },
+        { role: "copy", label: "Copy" },
+        { role: "paste", label: "Paste" },
+        { role: "delete", label: "Delete" },
+        { role: "selectall", label: "Select all" }
       ]
     },
     {
       label: "View",
       submenu: [
-        {
-          role: "resetzoom",
-          label: "Actual size"
-        },
-        {
-          role: "zoomin",
-          label: "Zoom in"
-        },
-        {
-          role: "zoomout",
-          label: "Zoom out"
-        },
-        {
-          type: "separator"
-        },
-        {
-          role: "togglefullscreen",
-          label: "Toggle fullscreen"
-        },
+        { role: "resetzoom", label: "Actual size" },
+        { role: "zoomin", label: "Zoom in" },
+        { role: "zoomout", label: "Zoom out" },
+        { type: "separator" },
+        { role: "togglefullscreen", label: "Toggle fullscreen" },
         {
           label: "Toggle Developer Tools",
           accelerator:
@@ -134,14 +102,8 @@ function setMainMenu(mainWindow) {
       role: "window",
       label: "Window",
       submenu: [
-        {
-          role: "minimize",
-          label: "Minimize"
-        },
-        {
-          role: "close",
-          label: "Close"
-        }
+        { role: "minimize", label: "Minimize" },
+        { role: "close", label: "Close" }
       ]
     },
     {

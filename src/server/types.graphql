@@ -22,3 +22,14 @@ type FacebookUser @model {
   email: String # optional, because it's obtained from Facebook API
   user: User @relation(name: "FacebookUsertoUser")
 }
+
+type File @model {
+  id: ID! @isUnique
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  contentType: String
+  name: String
+  secret: String @isUnique
+  size: Int
+  url: String
+}
