@@ -1,10 +1,12 @@
 const electron = require("electron");
+const { BrowserWindow, ipcMain } = electron;
 const fs = require("fs");
 const path = require("path");
 const jsonfile = require("jsonfile");
 const { SCRIBE_FILE_PATHS } = require("../consts");
 const { getDirSelectionFromUser } = require("../dialogs");
 const { mainWindow } = require("../../electron-main");
+const FB = require("fb");
 
 // Get path to store images
 const userDataPath = (electron.app || electron.remote.app).getPath("userData");
@@ -17,6 +19,57 @@ const jsonpath = path.join(
   "data",
   SCRIBE_FILE_PATHS.SCRIBE_DATA
 );
+
+exports.genFBLogin = (event, closuredWindow) => {
+  let finalRes = undefined;
+  const options = {
+    client_id: "194063647811624",
+    scopes: "public_profile",
+    redirect_uri: "https://www.facebook.com/connect/login_success.html"
+  };
+  const authWindow = new BrowserWindow({
+    width: 450,
+    height: 300,
+    show: false,
+    parent: closuredWindow,
+    modal: true,
+    webPreferences: { nodeIntegration: false }
+  });
+  console.log(closuredWindow);
+  const facebookAuthURL =
+    "https://www.facebook.com/v2.8/dialog/oauth?client_id=" +
+    options.client_id +
+    "&redirect_uri=" +
+    options.redirect_uri +
+    "&response_type=token,granted_scopes&scope=" +
+    options.scopes +
+    "&display=popup";
+  authWindow.loadURL(facebookAuthURL);
+  authWindow.show();
+  authWindow.webContents.on(
+    "did-get-redirect-request",
+    (event, oldUrl, newUrl) => {
+      var raw_code = /access_token=([^&]*)/.exec(newUrl) || null;
+      var access_token = raw_code && raw_code.length > 1 ? raw_code[1] : null;
+      var error = /\?error=(.+)$/.exec(newUrl);
+
+      if (access_token) {
+        FB.setAccessToken(access_token);
+        FB.api(
+          "/me",
+          { fields: ["id", "email", "name", "picture.width(800).height(800)"] },
+          res => {
+            closuredWindow.webContents.send("fb-auth", access_token, res);
+            authWindow.close();
+          }
+        );
+      }
+    }
+  );
+  console.log("33333333333");
+  console.log(mainWindow);
+  return finalRes;
+};
 
 const createLoadableWorkspacePath = userSelectedDir => {
   if (!userSelectedDir) return null;

@@ -55,7 +55,7 @@ class UITreeNode extends Component {
           ? lightTheme.icons.imageFile
           : lightTheme.icons.textFile;
     }
-    return <img className="node-icon" src={caretIcon} />;
+    return <img className="node-icon" src={caretIcon} alt="Caret Icon" />;
   }
 
   renderChildren() {

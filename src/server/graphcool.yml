@@ -23,17 +23,17 @@ functions:
   facebookAuthentication:
     handler:
       code:
-        src: src/facebook/facebookAuthentication.js
+        src: ./src/facebook/facebookAuthentication.ts
     type: resolver
-    schema: src/facebook/facebookAuthentication.graphql
-
-  facebookLoggedInUser:
+    schema: ./src/facebook/facebookAuthentication.graphql
+    
+  loggedInFacebookUser:
     handler:
       code:
-        src: src/facebook/loggedInUser.js
+        src: ./src/facebook/loggedInUser.ts
     type: resolver
-    schema: src/facebook/loggedInUser.graphql
-
+    schema: ./src/facebook/loggedInUser.graphql
+# 
 permissions:
 - operation: "*"
 

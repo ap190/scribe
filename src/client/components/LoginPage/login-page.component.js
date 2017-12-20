@@ -4,6 +4,9 @@ import { graphql, compose } from "react-apollo";
 import gql from "graphql-tag";
 import { graphCoolConstants } from "../../utils/const";
 
+const electron = window.require("electron");
+const ipcRenderer = electron.ipcRenderer;
+
 const Background = styled.div`
   background-color: whitesmoke;
   display: flex;
@@ -11,7 +14,6 @@ const Background = styled.div`
   height: 100vh;
 `;
 
-//this.props.history.push("/home");
 const LeftImage = styled.div`
   background-image: url("https://images.unsplash.com/photo-1419407118704-43ccfda4036d?auto=format&fit=crop&w=2001&q=60&ixid=dW5zcGxhc2guY29tOzs7Ozs%3D");
   background-size: cover;
@@ -51,9 +53,6 @@ const Input = styled.input`
   }
 `;
 
-// const FACEBOOK_APP_ID = "194063647811624";
-// const FACEBOOK_API_VERSION = "v2.11";
-
 class LoginPage extends Component {
   constructor(props) {
     super(props);
@@ -65,58 +64,41 @@ class LoginPage extends Component {
     this.saveUserData = this.saveUserData.bind(this);
     this.authenticateUser = this.authenticateUser.bind(this);
     this.componentDidMount = this.componentDidMount.bind(this);
-    this.initializeFacebookSDK = this.initializeFacebookSDK.bind(this);
     this.handleFBLogin = this.handleFBLogin.bind(this);
     this.facebookCallback = this.facebookCallback.bind(this);
   }
 
   componentDidMount() {
-    this.initializeFacebookSDK();
-  }
-
-  initializeFacebookSDK() {
-    // window.fbAsyncInit = function() {
-    //   FB.init({
-    //     appId: FACEBOOK_APP_ID,
-    //     cookie: true, // enable cookies to allow the server to access the session
-    //     version: FACEBOOK_API_VERSION // use Facebook API version 2.10
-    //   });
-    // };
-
-    // // Load the SDK asynchronously
-    // (function(d, s, id) {
-    //   var js,
-    //     fjs = d.getElementsByTagName(s)[0];
-    //   if (d.getElementById(id)) return;
-    //   js = d.createElement(s);
-    //   js.id = id;
-    //   js.src = "//connect.facebook.net/en_US/sdk.js";
-    //   fjs.parentNode.insertBefore(js, fjs);
-    // })(document, "script", "facebook-jssdk");
-    console.log("initializing now..");
+    console.log("register....");
+    ipcRenderer.on("fb-auth", (event, token, res) =>
+      this.facebookCallback(token, res)
+    );
   }
 
   handleFBLogin() {
-    // FB.login(
-    //   response => {
-    //     this.facebookCallback(response);
-    //   },
-    //   { scope: "public_profile,email" }
-    // );
-    console.log("handling fb login");
+    ipcRenderer.send("login-with-fb");
   }
 
-  async facebookCallback(facebookResponse) {
-    if (facebookResponse.status === "connected") {
-      const facebookToken = facebookResponse.authResponse.accessToken;
-      const graphcoolResponse = await this.props.authenticateFacebookUserMutation(
-        {
+  async facebookCallback(facebookToken, res) {
+    let graphcoolResponse;
+    console.log(`fb id is ${res.id}`);
+    console.log(`name is ${res.name}`);
+    console.log(`email is ${res.email}`);
+    console.log(`pic url is `, res.picture.data.url);
+    if (facebookToken) {
+      try {
+        graphcoolResponse = await this.props.authenticateFacebookUserMutation({
           variables: { facebookToken }
-        }
-      );
-      const graphcoolToken = graphcoolResponse.data.authenticateUser.token;
+        });
+      } catch (err) {
+        console.log(`Error is ${err}`);
+        this.setState({ failedLogIn: true });
+      }
+      console.log(graphcoolResponse.data);
+      const graphcoolToken =
+        graphcoolResponse.data.authenticateFacebookUser.token;
       localStorage.setItem("graphcoolToken", graphcoolToken);
-      this.props.history.push("/createAccount");
+      this.props.history.push("/home");
     } else {
       console.warn(`User did not authorize the Facebook application.`);
     }
@@ -185,7 +167,7 @@ class LoginPage extends Component {
             </button>
             <button
               className="btn btn-primary"
-              onClick={() => this.handleFBLogin}
+              onClick={() => this.handleFBLogin()}
             >
               Log in with Facebook
             </button>
@@ -205,8 +187,8 @@ const AUTHENTICATE_USER_MUTATION = gql`
 `;
 
 const AUTHENTICATE_FACEBOOK_USER = gql`
-  mutation AuthenticateUserMutation($facebookToken: String!) {
-    authenticateUser(facebookToken: $facebookToken) {
+  mutation AuthenticateFacebookUserMutation($facebookToken: String!) {
+    authenticateFacebookUser(facebookToken: $facebookToken) {
       token
     }
   }

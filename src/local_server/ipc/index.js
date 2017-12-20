@@ -3,12 +3,15 @@ const {
   genSaveWorkspace,
   genLoadData,
   genFetchFileContent,
-  genSaveImage
+  genSaveImage,
+  genFBLogin
 } = require("../fileHandlers");
 const { genExportCurrentDocument } = require("../export");
 
-exports.setIPCListeners = () => {
+exports.setIPCListeners = mainWindow => {
   ipcMain.on("load-file-req", event => genLoadData(event));
+
+  ipcMain.on("login-with-fb", event => genFBLogin(event, mainWindow));
 
   ipcMain.on("fetch-file", (event, filePath) =>
     genFetchFileContent(event, filePath)

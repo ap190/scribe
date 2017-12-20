@@ -7,11 +7,9 @@ import {
   convertToRaw,
   convertFromRaw,
   EditorState,
-  AtomicBlockUtils,
-  Modifier
+  AtomicBlockUtils
 } from "draft-js";
 import SplitPane from "react-split-pane";
-import R from "ramda";
 import moment from "moment";
 import "react-contexify/dist/ReactContexify.min.css";
 import HomeContainer from "../../containers/Home";

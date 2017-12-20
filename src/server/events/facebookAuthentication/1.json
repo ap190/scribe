@@ -1,0 +1,32 @@
+{
+  "data": {
+    "facebookToken": "EAACwfZCbKqCgBAIUyB7gGSUArIYwfO7MDme5kZC2bctmR2J0ZBFZByMAIovvFtcEVZC1D1MSZBapI00gta4swk7QcNnsJK7G9BnZAsUZCNm2gzTmivX2fTWaBmhT2BiOnAgygIXbGNJKXoPRSHuyl58qNbWK55JpK3VaJqCvnVZB8dhEi0mQCA4TUJoDwgda6Tze1QEkjywLuwv1G3xunlsfq"
+  },
+  "context": {
+    "request": {
+      "sourceIp": "172.18.0.1:57012",
+      "headers": {},
+      "httpMethod": "post"
+    },
+    "auth": {
+      "nodeId": "cjbevjil3009s0110dkesgapq",
+      "typeName": "User",
+      "token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE1MTYzNTUyMjgsImlhdCI6MTUxMzc2MzIyOCwicHJvamVjdElkIjoiY2piZHRwb2x4MDAwNDAxMTAybG9ycHczciIsInVzZXJJZCI6ImNqYmV2amlsMzAwOXMwMTEwZGtlc2dhcHEiLCJtb2RlbE5hbWUiOiJVc2VyIn0.mSAdyid7Xo6FuOY_yieGnTYw_cay1oqMuPeqR3k5rFM"
+    },
+    "sessionCache": {},
+    "environment": {},
+    "graphcool": {
+      "rootToken": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE1MTM3NjQ0NTYsImlhdCI6MTUxMzc2NDE1NiwiY2xpZW50SWQiOiJfIiwicHJvamVjdElkIjoiY2piZHRwb2x4MDAwNDAxMTAybG9ycHczciIsInBlcm1hbmVudEF1dGhUb2tlbklkIjoiY2piZXczZWY1MDBiNjAxMTAyb2k4bW43NCJ9.XK62h_JPZH9adr_iPpai6wVhmOOlqhl1DpVVlySD59A",
+      "endpoints": {
+        "simple": "http://graphcool:60000/simple/v1/cjbdtpolx000401102lorpw3r",
+        "relay": "http://graphcool:60000/relay/v1/cjbdtpolx000401102lorpw3r",
+        "system": "http://graphcool:60000/system",
+        "subscriptions": "http://graphcool:60000/subscriptions/v1/cjbdtpolx000401102lorpw3r"
+      },
+      "projectId": "cjbdtpolx000401102lorpw3r",
+      "alias": null,
+      "pat": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE1MTM3NjQ0NTYsImlhdCI6MTUxMzc2NDE1NiwiY2xpZW50SWQiOiJfIiwicHJvamVjdElkIjoiY2piZHRwb2x4MDAwNDAxMTAybG9ycHczciIsInBlcm1hbmVudEF1dGhUb2tlbklkIjoiY2piZXczZWY1MDBiNjAxMTAyb2k4bW43NCJ9.XK62h_JPZH9adr_iPpai6wVhmOOlqhl1DpVVlySD59A",
+      "serviceId": "cjbdtpolx000401102lorpw3r"
+    }
+  }
+}

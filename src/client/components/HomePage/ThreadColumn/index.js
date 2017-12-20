@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import path from "path";
 import PropTypes from "prop-types";
-import ToggleButton from "react-toggle-button";
 import { Images } from "../../../themes";
 import CodeColumn from "../CodeColumn";
 import Search from "./Search";

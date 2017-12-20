@@ -1,3 +1,4 @@
 targets:
   scribe: shared-eu-west-1/cjb6feu9323cp0133gc3vuant
   default: scribe
+  local: local/cjbdtpolx000401102lorpw3r

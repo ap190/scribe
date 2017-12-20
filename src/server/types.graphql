@@ -6,8 +6,9 @@ type User @model {
   createdAt: DateTime! # read-only (managed by Graphcool)
   updatedAt: DateTime! # read-only (managed by Graphcool)
   name: String
-  email: String! @isUnique
-  password: String!
+  email: String @isUnique
+  password: String
+  facebookUser: FacebookUser @relation(name: "FacebookUsertoUser")
 }
 
 type FacebookUser @model {
@@ -16,6 +17,7 @@ type FacebookUser @model {
   # Optional system fields (remove if not needed):
   createdAt: DateTime! # read-only (managed by Graphcool)
   updatedAt: DateTime! # read-only (managed by Graphcool)
-  facebookUserId: String @isUnique
-  facebookEmail: String
+  facebookUserAccountId: String @isUnique
+  email: String # optional, because it's obtained from Facebook API
+  user: User @relation(name: "FacebookUsertoUser")
 }

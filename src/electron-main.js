@@ -15,7 +15,6 @@ const {
   REDUX_DEVTOOLS
 } = require("electron-devtools-installer");
 
-setIPCListeners();
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
 let mainWindow;
@@ -63,7 +62,7 @@ function createWindow() {
 
   // Create Menu Bar
   setMainMenu(mainWindow);
-
+  setIPCListeners(mainWindow);
   mainWindow.once("ready-to-show", () => {
     mainWindow.show();
   });
@@ -88,5 +87,3 @@ app.on("activate", () => {
     createWindow();
   }
 });
-
-exports.mainWindow = mainWindow;
