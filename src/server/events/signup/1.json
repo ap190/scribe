@@ -1,0 +1,31 @@
+{
+  "data": {
+    "email": "mindflow.ai@gmail.com",
+    "password": "singapore",
+    "firstName": "Omer ",
+    "lastName": "Goldberg"
+  },
+  "context": {
+    "request": {
+      "sourceIp": "172.18.0.1:58126",
+      "headers": {},
+      "httpMethod": "post"
+    },
+    "auth": null,
+    "sessionCache": {},
+    "environment": {},
+    "graphcool": {
+      "rootToken": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE1MTM3NzU4NjAsImlhdCI6MTUxMzc3NTU2MCwiY2xpZW50SWQiOiJfIiwicHJvamVjdElkIjoiY2piZHRwb2x4MDAwNDAxMTAybG9ycHczciIsInBlcm1hbmVudEF1dGhUb2tlbklkIjoiY2piZjJ2dHNvMDB1bTAxMTBpbHBqcjJmayJ9.StdbzeVkZ1fmawr9okTXjT44Djvt2HnnnZIadlCSLfo",
+      "endpoints": {
+        "simple": "http://graphcool:60000/simple/v1/cjbdtpolx000401102lorpw3r",
+        "relay": "http://graphcool:60000/relay/v1/cjbdtpolx000401102lorpw3r",
+        "system": "http://graphcool:60000/system",
+        "subscriptions": "http://graphcool:60000/subscriptions/v1/cjbdtpolx000401102lorpw3r"
+      },
+      "projectId": "cjbdtpolx000401102lorpw3r",
+      "alias": null,
+      "pat": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE1MTM3NzU4NjAsImlhdCI6MTUxMzc3NTU2MCwiY2xpZW50SWQiOiJfIiwicHJvamVjdElkIjoiY2piZHRwb2x4MDAwNDAxMTAybG9ycHczciIsInBlcm1hbmVudEF1dGhUb2tlbklkIjoiY2piZjJ2dHNvMDB1bTAxMTBpbHBqcjJmayJ9.StdbzeVkZ1fmawr9okTXjT44Djvt2HnnnZIadlCSLfo",
+      "serviceId": "cjbdtpolx000401102lorpw3r"
+    }
+  }
+}

@@ -57,6 +57,8 @@ class LoginPage extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      firstName: "",
+      lastName: "",
       email: "",
       password: "",
       failedLogIn: false
@@ -69,7 +71,6 @@ class LoginPage extends Component {
   }
 
   componentDidMount() {
-    console.log("register....");
     ipcRenderer.on("fb-auth", (event, token, res) =>
       this.facebookCallback(token, res)
     );
@@ -112,7 +113,11 @@ class LoginPage extends Component {
       response = await this.props.authenticateUserMutation({
         variables: { email, password }
       });
+
+      console.log("***********");
+      console.log(response);
     } catch (err) {
+      console.log(err);
       this.setState({ failedLogIn: true });
     }
     localStorage.setItem(

@@ -47,38 +47,28 @@ class CreateAccountPage extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      login: false,
       email: "",
       password: "",
-      name: ""
+      firstName: "",
+      lastName: ""
     };
     this.confirm = this.confirm.bind(this);
     this.saveUserData = this.saveUserData.bind(this);
   }
 
   async confirm() {
-    const { name, email, password } = this.state;
+    const { firstName, lastName, email, password } = this.state;
     console.log(this.state);
-    if (this.state.login) {
-      const result = await this.props.authenticateUserMutation({
-        variables: {
-          email,
-          password
-        }
-      });
-      const { id, token } = result.data.authenticateUser;
-      this.saveUserData(id, token);
-    } else {
-      const result = await this.props.signupUserMutation({
-        variables: {
-          name,
-          email,
-          password
-        }
-      });
-      const { id, token } = result.data.signupUser;
-      this.saveUserData(id, token);
-    }
+    const result = await this.props.signupUserMutation({
+      variables: {
+        firstName,
+        lastName,
+        email,
+        password
+      }
+    });
+    const { id, token } = result.data.signupUser;
+    this.saveUserData(id, token);
     this.props.history.push(`/home`);
   }
 
@@ -99,9 +89,17 @@ class CreateAccountPage extends Component {
           <Section>
             <Input
               type="text"
-              placeholder="name"
+              placeholder="First Name"
               className="textfield"
-              onChange={e => this.setState({ name: e.target.value })}
+              onChange={e => this.setState({ firstName: e.target.value })}
+            />
+          </Section>
+          <Section>
+            <Input
+              type="text"
+              placeholder="Last Name"
+              className="textfield"
+              onChange={e => this.setState({ lastName: e.target.value })}
             />
           </Section>
           <Section>
@@ -148,18 +146,15 @@ const SIGNUP_USER_MUTATION = gql`
   mutation SignupUserMutation(
     $email: String!
     $password: String!
-    $name: String!
+    $firstName: String!
+    $lastName: String!
   ) {
-    signupUser(email: $email, password: $password, name: $name) {
-      id
-      token
-    }
-  }
-`;
-
-const AUTHENTICATE_USER_MUTATION = gql`
-  mutation AuthenticateUserMutation($email: String!, $password: String!) {
-    authenticateUser(email: $email, password: $password) {
+    signupUser(
+      email: $email
+      password: $password
+      firstName: $firstName
+      lastName: $lastName
+    ) {
       id
       token
     }
@@ -167,6 +162,5 @@ const AUTHENTICATE_USER_MUTATION = gql`
 `;
 
 export default compose(
-  graphql(SIGNUP_USER_MUTATION, { name: "signupUserMutation" }),
-  graphql(AUTHENTICATE_USER_MUTATION, { name: "authenticateUserMutation" })
+  graphql(SIGNUP_USER_MUTATION, { name: "signupUserMutation" })
 )(CreateAccountPage);

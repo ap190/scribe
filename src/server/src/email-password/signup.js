@@ -21,7 +21,7 @@ function getGraphcoolUser(api, email) {
     });
 }
 
-function createGraphcoolUser(api, email, passwordHash, name) {
+function createGraphcoolUser(api, email, passwordHash, firstName, lastName) {
   return api
     .request(
       `
@@ -29,15 +29,14 @@ function createGraphcoolUser(api, email, passwordHash, name) {
       createUser(
         email: "${email}",
         password: "${passwordHash}",
-        name: "${name}"
+        firstName: "${firstName}",
+        lastName: "${lastName}"
       ) {
         id
       }
     }`
     )
-    .then(userMutationResult => {
-      return userMutationResult.createUser.id;
-    });
+    .then(userMutationResult => userMutationResult.createUser.id);
 }
 
 module.exports = function(event) {
@@ -48,7 +47,8 @@ module.exports = function(event) {
 
   const email = event.data.email;
   const password = event.data.password;
-  const name = event.data.name;
+  const firstName = event.data.firstName;
+  const lastName = event.data.lastName;
   const graphcool = fromEvent(event);
   const api = graphcool.api("simple/v1");
   const SALT_ROUNDS = 10;
@@ -60,7 +60,9 @@ module.exports = function(event) {
         if (graphcoolUser === null) {
           return bcrypt
             .hash(password, salt)
-            .then(hash => createGraphcoolUser(api, email, hash, name));
+            .then(hash =>
+              createGraphcoolUser(api, email, hash, firstName, lastName)
+            );
         } else {
           return Promise.reject("Email already in use");
         }
