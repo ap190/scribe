@@ -87,11 +87,9 @@ async function createGraphcoolUser(
   facebookUser: FacebookUser
 ): Promise<string> {
   const mutation = `
-    mutation createUser($facebookUserId: String!, $email: String) {
-      createUser(
-        facebookUser:  {
-          facebookUserAccountId: $facebookUserId
-        }
+    mutation createFacebookUser($facebookUserId: String!, $email: String) {
+      createFacebookUser(
+        facebookUserAccountId: $facebookUserId
         email: $email
       ) {
         id
@@ -105,6 +103,6 @@ async function createGraphcoolUser(
   };
 
   return api
-    .request<{ createUser: User }>(mutation, variables)
-    .then(r => r.createUser.id);
+    .request<{ createFacebookUser: User }>(mutation, variables)
+    .then(r => r.createFacebookUser.id);
 }

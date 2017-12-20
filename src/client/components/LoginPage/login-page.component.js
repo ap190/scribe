@@ -93,6 +93,7 @@ class LoginPage extends Component {
         });
       } catch (err) {
         console.log(`Error is ${err}`);
+        console.log(graphcoolResponse);
         this.setState({ failedLogIn: true });
       }
       console.log(graphcoolResponse.data);
@@ -113,13 +114,11 @@ class LoginPage extends Component {
       response = await this.props.authenticateUserMutation({
         variables: { email, password }
       });
-
-      console.log("***********");
-      console.log(response);
     } catch (err) {
       console.log(err);
       this.setState({ failedLogIn: true });
     }
+    console.log(response.data.authenticateUser);
     localStorage.setItem(
       "graphcoolToken",
       response.data.authenticateUser.token
@@ -187,6 +186,9 @@ const AUTHENTICATE_USER_MUTATION = gql`
   mutation AuthenticateUserMutation($email: String!, $password: String!) {
     authenticateUser(email: $email, password: $password) {
       token
+      firstName
+      lastName
+      email
     }
   }
 `;

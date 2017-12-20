@@ -21,7 +21,6 @@ const jsonpath = path.join(
 );
 
 exports.genFBLogin = (event, closuredWindow) => {
-  let finalRes = undefined;
   const options = {
     client_id: "194063647811624",
     scopes: "public_profile",
@@ -35,7 +34,6 @@ exports.genFBLogin = (event, closuredWindow) => {
     modal: true,
     webPreferences: { nodeIntegration: false }
   });
-  console.log(closuredWindow);
   const facebookAuthURL =
     "https://www.facebook.com/v2.8/dialog/oauth?client_id=" +
     options.client_id +
@@ -59,16 +57,13 @@ exports.genFBLogin = (event, closuredWindow) => {
           "/me",
           { fields: ["id", "email", "name", "picture.width(800).height(800)"] },
           res => {
-            closuredWindow.webContents.send("fb-auth", access_token, res);
             authWindow.close();
+            closuredWindow.webContents.send("fb-auth", access_token, res);
           }
         );
       }
     }
   );
-  console.log("33333333333");
-  console.log(mainWindow);
-  return finalRes;
 };
 
 const createLoadableWorkspacePath = userSelectedDir => {
