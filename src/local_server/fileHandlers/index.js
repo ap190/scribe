@@ -8,12 +8,12 @@ const { SCRIBE_FILE_PATHS } = require("../consts");
 const { getDirSelectionFromUser } = require("../dialogs");
 const { mainWindow } = require("../../electron-main");
 const { getScribeImgPath } = require("../utils/getScribeImgPath");
+const { copyFile } = require("../utils/copyFile");
 const FB = require("fb");
 
 // Get path to store images
 const userDataPath = (electron.app || electron.remote.app).getPath("userData");
 const scribeImgDir = path.join(userDataPath, "img");
-// const getScribeImgPath = imgID => path.join(userDataPath, "img", imgID);
 
 const jsonpath = path.join(
   __dirname,
@@ -78,22 +78,6 @@ const copyImageToScribeDir = async (srcPath, finalPath) => {
   const outStr = fs.createWriteStream(finalPath);
   await inStr.pipe(outStr);
   return;
-};
-
-const copyFile = (source, target) => {
-  return new Promise(function(resolve, reject) {
-    var rd = fs.createReadStream(source);
-    rd.on("error", rejectCleanup);
-    var wr = fs.createWriteStream(target);
-    wr.on("error", rejectCleanup);
-    function rejectCleanup(err) {
-      rd.destroy();
-      wr.end();
-      reject(err);
-    }
-    wr.on("finish", resolve);
-    rd.pipe(wr);
-  });
 };
 
 exports.genLoadData = event => {

@@ -131,7 +131,6 @@ class HomePage extends Component {
     });
 
     ipcRenderer.on("create-new-img-clipping", (event, copiedImg) => {
-      console.log("CREATING NEW Image CLIPPING");
       this.handleAddImageWrapper(copiedImg);
     });
 

@@ -3,7 +3,8 @@ const fs = require("fs");
 const path = require("path");
 const electron = require("electron");
 const UUIDv4 = require("uuid/v4");
-const getScribeImgPath = require("../utils/getScribeImgPath");
+const { getScribeImgPath } = require("../utils/getScribeImgPath");
+const { scribeImgDir } = require("../utils/consts");
 
 // Get path to store images
 const userDataPath = (electron.app || electron.remote.app).getPath("userData");
@@ -34,9 +35,16 @@ registerGlobalShortcuts = (globalShortcut, clipboard, mainWindow) => {
       const image = clipboard.readImage().toPNG();
       const imgID = UUIDv4();
       const imgPath = getScribeImgPath(imgID);
+      console.log("^^^^^^^^^^^^^^^^^^^^");
+      console.log(imgPath);
 
-      console.log(`image is ${image}`);
-      mainWindow.webContents.send("create-new-img-clipping", image);
+      if (fs.existsSync(scribeImgDir)) {
+        fs.writeFile(imgPath, image, "base64", e =>
+          mainWindow.webContents.send("create-new-img-clipping", imgPath)
+        );
+      }
+
+      // mainWindow.webContents.send("create-new-img-clipping", image);
     }
   );
 
