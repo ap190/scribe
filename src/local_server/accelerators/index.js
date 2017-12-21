@@ -2,6 +2,8 @@
 const fs = require("fs");
 const path = require("path");
 const electron = require("electron");
+const UUIDv4 = require("uuid/v4");
+const getScribeImgPath = require("../utils/getScribeImgPath");
 
 // Get path to store images
 const userDataPath = (electron.app || electron.remote.app).getPath("userData");
@@ -29,12 +31,12 @@ registerGlobalShortcuts = (globalShortcut, clipboard, mainWindow) => {
   const createImageClipping = globalShortcut.register(
     "CommandOrControl+I",
     () => {
-      const image = clipboard.readImage();
-      // if (imageHasDiff(lastImg, image)) {
+      const image = clipboard.readImage().toPNG();
+      const imgID = UUIDv4();
+      const imgPath = getScribeImgPath(imgID);
+
       console.log(`image is ${image}`);
       mainWindow.webContents.send("create-new-img-clipping", image);
-      // lastImg = image;
-      // }
     }
   );
 
@@ -42,29 +44,9 @@ registerGlobalShortcuts = (globalShortcut, clipboard, mainWindow) => {
     mainWindow.webContents.send("save-workspace");
   });
 
-  const pasteImage = globalShortcut.register("CommandOrControl+I", () => {
-    const img = clipboard.readImage().toPNG();
-    const imgID = uid(10);
-
-    // .mfimg dir exists, lets add photos to it
-    if (fs.existsSync(`${imgpath}`)) {
-      fs.writeFile(`${imgpath}/${imgID}.png`, img, "base64", e => {
-        mainWindow.webContents.send("paste-image", `${imgpath}/${imgID}.png`);
-      });
-    } else {
-      // .mfimg doesn't exist yet, let's create it
-      fs.mkdir(`${imgpath}`, e => {
-        fs.writeFile(`${imgpath}/${imgID}.png`, img, "base64", e => {
-          mainWindow.webContents.send("paste-image", `${imgpath}/${imgID}.png`);
-        });
-      });
-    }
-  });
-
   if (!saveWorkspace) console.log("Registration failed", "saveWorkspace");
   if (!createClipping) console.log("Registration failed", "createClipping");
   if (!createImageClipping) console.log("Registration failed", "imageClipping");
-  if (!pasteImage) console.log("Registration failed", "publishClipping");
 };
 
 module.exports = registerGlobalShortcuts;

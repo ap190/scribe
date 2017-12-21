@@ -407,6 +407,7 @@ class HomePage extends Component {
 
   async handleAddImageWrapper(img = null) {
     if (!img || !this.state.currentDocument) return;
+    console.log(img);
     const updateEditorState = handleAddPastedImg(
       this.state.currentDocument,
       img

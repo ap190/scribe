@@ -7,12 +7,13 @@ const jsonfile = require("jsonfile");
 const { SCRIBE_FILE_PATHS } = require("../consts");
 const { getDirSelectionFromUser } = require("../dialogs");
 const { mainWindow } = require("../../electron-main");
+const { getScribeImgPath } = require("../utils/getScribeImgPath");
 const FB = require("fb");
 
 // Get path to store images
 const userDataPath = (electron.app || electron.remote.app).getPath("userData");
 const scribeImgDir = path.join(userDataPath, "img");
-const getScribeImgPath = imgID => path.join(userDataPath, "img", imgID);
+// const getScribeImgPath = imgID => path.join(userDataPath, "img", imgID);
 
 const jsonpath = path.join(
   __dirname,
