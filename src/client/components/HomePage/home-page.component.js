@@ -3,7 +3,6 @@ import UUIDv4 from "uuid/v4";
 import path from "path";
 import axios from "axios";
 import styled from "styled-components";
-import { compose } from "recompose";
 import {
   convertToRaw,
   convertFromRaw,
@@ -12,8 +11,9 @@ import {
 } from "draft-js";
 import SplitPane from "react-split-pane";
 import moment from "moment";
+import { graphql, compose } from "react-apollo";
+import gql from "graphql-tag";
 import "react-contexify/dist/ReactContexify.min.css";
-import HomeContainer from "../../containers/Home";
 import Modal from "../common/Modal";
 import Loading from "../common/Loading";
 import ThreadColumn from "./ThreadColumn";
@@ -749,4 +749,4 @@ class HomePage extends Component {
   }
 }
 
-export default compose(HomeContainer)(HomePage);
+export default HomePage;
