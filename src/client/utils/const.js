@@ -7,7 +7,9 @@ import editorActionBarMaximizeLight from "../../../public/assets/icons/maximize.
 import folderLight from "../../../public/assets/icons/folder-light.svg";
 import imageEmbedLight from "../../../public/assets/icons/image.svg";
 import imageFileLight from "../../../public/assets/icons/image-file-light.svg";
-import notifIcon from "../../../public/assets/rich-notifications/disk.png";
+import saveIcon from "../../../public/assets/rich-notifications/disk.png";
+import imagePastedIcon from "../../../public/assets/rich-notifications/image.png";
+import textPastedIcon from "../../../public/assets/rich-notifications/text.png";
 import seperatorLight from "../../../public/assets/icons/seperator.svg";
 import textFileLight from "../../../public/assets/icons/text-file-light.svg";
 
@@ -29,7 +31,17 @@ exports.notifications = {
   SAVE_DOCUMENT_RICH: {
     title: "Document Saved",
     body: "Synced with cloud service",
-    icon: notifIcon
+    icon: saveIcon
+  },
+  IMAGE_PASTED: {
+    title: "Image Pasted",
+    body: "Image was exported to document",
+    icon: imagePastedIcon
+  },
+  TEXT_PASTED: {
+    title: "Text Pasted",
+    body: "Text was exported to document",
+    icon: textPastedIcon
   }
 };
 

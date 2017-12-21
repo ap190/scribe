@@ -402,6 +402,10 @@ class HomePage extends Component {
     console.log(`handle add TExt!!`);
     const updatedEditorState = handleAddText(this.state.currentDocument, text);
     await this.updateDocumentState(updatedEditorState);
+    new Notification(
+      notifications.TEXT_PASTED.title,
+      notifications.TEXT_PASTED
+    );
   }
 
   async handleAddImageWrapper(img = null) {
@@ -412,6 +416,10 @@ class HomePage extends Component {
       img
     );
     await this.updateDocumentState(updateEditorState);
+    new Notification(
+      notifications.IMAGE_PASTED.title,
+      notifications.IMAGE_PASTED
+    );
   }
 
   async handleAddEmbeddedContent(url = null) {
