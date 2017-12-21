@@ -119,6 +119,8 @@ class HomePage extends Component {
   }
 
   componentDidMount() {
+    console.log(`params received...`);
+    console.log(this.props.location.state.userData);
     ipcRenderer.send("load-file-req");
 
     ipcRenderer.on("create-new-workspace", () => {

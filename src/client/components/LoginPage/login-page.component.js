@@ -125,7 +125,10 @@ class LoginPage extends Component {
       "graphcoolToken",
       response.data.authenticateUser.token
     );
-    this.props.history.push("/home");
+    this.props.history.push({
+      pathname: "/home",
+      state: { userData: response.data.authenticateUser }
+    });
   }
 
   saveUserData(id, token) {
