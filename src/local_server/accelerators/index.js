@@ -19,23 +19,24 @@ let lastImg = undefined;
 registerGlobalShortcuts = (globalShortcut, clipboard, mainWindow) => {
   const createClipping = globalShortcut.register("CommandOrControl+H", () => {
     const text = clipboard.readText();
-    const image = clipboard.readImage();
-
-    console.log("*********");
-
-    if (imageHasDiff(lastImg, image)) {
-      console.log(`image is ${image}`);
-      mainWindow.webContents.send("img-saved", image);
-      lastImg = image;
-      return;
-    }
-
-    if (textHasDiff(lastText, text)) {
-      console.log(`text is ${text}`);
-      mainWindow.webContents.send("create-new-clipping", text);
-      lastText = text;
-    }
+    // if (textHasDiff(lastText, text)) {
+    console.log(`text is ${text}`);
+    mainWindow.webContents.send("create-new-clipping", text);
+    // lastText = text;
+    // }
   });
+
+  const createImageClipping = globalShortcut.register(
+    "CommandOrControl+I",
+    () => {
+      const image = clipboard.readImage();
+      // if (imageHasDiff(lastImg, image)) {
+      console.log(`image is ${image}`);
+      mainWindow.webContents.send("create-new-img-clipping", image);
+      // lastImg = image;
+      // }
+    }
+  );
 
   const saveWorkspace = globalShortcut.register("CommandOrControl+B", () => {
     mainWindow.webContents.send("save-workspace");
@@ -62,6 +63,7 @@ registerGlobalShortcuts = (globalShortcut, clipboard, mainWindow) => {
 
   if (!saveWorkspace) console.log("Registration failed", "saveWorkspace");
   if (!createClipping) console.log("Registration failed", "createClipping");
+  if (!createImageClipping) console.log("Registration failed", "imageClipping");
   if (!pasteImage) console.log("Registration failed", "publishClipping");
 };
 

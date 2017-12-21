@@ -19,7 +19,7 @@ import Loading from "../common/Loading";
 import ThreadColumn from "./ThreadColumn";
 import Aside from "./AsideColumn";
 import EditorColumn from "./EditorColumn";
-import { addNewBlock, handleAddText } from "./editor.api";
+import { addNewBlock, handleAddText, handleAddPastedImg } from "./editor.api";
 import { handleDeleteChannel } from "./channels.api";
 import { Block } from "./EditorColumn/Editor/util/constants";
 import ChannelModal from "../common/Modal/channelModal.component";
@@ -102,6 +102,7 @@ class HomePage extends Component {
     );
     this.handleAddEmbeddedContent = this.handleAddEmbeddedContent.bind(this);
     this.handleAddTextWrapper = this.handleAddTextWrapper.bind(this);
+    this.handleAddImageWrapper = this.handleAddImageWrapper.bind(this);
     this.handleAddThread = this.handleAddThread.bind(this);
     this.createNewFileChannel = this.createNewFileChannel.bind(this);
     this.handleChangeThreadColor = this.handleChangeThreadColor.bind(this);
@@ -127,6 +128,11 @@ class HomePage extends Component {
     ipcRenderer.on("create-new-clipping", (event, copiedText) => {
       console.log("CREATING NEW CLIPPING");
       this.handleAddTextWrapper(copiedText);
+    });
+
+    ipcRenderer.on("create-new-img-clipping", (event, copiedImg) => {
+      console.log("CREATING NEW Image CLIPPING");
+      this.handleAddImageWrapper(copiedImg);
     });
 
     ipcRenderer.on("img-saved", (event, filePath) => {
@@ -394,8 +400,18 @@ class HomePage extends Component {
 
   async handleAddTextWrapper(text = null) {
     if (!text || !this.state.currentDocument) return;
+    console.log(`handle add TExt!!`);
     const updatedEditorState = handleAddText(this.state.currentDocument, text);
     await this.updateDocumentState(updatedEditorState);
+  }
+
+  async handleAddImageWrapper(img = null) {
+    if (!img || !this.state.currentDocument) return;
+    const updateEditorState = handleAddPastedImg(
+      this.state.currentDocument,
+      img
+    );
+    await this.updateDocumentState(updateEditorState);
   }
 
   async handleAddEmbeddedContent(url = null) {

@@ -59,3 +59,8 @@ export const handleAddText = (currentEditorState, text) =>
       text
     )
   );
+
+export const handleAddPastedImg = (currentEditorState, img) =>
+  addNewBlock(currentEditorState, Block.IMAGE, {
+    src: `${img}`
+  });
