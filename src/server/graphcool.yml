@@ -7,6 +7,12 @@ functions:
       handler:
         code:
           src: src/email-password/signup.js
+  
+  sendWelcomeEmail:
+    type: subscription
+    query: src/welcome-email/welcomeEmail.graphql
+    handler:
+      code: src/welcome-email/welcomeEmail.js
 
   authenticate:
     type: resolver
