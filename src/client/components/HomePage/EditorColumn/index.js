@@ -20,10 +20,6 @@ class EditorColumn extends Component {
     this.getEditorState = this.getEditorState.bind(this);
   }
 
-  componentDidMount() {
-    // this.refs.editor.focus();
-  }
-
   onChange(editorState) {
     if (this.state.editorEnabled) {
       this.props.updateDocumentState(editorState);

@@ -39,10 +39,6 @@ class ThreadColumn extends Component {
     });
   }
 
-  isEditorToggledStyles() {
-    return this.props.isEditorToggled ? { display: "none" } : { flex: "1" };
-  }
-
   render() {
     const {
       isModalOpen,
@@ -60,7 +56,7 @@ class ThreadColumn extends Component {
       );
     }
     return (
-      <div style={{ ...divStyle, ...this.isEditorToggledStyles() }}>
+      <div style={divStyle}>
         {showCode ? (
           <CodeColumn currentFiles={fileData} />
         ) : (

@@ -20,8 +20,8 @@ import "./client/styles/index.css";
 const serviceId = "cjb6feu9323cp0133gc3vuant";
 
 const httpLink = new HttpLink({
-  // uri: `https://api.graph.cool/simple/v1/${serviceId}`
-  uri: `http://localhost:60000/simple/v1/cjbdtpolx000401102lorpw3r`
+  uri: `https://api.graph.cool/simple/v1/${serviceId}`
+  // uri: `http://localhost:60000/simple/v1/cjbdtpolx000401102lorpw3r`
 });
 
 const middlewareAuthLink = new ApolloLink((operation, forward) => {
