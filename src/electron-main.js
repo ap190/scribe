@@ -6,7 +6,7 @@ const { setIPCListeners } = require("./local_server/ipc");
 const setMainMenu = require("./local_server/menu");
 const registerGlobalShortcuts = require("./local_server/accelerators");
 
-require("electron-context-menu")();
+// require("electron-context-menu")();
 
 const BrowserWindow = electron.BrowserWindow;
 const {

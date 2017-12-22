@@ -11,7 +11,7 @@ import {
 } from "draft-js";
 import SplitPane from "react-split-pane";
 import moment from "moment";
-import { graphql, compose } from "react-apollo";
+import { compose } from "react-apollo";
 import gql from "graphql-tag";
 import "react-contexify/dist/ReactContexify.min.css";
 import Modal from "../common/Modal";
@@ -84,7 +84,7 @@ class HomePage extends Component {
     this.toggleShouldShowCode = this.toggleShouldShowCode.bind(this);
     this.applyThreadChange = this.applyThreadChange.bind(this);
     this.selectProjectDir = this.selectProjectDir.bind(this);
-    this.selectChannelOrFile = this.selectChannelOrFile.bind(this);
+    this.selectChannel = this.selectChannel.bind(this);
     this.fetchSelectedFileContent = this.fetchSelectedFileContent.bind(this);
     this.updateEditorOnChannelChange = this.updateEditorOnChannelChange.bind(
       this
@@ -119,8 +119,7 @@ class HomePage extends Component {
   }
 
   componentDidMount() {
-    console.log(`params received...`);
-    console.log(this.props.location.state.userData);
+    // console.log(this.props.location.state.userData);
     ipcRenderer.send("load-file-req");
 
     ipcRenderer.on("create-new-workspace", () => {
@@ -311,9 +310,10 @@ class HomePage extends Component {
     }
   }
 
-  async selectChannelOrFile(channelType, channelId = null, activeFile = null) {
+  async selectChannel(channelType, channelId = null, activeFile = null) {
     this.state.currentDocument &&
-      this.handleDocumentChange(this.state.currentDocument);
+      (await this.handleDocumentChange(this.state.currentDocument));
+
     if (channelType === "file") {
       let fileChannel = this.getUpdatedChannelAndThreadsIfSelectionIsFile(
         activeFile
@@ -333,7 +333,7 @@ class HomePage extends Component {
     });
   }
 
-  updateEditorOnChannelChange(channel) {
+  async updateEditorOnChannelChange(channel) {
     if (!channel || !channel.threads || channel.threads.length === 0) {
       // TODO: Put a default document.
       return;
@@ -343,17 +343,18 @@ class HomePage extends Component {
       thread => thread.selected
     );
 
-    this.selectThread(
+    await this.selectThread(
       channel.threads[
         currentThreadIdx === -1
           ? 0 /* If no thread is selected, select the first thread. */
           : currentThreadIdx
-      ]
+      ],
+      false
     );
   }
 
   selectFile(file) {
-    this.selectChannelOrFile("file", null, file);
+    this.selectChannel("file", null, file);
   }
 
   async handleAddChannel(newChannel) {
@@ -412,7 +413,6 @@ class HomePage extends Component {
 
   async handleAddImageWrapper(img = null) {
     if (!img || !this.state.currentDocument) return;
-    console.log(img);
     const updateEditorState = handleAddPastedImg(
       this.state.currentDocument,
       img
@@ -456,7 +456,9 @@ class HomePage extends Component {
     const { channels } = this.state;
     let currentThreads = this.getCurrentThreads();
     const currentChannel = this.getCurrentChannel();
+
     if (!currentChannel || !channels) return;
+
     const currentChannelIdx = channels.findIndex(
       channel => channel.id === currentChannel.id
     );
@@ -471,17 +473,10 @@ class HomePage extends Component {
       });
       return;
     }
-
-    currentChannel.threads[currentThreadIdx].document = JSON.stringify(
-      currentDocument
-    );
-    currentThreads[currentThreadIdx].document = JSON.stringify(currentDocument);
     channels[currentChannelIdx].threads[
       currentThreadIdx
     ].document = convertToRaw(currentDocument.getCurrentContent());
-    await this.setState({
-      channels
-    });
+    this.setState({ channels });
   }
 
   async createNewFileChannel(activeFile) {
@@ -564,9 +559,10 @@ class HomePage extends Component {
     });
   }
 
-  selectThread(thread) {
-    this.state.currentDocument &&
-      this.handleDocumentChange(this.state.currentDocument);
+  async selectThread(thread, shouldUpdateDocument = true) {
+    if (this.state.currentDocument && shouldUpdateDocument) {
+      await this.handleDocumentChange(this.state.currentDocument);
+    }
     const { channels } = this.state;
     let currentDocument;
     let currentThread;
@@ -711,7 +707,7 @@ class HomePage extends Component {
             toggleModal={this.toggleModal}
             channels={this.state.channels}
             isModalOpen={this.state.isModalOpen}
-            selectChannelOrFile={this.selectChannelOrFile}
+            selectChannelOrFile={this.selectChannel}
             selectFile={this.selectFile}
             handleDeleteChannel={this.handleDeleteChannelWrapper}
           />

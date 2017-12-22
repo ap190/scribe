@@ -35,8 +35,6 @@ registerGlobalShortcuts = (globalShortcut, clipboard, mainWindow) => {
       const image = clipboard.readImage().toPNG();
       const imgID = UUIDv4();
       const imgPath = getScribeImgPath(imgID);
-      console.log("^^^^^^^^^^^^^^^^^^^^");
-      console.log(imgPath);
 
       if (fs.existsSync(scribeImgDir)) {
         fs.writeFile(imgPath, image, "base64", e =>
