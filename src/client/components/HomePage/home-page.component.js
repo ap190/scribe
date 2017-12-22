@@ -120,7 +120,7 @@ class HomePage extends Component {
 
   componentDidMount() {
     console.log(`params received...`);
-    console.log(this.props.location.state.userData);
+    // console.log(this.props.location.state.userData);
     ipcRenderer.send("load-file-req");
 
     ipcRenderer.on("create-new-workspace", () => {
@@ -702,7 +702,11 @@ class HomePage extends Component {
     return (
       <Wrapper>
         <Modal show={this.state.isModalOpen}>{this.getModalContent()}</Modal>
-        <SplitPane split="vertical" size="22%">
+        <SplitPane
+          split="vertical"
+          size={this.state.isEditorToggled ? "0%" : "22%"}
+          allowResize={this.state.isEditorToggled ? false : true}
+        >
           <Aside
             isEditorToggled={this.state.isEditorToggled}
             selectProjectDir={this.selectProjectDir}
@@ -715,7 +719,11 @@ class HomePage extends Component {
             selectFile={this.selectFile}
             handleDeleteChannel={this.handleDeleteChannelWrapper}
           />
-          <SplitPane split="vertical" defaultSize="35%">
+          <SplitPane
+            split="vertical"
+            defaultSize={this.state.isEditorToggled ? "0%" : "35%"}
+            allowResize={this.state.isEditorToggled ? false : true}
+          >
             <ThreadColumn
               currentFiles={this.state.currentFiles}
               currentChannel={this.getCurrentChannel()}

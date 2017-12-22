@@ -37,6 +37,7 @@
 
 .Resizer.vertical.disabled {
   cursor: default;
+  display: none;
 }
 
 .Resizer.vertical.disabled:hover {

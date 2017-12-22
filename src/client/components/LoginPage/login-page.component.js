@@ -226,21 +226,21 @@ const AUTHENTICATE_FACEBOOK_USER = gql`
   }
 `;
 
-const LOGGED_IN_USER_QUERY = gql`
-  query LoggedInUserQuery {
-    loggedInUser {
-      id
-    }
-  }
-`;
+// const LOGGED_IN_USER_QUERY = gql`
+//   query LoggedInUserQuery {
+//     loggedInUser {
+//       id
+//     }
+//   }
+// `;
 
 export default compose(
   graphql(AUTHENTICATE_USER_MUTATION, { name: "authenticateUserMutation" }),
   graphql(AUTHENTICATE_FACEBOOK_USER, {
     name: "authenticateFacebookUserMutation"
-  }),
-  graphql(LOGGED_IN_USER_QUERY, {
-    name: "loggedInUserQuery",
-    options: { fetchPolicy: "network-only" }
   })
+  // graphql(LOGGED_IN_USER_QUERY, {
+  //   name: "loggedInUserQuery",
+  //   options: { fetchPolicy: "network-only" }
+  // })
 )(LoginPage);

@@ -31,10 +31,6 @@ class Aside extends Component {
     });
   }
 
-  isEditorToggledStyles() {
-    return this.props.isEditorToggled ? { display: "none" } : { flex: "1" };
-  }
-
   handleChange(tree) {
     this.setState({
       tree
@@ -77,7 +73,7 @@ class Aside extends Component {
       handleDeleteChannel
     } = this.props;
     return (
-      <div style={{ ...styles, ...this.isEditorToggledStyles() }}>
+      <div style={styles}>
         <Channels
           title={"Notebooks"}
           toggleModal={toggleModal}
