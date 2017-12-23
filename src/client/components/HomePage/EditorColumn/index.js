@@ -38,8 +38,10 @@ class EditorColumn extends Component {
     const {
       isModalOpen,
       toggleEditorHandler,
+      nextThreadHandler,
       isEditorToggled,
       saveWorkspace,
+      currentThreads,
       currentThread,
       currentDocument,
       exportCurrentDocAsHTML
@@ -47,10 +49,11 @@ class EditorColumn extends Component {
     return (
       <div className="editor">
         <EditorActionBar
+          shouldShowNext={currentThreads.length > 1}
           handleSave={saveWorkspace}
           handleExportToHTML={exportCurrentDocAsHTML}
           handleMaximize={toggleEditorHandler}
-          handleNextThread={() => console.log("next thread...")}
+          handleNextThread={nextThreadHandler}
           isEditorToggled={isEditorToggled}
         />
         <ExtendedEditor
@@ -76,12 +79,14 @@ EditorColumn.defaultProps = {
 EditorColumn.propTypes = {
   isEditorToggled: PropTypes.bool.isRequired,
   toggleEditorHandler: PropTypes.func.isRequired,
+  nextThreadHandler: PropTypes.func.isRequired,
   toggleModal: PropTypes.func.isRequired,
   isModalOpen: PropTypes.bool.isRequired,
   saveWorkspace: PropTypes.func.isRequired,
   updateDocumentState: PropTypes.func.isRequired,
   currentDocument: PropTypes.any,
   handleThreadTitleChange: PropTypes.func.isRequired,
+  currentThreads: PropTypes.any,
   currentThread: PropTypes.any,
   handleAddEmbeddedContent: PropTypes.func.isRequired,
   exportCurrentDocAsHTML: PropTypes.func.isRequired

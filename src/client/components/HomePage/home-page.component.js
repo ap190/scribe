@@ -81,6 +81,7 @@ class HomePage extends Component {
       files: {}
     };
     this.toggleEditor = this.toggleEditor.bind(this);
+    this.selectNextThread = this.selectNextThread.bind(this);
     this.toggleShouldShowCode = this.toggleShouldShowCode.bind(this);
     this.applyThreadChange = this.applyThreadChange.bind(this);
     this.selectProjectDir = this.selectProjectDir.bind(this);
@@ -649,6 +650,24 @@ class HomePage extends Component {
     });
   }
 
+  selectNextThread() {
+    const currentThreads = this.getCurrentThreads();
+    if (currentThreads.length <= 1) {
+      return;
+    }
+
+    let currentThreadIdx = currentThreads.findIndex(thread => thread.selected);
+
+    this.selectThread(
+      currentThreads[
+        currentThreadIdx + 1 !== currentThreads.length
+          ? (currentThreadIdx += 1)
+          : 0
+      ],
+      true
+    );
+  }
+
   handleThreadTitleChange(threadTitle) {
     this.applyThreadChange(SELECTED_THREAD, thread => {
       return {
@@ -738,8 +757,10 @@ class HomePage extends Component {
             <EditorColumn
               isEditorToggled={this.state.isEditorToggled}
               toggleEditorHandler={this.toggleEditor}
+              nextThreadHandler={this.selectNextThread}
               toggleModal={this.toggleModal}
               isModalOpen={this.state.isModalOpen}
+              currentThreads={this.getCurrentThreads()}
               currentDocument={this.state.currentDocument}
               currentThread={this.state.currentThread}
               updateDocumentState={this.updateDocumentState}

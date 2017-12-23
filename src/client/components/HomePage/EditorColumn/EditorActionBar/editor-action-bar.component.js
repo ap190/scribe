@@ -4,6 +4,7 @@ import ActionBarIcon from "../../../common/ActionBarIcon";
 import { lightTheme } from "../../../../utils/const";
 
 const EditorActionBar = ({
+  shouldShowNext,
   handleSave,
   handleMaximize,
   handleNextThread,
@@ -27,16 +28,19 @@ const EditorActionBar = ({
         icon={lightTheme.icons.maximize}
         handleClick={handleMaximize}
       />
-      <ActionBarIcon
-        title={"Next"}
-        icon={lightTheme.icons.next}
-        handleClick={handleNextThread}
-      />
+      {shouldShowNext ? (
+        <ActionBarIcon
+          title={"Next"}
+          icon={lightTheme.icons.next}
+          handleClick={handleNextThread}
+        />
+      ) : null}
     </div>
   </div>
 );
 
 EditorActionBar.propTypes = {
+  shouldShowNext: PropTypes.bool.isRequired,
   handleSave: PropTypes.func.isRequired,
   handleMaximize: PropTypes.func.isRequired,
   handleNextThread: PropTypes.func.isRequired,
