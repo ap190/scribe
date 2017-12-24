@@ -1,6 +1,8 @@
 const fromEvent = require("graphcool-lib").fromEvent;
 const bcrypt = require("bcryptjs");
 
+const fetchAuthToken = (graphcool, graphcoolUser) => graphcool.generateAuthToken(graphcoolUser.id, "User")
+
 function getGraphcoolUser(api, email) {
   return api
     .request(
@@ -9,6 +11,9 @@ function getGraphcoolUser(api, email) {
       User(email: "${email}"){
         id
         password
+        email
+        firstName
+        lastName
       }
     }`
     )
@@ -20,6 +25,8 @@ function getGraphcoolUser(api, email) {
       }
     });
 }
+
+
 
 module.exports = function(event) {
   if (!event.context.graphcool.pat) {
@@ -41,19 +48,24 @@ module.exports = function(event) {
           .compare(password, graphcoolUser.password)
           .then(passwordCorrect => {
             if (passwordCorrect) {
-              return graphcoolUser.id;
+              return graphcoolUser;
             } else {
               return Promise.reject("Invalid Credentials");
             }
           });
       }
     })
-    .then(graphcoolUserId => {
-      return graphcool.generateAuthToken(graphcoolUserId, "User");
-    })
-    .then(token => {
-      return { data: { token } };
-    })
+    .then(async graphcoolUser => {
+      const token = await fetchAuthToken(graphcool, graphcoolUser);
+      return {
+        data: {
+          token,
+          firstName: graphcoolUser.firstName,
+          lastName: graphcoolUser.lastName,
+          email: graphcoolUser.email
+        }
+      };
+    )
     .catch(error => {
       console.log(`Error: ${JSON.stringify(error)}`);
 
