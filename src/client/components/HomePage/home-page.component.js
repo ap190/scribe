@@ -20,6 +20,7 @@ import ThreadColumn from "./ThreadColumn";
 import Aside from "./AsideColumn";
 import EditorColumn from "./EditorColumn";
 import { addNewBlock, handleAddText, handleAddPastedImg } from "./editor.api";
+import UnsavedDocumentCacheAPI from "./UnsavedDocumentCache.api";
 import { handleDeleteChannel } from "./channels.api";
 import { Block } from "./EditorColumn/Editor/util/constants";
 import ChannelModal from "../common/Modal/channelModal.component";
@@ -76,6 +77,7 @@ class HomePage extends Component {
       currentThread: undefined,
       currentDocument: undefined,
       currentFiles: new Map(),
+      unsavedDocCache: new UnsavedDocumentCacheAPI(),
       activeNode: undefined,
       userSelectedDir: undefined,
       userData: {
