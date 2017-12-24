@@ -78,13 +78,13 @@ export default class Toolbar extends React.Component {
     */
     toolbarNode.style.top = `${selectionBoundary.top -
       toolbarBoundary.height -
-      5}px`;
+      70}px`;
     const widthDiff = selectionBoundary.width - toolbarBoundary.width;
     if (widthDiff >= 0) {
       toolbarNode.style.left = `${widthDiff / 2}px`;
     } else {
       const left = selectionBoundary.left - parentBoundary.left;
-      toolbarNode.style.left = `${left + 60 + widthDiff / 2}px`;
+      toolbarNode.style.left = `${left + 35 + widthDiff / 2}px`;
     }
   }
 
