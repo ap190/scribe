@@ -13,5 +13,5 @@ export default styled.div`
   padding: 20px;
   font-family: "AvenirNext-Bold";
   background-color: ${Colors.actionPrimary};
-  z-index: 1;
+  z-index: 2;
 `;
