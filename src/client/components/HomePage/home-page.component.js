@@ -78,6 +78,11 @@ class HomePage extends Component {
       currentFiles: new Map(),
       activeNode: undefined,
       userSelectedDir: undefined,
+      userData: {
+        firstName: undefined,
+        lastName: undefined,
+        email: undefined
+      },
       files: {}
     };
     this.toggleEditor = this.toggleEditor.bind(this);
@@ -121,7 +126,7 @@ class HomePage extends Component {
 
   componentDidMount() {
     this.props.location.state &&
-      console.log(this.props.location.state.userData);
+      this.setState({ userData: this.props.location.state.userData });
     ipcRenderer.send("load-file-req");
 
     ipcRenderer.on("create-new-workspace", () => {
@@ -733,6 +738,9 @@ class HomePage extends Component {
             selectChannelOrFile={this.selectChannel}
             selectFile={this.selectFile}
             handleDeleteChannel={this.handleDeleteChannelWrapper}
+            firstName={this.state.userData.firstName}
+            lastName={this.state.userData.lastName}
+            email={this.state.userData.email}
           />
           <SplitPane
             split="vertical"
@@ -775,5 +783,13 @@ class HomePage extends Component {
     );
   }
 }
+
+HomePage.defaultProps = {
+  userData: {
+    firstName: "Elon",
+    lastName: "Musk",
+    email: "sapcex@gmail.com"
+  }
+};
 
 export default HomePage;
