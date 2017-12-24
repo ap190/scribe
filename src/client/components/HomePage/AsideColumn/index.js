@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import cx from "classnames";
 import Channels from "./Channels";
+import UserWidget from "../../common/UserWidget";
 import Tree from "./Tree";
 import "./aside.css";
 import ColumnFooter from "../../common/ColumnFooter";
@@ -71,10 +72,14 @@ class Aside extends Component {
       selectFile,
       activeNode,
       selectChannelOrFile,
-      handleDeleteChannel
+      handleDeleteChannel,
+      firstName,
+      lastName,
+      email
     } = this.props;
     return (
       <div style={styles}>
+        <UserWidget firstName={firstName} lastName={lastName} email={email} />
         <Channels
           title={"Notebooks"}
           toggleModal={toggleModal}
@@ -101,7 +106,6 @@ Aside.defaultProps = {
 };
 
 Aside.propTypes = {
-  isEditorToggled: PropTypes.bool.isRequired,
   selectProjectDir: PropTypes.func.isRequired,
   tree: PropTypes.any.isRequired,
   toggleModal: PropTypes.func.isRequired,
@@ -111,7 +115,10 @@ Aside.propTypes = {
   selectFile: PropTypes.func.isRequired,
   activeNode: PropTypes.any,
   isModalOpen: PropTypes.bool,
-  handleDeleteChannel: PropTypes.func.isRequired
+  handleDeleteChannel: PropTypes.func.isRequired,
+  firstName: PropTypes.string,
+  lastName: PropTypes.string,
+  email: PropTypes.string
 };
 
 export default Aside;

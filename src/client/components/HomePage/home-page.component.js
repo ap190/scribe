@@ -20,6 +20,7 @@ import ThreadColumn from "./ThreadColumn";
 import Aside from "./AsideColumn";
 import EditorColumn from "./EditorColumn";
 import { addNewBlock, handleAddText, handleAddPastedImg } from "./editor.api";
+import UnsavedDocumentCacheAPI from "./UnsavedDocumentCache.api";
 import { handleDeleteChannel } from "./channels.api";
 import { Block } from "./EditorColumn/Editor/util/constants";
 import ChannelModal from "../common/Modal/channelModal.component";
@@ -76,8 +77,14 @@ class HomePage extends Component {
       currentThread: undefined,
       currentDocument: undefined,
       currentFiles: new Map(),
+      unsavedDocCache: new UnsavedDocumentCacheAPI(),
       activeNode: undefined,
       userSelectedDir: undefined,
+      userData: {
+        firstName: undefined,
+        lastName: undefined,
+        email: undefined
+      },
       files: {}
     };
     this.toggleEditor = this.toggleEditor.bind(this);
@@ -122,7 +129,7 @@ class HomePage extends Component {
 
   componentDidMount() {
     this.props.location.state &&
-      console.log(this.props.location.state.userData);
+      this.setState({ userData: this.props.location.state.userData });
     ipcRenderer.send("load-file-req");
 
     ipcRenderer.on("create-new-workspace", () => {
@@ -748,6 +755,9 @@ class HomePage extends Component {
             selectFile={this.selectFile}
             getNumberOfThreads={this.getNumberOfThreads}
             handleDeleteChannel={this.handleDeleteChannelWrapper}
+            firstName={this.state.userData.firstName}
+            lastName={this.state.userData.lastName}
+            email={this.state.userData.email}
           />
           <SplitPane
             split="vertical"
@@ -790,5 +800,13 @@ class HomePage extends Component {
     );
   }
 }
+
+HomePage.defaultProps = {
+  userData: {
+    firstName: "Elon",
+    lastName: "Musk",
+    email: "sapcex@gmail.com"
+  }
+};
 
 export default HomePage;
