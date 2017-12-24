@@ -78,7 +78,7 @@ class ThreadColumn extends Component {
             />
           </div>
         )}
-        {!isModalOpen && (
+        {!isModalOpen && threads !== undefined ? (
           <ColumnFooter>
             <div style={{ display: "flex", justifyContent: "flexStart" }}>
               <Icon icon={Images.addIcon} handleClick={handleAddThread} />
@@ -100,6 +100,8 @@ class ThreadColumn extends Component {
               />
             ) : null}
           </ColumnFooter>
+        ) : (
+          <ColumnFooter />
         )}
       </div>
     );
