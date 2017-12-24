@@ -479,7 +479,8 @@ class MediumDraftEditor extends React.Component {
       showLinkEditToolbar,
       toolbarConfig,
       currentThread,
-      handleDocTitleChange
+      handleDocTitleChange,
+      isToggled
     } = this.props;
     const showAddButton = editorEnabled;
     const editorClass = `md-RichEditor-editor${
@@ -509,7 +510,10 @@ class MediumDraftEditor extends React.Component {
             inlineButtons={inlineButtons}
           />
         )}
-        <div className="md-RichEditor-root">
+        <div
+          className="md-RichEditor-root"
+          style={isToggled ? { margin: "0% 35%" } : null}
+        >
           <Textarea
             className="doc-title"
             type="text"
@@ -621,7 +625,8 @@ MediumDraftEditor.propTypes = {
   toolbarConfig: PropTypes.object,
   processURL: PropTypes.func,
   handleDocTitleChange: PropTypes.func,
-  currentThread: PropTypes.any
+  currentThread: PropTypes.any,
+  isToggled: PropTypes.bool.isRequired
 };
 
 MediumDraftEditor.defaultProps = {

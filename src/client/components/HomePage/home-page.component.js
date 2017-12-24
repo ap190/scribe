@@ -714,7 +714,6 @@ class HomePage extends Component {
         </LoadingWrapper>
       );
     }
-    console.log(this.state.isEditorToggled);
     return (
       <Wrapper>
         <Modal show={this.state.isModalOpen}>{this.getModalContent()}</Modal>

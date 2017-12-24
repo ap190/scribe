@@ -209,6 +209,7 @@ class ExtendedEditor extends React.Component {
         rendererFn={customRendererFn}
         currentThread={this.props.currentThread}
         handleDocTitleChange={this.props.handleDocTitleChange}
+        isToggled={this.props.isToggled}
       />
     );
   }
@@ -220,7 +221,8 @@ ExtendedEditor.propTypes = {
   currentThread: PropTypes.any,
   handleDocTitleChange: PropTypes.any,
   toggleModal: PropTypes.func.isRequired,
-  handleAddEmbeddedContent: PropTypes.func.isRequired
+  handleAddEmbeddedContent: PropTypes.func.isRequired,
+  isToggled: PropTypes.bool.isRequired
 };
 
 export default ExtendedEditor;
