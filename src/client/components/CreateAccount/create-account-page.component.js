@@ -58,7 +58,6 @@ class CreateAccountPage extends Component {
 
   async confirm() {
     const { firstName, lastName, email, password } = this.state;
-    console.log(this.state);
     const result = await this.props.signupUserMutation({
       variables: {
         firstName,
@@ -68,6 +67,7 @@ class CreateAccountPage extends Component {
       }
     });
     const { id, token } = result.data.signupUser;
+    console.log(result.data.signupUser);
     this.saveUserData(id, token);
     this.props.history.push(`/home`);
   }
@@ -157,6 +157,9 @@ const SIGNUP_USER_MUTATION = gql`
     ) {
       id
       token
+      email
+      firstName
+      lastName
     }
   }
 `;

@@ -119,6 +119,7 @@ class LoginPage extends Component {
     } catch (err) {
       console.log(err);
       this.setState({ failedLogIn: true });
+      return;
     }
     console.log(response.data.authenticateUser);
     localStorage.setItem(
