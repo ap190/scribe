@@ -714,6 +714,7 @@ class HomePage extends Component {
         </LoadingWrapper>
       );
     }
+    console.log(this.state.isEditorToggled);
     return (
       <Wrapper>
         <Modal show={this.state.isModalOpen}>{this.getModalContent()}</Modal>
@@ -736,7 +737,7 @@ class HomePage extends Component {
           />
           <SplitPane
             split="vertical"
-            defaultSize={this.state.isEditorToggled ? "0%" : "35%"}
+            size={this.state.isEditorToggled ? "0%" : "35%"}
             allowResize={this.state.isEditorToggled ? false : true}
           >
             <ThreadColumn
