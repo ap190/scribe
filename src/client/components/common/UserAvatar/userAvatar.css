@@ -12,4 +12,5 @@
   text-transform: uppercase;
   font-weight: 700;
   font-family: AvenirNext-Regular;
+  flex-shrink: 0;
 }

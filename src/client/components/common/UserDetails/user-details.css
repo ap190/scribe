@@ -1,6 +1,10 @@
 .userDetailsContainer {
   font-family: AvenirNext-Regular;
-  font-size: 16px;
-  margin-left: 15px;
+  font-size: 14px;
+  margin-left: 10px;
   margin-top: 3px;
+}
+
+.full-name {
+  font-family: AvenirNext-Bold;
 }
