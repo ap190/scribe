@@ -33,10 +33,13 @@ function createGraphcoolUser(api, email, passwordHash, firstName, lastName) {
         lastName: "${lastName}"
       ) {
         id
+        email
+        firstName
+        lastName
       }
     }`
     )
-    .then(userMutationResult => userMutationResult.createUser.id);
+    .then(userMutationResult => userMutationResult.createUser);
 }
 
 module.exports = function(event) {
@@ -67,11 +70,19 @@ module.exports = function(event) {
           return Promise.reject("Email already in use");
         }
       })
-      .then(graphcoolUserId => {
+      .then(graphcoolUser => {
         return graphcool
-          .generateAuthToken(graphcoolUserId, "User")
+          .generateAuthToken(graphcoolUser.id, "User")
           .then(token => {
-            return { data: { id: graphcoolUserId, token } };
+            return {
+              data: {
+                id: graphcoolUser.id,
+                token,
+                firstName: graphcoolUser.firstName,
+                lastName: graphcoolUser.lastName,
+                email: graphcoolUser.email
+              }
+            };
           });
       })
       .catch(error => {

@@ -120,7 +120,8 @@ class HomePage extends Component {
   }
 
   componentDidMount() {
-    // console.log(this.props.location.state.userData);
+    this.props.location.state &&
+      console.log(this.props.location.state.userData);
     ipcRenderer.send("load-file-req");
 
     ipcRenderer.on("create-new-workspace", () => {
@@ -147,7 +148,6 @@ class HomePage extends Component {
     ipcRenderer.on(
       "load-file-res",
       async (event, channels, userSelectedDir) => {
-        console.log(`user seelected dir is `, channels);
         // this.uploadFile(JSON.stringify(channels));
         await this.setState({
           channels,
