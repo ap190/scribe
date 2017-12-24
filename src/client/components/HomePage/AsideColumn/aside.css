@@ -3,7 +3,7 @@
   flex-grow: 1;
   margin-left: 2px;
   position: relative;
-  max-height: 50vh;
+  max-height: 60vh;
   overflow-y: scroll;
 }
 
@@ -32,9 +32,27 @@ img.header-icon {
   cursor: pointer;
 }
 
-.m-node.placeholder {
-  border: 1px dashed #1385e5;
+.node {
+  display: flex;
 }
+
+span {
+  outline-style: none;
+}
+
+.thread-num-circle {
+  border-radius: 50%;
+  border: solid 1px #49306b;
+  color: #49306b;
+  height: 16px;
+  width: 16px;
+  text-align: center;
+  font-size: 8px;
+  line-height: 16px;
+  font-weight: 700;
+  margin-top: 4px;
+}
+
 .m-node .inner {
   color: #000000;
   font-size: 12px;
@@ -42,9 +60,11 @@ img.header-icon {
   line-height: 26px;
 }
 .m-node .node {
-  display: inline-block;
+  display: flex;
+  justify-content: space-between;
   width: 100%;
   padding: 4px 5px;
+  padding-right: 15px;
 }
 .m-node .node.is-active {
   background-color: #e0e6f6;

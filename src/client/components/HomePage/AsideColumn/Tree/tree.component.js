@@ -25,17 +25,21 @@ class Tree extends Component {
   }
 
   renderNode(node) {
+    const numThreads = this.props.getNumberOfThreads(node);
+    const numThreadsString = numThreads === 0 ? "" : numThreads;
     return (
-      <span
-        role="menuitem"
-        tabIndex="0"
+      <div
         className={cx("node", {
           "is-active": node === this.props.activeNode
         })}
+        role="menuitem"
         onClick={this.onClickNode.bind(null, node)}
       >
-        {node.module}
-      </span>
+        <span tabIndex="0">{node.module}</span>
+        {numThreads !== 0 ? (
+          <div className="thread-num-circle"> {numThreadsString}</div>
+        ) : null}
+      </div>
     );
   }
 
@@ -66,6 +70,7 @@ Tree.propTypes = {
   handleOpenDir: PropTypes.func.isRequired,
   title: PropTypes.string.isRequired,
   activeNode: PropTypes.any,
+  getNumberOfThreads: PropTypes.func.isRequired,
   selectFile: PropTypes.func.isRequired
 };
 
