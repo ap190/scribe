@@ -65,6 +65,7 @@ class EditorColumn extends Component {
           currentThread={currentThread}
           handleDocTitleChange={this.props.handleThreadTitleChange}
           handleAddEmbeddedContent={this.props.handleAddEmbeddedContent}
+          isToggled={isEditorToggled}
         />
         {!isModalOpen && <ColumnFooter />}
       </div>
