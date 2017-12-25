@@ -68,6 +68,7 @@ class Aside extends Component {
       toggleModal,
       tree,
       selectProjectDir,
+      getNumberOfThreads,
       selectFile,
       activeNode,
       selectChannelOrFile,
@@ -90,6 +91,7 @@ class Aside extends Component {
           title={"Project"}
           tree={tree}
           handleOpenDir={selectProjectDir}
+          getNumberOfThreads={getNumberOfThreads}
           selectFile={selectFile}
           activeNode={activeNode}
         />
@@ -109,6 +111,7 @@ Aside.propTypes = {
   toggleModal: PropTypes.func.isRequired,
   channels: PropTypes.array,
   selectChannelOrFile: PropTypes.func.isRequired,
+  getNumberOfThreads: PropTypes.func.isRequired,
   selectFile: PropTypes.func.isRequired,
   activeNode: PropTypes.any,
   isModalOpen: PropTypes.bool,

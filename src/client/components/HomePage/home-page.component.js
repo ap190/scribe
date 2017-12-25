@@ -119,6 +119,7 @@ class HomePage extends Component {
     this.updateDocumentState = this.updateDocumentState.bind(this);
     this.handleThreadTitleChange = this.handleThreadTitleChange.bind(this);
     this.getModalContent = this.getModalContent.bind(this);
+    this.getNumberOfThreads = this.getNumberOfThreads.bind(this);
     this.selectFile = this.selectFile.bind(this);
     this.saveWorkspace = this.saveWorkspace.bind(this);
     this.uploadFile = this.uploadFile.bind(this);
@@ -264,6 +265,19 @@ class HomePage extends Component {
     });
 
     this.setState({ channels: newChannels });
+  }
+
+  getNumberOfThreads(activeFile) {
+    if (!activeFile.relativePath) {
+      return 0;
+    }
+    const relativePath = activeFile.relativePath.join(`/`);
+    const absolutePath = `${this.state.absolutePath}/${relativePath}`;
+    const currentChannel = this.state.channels.find(
+      file => file.channelType === "file" && absolutePath === file.absolutePath
+    );
+
+    return currentChannel ? currentChannel.threads.length : 0;
   }
 
   getUpdatedChannelAndThreadsIfSelectionIsFile(activeFile) {
@@ -757,6 +771,7 @@ class HomePage extends Component {
             isModalOpen={this.state.isModalOpen}
             selectChannelOrFile={this.selectChannel}
             selectFile={this.selectFile}
+            getNumberOfThreads={this.getNumberOfThreads}
             handleDeleteChannel={this.handleDeleteChannelWrapper}
             firstName={this.state.userData.firstName}
             lastName={this.state.userData.lastName}
