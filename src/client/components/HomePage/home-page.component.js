@@ -3,12 +3,7 @@ import UUIDv4 from "uuid/v4";
 import path from "path";
 import axios from "axios";
 import styled from "styled-components";
-import {
-  convertToRaw,
-  convertFromRaw,
-  EditorState,
-  AtomicBlockUtils
-} from "draft-js";
+import { convertToRaw, EditorState, AtomicBlockUtils } from "draft-js";
 import SplitPane from "react-split-pane";
 import moment from "moment";
 import { compose } from "react-apollo";
@@ -19,7 +14,12 @@ import Loading from "../common/Loading";
 import ThreadColumn from "./ThreadColumn";
 import Aside from "./AsideColumn";
 import EditorColumn from "./EditorColumn";
-import { addNewBlock, handleAddText, handleAddPastedImg } from "./editor.api";
+import {
+  addNewBlock,
+  handleAddText,
+  handleAddPastedImg,
+  createEditorState
+} from "./editor.api";
 import UnsavedDocumentCacheAPI from "./UnsavedDocumentCache.api";
 import { handleDeleteChannel } from "./channels.api";
 import { Block } from "./EditorColumn/Editor/util/constants";
@@ -136,7 +136,6 @@ class HomePage extends Component {
     });
 
     ipcRenderer.on("create-new-clipping", (event, copiedText) => {
-      console.log("CREATING NEW CLIPPING");
       this.handleAddTextWrapper(copiedText);
     });
 
@@ -155,7 +154,6 @@ class HomePage extends Component {
     ipcRenderer.on(
       "load-file-res",
       async (event, channels, userSelectedDir) => {
-        // this.uploadFile(JSON.stringify(channels));
         await this.setState({
           channels,
           userSelectedDir
@@ -568,12 +566,23 @@ class HomePage extends Component {
   }
 
   async selectThread(thread, shouldUpdateDocument = true) {
-    if (this.state.currentDocument && shouldUpdateDocument) {
-      await this.handleDocumentChange(this.state.currentDocument);
-    }
     const { channels } = this.state;
-    let currentDocument;
-    let currentThread;
+    let currentDocument = undefined;
+    let currentThread = undefined;
+    let documentTitle = undefined;
+    let docSet = false;
+
+    //
+    if (this.state.currentDocument && shouldUpdateDocument) {
+      const { channelId, id } = this.state.currentThread;
+      documentTitle = `${channelId}****${id}`;
+      this.state.unsavedDocCache.setDocument(
+        documentTitle,
+        this.state.currentDocument
+      );
+    }
+
+    // Get Channel and Thread indexes
     const channelIdx = channels.findIndex(
       channel => channel.id === thread.channelId
     );
@@ -581,22 +590,31 @@ class HomePage extends Component {
       currentThread => thread.id === currentThread.id
     );
 
-    // was just deleted
+    // Thread was just deleted
     if (threadIdx === -1) {
       return;
     }
 
+    if (this.state.unsavedDocCache.doesDocumentExist(documentTitle)) {
+      currentDocument = this.state.unsavedDocCache.getDocument(documentTitle);
+      console.log("DOC WAS FOUND");
+    }
+
+    // Update thread selection status, if document is not cached read doc from Memory
     channels[channelIdx].threads.forEach((currThread, idx) => {
       if (idx === threadIdx) {
         currThread.selected = true;
-        currentDocument = currThread.document
-          ? EditorState.createWithContent(convertFromRaw(currThread.document))
-          : EditorState.createEmpty();
         currentThread = currThread;
+        if (!currentDocument) {
+          currentDocument = currThread.document
+            ? createEditorState(currThread.document)
+            : createEditorState(null);
+        }
         return;
       }
       currThread.selected = false;
     });
+
     this.setState({ channels, currentDocument, currentThread });
   }
 

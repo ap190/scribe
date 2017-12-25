@@ -1,4 +1,4 @@
-import { EditorState, Modifier } from "draft-js";
+import { EditorState, Modifier, convertFromRaw } from "draft-js";
 import { Block } from "./EditorColumn/Editor/util/constants";
 
 export const getCurrentBlock = editorState => {
@@ -59,6 +59,11 @@ export const handleAddText = (currentEditorState, text) =>
       text
     )
   );
+
+export const createEditorState = editorContent =>
+  editorContent
+    ? EditorState.createWithContent(convertFromRaw(editorContent))
+    : EditorState.createEmpty();
 
 export const handleAddPastedImg = (currentEditorState, img) =>
   addNewBlock(currentEditorState, Block.IMAGE, {
