@@ -30,8 +30,8 @@
 }
 
 .Resizer.vertical {
-  width: 11px;
-  margin: 0 -5px;
+  width: 6px;
+  margin: 0 -3px;
   cursor: col-resize;
 }
 

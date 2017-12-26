@@ -32,9 +32,9 @@
   font-size: 1.2em;
   text-align: left;
   border: none;
-  color: inherit;
+  color: #341631;
   background-color: transparent;
-  transition: border-color 0.12s;
+  transition: 0.12s;
   outline: none;
 }
 
@@ -64,7 +64,7 @@
 }
 .demo-toggle-button:focus:before,
 .demo-toggle-button:focus:after {
-  background-color: currentColor;
+  background: linear-gradient(to right, #1d2671, #c33764);
 }
 
 /* Meta info */
@@ -74,7 +74,7 @@
   font-size: 11px;
   font-weight: 300;
   text-transform: uppercase;
-  color: var(--color-subtle);
+  color: hsl(0, 0%, 44%);
 }
 .demo-meta-divider {
   margin: 0 0.5em;
@@ -146,13 +146,6 @@
   padding: 0.4em 1.2em;
   color: inherit;
   background-color: transparent;
-}
-.demo-button:focus {
-  outline: none;
-  background-color: white;
-}
-.demo-button:active {
-  border-color: hsl(222, 53%, 50%);
 }
 
 .demo-response {

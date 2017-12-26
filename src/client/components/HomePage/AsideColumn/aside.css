@@ -4,7 +4,8 @@
   margin-left: 2px;
   position: relative;
   max-height: 60vh;
-  overflow-y: scroll;
+  overflow-y: overlay;
+  z-index: 0;
 }
 
 .m-tree {
@@ -55,6 +56,7 @@ span {
   line-height: 16px;
   font-weight: 700;
   margin-top: 4px;
+  flex-shrink: 0;
 }
 
 .m-node .inner {

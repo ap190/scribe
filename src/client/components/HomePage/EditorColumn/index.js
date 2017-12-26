@@ -50,7 +50,7 @@ class EditorColumn extends Component {
     return (
       <div className="editor">
         <EditorActionBar
-          shouldShowNext={currentThreads.length > 1}
+          shouldShowNext={currentThreads && currentThreads.length > 1}
           handleSave={saveWorkspace}
           handleExportToHTML={exportCurrentDocAsHTML}
           handleMaximize={toggleEditorHandler}

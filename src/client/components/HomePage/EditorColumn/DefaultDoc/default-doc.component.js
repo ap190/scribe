@@ -19,14 +19,11 @@ class DefaultDoc extends Component {
       <div className="demo">
         <div className={cx("demo-wrapper", { "is-open": this.state.isOpen })}>
           <button
-            id="copy-to-demo-toggle"
             className="js-container-target demo-toggle-button"
             onClick={this.onClick}
           >
             {this.props.sectionTitle}
-            <div className="demo-meta u-avoid-clicks">
-              {this.props.subTitle}
-            </div>
+            <div className="demo-meta">{this.props.subTitle}</div>
           </button>
           <div className="demo-box">
             <p>{this.props.explanationBlurb}</p>

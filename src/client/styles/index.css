@@ -50,11 +50,14 @@ img {
 ::-webkit-scrollbar {
   background: rgba(0, 0, 0, 0);
   width: 6px;
-  margin: 4px;
+  height: 6px;
+  z-index: 1;
+  overflow: visible;
 }
 
 ::-webkit-scrollbar-thumb {
   background-color: darkgrey;
   width: 1px;
   border-radius: 40px;
+  z-index: 10000;
 }
