@@ -3,19 +3,22 @@ import PropTypes from "prop-types";
 import ActionBarIcon from "../../../common/ActionBarIcon";
 import { lightTheme } from "../../../../utils/const";
 
+const getSaveStatus = () => "Soon...";
+
 const EditorActionBar = ({
   shouldShowNext,
   handleSave,
   handleMaximize,
   handleNextThread,
   isEditorToggled,
-  handleExportToHTML
+  handleExportToHTML,
+  wasDocumentEdited
 }) => (
   <div className="editor-action-bar">
     <div className="editor-action-bar-icon-container">
       <ActionBarIcon
         icon={lightTheme.icons.save}
-        title={"Save"}
+        title={wasDocumentEdited ? "Edited" : "Saved"}
         handleClick={handleSave}
       />
       <ActionBarIcon
@@ -45,7 +48,8 @@ EditorActionBar.propTypes = {
   handleMaximize: PropTypes.func.isRequired,
   handleNextThread: PropTypes.func.isRequired,
   isEditorToggled: PropTypes.bool.isRequired,
-  handleExportToHTML: PropTypes.func.isRequired
+  handleExportToHTML: PropTypes.func.isRequired,
+  wasDocumentEdited: PropTypes.bool
 };
 
 export default EditorActionBar;

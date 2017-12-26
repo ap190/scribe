@@ -6,8 +6,6 @@ import styled from "styled-components";
 import { convertToRaw, EditorState, AtomicBlockUtils } from "draft-js";
 import SplitPane from "react-split-pane";
 import moment from "moment";
-import { compose } from "react-apollo";
-import gql from "graphql-tag";
 import "react-contexify/dist/ReactContexify.min.css";
 import Modal from "../common/Modal";
 import Loading from "../common/Loading";
@@ -20,7 +18,12 @@ import {
   handleAddPastedImg,
   createEditorState
 } from "./editor.api";
-import UnsavedDocumentCacheAPI from "./UnsavedDocumentCache.api";
+import {
+  updateCacheIfNew,
+  fetchIfDocumentExists,
+  doesDocumentExist,
+  getDocumentTitles
+} from "./unsaved-document-cache.api";
 import { handleDeleteChannel } from "./channels.api";
 import { Block } from "./EditorColumn/Editor/util/constants";
 import ChannelModal from "../common/Modal/channelModal.component";
@@ -76,8 +79,9 @@ class HomePage extends Component {
       channels: undefined,
       currentThread: undefined,
       currentDocument: undefined,
+      wasDocumentEdited: false,
       currentFiles: new Map(),
-      unsavedDocCache: new UnsavedDocumentCacheAPI(),
+      unsavedDocCache: new Map(),
       activeNode: undefined,
       userSelectedDir: undefined,
       userData: {
@@ -187,7 +191,6 @@ class HomePage extends Component {
 
   uploadFile(files) {
     let data = new FormData();
-    console.log(`file si `, files[0]);
     data.append("data", files[0]);
     axios
       .post("https://api.graph.cool/file/v1/cjb6feu9323cp0133gc3vuant", data, {
@@ -368,8 +371,7 @@ class HomePage extends Component {
         currentThreadIdx === -1
           ? 0 /* If no thread is selected, select the first thread. */
           : currentThreadIdx
-      ],
-      false
+      ]
     );
   }
 
@@ -468,7 +470,8 @@ class HomePage extends Component {
 
   async updateDocumentState(currentDocument) {
     await this.setState({
-      currentDocument
+      currentDocument,
+      wasDocumentEdited: true
     });
   }
 
@@ -579,24 +582,23 @@ class HomePage extends Component {
     });
   }
 
-  async selectThread(thread, shouldUpdateDocument = true) {
+  async selectThread(thread) {
     const { channels } = this.state;
+    let { unsavedDocCache, wasDocumentEdited } = this.state;
     let currentDocument = undefined;
     let currentThread = undefined;
-    let documentTitle = undefined;
-    let docSet = false;
+    let newDocTitle = undefined;
 
-    //
-    if (this.state.currentDocument && shouldUpdateDocument) {
-      const { channelId, id } = this.state.currentThread;
-      documentTitle = `${channelId}****${id}`;
-      this.state.unsavedDocCache.setDocument(
-        documentTitle,
-        this.state.currentDocument
+    // Update cache with previous doc before switching to new doc
+    if (wasDocumentEdited) {
+      unsavedDocCache = updateCacheIfNew(
+        this.state.currentDocument,
+        this.state.currentThread,
+        unsavedDocCache
       );
     }
 
-    // Get Channel and Thread indexes
+    // Get Channel and Thread indexess
     const channelIdx = channels.findIndex(
       channel => channel.id === thread.channelId
     );
@@ -604,21 +606,27 @@ class HomePage extends Component {
       currentThread => thread.id === currentThread.id
     );
 
-    // Thread was just deleted
+    // Thread was just deleted, nothing to update
     if (threadIdx === -1) {
       return;
     }
 
-    if (this.state.unsavedDocCache.doesDocumentExist(documentTitle)) {
-      currentDocument = this.state.unsavedDocCache.getDocument(documentTitle);
-      console.log("DOC WAS FOUND");
-    }
+    // If document exists in cache, then fetch it
+    currentDocument = fetchIfDocumentExists(
+      channels[channelIdx].threads[threadIdx],
+      unsavedDocCache
+    );
 
-    // Update thread selection status, if document is not cached read doc from Memory
+    // Update thread selection status, if document is not cached read doc from memory
     channels[channelIdx].threads.forEach((currThread, idx) => {
       if (idx === threadIdx) {
         currThread.selected = true;
         currentThread = currThread;
+        // Get new Doc title
+        const { channelId, id } = currThread;
+        newDocTitle = `${channelId}****${id}`;
+
+        // Load Document Content
         if (!currentDocument) {
           currentDocument = currThread.document
             ? createEditorState(currThread.document)
@@ -629,7 +637,18 @@ class HomePage extends Component {
       currThread.selected = false;
     });
 
-    this.setState({ channels, currentDocument, currentThread });
+    // Doc exists in Cache, that means it is not saved
+    wasDocumentEdited = doesDocumentExist(newDocTitle, unsavedDocCache)
+      ? true
+      : false;
+
+    this.setState({
+      channels,
+      currentDocument,
+      currentThread,
+      unsavedDocCache,
+      wasDocumentEdited
+    });
   }
 
   applyThreadChange(threadId, threadFunc) {
@@ -811,6 +830,7 @@ class HomePage extends Component {
               saveWorkspace={this.saveWorkspace}
               exportCurrentDocAsHTML={this.exportCurrentDocAsHTML}
               handleAddEmbeddedContent={this.handleAddEmbeddedContent}
+              wasDocumentEdited={this.state.wasDocumentEdited}
             />
           </SplitPane>
         </SplitPane>
@@ -823,7 +843,7 @@ HomePage.defaultProps = {
   userData: {
     firstName: "Elon",
     lastName: "Musk",
-    email: "sapcex@gmail.com"
+    email: "spacex@gmail.com"
   }
 };
 

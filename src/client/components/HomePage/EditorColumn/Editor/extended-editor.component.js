@@ -123,9 +123,9 @@ class ExtendedEditor extends React.Component {
     this.onChange = this.onChange.bind(this);
   }
 
-  onChange(editorState, callback = null) {
-    if (this.state.editorEnabled) {
-      this.setState({ editorState }, () => {
+  onChange(newEditorState, callback = null) {
+    if (this.state.editorEnabled && newEditorState !== this.state.editorState) {
+      this.setState({ newEditorState }, () => {
         if (callback) {
           callback();
         }

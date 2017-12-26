@@ -44,7 +44,8 @@ class EditorColumn extends Component {
       currentThreads,
       currentThread,
       currentDocument,
-      exportCurrentDocAsHTML
+      exportCurrentDocAsHTML,
+      wasDocumentEdited
     } = this.props;
     return (
       <div className="editor">
@@ -55,6 +56,7 @@ class EditorColumn extends Component {
           handleMaximize={toggleEditorHandler}
           handleNextThread={nextThreadHandler}
           isEditorToggled={isEditorToggled}
+          wasDocumentEdited={wasDocumentEdited}
         />
         <ExtendedEditor
           ref="editor"
@@ -90,7 +92,8 @@ EditorColumn.propTypes = {
   currentThreads: PropTypes.any,
   currentThread: PropTypes.any,
   handleAddEmbeddedContent: PropTypes.func.isRequired,
-  exportCurrentDocAsHTML: PropTypes.func.isRequired
+  exportCurrentDocAsHTML: PropTypes.func.isRequired,
+  wasDocumentEdited: PropTypes.bool
 };
 
 export default EditorColumn;
