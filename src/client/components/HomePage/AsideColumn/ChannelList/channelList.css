@@ -5,7 +5,8 @@
 .channels-container {
   max-height: 30vh;
   min-height: 15vh;
-  overflow-y: scroll;
+  overflow-y: overlay;
+  z-index: 0;
 }
 
 .channels-list {

@@ -6,6 +6,7 @@ import ExtendedEditor from "./Editor/extended-editor.component";
 import "./editor.css";
 import EditorActionBar from "./EditorActionBar";
 import ColumnFooter from "../../common/ColumnFooter";
+import DefaultDoc from "./DefaultDoc/default-doc.component";
 
 class EditorColumn extends Component {
   constructor(props) {
@@ -50,7 +51,7 @@ class EditorColumn extends Component {
     return (
       <div className="editor">
         <EditorActionBar
-          shouldShowNext={currentThreads.length > 1}
+          shouldShowNext={currentThreads && currentThreads.length > 1}
           handleSave={saveWorkspace}
           handleExportToHTML={exportCurrentDocAsHTML}
           handleMaximize={toggleEditorHandler}
@@ -58,17 +59,21 @@ class EditorColumn extends Component {
           isEditorToggled={isEditorToggled}
           wasDocumentEdited={wasDocumentEdited}
         />
-        <ExtendedEditor
-          ref="editor"
-          style={{ justifySelf: "flex-start" }}
-          editorState={currentDocument}
-          onChange={this.onChange}
-          toggleModal={this.props.toggleModal}
-          currentThread={currentThread}
-          handleDocTitleChange={this.props.handleThreadTitleChange}
-          handleAddEmbeddedContent={this.props.handleAddEmbeddedContent}
-          isToggled={isEditorToggled}
-        />
+        {currentThread ? (
+          <ExtendedEditor
+            ref="editor"
+            style={{ justifySelf: "flex-start" }}
+            editorState={currentDocument}
+            onChange={this.onChange}
+            toggleModal={this.props.toggleModal}
+            currentThread={currentThread}
+            handleDocTitleChange={this.props.handleThreadTitleChange}
+            handleAddEmbeddedContent={this.props.handleAddEmbeddedContent}
+            isToggled={isEditorToggled}
+          />
+        ) : (
+          <DefaultDoc />
+        )}
         {!isModalOpen && <ColumnFooter />}
       </div>
     );

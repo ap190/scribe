@@ -49,14 +49,14 @@ class ChannelModal extends Component {
     return (
       <form onSubmit={this.handleSubmit}>
         <div className="modal">
-          <div className="modal-header">Create a Channel</div>
+          <div className="modal-header">Create a Notebook</div>
           <div>
             <label htmlFor="ChannelName" />
             <Input
               type="text"
               value={this.state.value}
               onChange={this.handleChange}
-              placeholder="Enter channel name..."
+              placeholder="Enter notebook name..."
             />
           </div>
           <div className="modal-footer">
