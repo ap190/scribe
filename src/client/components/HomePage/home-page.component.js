@@ -104,6 +104,7 @@ class HomePage extends Component {
     );
     this.getCurrentChannel = this.getCurrentChannel.bind(this);
     this.getCurrentThreads = this.getCurrentThreads.bind(this);
+    this.getCurrentThread = this.getCurrentThread.bind(this);
     this.getUpdatedChannelsSelectedState = this.getUpdatedChannelsSelectedState.bind(
       this
     );
