@@ -126,6 +126,7 @@ class HomePage extends Component {
     this.getModalContent = this.getModalContent.bind(this);
     this.getNumberOfThreads = this.getNumberOfThreads.bind(this);
     this.selectFile = this.selectFile.bind(this);
+    this.saveFile = this.saveFile.bind(this);
     this.saveWorkspace = this.saveWorkspace.bind(this);
     this.uploadFile = this.uploadFile.bind(this);
     this.exportCurrentDocAsHTML = this.exportCurrentDocAsHTML.bind(this);
@@ -688,6 +689,7 @@ class HomePage extends Component {
   saveWorkspace() {
     this.state.currentDocument &&
       this.handleDocumentChange(this.state.currentDocument);
+
     const timestamp = moment().format("LLLL");
     this.applyThreadChange(SELECTED_THREAD, thread => {
       return {
@@ -703,12 +705,18 @@ class HomePage extends Component {
     );
   }
 
-  // TODO: saveFile
   saveFile() {
     // Get Current File
+    if (!this.state.currentThread) return;
+    const { channelId, id } = this.state.currentThread;
+
+    this.saveWorkspace();
+
     // Read Current File from Map
-    // If File doesn't exist, don't do anything
-    // If Files exists save it to this.state.channels
+    const newDocTitle = `${channelId}****${id}`;
+
+    // TODO: Removed file from cache
+
     // If Saved Correctly show Rich notifications
   }
 
@@ -786,7 +794,7 @@ class HomePage extends Component {
               currentThread={this.state.currentThread}
               updateDocumentState={this.updateDocumentState}
               handleThreadTitleChange={this.handleThreadTitleChange}
-              saveWorkspace={this.saveWorkspace}
+              saveWorkspace={this.saveFile}
               exportCurrentDocAsHTML={this.exportCurrentDocAsHTML}
               handleAddEmbeddedContent={this.handleAddEmbeddedContent}
               wasDocumentEdited={this.state.wasDocumentEdited}

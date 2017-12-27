@@ -50,7 +50,7 @@ export const initIpcRenderer = componentContext => {
   ipcRenderer.on("save-workspace", () => componentContext.saveWorkspace());
 
   ipcRenderer.on("save-workspace-notification", (event, userSelectedDir) => {
-    this.setState({ userSelectedDir });
+    componentContext.setState({ userSelectedDir });
     new Notification(
       notifications.SAVE_DOCUMENT_RICH.title,
       notifications.SAVE_DOCUMENT_RICH

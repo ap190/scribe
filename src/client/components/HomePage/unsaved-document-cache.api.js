@@ -3,12 +3,12 @@ const setDocument = (title, content, unsavedDocs) =>
 
 const getDocument = (title, unsavedDocs) => unsavedDocs.get(title);
 
-export const getDocumentTitles = unsavedDocs => unsavedDocs.keys();
-
 export const doesDocumentExist = (title, unsavedDocs) => unsavedDocs.has(title);
 
 const documentDiff = (title, document, unsavedDocs) =>
   getDocument(title, unsavedDocs) !== document;
+
+// const getDocumentTitles = unsavedDocs => unsavedDocs.keys();
 
 export const fetchIfDocumentExists = (newlySelectedThread, unsavedDocs) => {
   const { channelId, id } = newlySelectedThread;
