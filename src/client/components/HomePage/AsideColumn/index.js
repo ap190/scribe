@@ -63,7 +63,6 @@ class Aside extends Component {
 
   render() {
     const {
-      isModalOpen,
       channels,
       toggleModal,
       tree,
@@ -95,7 +94,7 @@ class Aside extends Component {
           selectFile={selectFile}
           activeNode={activeNode}
         />
-        {!isModalOpen && <ColumnFooter />}
+        <ColumnFooter />
       </div>
     );
   }
@@ -114,7 +113,6 @@ Aside.propTypes = {
   getNumberOfThreads: PropTypes.func.isRequired,
   selectFile: PropTypes.func.isRequired,
   activeNode: PropTypes.any,
-  isModalOpen: PropTypes.bool,
   handleDeleteChannel: PropTypes.func.isRequired,
   firstName: PropTypes.string,
   lastName: PropTypes.string,

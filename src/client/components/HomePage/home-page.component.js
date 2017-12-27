@@ -104,6 +104,7 @@ class HomePage extends Component {
     );
     this.getCurrentChannel = this.getCurrentChannel.bind(this);
     this.getCurrentThreads = this.getCurrentThreads.bind(this);
+    this.getCurrentThread = this.getCurrentThread.bind(this);
     this.getUpdatedChannelsSelectedState = this.getUpdatedChannelsSelectedState.bind(
       this
     );
@@ -747,7 +748,6 @@ class HomePage extends Component {
             activeNode={this.state.activeNode}
             toggleModal={this.toggleModal}
             channels={this.state.channels}
-            isModalOpen={this.state.isModalOpen}
             selectChannelOrFile={this.selectChannel}
             selectFile={this.selectFile}
             getNumberOfThreads={this.getNumberOfThreads}

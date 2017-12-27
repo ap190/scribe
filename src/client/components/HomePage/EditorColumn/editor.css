@@ -53,3 +53,30 @@
   display: flex;
   justify-content: space-between;
 }
+
+.help-button-container {
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+}
+
+.help-button {
+  cursor: pointer;
+  border: double 1px #49306b;
+  color: #49306b;
+  background-origin: border-box;
+  background-clip: content-box, border-box;
+  border-radius: 50%;
+  flex-shrink: 0;
+  height: 24px;
+  width: 24px;
+  text-align: center;
+  font-size: 18px;
+  line-height: 24px;
+  font-family: "AvenirNext-Bold";
+}
+
+.help-button:hover {
+  cursor: pointer;
+  background-color: #cdd4e1;
+}
