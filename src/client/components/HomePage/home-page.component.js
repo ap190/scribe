@@ -21,8 +21,7 @@ import {
 import {
   updateCacheIfNew,
   fetchIfDocumentExists,
-  doesDocumentExist,
-  getDocumentTitles
+  doesDocumentExist
 } from "./unsaved-document-cache.api";
 import { initIpcRenderer } from "./ipcRenderer.api";
 import { handleDeleteChannel } from "./channels.api";
@@ -715,9 +714,12 @@ class HomePage extends Component {
     // Read Current File from Map
     const newDocTitle = `${channelId}****${id}`;
 
-    // TODO: Removed file from cache
+    // Remove saved Doc from Cache, perhaps this should be done via setState?
+    this.state.unsavedDocCache.delete(newDocTitle);
 
-    // If Saved Correctly show Rich notifications
+    this.setState({
+      wasDocumentEdited: false
+    });
   }
 
   exportCurrentDocAsHTML() {
