@@ -23,6 +23,7 @@ import {
   fetchIfDocumentExists,
   doesDocumentExist
 } from "./unsaved-document-cache.api";
+import { saveSingleFile } from "./file-storage.api";
 import { initIpcRenderer } from "./ipcRenderer.api";
 import { handleDeleteChannel } from "./channels.api";
 import { Block } from "./EditorColumn/Editor/util/constants";
@@ -710,21 +711,7 @@ class HomePage extends Component {
   }
 
   saveFile() {
-    // Get Current File
-    if (!this.state.currentThread) return;
-    const { channelId, id } = this.state.currentThread;
-
-    this.saveWorkspace();
-
-    // Read Current File from Map
-    const newDocTitle = `${channelId}****${id}`;
-
-    // Remove saved Doc from Cache, perhaps this should be done via setState?
-    this.state.unsavedDocCache.delete(newDocTitle);
-
-    this.setState({
-      wasDocumentEdited: false
-    });
+    saveSingleFile(this);
   }
 
   exportCurrentDocAsHTML() {
