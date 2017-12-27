@@ -154,7 +154,11 @@ class HomePage extends Component {
       .catch(err => console.log(`Err msg is ${err}`));
   }
 
-  getCurrentThread(threads) {
+  getCurrentThread() {
+    const threads = this.getCurrentThreads();
+    if (!threads) {
+      return;
+    }
     return threads.filter(thread => thread.selected)[0];
   }
 
@@ -793,7 +797,7 @@ class HomePage extends Component {
               isModalOpen={this.state.isModalOpen}
               currentThreads={this.getCurrentThreads()}
               currentDocument={this.state.currentDocument}
-              currentThread={this.state.currentThread}
+              currentThread={this.getCurrentThread()}
               updateDocumentState={this.updateDocumentState}
               handleThreadTitleChange={this.handleThreadTitleChange}
               saveWorkspace={this.saveFile}
