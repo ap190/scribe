@@ -14,11 +14,20 @@ class EditorColumn extends Component {
     this.state = {
       editorState: props.currentDocument,
       currentThread: props.currentThread,
-      editorEnabled: true
+      editorEnabled: true,
+      showDefaultDoc: props.currentThread === undefined
     };
 
     this.onChange = this.onChange.bind(this);
     this.getEditorState = this.getEditorState.bind(this);
+    this.showDefaultDoc = this.showDefaultDoc.bind(this);
+  }
+
+  componentDidUpdate() {
+    this.state = {
+      ...this.state,
+      showDefaultDoc: this.props.currentThread === undefined
+    };
   }
 
   onChange(editorState) {
@@ -29,6 +38,10 @@ class EditorColumn extends Component {
 
   getEditorState() {
     return this.state.editorState;
+  }
+
+  showDefaultDoc() {
+    this.setState({ showDefaultDoc: true });
   }
 
   isEditorToggledStyle() {
@@ -59,7 +72,7 @@ class EditorColumn extends Component {
           isEditorToggled={isEditorToggled}
           wasDocumentEdited={wasDocumentEdited}
         />
-        {currentThread ? (
+        {currentThread && !this.state.showDefaultDoc ? (
           <ExtendedEditor
             ref="editor"
             style={{ justifySelf: "flex-start" }}
@@ -74,7 +87,16 @@ class EditorColumn extends Component {
         ) : (
           <DefaultDoc />
         )}
-        {!isModalOpen && <ColumnFooter />}
+        <ColumnFooter>
+          {!isModalOpen ? (
+            <div
+              className="help-button-container"
+              onClick={this.showDefaultDoc}
+            >
+              <div className="help-button"> ? </div>
+            </div>
+          ) : null}
+        </ColumnFooter>
       </div>
     );
   }
