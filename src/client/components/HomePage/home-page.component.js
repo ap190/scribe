@@ -759,7 +759,6 @@ class HomePage extends Component {
             activeNode={this.state.activeNode}
             toggleModal={this.toggleModal}
             channels={this.state.channels}
-            isModalOpen={this.state.isModalOpen}
             selectChannelOrFile={this.selectChannel}
             selectFile={this.selectFile}
             getNumberOfThreads={this.getNumberOfThreads}
