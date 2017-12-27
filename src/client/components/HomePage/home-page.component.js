@@ -103,6 +103,7 @@ class HomePage extends Component {
     );
     this.getCurrentChannel = this.getCurrentChannel.bind(this);
     this.getCurrentThreads = this.getCurrentThreads.bind(this);
+    this.getCurrentThread = this.getCurrentThread.bind(this);
     this.getUpdatedChannelsSelectedState = this.getUpdatedChannelsSelectedState.bind(
       this
     );
@@ -204,7 +205,11 @@ class HomePage extends Component {
       .catch(err => console.log(`Err msg is ${err}`));
   }
 
-  getCurrentThread(threads) {
+  getCurrentThread() {
+    const threads = this.getCurrentThreads();
+    if (!threads) {
+      return;
+    }
     return threads.filter(thread => thread.selected)[0];
   }
 
@@ -824,7 +829,7 @@ class HomePage extends Component {
               isModalOpen={this.state.isModalOpen}
               currentThreads={this.getCurrentThreads()}
               currentDocument={this.state.currentDocument}
-              currentThread={this.state.currentThread}
+              currentThread={this.getCurrentThread()}
               updateDocumentState={this.updateDocumentState}
               handleThreadTitleChange={this.handleThreadTitleChange}
               saveWorkspace={this.saveWorkspace}

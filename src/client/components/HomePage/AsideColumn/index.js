@@ -95,7 +95,7 @@ class Aside extends Component {
           selectFile={selectFile}
           activeNode={activeNode}
         />
-        {!isModalOpen && <ColumnFooter />}
+        <ColumnFooter />
       </div>
     );
   }
