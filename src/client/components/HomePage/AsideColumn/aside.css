@@ -44,7 +44,7 @@ span {
 .thread-num-circle {
   border-radius: 50%;
   border: double 1px transparent;
-  background-image: linear-gradient(#f2f2f2, #f2f2f2),
+  background-image: linear-gradient(white, #f2f2f2),
     radial-gradient(circle at top left, #1d2671, #c33764);
   background-origin: border-box;
   background-clip: content-box, border-box;

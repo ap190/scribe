@@ -87,16 +87,10 @@ class EditorColumn extends Component {
         <ColumnFooter>
           {!isModalOpen ? (
             <div
-              style={{
-                display: "flex",
-                justifyContent: "flex-end",
-                width: "100%",
-                cursor: "pointer"
-              }}
+              className="help-button-container"
               onClick={this.showDefaultDoc}
             >
-              {" "}
-              ?{" "}
+              <div className="help-button"> ? </div>
             </div>
           ) : null}
         </ColumnFooter>
