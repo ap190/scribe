@@ -32,6 +32,10 @@
   padding: 0px 36px;
 }
 
+.channel-container:hover {
+  background-color: #cdd4e1;
+}
+
 .channel-highlight {
   display: block;
   width: 100%;

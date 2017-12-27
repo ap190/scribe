@@ -21,8 +21,7 @@ import {
 import {
   updateCacheIfNew,
   fetchIfDocumentExists,
-  doesDocumentExist,
-  getDocumentTitles
+  doesDocumentExist
 } from "./unsaved-document-cache.api";
 import { handleDeleteChannel } from "./channels.api";
 import { Block } from "./EditorColumn/Editor/util/constants";
@@ -481,6 +480,7 @@ class HomePage extends Component {
   }
 
   async handleDocumentChange(currentDocument) {
+    console.log("here!");
     const { channels } = this.state;
     let currentThreads = this.getCurrentThreads();
     const currentChannel = this.getCurrentChannel();
@@ -829,7 +829,7 @@ class HomePage extends Component {
               isModalOpen={this.state.isModalOpen}
               currentThreads={this.getCurrentThreads()}
               currentDocument={this.state.currentDocument}
-              currentThread={this.getCurrentThread()}
+              currentThread={this.state.currentThread}
               updateDocumentState={this.updateDocumentState}
               handleThreadTitleChange={this.handleThreadTitleChange}
               saveWorkspace={this.saveWorkspace}

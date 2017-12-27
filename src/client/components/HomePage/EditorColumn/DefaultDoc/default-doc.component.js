@@ -15,7 +15,7 @@ const DefaultDoc = () => (
       }}
     >
       Get started using Scribe by Mindflow.ai by clicking on any of the demos
-      bellow.
+      below.
     </div>
     <DemoBox
       sectionTitle="Notebooks"
@@ -24,17 +24,17 @@ const DefaultDoc = () => (
     />
     <DemoBox
       sectionTitle="Add a thread"
-      subTitle="organize docs into notebooks"
+      subTitle="create threads to document your work"
       explanationBlurb=""
     />
     <DemoBox
       sectionTitle="Open a Project"
-      subTitle="organize docs into notebooks"
+      subTitle="add documentation to an existing project"
       explanationBlurb=""
     />
     <DemoBox
       sectionTitle="Shortcuts"
-      subTitle="organize docs into notebooks"
+      subTitle="learn shortcuts to speed up your workflow"
       explanationBlurb=""
     />
   </div>
