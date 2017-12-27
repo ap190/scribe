@@ -7,10 +7,6 @@ export const getDocumentTitles = unsavedDocs => unsavedDocs.keys();
 
 export const doesDocumentExist = (title, unsavedDocs) => unsavedDocs.has(title);
 
-const getCacheSize = unsavedDocs => unsavedDocs.size;
-
-const clearCache = unsavedDocs => unsavedDocs.clear();
-
 const documentDiff = (title, document, unsavedDocs) =>
   getDocument(title, unsavedDocs) !== document;
 
@@ -32,3 +28,7 @@ export const updateCacheIfNew = (document, thread, unsavedDocs) => {
   }
   return unsavedDocs;
 };
+
+// const getCacheSize = unsavedDocs => unsavedDocs.size;
+
+// const clearCache = unsavedDocs => unsavedDocs.clear();
