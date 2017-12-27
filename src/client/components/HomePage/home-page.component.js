@@ -24,6 +24,7 @@ import {
   doesDocumentExist,
   getDocumentTitles
 } from "./unsaved-document-cache.api";
+import { initIpcRenderer } from "./ipcRenderer.api";
 import { handleDeleteChannel } from "./channels.api";
 import { Block } from "./EditorColumn/Editor/util/constants";
 import ChannelModal from "../common/Modal/channelModal.component";
@@ -134,59 +135,8 @@ class HomePage extends Component {
   componentDidMount() {
     this.props.location.state &&
       this.setState({ userData: this.props.location.state.userData });
-    ipcRenderer.send("load-file-req");
 
-    ipcRenderer.on("create-new-workspace", () => {
-      this.setState({ channels: [] });
-    });
-
-    ipcRenderer.on("create-new-clipping", (event, copiedText) => {
-      this.handleAddTextWrapper(copiedText);
-    });
-
-    ipcRenderer.on("create-new-img-clipping", (event, copiedImg) => {
-      this.handleAddImageWrapper(copiedImg);
-    });
-
-    ipcRenderer.on("img-saved", (event, filePath) => {
-      this.handleAddImage(filePath);
-    });
-
-    ipcRenderer.on("sync-to-cloud", (event, files) => {
-      this.uploadFile(files);
-    });
-
-    ipcRenderer.on(
-      "load-file-res",
-      async (event, channels, userSelectedDir) => {
-        await this.setState({
-          channels,
-          userSelectedDir
-        });
-      }
-    );
-
-    ipcRenderer.on("save-workspace", () => {
-      return this.saveWorkspace();
-    });
-
-    ipcRenderer.on("fetch-file-content-res", (event, file) => {
-      const updatedMap = this.state.currentFiles.set(
-        `${file.filePath}`,
-        `${file.data}`
-      );
-      this.setState({ currentFiles: updatedMap });
-    });
-
-    ipcRenderer.on("save-workspace-notification", (event, userSelectedDir) => {
-      this.setState({
-        userSelectedDir
-      });
-      new Notification(
-        notifications.SAVE_DOCUMENT_RICH.title,
-        notifications.SAVE_DOCUMENT_RICH
-      );
-    });
+    initIpcRenderer(this);
   }
 
   uploadFile(files) {
@@ -751,6 +701,15 @@ class HomePage extends Component {
       this.state.channels,
       this.state.userSelectedDir
     );
+  }
+
+  // TODO: saveFile
+  saveFile() {
+    // Get Current File
+    // Read Current File from Map
+    // If File doesn't exist, don't do anything
+    // If Files exists save it to this.state.channels
+    // If Saved Correctly show Rich notifications
   }
 
   exportCurrentDocAsHTML() {
