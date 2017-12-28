@@ -18,6 +18,6 @@ export const saveSingleFile = componentContext => {
   });
 };
 
-export const saveAllFiles = componentContext => {
+export const saveAllFiles = (componentContext, unsavedDocCache) => {
   console.log(componentContext);
 };

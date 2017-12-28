@@ -23,7 +23,7 @@ import {
   fetchIfDocumentExists,
   doesDocumentExist
 } from "./unsaved-document-cache.api";
-import { saveSingleFile } from "./file-storage.api";
+import { saveSingleFile, saveAllFiles } from "./file-storage.api";
 import { initIpcRenderer } from "./ipcRenderer.api";
 import { handleDeleteChannel } from "./channels.api";
 import { Block } from "./EditorColumn/Editor/util/constants";
@@ -695,6 +695,7 @@ class HomePage extends Component {
     this.state.currentDocument &&
       this.handleDocumentChange(this.state.currentDocument);
 
+    // Update thread UI
     const timestamp = moment().format("LLLL");
     this.applyThreadChange(SELECTED_THREAD, thread => {
       return {
@@ -703,6 +704,8 @@ class HomePage extends Component {
         text: thread.document ? thread.document.blocks[0].text : ""
       };
     });
+
+    // Server call to save to disk
     ipcRenderer.send(
       "save-workspace",
       this.state.channels,
