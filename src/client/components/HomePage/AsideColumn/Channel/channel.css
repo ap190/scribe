@@ -38,7 +38,7 @@
   height: 100%;
 }
 
-.channel-highlight:hover {
+.channel-container:hover {
   background: #9ca1ac;
   text-decoration: none;
   cursor: pointer;
