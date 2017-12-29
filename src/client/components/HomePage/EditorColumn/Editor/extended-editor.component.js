@@ -208,6 +208,7 @@ class ExtendedEditor extends React.Component {
         sideButtons={this.sideButtons}
         rendererFn={customRendererFn}
         currentThread={this.props.currentThread}
+        wasDocumentEdited={this.props.wasDocumentEdited}
         handleDocTitleChange={this.props.handleDocTitleChange}
         isToggled={this.props.isToggled}
       />
@@ -220,6 +221,7 @@ ExtendedEditor.propTypes = {
   editorState: PropTypes.any,
   currentThread: PropTypes.any,
   handleDocTitleChange: PropTypes.any,
+  wasDocumentEdited: PropTypes.bool.isRequired,
   toggleModal: PropTypes.func.isRequired,
   handleAddEmbeddedContent: PropTypes.func.isRequired,
   isToggled: PropTypes.bool.isRequired

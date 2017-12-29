@@ -80,6 +80,7 @@ class EditorColumn extends Component {
             onChange={this.onChange}
             toggleModal={this.props.toggleModal}
             currentThread={currentThread}
+            wasDocumentEdited={wasDocumentEdited}
             handleDocTitleChange={this.props.handleThreadTitleChange}
             handleAddEmbeddedContent={this.props.handleAddEmbeddedContent}
             isToggled={isEditorToggled}

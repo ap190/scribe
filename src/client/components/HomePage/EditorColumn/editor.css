@@ -31,6 +31,20 @@
   resize: none;
 }
 
+.is-edited-notif {
+  color: #49306b;
+  border: 1px solid #49306b;
+  height: 50%;
+  border-radius: 15px;
+  padding: 0px 10px;
+  margin-right: 12px;
+}
+
+.title-container {
+  display: flex;
+  justify-content: space-around;
+}
+
 .update-time {
   font-family: "AvenirNext-Regular";
   color: #4a4a4a;
