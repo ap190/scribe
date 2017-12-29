@@ -451,7 +451,7 @@ class HomePage extends Component {
     let currentChannelIdx = null;
     let currentThreadIdx = null;
 
-    const indexObj = getChannelAndThreadIdx(this);
+    const indexObj = getChannelAndThreadIdx(this, channelId, threadId);
     currentChannelIdx = indexObj.currentChannelIdx;
     currentThreadIdx = indexObj.currentThreadIdx;
     if (currentThreadIdx === -1 || currentChannelIdx === -1) {
@@ -462,6 +462,12 @@ class HomePage extends Component {
       return;
     }
 
+    // TODO: wrong indexes right now!
+    console.log(
+      "************ i get to setState ************",
+      currentChannelIdx,
+      currentThreadIdx
+    );
     channels[currentChannelIdx].threads[
       currentThreadIdx
     ].document = convertToRaw(currentDocument.getCurrentContent());

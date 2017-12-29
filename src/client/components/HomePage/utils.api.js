@@ -28,11 +28,9 @@ const getCurrentChannelAndThreadById = (
   if (currentChannelIdx === -1)
     throw new Error("Utils API, could not find ChannelsIDX!");
 
-  const currentThreadIdx = componentContext.state.channles.findIndex(
-    componentContext.state.channels[currentChannelIdx].findIndex(
-      thread => thread.id === threadId
-    )
-  );
+  const currentThreadIdx = componentContext.state.channels[
+    currentChannelIdx
+  ].threads.findIndex(thread => thread.id === threadId);
 
   if (currentThreadIdx === -1)
     throw new Error("Utils API, could not find ChannelsIDX!");
