@@ -17,16 +17,16 @@ import {
   handleAddText,
   handleAddPastedImg,
   createEditorState
-} from "./editor.api";
+} from "./ComponentAPIS/editor.api";
 import {
   updateCacheIfNew,
   fetchIfDocumentExists,
   doesDocumentExist
-} from "./unsaved-document-cache.api";
-import { saveSingleFile, saveAllFiles } from "./file-storage.api";
-import { initIpcRenderer } from "./ipcRenderer.api";
-import { handleDeleteChannel } from "./channels.api";
-import { getChannelAndThreadIdx } from "./utils.api";
+} from "./ComponentAPIS/unsaved-document-cache.api";
+import { saveSingleFile, saveAllFiles } from "./ComponentAPIS/file-storage.api";
+import { initIpcRenderer } from "./ComponentAPIS/ipcRenderer.api";
+import { handleDeleteChannel } from "./ComponentAPIS/channels.api";
+import { getChannelAndThreadIdx } from "./ComponentAPIS/utils.api";
 import { Block } from "./EditorColumn/Editor/util/constants";
 import ChannelModal from "../common/Modal/channelModal.component";
 import EmbedContentModal from "../common/Modal/embedContentModal.component";

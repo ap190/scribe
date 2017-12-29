@@ -1,4 +1,4 @@
-import { notifications } from "../../utils/const";
+import { notifications } from "../../../utils/const";
 
 const electron = window.require("electron");
 const ipcRenderer = electron.ipcRenderer;
