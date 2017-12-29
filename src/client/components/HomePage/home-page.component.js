@@ -26,6 +26,7 @@ import {
 import { saveSingleFile, saveAllFiles } from "./file-storage.api";
 import { initIpcRenderer } from "./ipcRenderer.api";
 import { handleDeleteChannel } from "./channels.api";
+import { getChannelAndThreadIdx } from "./utils.api";
 import { Block } from "./EditorColumn/Editor/util/constants";
 import ChannelModal from "../common/Modal/channelModal.component";
 import EmbedContentModal from "../common/Modal/embedContentModal.component";
@@ -431,27 +432,26 @@ class HomePage extends Component {
     });
   }
 
-  async handleDocumentChange(currentDocument) {
+  async handleDocumentChange(
+    currentDocument,
+    channelId = null,
+    threadId = null
+  ) {
     const { channels } = this.state;
-    let currentThreads = this.getCurrentThreads();
-    const currentChannel = this.getCurrentChannel();
+    let currentChannelIdx = null;
+    let currentThreadIdx = null;
 
-    if (!currentChannel || !channels) return;
-
-    const currentChannelIdx = channels.findIndex(
-      channel => channel.id === currentChannel.id
-    );
-    const currentThreadIdx = currentThreads.findIndex(
-      thread => thread.selected
-    );
-
-    if (currentThreadIdx === -1) {
-      await this.setState({
+    const indexObj = getChannelAndThreadIdx(this);
+    currentChannelIdx = indexObj.currentChannelIdx;
+    currentThreadIdx = indexObj.currentThreadIdx;
+    if (currentThreadIdx === -1 || currentChannelIdx === -1) {
+      this.setState({
         currentThread: undefined,
         currentDocument: EditorState.createEmpty()
       });
       return;
     }
+
     channels[currentChannelIdx].threads[
       currentThreadIdx
     ].document = convertToRaw(currentDocument.getCurrentContent());
@@ -692,6 +692,7 @@ class HomePage extends Component {
   }
 
   saveWorkspace() {
+    // Save currently selected file
     this.state.currentDocument &&
       this.handleDocumentChange(this.state.currentDocument);
 
@@ -704,6 +705,9 @@ class HomePage extends Component {
         text: thread.document ? thread.document.blocks[0].text : ""
       };
     });
+
+    // Save all docs in cache
+    saveAllFiles(this);
 
     // Server call to save to disk
     ipcRenderer.send(

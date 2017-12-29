@@ -30,7 +30,7 @@ function setMainMenu(mainWindow) {
         {
           label: "Save",
           click() {
-            mainWindow.webContents.send("save-timeline");
+            mainWindow.webContents.send("save-workspace");
           }
         },
         {
