@@ -1,6 +1,6 @@
 const getCurrentChannelAndThreadIdx = componentContext => {
-  let currentThreads = componentContext.getCurrentThreads();
-  let currentChannel = componentContext.getCurrentChannel();
+  const currentThreads = componentContext.getCurrentThreads();
+  const currentChannel = componentContext.getCurrentChannel();
 
   if (!currentChannel || !componentContext.state.channels)
     return { currentChannelIdx: null, currentThreadIdx: null };

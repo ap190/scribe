@@ -291,8 +291,17 @@ class HomePage extends Component {
   }
 
   async selectChannel(channelType, channelId = null, activeFile = null) {
-    this.state.currentDocument &&
-      (await this.handleDocumentChange(this.state.currentDocument));
+    const { currentDocument, currentThread } = this.state;
+    let { unsavedDocCache } = this.state;
+
+    // Update cache with previous doc before switching to new doc
+    if (currentDocument && currentThread) {
+      unsavedDocCache = updateCacheIfNew(
+        currentDocument,
+        currentThread,
+        unsavedDocCache
+      );
+    }
 
     if (channelType === "file") {
       let fileChannel = this.getUpdatedChannelAndThreadsIfSelectionIsFile(
@@ -309,7 +318,8 @@ class HomePage extends Component {
 
     await this.setState({
       activeNode: activeFile,
-      showCode: false
+      showCode: false,
+      unsavedDocCache
     });
   }
 
@@ -554,7 +564,7 @@ class HomePage extends Component {
       );
     }
 
-    // Get Channel and Thread indexess
+    // Get Channel and Thread index
     const channelIdx = channels.findIndex(
       channel => channel.id === thread.channelId
     );
@@ -692,29 +702,7 @@ class HomePage extends Component {
   }
 
   saveWorkspace() {
-    // Save currently selected file
-    this.state.currentDocument &&
-      this.handleDocumentChange(this.state.currentDocument);
-
-    // Update thread UI
-    const timestamp = moment().format("LLLL");
-    this.applyThreadChange(SELECTED_THREAD, thread => {
-      return {
-        ...thread,
-        date: timestamp,
-        text: thread.document ? thread.document.blocks[0].text : ""
-      };
-    });
-
-    // Save all docs in cache
     saveAllFiles(this);
-
-    // Server call to save to disk
-    ipcRenderer.send(
-      "save-workspace",
-      this.state.channels,
-      this.state.userSelectedDir
-    );
   }
 
   saveFile() {
