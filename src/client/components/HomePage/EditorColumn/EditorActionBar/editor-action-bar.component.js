@@ -16,11 +16,13 @@ const EditorActionBar = ({
 }) => (
   <div className="editor-action-bar">
     <div className="editor-action-bar-icon-container">
-      <ActionBarIcon
-        icon={lightTheme.icons.save}
-        title={wasDocumentEdited ? "Edited" : "Saved"}
-        handleClick={handleSave}
-      />
+      {wasDocumentEdited ? (
+        <ActionBarIcon
+          icon={lightTheme.icons.save}
+          title={"Save"}
+          handleClick={handleSave}
+        />
+      ) : null}
       <ActionBarIcon
         icon={lightTheme.icons.export}
         title={"Export"}

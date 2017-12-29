@@ -480,6 +480,7 @@ class MediumDraftEditor extends React.Component {
       toolbarConfig,
       currentThread,
       handleDocTitleChange,
+      wasDocumentEdited,
       isToggled
     } = this.props;
     const showAddButton = editorEnabled;
@@ -514,16 +515,19 @@ class MediumDraftEditor extends React.Component {
           className="md-RichEditor-root"
           style={isToggled ? { margin: "0% 35%" } : null}
         >
-          <Textarea
-            className="doc-title"
-            type="text"
-            value={
-              currentThread === undefined ? "Untitled" : currentThread.title
-            }
-            onChange={event => handleDocTitleChange(event.target.value)}
-          />
+          <div className="title-container">
+            <Textarea
+              className="doc-title"
+              type="text"
+              value={currentThread.title}
+              onChange={event => handleDocTitleChange(event.target.value)}
+            />
+            {wasDocumentEdited ? (
+              <div className="is-edited-notif">Edited</div>
+            ) : null}
+          </div>
           <div className="update-time">
-            {currentThread === undefined || currentThread.date === "Unsaved"
+            {currentThread.date === "Unsaved"
               ? "New thread has not been saved yet."
               : `Last Saved: ${currentThread.date}`}
           </div>
@@ -625,6 +629,7 @@ MediumDraftEditor.propTypes = {
   toolbarConfig: PropTypes.object,
   processURL: PropTypes.func,
   handleDocTitleChange: PropTypes.func,
+  wasDocumentEdited: PropTypes.bool.isRequired,
   currentThread: PropTypes.any,
   isToggled: PropTypes.bool.isRequired
 };
