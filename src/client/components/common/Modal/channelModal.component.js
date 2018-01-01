@@ -39,7 +39,7 @@ class ChannelModal extends Component {
     const timestamp = moment();
     this.props.handleAddChannel({
       channelName: `# ${this.state.value}`,
-      lastPosted: { timestamp },
+      lastPosted: timestamp,
       id: UUIDv4(),
       selected: true,
       channelType: "communication",

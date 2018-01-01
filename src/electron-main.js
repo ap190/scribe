@@ -5,8 +5,9 @@ const url = require("url");
 const { setIPCListeners } = require("./local_server/ipc");
 const setMainMenu = require("./local_server/menu");
 const registerGlobalShortcuts = require("./local_server/accelerators");
+const { saveBeforeExiting } = require("./local_server/dialogs");
 
-// require("electron-context-menu")();
+require("electron-context-menu")();
 
 const BrowserWindow = electron.BrowserWindow;
 const {
@@ -20,12 +21,6 @@ const {
 let mainWindow;
 
 function createWindow() {
-  // TODO: Crashes on Windows
-  // app.setAboutPanelOptions({
-  //   applicationName: "Scribe",
-  //   applicationVersion: "0.0.1"
-  // });
-
   // Create the browser window.
   mainWindow = new BrowserWindow({
     titleBarStyle: "hidden",
@@ -74,6 +69,11 @@ function createWindow() {
 }
 
 app.on("ready", createWindow);
+
+// Quit when all windows are closed.
+app.on("before-quit", event => {
+  saveBeforeExiting(mainWindow, app, event);
+});
 
 // Quit when all windows are closed.
 app.on("window-all-closed", () => {

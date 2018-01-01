@@ -6,9 +6,8 @@ import ChannelContextMenu from "../../../common/ChannelContextMenu";
 import "react-contexify/dist/ReactContexify.min.css";
 import "./channel.css";
 
-const Channel = props => {
-  console.log(props);
-  return props.channelType === "communication" ? (
+const Channel = props =>
+  props.channelType === "communication" ? (
     <ContextMenuProvider
       id="menu_id"
       className="channel-container"
@@ -21,7 +20,7 @@ const Channel = props => {
         >
           <div className="channel-list-item-title">{props.channelName}</div>
           <Moment className="channel-list-item-last-post" fromNow>
-            {props.lastPosted.timestamp}
+            {props.lastPosted}
           </Moment>
         </div>
       </div>
@@ -31,7 +30,6 @@ const Channel = props => {
       />
     </ContextMenuProvider>
   ) : null;
-};
 
 Channel.defaultProps = {
   channelName: undefined,

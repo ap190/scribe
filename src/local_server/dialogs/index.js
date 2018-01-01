@@ -33,6 +33,33 @@ const showMessage = browserWindow => {
   );
 };
 
+const saveBeforeExiting = (browserWindow, application, event) => {
+  dialog.showMessageBox(
+    browserWindow,
+    {
+      type: "info", // Windows sets different icons depending on this (if icon is unset)
+      icon: nativeImage.createFromPath(
+        "../../../build/assets/rich-notifications/icon.png"
+      ), // ignored on Windows
+      // title: 'Hello', //this isn't shown on MacOS, but is on Windows. If blank, it's your app name on Windows
+      message: "Don't forget to save your work!",
+      detail: "Save all your work or proceed to quitting?",
+      buttons: ["Save Everything", "Close"], // can pass multiple buttons in here and then get the index of the clicked on in the callback
+      defaultId: 0
+    },
+    clickedIndex => {
+      if (clickedIndex === 1) {
+        if (process.platform !== "darwin") {
+          application.quit();
+        }
+      }
+      // TODO: send IPC event to save all documents
+      // event.preventDefault();
+      console.log("IPC time boi");
+    }
+  );
+};
+
 const showSaveDialog = browserWindow => {
   dialog.showSaveDialog(
     browserWindow,
@@ -108,6 +135,7 @@ module.exports = {
   getFileSelectionFromUser,
   getDirData,
   openFile,
+  saveBeforeExiting,
   getDirSelectionFromUser,
   getFileForCloudSync
 };

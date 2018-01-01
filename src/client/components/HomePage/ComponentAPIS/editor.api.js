@@ -1,5 +1,5 @@
 import { EditorState, Modifier, convertFromRaw } from "draft-js";
-import { Block } from "./EditorColumn/Editor/util/constants";
+import { Block } from "../EditorColumn/Editor/util/constants";
 
 export const getCurrentBlock = editorState => {
   const selectionState = editorState.getSelection();

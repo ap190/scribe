@@ -17,15 +17,16 @@ import {
   handleAddText,
   handleAddPastedImg,
   createEditorState
-} from "./editor.api";
+} from "./ComponentAPIS/editor.api";
 import {
   updateCacheIfNew,
   fetchIfDocumentExists,
   doesDocumentExist
-} from "./unsaved-document-cache.api";
-import { saveSingleFile, saveAllFiles } from "./file-storage.api";
-import { initIpcRenderer } from "./ipcRenderer.api";
-import { handleDeleteChannel } from "./channels.api";
+} from "./ComponentAPIS/unsaved-document-cache.api";
+import { saveSingleFile, saveAllFiles } from "./ComponentAPIS/file-storage.api";
+import { initIpcRenderer } from "./ComponentAPIS/ipcRenderer.api";
+import { handleDeleteChannel } from "./ComponentAPIS/channels.api";
+import { getChannelAndThreadIdx } from "./ComponentAPIS/utils.api";
 import { Block } from "./EditorColumn/Editor/util/constants";
 import ChannelModal from "../common/Modal/channelModal.component";
 import EmbedContentModal from "../common/Modal/embedContentModal.component";
@@ -290,8 +291,17 @@ class HomePage extends Component {
   }
 
   async selectChannel(channelType, channelId = null, activeFile = null) {
-    this.state.currentDocument &&
-      (await this.handleDocumentChange(this.state.currentDocument));
+    const { currentDocument, currentThread } = this.state;
+    let { unsavedDocCache } = this.state;
+
+    // Update cache with previous doc before switching to new doc
+    if (currentDocument && currentThread) {
+      unsavedDocCache = updateCacheIfNew(
+        currentDocument,
+        currentThread,
+        unsavedDocCache
+      );
+    }
 
     if (channelType === "file") {
       let fileChannel = this.getUpdatedChannelAndThreadsIfSelectionIsFile(
@@ -308,7 +318,8 @@ class HomePage extends Component {
 
     await this.setState({
       activeNode: activeFile,
-      showCode: false
+      showCode: false,
+      unsavedDocCache
     });
   }
 
@@ -430,27 +441,32 @@ class HomePage extends Component {
     });
   }
 
-  async handleDocumentChange(currentDocument) {
+  async handleDocumentChange(
+    currentDocument,
+    channelId = null,
+    threadId = null
+  ) {
     const { channels } = this.state;
-    let currentThreads = this.getCurrentThreads();
-    const currentChannel = this.getCurrentChannel();
+    let currentChannelIdx = null;
+    let currentThreadIdx = null;
 
-    if (!currentChannel || !channels) return;
-
-    const currentChannelIdx = channels.findIndex(
-      channel => channel.id === currentChannel.id
-    );
-    const currentThreadIdx = currentThreads.findIndex(
-      thread => thread.selected
-    );
-
-    if (currentThreadIdx === -1) {
-      await this.setState({
+    const indexObj = getChannelAndThreadIdx(this, channelId, threadId);
+    currentChannelIdx = indexObj.currentChannelIdx;
+    currentThreadIdx = indexObj.currentThreadIdx;
+    if (currentThreadIdx === -1 || currentChannelIdx === -1) {
+      this.setState({
         currentThread: undefined,
         currentDocument: EditorState.createEmpty()
       });
       return;
     }
+
+    // TODO: wrong indexes right now!
+    console.log(
+      "************ i get to setState ************",
+      currentChannelIdx,
+      currentThreadIdx
+    );
     channels[currentChannelIdx].threads[
       currentThreadIdx
     ].document = convertToRaw(currentDocument.getCurrentContent());
@@ -463,7 +479,7 @@ class HomePage extends Component {
     const relativePath = activeFile.relativePath.join(`/`);
     const newChannel = {
       channelName: `${activeFile.module}`,
-      lastPosted: { timestamp },
+      lastPosted: timestamp,
       id: UUIDv4(),
       selected: true,
       channelType: "file",
@@ -551,7 +567,7 @@ class HomePage extends Component {
       );
     }
 
-    // Get Channel and Thread indexess
+    // Get Channel and Thread index
     const channelIdx = channels.findIndex(
       channel => channel.id === thread.channelId
     );
@@ -689,28 +705,11 @@ class HomePage extends Component {
   }
 
   saveWorkspace() {
-    this.state.currentDocument &&
-      this.handleDocumentChange(this.state.currentDocument);
-
-    // Update thread UI
-    const timestamp = moment().format("LLLL");
-    this.applyThreadChange(SELECTED_THREAD, thread => {
-      return {
-        ...thread,
-        date: timestamp,
-        text: thread.document ? thread.document.blocks[0].text : ""
-      };
-    });
-
-    // Server call to save to disk
-    ipcRenderer.send(
-      "save-workspace",
-      this.state.channels,
-      this.state.userSelectedDir
-    );
+    saveAllFiles(this);
   }
 
-  async saveFile() {
+  saveFile() {
+    console.log("here!!!");
     const timestamp = moment();
     const oldChannels = this.state.channels;
     const newChannels = oldChannels.map(channel => {
@@ -721,9 +720,8 @@ class HomePage extends Component {
       return channel;
     });
 
-    await this.setState({ channels: newChannels });
-
     saveSingleFile(this);
+    this.setState({ channels: newChannels });
   }
 
   exportCurrentDocAsHTML() {
