@@ -352,7 +352,6 @@ class HomePage extends Component {
   async handleDeleteChannelWrapper(id = null) {
     if (!id || typeof id !== "string" || !this.state.channels) return;
     const updatedChannels = handleDeleteChannel(id, this.state.channels);
-    console.log(updatedChannels);
     await this.setState({
       isModalOpen: false,
       currentThread: undefined,
@@ -460,10 +459,11 @@ class HomePage extends Component {
 
   async createNewFileChannel(activeFile) {
     const { absolutePath } = this.state;
+    const timestamp = moment();
     const relativePath = activeFile.relativePath.join(`/`);
     const newChannel = {
       channelName: `${activeFile.module}`,
-      lastPosted: "4 days ago",
+      lastPosted: { timestamp },
       id: UUIDv4(),
       selected: true,
       channelType: "file",
@@ -480,9 +480,6 @@ class HomePage extends Component {
       await this.createNewFileChannel(activeNode);
       currentChannel = this.getCurrentChannel();
       channels = this.state.channels;
-    } else if (!currentChannel) {
-      // TODO: Put default document.
-      return;
     }
 
     const newThread = {
@@ -713,7 +710,19 @@ class HomePage extends Component {
     );
   }
 
-  saveFile() {
+  async saveFile() {
+    const timestamp = moment();
+    const oldChannels = this.state.channels;
+    const newChannels = oldChannels.map(channel => {
+      if (channel.selected) {
+        channel.lastPosted = timestamp;
+        return channel;
+      }
+      return channel;
+    });
+
+    await this.setState({ channels: newChannels });
+
     saveSingleFile(this);
   }
 

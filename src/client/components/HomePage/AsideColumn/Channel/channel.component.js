@@ -1,12 +1,14 @@
 import React from "react";
+import Moment from "react-moment";
 import PropTypes from "prop-types";
 import { ContextMenuProvider } from "react-contexify";
 import ChannelContextMenu from "../../../common/ChannelContextMenu";
 import "react-contexify/dist/ReactContexify.min.css";
 import "./channel.css";
 
-const Channel = props =>
-  props.channelType === "communication" ? (
+const Channel = props => {
+  console.log(props);
+  return props.channelType === "communication" ? (
     <ContextMenuProvider
       id="menu_id"
       className="channel-container"
@@ -18,7 +20,9 @@ const Channel = props =>
           onClick={() => props.selectChannelOrFile(props.channelType, props.id)}
         >
           <div className="channel-list-item-title">{props.channelName}</div>
-          <div className="channel-list-item-last-post">{props.lastPosted}</div>
+          <Moment className="channel-list-item-last-post" fromNow>
+            {props.lastPosted.timestamp}
+          </Moment>
         </div>
       </div>
       <ChannelContextMenu
@@ -27,6 +31,7 @@ const Channel = props =>
       />
     </ContextMenuProvider>
   ) : null;
+};
 
 Channel.defaultProps = {
   channelName: undefined,
@@ -36,7 +41,7 @@ Channel.defaultProps = {
 Channel.propTypes = {
   channelName: PropTypes.string,
   id: PropTypes.string.isRequired,
-  lastPosted: PropTypes.string.isRequired,
+  lastPosted: PropTypes.object.isRequired,
   channelType: PropTypes.string.isRequired,
   selectChannelOrFile: PropTypes.func.isRequired,
   selected: PropTypes.bool,
