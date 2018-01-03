@@ -39,6 +39,13 @@ export const initIpcRenderer = componentContext => {
     componentContext.uploadFile(files)
   );
 
+  ipcRenderer.on("check-for-unsaved-work", event => {
+    ipcRenderer.sendSync(
+      "check-for-unsaved-work",
+      componentContext.unsavedDocCache.size === 0
+    );
+  });
+
   ipcRenderer.on("fetch-file-content-res", (event, file) => {
     const updatedMap = componentContext.state.currentFiles.set(
       `${file.filePath}`,

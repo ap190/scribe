@@ -64,8 +64,6 @@ export const saveAllFiles = componentContext => {
   }
 
   // Save cached docs
-  console.log("#######");
-  console.log(unsavedDocCache);
   unsavedDocCache.forEach((val, key) => {
     const { channelId, id } = deconstructChannelAndThreadIDFromDocName(key);
     componentContext.handleDocumentChange(val, channelId, id);

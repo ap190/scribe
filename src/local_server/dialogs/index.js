@@ -42,20 +42,16 @@ const saveBeforeExiting = (browserWindow, application, event) => {
         "../../../build/assets/rich-notifications/icon.png"
       ), // ignored on Windows
       // title: 'Hello', //this isn't shown on MacOS, but is on Windows. If blank, it's your app name on Windows
-      message: "Don't forget to save your work!",
-      detail: "Save all your work or proceed to quitting?",
-      buttons: ["Save Everything", "Close"], // can pass multiple buttons in here and then get the index of the clicked on in the callback
+      message: "You have unsaved work",
+      detail: "Are you sure you want to exit before saving?",
+      buttons: ["Cancel", "Quit"], // can pass multiple buttons in here and then get the index of the clicked on in the callback
       defaultId: 0
     },
     clickedIndex => {
       if (clickedIndex === 1) {
-        if (process.platform !== "darwin") {
-          application.quit();
-        }
+        app.exit();
       }
-      // TODO: send IPC event to save all documents
-      // event.preventDefault();
-      console.log("IPC time boi");
+      event.preventDefault();
     }
   );
 };

@@ -1,4 +1,5 @@
-const { ipcMain } = require("electron");
+const { ipcMain, app } = require("electron");
+const { saveBeforeExiting } = require("../dialogs");
 const {
   genSaveWorkspace,
   genLoadData,
@@ -20,6 +21,13 @@ exports.setIPCListeners = mainWindow => {
   ipcMain.on("export-current-doc", (event, html, pdfName) =>
     genExportCurrentDocument(event, html, pdfName)
   );
+
+  ipcMain.on("check-for-unsaved-work", (event, existsUnsavedWork) => {
+    if (!existsUnsavedWork) {
+      app.exit();
+    }
+    saveBeforeExiting(mainWindow, app, event);
+  });
 
   ipcMain.on("save-workspace", (event, workspace, userSelectedDir) =>
     genSaveWorkspace(event, workspace, userSelectedDir)

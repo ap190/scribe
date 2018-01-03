@@ -1,5 +1,5 @@
 const electron = require("electron");
-const { app, clipboard, globalShortcut } = require("electron");
+const { app, clipboard, globalShortcut, ipcMain } = require("electron");
 const path = require("path");
 const url = require("url");
 const { setIPCListeners } = require("./local_server/ipc");
@@ -72,6 +72,8 @@ app.on("ready", createWindow);
 
 // Quit when all windows are closed.
 app.on("before-quit", event => {
+  mainWindow.webContents.send("check-for-unsaved-work");
+  event.preventDefault();
   saveBeforeExiting(mainWindow, app, event);
 });
 
