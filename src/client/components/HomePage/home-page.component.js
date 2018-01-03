@@ -148,6 +148,7 @@ class HomePage extends Component {
       return;
     }
     shell.openItem(this.state.absolutePath);
+    ipcRenderer.send("launch-vs-code", this.state.absolutePath);
   }
 
   uploadFile(files) {

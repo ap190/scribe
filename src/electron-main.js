@@ -59,8 +59,6 @@ function createWindow() {
   setMainMenu(mainWindow);
   setIPCListeners(mainWindow);
   mainWindow.once("ready-to-show", () => {
-    console.log("App path is ....");
-    console.log(app.getAppPath());
     mainWindow.show();
   });
 

@@ -1,4 +1,5 @@
 const { ipcMain, app } = require("electron");
+const cmd = require("node-cmd");
 const { saveBeforeExiting } = require("../dialogs");
 const {
   genSaveWorkspace,
@@ -21,6 +22,11 @@ exports.setIPCListeners = mainWindow => {
   ipcMain.on("export-current-doc", (event, html, pdfName) =>
     genExportCurrentDocument(event, html, pdfName)
   );
+
+  ipcMain.on("launch-vs-code", (event, projectPath) => {
+    console.log(projectPath);
+    cmd.run(`code ${projectPath}`);
+  });
 
   ipcMain.on("check-for-unsaved-work", (event, everythingIsSaved) => {
     if (everythingIsSaved) {

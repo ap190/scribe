@@ -103,31 +103,33 @@ class Aside extends Component {
           activeNode={activeNode}
         />
         <ColumnFooter>
-          <div
-            style={{
-              display: "flex",
-              justifyContent: "center",
-              cursor: "pointer"
-            }}
-            onClick={launchEditor}
-          >
-            <Icon
-              icon={Images.codeEditorIcon}
-              handleClick={this.launchEditor}
-              height="24px"
-              width="24px"
-            />
+          {Object.keys(tree).length !== 0 ? (
             <div
-              className="add-flow-description"
               style={{
-                paddingLeft: "inherit",
-                marginLeft: "10px",
-                marginBottom: "10px"
+                display: "flex",
+                justifyContent: "center",
+                cursor: "pointer"
               }}
+              onClick={launchEditor}
             >
-              Launch in Editor
+              <Icon
+                icon={Images.codeEditorIcon}
+                handleClick={this.launchEditor}
+                height="24px"
+                width="24px"
+              />
+              <div
+                className="add-flow-description"
+                style={{
+                  paddingLeft: "inherit",
+                  marginLeft: "10px",
+                  marginBottom: "10px"
+                }}
+              >
+                Launch in Editor
+              </div>
             </div>
-          </div>
+          ) : null}
         </ColumnFooter>
       </div>
     );
