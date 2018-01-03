@@ -22,11 +22,12 @@ exports.setIPCListeners = mainWindow => {
     genExportCurrentDocument(event, html, pdfName)
   );
 
-  ipcMain.on("check-for-unsaved-work", (event, existsUnsavedWork) => {
-    if (!existsUnsavedWork) {
+  ipcMain.on("check-for-unsaved-work", (event, everythingIsSaved) => {
+    if (everythingIsSaved) {
       app.exit();
     }
-    saveBeforeExiting(mainWindow, app, event);
+    // TODO: this crashes app
+    saveBeforeExiting(mainWindow);
   });
 
   ipcMain.on("save-workspace", (event, workspace, userSelectedDir) =>

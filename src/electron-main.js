@@ -72,9 +72,9 @@ app.on("ready", createWindow);
 
 // Quit when all windows are closed.
 app.on("before-quit", event => {
-  mainWindow.webContents.send("check-for-unsaved-work");
+  // mainWindow.webContents.send("check-for-unsaved-work");
   event.preventDefault();
-  saveBeforeExiting(mainWindow, app, event);
+  saveBeforeExiting(mainWindow);
 });
 
 // Quit when all windows are closed.

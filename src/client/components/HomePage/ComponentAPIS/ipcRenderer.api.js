@@ -42,7 +42,7 @@ export const initIpcRenderer = componentContext => {
   ipcRenderer.on("check-for-unsaved-work", event => {
     ipcRenderer.sendSync(
       "check-for-unsaved-work",
-      componentContext.unsavedDocCache.size === 0
+      componentContext.state.unsavedDocCache.size === 0
     );
   });
 

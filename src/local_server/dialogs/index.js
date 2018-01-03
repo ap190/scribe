@@ -33,7 +33,7 @@ const showMessage = browserWindow => {
   );
 };
 
-const saveBeforeExiting = (browserWindow, application, event) => {
+const saveBeforeExiting = browserWindow => {
   dialog.showMessageBox(
     browserWindow,
     {
@@ -41,17 +41,17 @@ const saveBeforeExiting = (browserWindow, application, event) => {
       icon: nativeImage.createFromPath(
         "../../../build/assets/rich-notifications/icon.png"
       ), // ignored on Windows
-      // title: 'Hello', //this isn't shown on MacOS, but is on Windows. If blank, it's your app name on Windows
-      message: "You have unsaved work",
-      detail: "Are you sure you want to exit before saving?",
-      buttons: ["Cancel", "Quit"], // can pass multiple buttons in here and then get the index of the clicked on in the callback
+      message: "Did you save your work?",
+      detail: "Quitting the app will result in losing unsaved work!",
+      buttons: ["Save Everything", "Quit"],
       defaultId: 0
     },
     clickedIndex => {
       if (clickedIndex === 1) {
-        app.exit();
+        app.exit(0);
       }
-      event.preventDefault();
+      // TODO: Optimization -> can send additional param here to trigger app quit if users want this to close app
+      browserWindow.webContents.send("save-workspace");
     }
   );
 };

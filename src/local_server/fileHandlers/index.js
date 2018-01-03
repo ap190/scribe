@@ -140,6 +140,7 @@ exports.genSaveWorkspace = (event, workspace, userSelectedDir) => {
   // Check if user is in session and has already selected dir
   if (!userSelectedDir) {
     userSelectedDir = getDirSelectionFromUser(mainWindow);
+    if (!userSelectedDir) return; // User aborted save by cancelling
     userSelectedDir = path.join(userSelectedDir, SCRIBE_FILE_PATHS.SCRIBE_DATA);
   }
 
