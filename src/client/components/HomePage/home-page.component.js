@@ -490,6 +490,18 @@ class HomePage extends Component {
   }
 
   async handleAddThread() {
+    const { currentDocument, currentThread } = this.state;
+    let { unsavedDocCache } = this.state;
+
+    // Update cache with previous doc before switching to new doc
+    if (currentDocument && currentThread) {
+      unsavedDocCache = updateCacheIfNew(
+        currentDocument,
+        currentThread,
+        unsavedDocCache
+      );
+    }
+
     let { channels, activeNode } = this.state;
     let currentChannel = this.getCurrentChannel();
     if (!currentChannel && activeNode) {
