@@ -1,4 +1,5 @@
 import React from "react";
+import Moment from "react-moment";
 import PropTypes from "prop-types";
 import { ContextMenuProvider } from "react-contexify";
 import ChannelContextMenu from "../../../common/ChannelContextMenu";
@@ -18,7 +19,9 @@ const Channel = props =>
           onClick={() => props.selectChannelOrFile(props.channelType, props.id)}
         >
           <div className="channel-list-item-title">{props.channelName}</div>
-          <div className="channel-list-item-last-post">{props.lastPosted}</div>
+          <Moment className="channel-list-item-last-post" fromNow>
+            {props.lastPosted}
+          </Moment>
         </div>
       </div>
       <ChannelContextMenu
@@ -36,7 +39,7 @@ Channel.defaultProps = {
 Channel.propTypes = {
   channelName: PropTypes.string,
   id: PropTypes.string.isRequired,
-  lastPosted: PropTypes.string.isRequired,
+  lastPosted: PropTypes.object.isRequired,
   channelType: PropTypes.string.isRequired,
   selectChannelOrFile: PropTypes.func.isRequired,
   selected: PropTypes.bool,

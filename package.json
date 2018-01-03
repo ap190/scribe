@@ -64,6 +64,7 @@
     "react-apollo": "^2.0.4",
     "react-contexify": "^2.1.4",
     "react-dom": "^15.4.2",
+    "react-moment": "^0.6.8",
     "react-redux": "^5.0.6",
     "react-router": "^4.2.0",
     "react-router-dom": "^4.2.2",

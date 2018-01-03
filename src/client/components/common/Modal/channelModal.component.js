@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import UUIDv4 from "uuid/v4";
+import moment from "moment";
 import styled from "styled-components";
 
 const Input = styled.input`
@@ -35,9 +36,10 @@ class ChannelModal extends Component {
 
   handleSubmit(event) {
     event.preventDefault();
+    const timestamp = moment();
     this.props.handleAddChannel({
       channelName: `# ${this.state.value}`,
-      lastPosted: "4 days ago",
+      lastPosted: timestamp,
       id: UUIDv4(),
       selected: true,
       channelType: "communication",
