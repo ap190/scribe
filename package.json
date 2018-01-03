@@ -57,6 +57,7 @@
     "medium-draft": "^0.6.0-beta1",
     "mime-types": "^2.1.17",
     "moment": "^2.19.3",
+    "node-cmd": "^3.0.0",
     "node-notifier": "^5.1.2",
     "prop-types": "^15.6.0",
     "ramda": "^0.25.0",

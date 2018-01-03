@@ -109,7 +109,6 @@ class ThreadColumn extends Component {
 }
 
 ThreadColumn.propTypes = {
-  isEditorToggled: PropTypes.bool.isRequired,
   currentChannel: PropTypes.any,
   currentFiles: PropTypes.any,
   threads: PropTypes.any,

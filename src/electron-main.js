@@ -1,5 +1,5 @@
 const electron = require("electron");
-const { app, clipboard, globalShortcut, ipcMain } = require("electron");
+const { app, clipboard, globalShortcut } = require("electron");
 const path = require("path");
 const url = require("url");
 const { setIPCListeners } = require("./local_server/ipc");
@@ -59,6 +59,8 @@ function createWindow() {
   setMainMenu(mainWindow);
   setIPCListeners(mainWindow);
   mainWindow.once("ready-to-show", () => {
+    console.log("App path is ....");
+    console.log(app.getAppPath());
     mainWindow.show();
   });
 

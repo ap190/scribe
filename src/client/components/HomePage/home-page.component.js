@@ -47,7 +47,7 @@ const electron = window.require("electron");
 const remote = electron.remote;
 const currentWindow = remote.getCurrentWindow();
 const mainProcessFileHandling = remote.require("./local_server/dialogs");
-const ipcRenderer = electron.ipcRenderer;
+const { ipcRenderer, shell } = electron;
 
 const Wrapper = styled.div`
   display: flex;
@@ -132,6 +132,7 @@ class HomePage extends Component {
     this.saveWorkspace = this.saveWorkspace.bind(this);
     this.uploadFile = this.uploadFile.bind(this);
     this.exportCurrentDocAsHTML = this.exportCurrentDocAsHTML.bind(this);
+    this.launchEditor = this.launchEditor.bind(this);
     this.currentWindow = currentWindow;
   }
 
@@ -140,6 +141,13 @@ class HomePage extends Component {
       this.setState({ userData: this.props.location.state.userData });
 
     initIpcRenderer(this);
+  }
+
+  launchEditor() {
+    if (!this.state.absolutePath) {
+      return;
+    }
+    shell.openItem(this.state.absolutePath);
   }
 
   uploadFile(files) {
@@ -777,6 +785,7 @@ class HomePage extends Component {
             firstName={this.state.userData.firstName}
             lastName={this.state.userData.lastName}
             email={this.state.userData.email}
+            launchEditor={this.launchEditor}
           />
           <SplitPane
             split="vertical"

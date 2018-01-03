@@ -4,6 +4,8 @@ import cx from "classnames";
 import Channels from "./Channels";
 import UserWidget from "../../common/UserWidget";
 import Tree from "./Tree";
+import Icon from "../../common/Icon";
+import { Images } from "../../../themes";
 import "./aside.css";
 import ColumnFooter from "../../common/ColumnFooter";
 
@@ -23,6 +25,7 @@ class Aside extends Component {
     this.renderNode = this.renderNode.bind(this);
     this.onClickNode = this.onClickNode.bind(this);
     this.handleChange = this.handleChange.bind(this);
+    this.lastName = this.launchEditor.bind(this);
     this.updateTree = this.updateTree.bind(this);
   }
 
@@ -61,6 +64,10 @@ class Aside extends Component {
     );
   }
 
+  launchEditor() {
+    console.log("hey, im jeff");
+  }
+
   render() {
     const {
       channels,
@@ -74,7 +81,8 @@ class Aside extends Component {
       handleDeleteChannel,
       firstName,
       lastName,
-      email
+      email,
+      launchEditor
     } = this.props;
     return (
       <div style={styles}>
@@ -94,7 +102,33 @@ class Aside extends Component {
           selectFile={selectFile}
           activeNode={activeNode}
         />
-        <ColumnFooter />
+        <ColumnFooter>
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "center",
+              cursor: "pointer"
+            }}
+            onClick={launchEditor}
+          >
+            <Icon
+              icon={Images.codeEditorIcon}
+              handleClick={this.launchEditor}
+              height="24px"
+              width="24px"
+            />
+            <div
+              className="add-flow-description"
+              style={{
+                paddingLeft: "inherit",
+                marginLeft: "10px",
+                marginBottom: "10px"
+              }}
+            >
+              Launch in Editor
+            </div>
+          </div>
+        </ColumnFooter>
       </div>
     );
   }
@@ -116,7 +150,8 @@ Aside.propTypes = {
   handleDeleteChannel: PropTypes.func.isRequired,
   firstName: PropTypes.string,
   lastName: PropTypes.string,
-  email: PropTypes.string
+  email: PropTypes.string,
+  launchEditor: PropTypes.func.isRequired
 };
 
 export default Aside;

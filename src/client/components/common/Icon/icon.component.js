@@ -1,22 +1,34 @@
 import React from "react";
 import PropTypes from "prop-types";
-import styled from "styled-components";
 
-const Img = styled.img`
-  width: 14px;
-  height: 14px;
-  cursor: pointer;
-`;
+const computeStyle = (h, w) => {
+  return {
+    width: w,
+    height: h,
+    cursor: "pointer"
+  };
+};
 
-const Icon = ({ icon, handleClick }) => (
+const Icon = ({ icon, handleClick, height, width }) => (
   <div onClick={handleClick}>
-    <Img src={icon} alt="Add a flow button" />
+    <img
+      src={icon}
+      style={computeStyle(height, width)}
+      alt="Add a flow button"
+    />
   </div>
 );
 
 Icon.propTypes = {
   handleClick: PropTypes.func,
-  icon: PropTypes.string.isRequired
+  icon: PropTypes.string.isRequired,
+  height: PropTypes.string,
+  width: PropTypes.string
+};
+
+Icon.defaultProps = {
+  height: "14px",
+  width: "14px"
 };
 
 export default Icon;
