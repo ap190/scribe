@@ -1,5 +1,6 @@
 const electron = require("electron");
 const { app, clipboard, globalShortcut } = require("electron");
+const isDev = require("electron-is-dev");
 const path = require("path");
 const url = require("url");
 const { setIPCListeners } = require("./local_server/ipc");
@@ -31,14 +32,19 @@ function createWindow() {
     },
     show: false
   });
-  const startUrl =
-    process.env.ELECTRON_START_URL ||
-    url.format({
-      pathname: path.join(__dirname, "/../build/index.html"),
-      protocol: "file:",
-      slashes: true
-    });
-  mainWindow.loadURL(startUrl);
+  mainWindow.loadURL(
+    isDev
+      ? "http://localhost:3000"
+      : `file://${path.join(__dirname, "../build/index.html")}`
+  );
+  // const startUrl =
+  //   process.env.ELECTRON_START_URL ||
+  //   url.format({
+  //     pathname: path.join(__dirname, "/../build/index.html"),
+  //     protocol: "file:",
+  //     slashes: true
+  //   });
+  // mainWindow.loadURL(startUrl);
   // mainWindow.webContents.openDevTools();
 
   // React DevTools
