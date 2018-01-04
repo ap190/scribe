@@ -8,7 +8,6 @@ import { HttpLink } from "apollo-link-http";
 import { InMemoryCache } from "apollo-cache-inmemory";
 import { WebSocketLink } from "apollo-link-ws";
 import { getMainDefinition } from "apollo-utilities";
-import registerServiceWorker from "./registerServiceWorker";
 
 // import store from "./client/reducers";
 import HomePage from "./client/components/HomePage";
@@ -76,4 +75,3 @@ ReactDOM.render(
   </ApolloProvider>,
   document.getElementById("root")
 );
-registerServiceWorker();

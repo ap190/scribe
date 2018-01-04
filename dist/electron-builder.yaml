@@ -1,0 +1,10 @@
+directories:
+  output: dist
+  buildResources: public
+files:
+  - build/**/*
+extraMetadata:
+  main: build/electron.js
+appId: com.Mindflowai.scribe-app
+extends: react-cra
+electronVersion: 1.7.10
