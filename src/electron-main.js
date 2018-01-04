@@ -7,13 +7,12 @@ const setMainMenu = require("./local_server/menu");
 const registerGlobalShortcuts = require("./local_server/accelerators");
 const { saveBeforeExiting } = require("./local_server/dialogs");
 
-require("electron-context-menu")();
+// require("electron-context-menu")();
 
 const BrowserWindow = electron.BrowserWindow;
 const {
   default: installExtension,
-  REACT_DEVELOPER_TOOLS,
-  REDUX_DEVTOOLS
+  REACT_DEVELOPER_TOOLS
 } = require("electron-devtools-installer");
 
 // Keep a global reference of the window object, if you don't, the window will
@@ -44,11 +43,6 @@ function createWindow() {
 
   // React DevTools
   installExtension(REACT_DEVELOPER_TOOLS)
-    .then(name => console.log(`Added Extension:  ${name}`))
-    .catch(err => console.log("An error occurred: ", err));
-
-  // Redux DevTools
-  installExtension(REDUX_DEVTOOLS)
     .then(name => console.log(`Added Extension:  ${name}`))
     .catch(err => console.log("An error occurred: ", err));
 
