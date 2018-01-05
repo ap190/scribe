@@ -1,4 +1,5 @@
 const { ipcMain, app } = require("electron");
+const { autoUpdater } = require("electron-updater");
 const cmd = require("node-cmd");
 const { saveBeforeExiting } = require("../dialogs");
 const {
@@ -12,6 +13,10 @@ const { genExportCurrentDocument } = require("../export");
 
 exports.setIPCListeners = mainWindow => {
   ipcMain.on("load-file-req", event => genLoadData(event));
+
+  ipcMain.on("quitAndInstall", (event, arg) => {
+    autoUpdater.quitAndInstall();
+  });
 
   ipcMain.on("login-with-fb", event => genFBLogin(event, mainWindow));
 
