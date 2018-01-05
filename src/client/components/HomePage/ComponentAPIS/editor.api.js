@@ -1,5 +1,13 @@
+import "prism-languages";
 import { EditorState, Modifier, convertFromRaw } from "draft-js";
 import { Block } from "../EditorColumn/Editor/util/constants";
+import PrismDecorator from "draft-js-prism";
+import Prism from "prismjs";
+
+const prismDecorator = new PrismDecorator({
+  defaultSyntax: "python",
+  prism: Prism
+});
 
 export const getCurrentBlock = editorState => {
   const selectionState = editorState.getSelection();
@@ -62,8 +70,11 @@ export const handleAddText = (currentEditorState, text) =>
 
 export const createEditorState = editorContent =>
   editorContent
-    ? EditorState.createWithContent(convertFromRaw(editorContent))
-    : EditorState.createEmpty();
+    ? EditorState.createWithContent(
+        convertFromRaw(editorContent),
+        prismDecorator
+      )
+    : EditorState.createEmpty(prismDecorator);
 
 export const handleAddPastedImg = (currentEditorState, img) =>
   addNewBlock(currentEditorState, Block.IMAGE, {
