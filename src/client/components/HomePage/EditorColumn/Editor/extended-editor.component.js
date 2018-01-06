@@ -23,6 +23,7 @@ import {
   ImageSideButton,
   SeparatorSideButton,
   EmbedSideButton,
+  CodeBlockSideButton,
   customRendererFn,
   HANDLED,
   NOT_HANDLED
@@ -100,20 +101,15 @@ class ExtendedEditor extends React.Component {
     };
 
     this.sideButtons = [
-      {
-        title: "Image",
-        component: ImageSideButton
-      },
+      { title: "Image", component: ImageSideButton },
       {
         title: "Embed",
         component: EmbedSideButton,
         toggleModal: props.toggleModal,
         handleAddEmbeddedContent: props.handleAddEmbeddedContent
       },
-      {
-        title: "Separator",
-        component: SeparatorSideButton
-      }
+      { title: "Separator", component: SeparatorSideButton },
+      { title: "Code Block", component: CodeBlockSideButton }
     ];
     this.logData = this.logData.bind(this);
     this.toggleEdit = this.toggleEdit.bind(this);

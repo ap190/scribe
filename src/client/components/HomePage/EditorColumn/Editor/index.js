@@ -14,7 +14,7 @@ import ImageBlock from "./components/blocks/image";
 import ImageSideButton from "./components/inline-side-buttons/image-side-button";
 import EmbedSideButton from "./components/inline-side-buttons/embed-side-button";
 import SeparatorSideButton from "./components/inline-side-buttons/separator-side-button";
-import BreakSideButton from "./components/inline-side-buttons/break";
+import CodeBlockSideButton from "./components/inline-side-buttons/code-block-side-button";
 
 export { Block, Inline, Entity, HANDLED, NOT_HANDLED } from "./util/constants";
 export { BLOCK_BUTTONS, INLINE_BUTTONS } from "./components/toolbar";
@@ -47,7 +47,7 @@ export {
   ImageSideButton,
   SeparatorSideButton,
   EmbedSideButton,
-  BreakSideButton
+  CodeBlockSideButton
 };
 
 export default MediumDraftEditor;

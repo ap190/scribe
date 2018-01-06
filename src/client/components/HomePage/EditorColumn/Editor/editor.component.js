@@ -240,20 +240,10 @@ class MediumDraftEditor extends React.Component {
         return HANDLED;
       }
     }
-    /* else if (command === KEY_COMMANDS.addNewBlock()) {
-      const { editorState } = this.props;
-      this.onChange(addNewBlock(editorState, Block.BLOCKQUOTE));
-      return HANDLED;
-    } */
+
     const block = getCurrentBlock(editorState);
     const currentBlockType = block.getType();
-    // if (command === KEY_COMMANDS.deleteBlock()) {
-    //   if (currentBlockType.indexOf(Block.ATOMIC) === 0 && block.getText().length === 0) {
-    //     this.onChange(resetBlockWithType(editorState, Block.UNSTYLED, { text: '' }));
-    //     return HANDLED;
-    //   }
-    //   return NOT_HANDLED;
-    // }
+
     if (command.indexOf(`${KEY_COMMANDS.changeType()}`) === 0) {
       let newBlockType = command.split(":")[1];
       // const currentBlockType = block.getType();
@@ -332,11 +322,13 @@ class MediumDraftEditor extends React.Component {
           case Block.OL:
           case Block.BLOCKQUOTE:
           case Block.BLOCKQUOTE_CAPTION:
+          case Block.CODE:
           case Block.CAPTION:
           case Block.TODO:
           case Block.H2:
           case Block.H3:
           case Block.H1:
+            console.log("here!");
             this.onChange(resetBlockWithType(editorState, Block.UNSTYLED));
             return HANDLED;
           default:

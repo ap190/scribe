@@ -1,11 +1,11 @@
 import "prism-languages";
-import { EditorState, Modifier, convertFromRaw } from "draft-js";
-import { Block } from "../EditorColumn/Editor/util/constants";
 import PrismDecorator from "draft-js-prism";
 import Prism from "prismjs";
+import { EditorState, Modifier, convertFromRaw } from "draft-js";
+import { Block } from "../EditorColumn/Editor/util/constants";
 
 const prismDecorator = new PrismDecorator({
-  defaultSyntax: "python",
+  defaultSyntax: "javascript",
   prism: Prism
 });
 

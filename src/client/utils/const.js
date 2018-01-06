@@ -11,6 +11,7 @@ import saveIcon from "../../../public/assets/rich-notifications/disk.png";
 import imagePastedIcon from "../../../public/assets/rich-notifications/image.png";
 import textPastedIcon from "../../../public/assets/rich-notifications/text.png";
 import seperatorLight from "../../../public/assets/icons/seperator.svg";
+import codeBlockLight from "../../../public/assets/icons/code-block.svg";
 import textFileLight from "../../../public/assets/icons/text-file-light.svg";
 
 exports.modals = {
@@ -53,6 +54,7 @@ exports.graphCoolConstants = {
 exports.lightTheme = {
   icons: {
     addEditor: addEditorLight,
+    codeBlock: codeBlockLight,
     contentEmbed: contentEmbedLight,
     export: editorActionBarExportLight,
     folder: folderLight,
