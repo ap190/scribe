@@ -7,6 +7,7 @@ import customRendererFn from "./components/customrenderer";
 import customStyleMap from "./util/customstylemap";
 import createEditorState from "./model/content";
 import QuoteCaptionBlock from "./components/blocks/blockquotecaption";
+import CodeBlock from "./components/blocks/code-block";
 import CaptionBlock from "./components/blocks/caption";
 import AtomicBlock from "./components/blocks/atomic";
 import TodoBlock from "./components/blocks/todo";
@@ -40,6 +41,7 @@ export {
   keyBindingFn,
   customRendererFn,
   QuoteCaptionBlock,
+  CodeBlock,
   CaptionBlock,
   AtomicBlock,
   TodoBlock,
