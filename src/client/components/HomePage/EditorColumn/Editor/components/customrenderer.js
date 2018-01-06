@@ -34,7 +34,10 @@ export default (setEditorState, getEditorState) => contentBlock => {
         props: { setEditorState, getEditorState }
       };
     case Block.CODE:
-      return { component: CodeBlock };
+      return {
+        component: CodeBlock,
+        props: { setEditorState, getEditorState }
+      };
     case Block.IMAGE:
       return {
         component: ImageBlock,
