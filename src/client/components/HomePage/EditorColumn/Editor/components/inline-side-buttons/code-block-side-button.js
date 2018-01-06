@@ -12,9 +12,7 @@ class CodeBlockSideButton extends Component {
 
   onClick() {
     this.props.setEditorState(
-      addNewBlock(this.props.getEditorState(), Block.CODE, {
-        text: "def match_ends(words): return words"
-      })
+      addNewBlock(this.props.getEditorState(), Block.CODE, {})
     );
     this.props.close();
   }

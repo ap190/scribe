@@ -328,7 +328,6 @@ class MediumDraftEditor extends React.Component {
           case Block.H2:
           case Block.H3:
           case Block.H1:
-            console.log("here!");
             this.onChange(resetBlockWithType(editorState, Block.UNSTYLED));
             return HANDLED;
           default:
