@@ -335,6 +335,12 @@ class MediumDraftEditor extends React.Component {
         }
       }
 
+      if (blockType === Block.CODE) {
+        console.log(currentBlock.getLength());
+        this.onChange(RichUtils.insertSoftNewline(editorState));
+        return HANDLED;
+      }
+
       const selection = editorState.getSelection();
 
       if (
