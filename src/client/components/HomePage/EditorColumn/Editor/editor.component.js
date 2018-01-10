@@ -8,7 +8,9 @@ import {
   SelectionState,
   ContentBlock,
   genKey,
-  Modifier
+  Modifier,
+  KeyBindingUtil,
+  getDefaultKeyBinding
 } from "draft-js";
 import CodeUtils from "draft-js-code";
 import isSoftNewlineEvent from "draft-js/lib/isSoftNewlineEvent";
@@ -33,7 +35,8 @@ import {
   getCurrentBlock,
   resetBlockWithType,
   addNewBlockAt,
-  isCursorBetweenLink
+  isCursorBetweenLink,
+  updateDataOfBlock
 } from "./model";
 
 import ImageButton from "./components/inline-side-buttons/image-side-button";
@@ -231,65 +234,17 @@ class MediumDraftEditor extends React.Component {
     then succeeded by the inline type, the current selection's inline type will be
     toggled.
   */
-  handleKeyCommand(command) {
+  handleKeyCommand(e) {
     const { editorState } = this.props;
-    if (command === KEY_COMMANDS.showLinkInput()) {
-      if (!this.props.disableToolbar && this.toolbar) {
-        // For some reason, scroll is jumping sometimes for the below code.
-        // Debug and fix it later.
-        const isCursorLink = isCursorBetweenLink(editorState);
-        if (isCursorLink) {
-          this.editLinkAfterSelection(
-            isCursorLink.blockKey,
-            isCursorLink.entityKey
-          );
-          return HANDLED;
-        }
-        this.toolbar.handleLinkInput(null, true);
-        return HANDLED;
-      }
-      return NOT_HANDLED;
-    } else if (command === KEY_COMMANDS.unlink()) {
-      const isCursorLink = isCursorBetweenLink(editorState);
-      if (isCursorLink) {
-        this.removeLink(isCursorLink.blockKey, isCursorLink.entityKey);
+    if (CodeUtils.hasSelectionInBlock(editorState)) {
+      if (KeyBindingUtil.hasCommandModifier(e) && e.which === 13) {
+        const currentBlock = getCurrentBlock(editorState);
+        this.onChange(addNewBlockAt(editorState, currentBlock.getKey()));
         return HANDLED;
       }
     }
 
-    const block = getCurrentBlock(editorState);
-    const currentBlockType = block.getType();
-
-    if (command.indexOf(`${KEY_COMMANDS.changeType()}`) === 0) {
-      let newBlockType = command.split(":")[1];
-      // const currentBlockType = block.getType();
-      if (currentBlockType === Block.ATOMIC) {
-        return HANDLED;
-      }
-      if (
-        currentBlockType === Block.BLOCKQUOTE &&
-        newBlockType === Block.CAPTION
-      ) {
-        newBlockType = Block.BLOCKQUOTE_CAPTION;
-      } else if (
-        currentBlockType === Block.BLOCKQUOTE_CAPTION &&
-        newBlockType === Block.CAPTION
-      ) {
-        newBlockType = Block.BLOCKQUOTE;
-      }
-      this.onChange(RichUtils.toggleBlockType(editorState, newBlockType));
-      return HANDLED;
-    } else if (command.indexOf(`${KEY_COMMANDS.toggleInline()}`) === 0) {
-      const inline = command.split(":")[1];
-      this._toggleInlineStyle(inline);
-      return HANDLED;
-    }
-    const newState = RichUtils.handleKeyCommand(editorState, command);
-    if (newState) {
-      this.onChange(newState);
-      return HANDLED;
-    }
-    return NOT_HANDLED;
+    return getDefaultKeyBinding(e);
   }
 
   /*
@@ -352,7 +307,12 @@ class MediumDraftEditor extends React.Component {
       }
 
       if (CodeUtils.hasSelectionInBlock(editorState)) {
-        if (currentBlock.getText().slice(-2) === "\n\n") {
+        if (
+          currentBlock
+            .getText()
+            .slice(-2)
+            .trim() === ""
+        ) {
           this.onChange(addNewBlockAt(editorState, currentBlock.getKey()));
           return HANDLED;
         }
@@ -565,7 +525,7 @@ class MediumDraftEditor extends React.Component {
               handlePastedText={this.handlePastedText}
               customStyleMap={this.props.customStyleMap}
               readOnly={!editorEnabled}
-              keyBindingFn={this.props.keyBindingFn}
+              keyBindingFn={this.handleKeyCommand}
               placeholder={this.props.placeholder}
               spellCheck={editorEnabled && this.props.spellCheck}
             />
