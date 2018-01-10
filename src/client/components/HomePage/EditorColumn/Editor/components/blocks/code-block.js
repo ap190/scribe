@@ -3,13 +3,12 @@ import PropTypes from "prop-types";
 import PrismLanguages from "prism-languages";
 import { EditorBlock } from "draft-js";
 
-import { updateDataOfBlock } from "../../model/";
+import { getCurrentBlock, updateDataOfBlock } from "../../model/";
 
 export default class CodeBlock extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { value: "javascript" };
-
+    this.state = { value: "javascript", selected: "false" };
     this.updateData = this.updateData.bind(this);
   }
 
@@ -23,14 +22,21 @@ export default class CodeBlock extends React.Component {
   }
 
   render() {
+    const { block, blockProps } = this.props;
+    const { getEditorState } = blockProps;
+    const key = block.getKey();
+    const editorState = getEditorState();
+    const currentblock = getCurrentBlock(editorState);
+    let showDropdown;
+    if (currentblock.getKey() === key) {
+      showDropdown = true;
+    } else {
+      showDropdown = false;
+    }
     return (
       <div
         className="code-block-container"
-        style={{
-          display: "flex",
-          flexDirection: "column",
-          padding: "0px"
-        }}
+        style={{ display: "flex", flexDirection: "column", padding: "0px" }}
       >
         <div style={{ padding: "20px" }}>
           <EditorBlock {...this.props} />
@@ -44,7 +50,10 @@ export default class CodeBlock extends React.Component {
             top: "30px"
           }}
         >
-          <div className="dropdown">
+          <div
+            className="dropdown"
+            style={showDropdown ? null : { visibility: "hidden" }}
+          >
             <select onChange={this.updateData} value={this.state.value}>
               {Object.keys(PrismLanguages).map(language => (
                 <option value={language}>{language}</option>
