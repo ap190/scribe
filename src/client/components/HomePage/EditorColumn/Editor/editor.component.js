@@ -229,7 +229,7 @@ class MediumDraftEditor extends React.Component {
     then succeeded by the block type, the current block will be converted to that particular type.
   - toggleinline:inline-type -> If the command starts with `toggleinline:` and
     then succeeded by the inline type, the current selection's inline type will be
-    togglled.
+    toggled.
   */
   handleKeyCommand(command) {
     const { editorState } = this.props;
@@ -352,6 +352,10 @@ class MediumDraftEditor extends React.Component {
       }
 
       if (CodeUtils.hasSelectionInBlock(editorState)) {
+        if (currentBlock.getText().slice(-2) === "\n\n") {
+          this.onChange(addNewBlockAt(editorState, currentBlock.getKey()));
+          return HANDLED;
+        }
         this.onChange(CodeUtils.handleReturn(e, editorState));
         return HANDLED;
       }
