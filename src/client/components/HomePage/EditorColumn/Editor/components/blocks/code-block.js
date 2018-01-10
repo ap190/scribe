@@ -29,8 +29,7 @@ export default class CodeBlock extends React.Component {
         style={{
           display: "flex",
           flexDirection: "column",
-          padding: "0px",
-          backgroundColor: "rgba(0, 0, 0, 0.05)"
+          padding: "0px"
         }}
       >
         <div style={{ padding: "20px" }}>
@@ -39,10 +38,10 @@ export default class CodeBlock extends React.Component {
         <div
           className="code-block-footer"
           style={{
-            backgroundColor: "rgba(0, 0, 0, 0.10)",
             display: "flex",
             width: "100%",
-            justifyContent: "flex-end"
+            justifyContent: "flex-end",
+            top: "30px"
           }}
         >
           <div className="dropdown">

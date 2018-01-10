@@ -10,6 +10,7 @@ import {
   genKey,
   Modifier
 } from "draft-js";
+import CodeUtils from "draft-js-code";
 import isSoftNewlineEvent from "draft-js/lib/isSoftNewlineEvent";
 import { OrderedMap } from "immutable";
 import AddButton from "./components/toolbar/addbutton";
@@ -73,10 +74,25 @@ class MediumDraftEditor extends React.Component {
   }
 
   /**
-   * Implemented to provide nesting of upto 2 levels in ULs or OLs.
+   * Implemented to provide nesting of upto 2 levels in ULs or OLs,
+   * and to support tabs in code blocks.
    */
   onTab(e) {
     const { editorState } = this.props;
+
+    /* Handles tab for code blocks. */
+    if (CodeUtils.hasSelectionInBlock(editorState)) {
+      this.onChange(CodeUtils.onTab(e, editorState));
+      return;
+    }
+
+    /* Handles tab for OL or UL. */
+    const currentBlock = getCurrentBlock(editorState);
+    const blockType = currentBlock.getType();
+
+    if (blockType !== Block.UL && blockType !== Block.OL) {
+      return;
+    }
     const newEditorState = RichUtils.onTab(e, editorState, 2);
     if (newEditorState !== editorState) {
       this.onChange(newEditorState);
@@ -335,9 +351,8 @@ class MediumDraftEditor extends React.Component {
         }
       }
 
-      if (blockType === Block.CODE) {
-        console.log(currentBlock.getLength());
-        this.onChange(RichUtils.insertSoftNewline(editorState));
+      if (CodeUtils.hasSelectionInBlock(editorState)) {
+        this.onChange(CodeUtils.handleReturn(e, editorState));
         return HANDLED;
       }
 
