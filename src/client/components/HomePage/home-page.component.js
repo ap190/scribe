@@ -356,6 +356,18 @@ class HomePage extends Component {
   }
 
   async handleAddChannel(newChannel) {
+    const { currentDocument, currentThread } = this.state;
+    let { unsavedDocCache } = this.state;
+
+    // Update cache with previous doc before switching to new doc
+    if (currentDocument && currentThread) {
+      unsavedDocCache = updateCacheIfNew(
+        currentDocument,
+        currentThread,
+        unsavedDocCache
+      );
+    }
+
     const unselectedChannels = this.state.channels.map(channel => {
       channel.selected = false;
       return channel;
