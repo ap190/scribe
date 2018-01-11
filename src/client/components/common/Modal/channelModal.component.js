@@ -32,7 +32,7 @@ class ChannelModal extends Component {
   }
 
   initCurrentDate() {
-    let today = new Date();
+    const today = new Date();
     let dd = today.getDate();
     let mm = today.getMonth() + 1; //January is 0!
     const yyyy = today.getFullYear();
@@ -45,7 +45,7 @@ class ChannelModal extends Component {
       mm = "0" + mm;
     }
 
-    return (today = mm + "-" + dd + "-" + yyyy);
+    return mm + "-" + dd + "-" + yyyy;
   }
 
   handleChange(event) {
