@@ -22,21 +22,14 @@ import customRendererFn from "./components/customrenderer";
 import customStyleMap from "./util/customstylemap";
 import RenderMap from "./util/rendermap";
 import keyBindingFn from "./util/keybinding";
-import {
-  Block,
-  Entity as E,
-  HANDLED,
-  NOT_HANDLED,
-  KEY_COMMANDS
-} from "./util/constants";
+import { Block, Entity as E, HANDLED, NOT_HANDLED } from "./util/constants";
 import beforeInput, { StringToTypeMap } from "./util/beforeinput";
 import blockStyleFn from "./util/blockStyleFn";
 import {
   getCurrentBlock,
   resetBlockWithType,
   addNewBlockAt,
-  isCursorBetweenLink,
-  updateDataOfBlock
+  isCursorBetweenLink
 } from "./model";
 
 import ImageButton from "./components/inline-side-buttons/image-side-button";

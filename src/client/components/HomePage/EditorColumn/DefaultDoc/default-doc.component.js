@@ -1,5 +1,4 @@
 import React from "react";
-import PropTypes from "prop-types";
 import DemoBox from "./DemoBox/demo-box.component";
 
 const DefaultDoc = () => (
