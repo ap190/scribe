@@ -8,12 +8,14 @@ import { getCurrentBlock, updateDataOfBlock } from "../../model/";
 export default class CodeBlock extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { value: "javascript", selected: "false" };
+    const { block } = this.props;
+    const language = block.getData().get("syntax");
+    this.state = { lang: language || "javascript", selected: "false" };
     this.updateData = this.updateData.bind(this);
   }
 
   updateData(event) {
-    this.setState({ value: event.target.value });
+    this.setState({ lang: event.target.value });
     const { block, blockProps } = this.props;
     const { setEditorState, getEditorState } = blockProps;
     const data = block.getData();
@@ -54,7 +56,7 @@ export default class CodeBlock extends React.Component {
             className="dropdown"
             style={showDropdown ? null : { visibility: "hidden" }}
           >
-            <select onChange={this.updateData} value={this.state.value}>
+            <select onChange={this.updateData} value={this.state.lang}>
               {Object.keys(PrismLanguages).map((language, idx) => (
                 <option value={language} key={idx}>
                   {language}
