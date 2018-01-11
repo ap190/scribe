@@ -39,12 +39,14 @@
     "codemirror": "^5.32.0",
     "draft-convert": "^2.0.1",
     "draft-js": "^0.10.4",
+    "electron-builder-squirrel-windows": "^19.53.3",
     "electron-context-menu": "^0.9.1",
     "electron-installer-dmg": "^0.1.2",
     "electron-is-dev": "^0.3.0",
     "electron-packager": "^8.7.0",
     "electron-reload": "^1.1.0",
     "electron-remote": "^1.2.0",
+    "electron-squirrel-startup": "^1.0.0",
     "electron-updater": "^2.18.2",
     "electron-winstaller": "^2.4.1",
     "eslint": "^4.8.0",
@@ -77,12 +79,13 @@
     "react-toggle-button": "^2.2.0",
     "react-transition-group": "^1.1.2",
     "recursive-readdir": "^2.2.1",
+    "semver": "^5.4.1",
     "styled-components": "^2.2.3",
     "subscriptions-transport-ws": "^0.9.4",
     "uuid": "^3.1.0",
     "wait-on": "^2.0.2"
   },
-  "homepage": "./",
+  "homepage": "https://github.com/Arieg419/hackerScribe",
   "main": "public/electron.js",
   "scripts": {
     "start": "react-scripts start",
@@ -91,10 +94,13 @@
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
     "electron-pack": "build --em.main=build/electron.js",
+    "win-pack": "build --em.main=build/electron.js --win",
+    "check-codesign":
+      "codesign --verify --verbose --deep --strict dist/mac/Scribe.app",
     "preelectron-pack": "npm run build",
     "electron": "electron .",
     "electron-dev":
-      "concurrently \"BROWSER=none yarn start\" \"wait-on http://localhost:3000 && electron .\"",
+      "concurrently \"BROWSER=none yarn start\" \"wait-on http://localhost:3000 && electron . --dev\"",
     "dist": "npm run build && build",
     "dev": "nf start -p 3000",
     "dev-na":
@@ -105,16 +111,22 @@
     "package-mac":
       "rm -rf release-builds && npm run build && electron-packager . --overwrite --asar=true --platform=darwin --arch=x64 --icon=public/icons/mac/icon.icns --prune=true --out=release-builds",
     "package-win":
-      "electron-packager . --overwrite --asar=true --platform=win32 --arch=ia32 --icon=public/icons/win/icon.ico --prune=true --out=release-builds --version-string.CompanyName=CE --version-string.FileDescription=CE --version-string.ProductName=\"Electron Tutorial App\"",
+      "electron-packager . --overwrite --asar=true --platform=win32 --arch=ia32 --icon=public/icons/win/icon.ico --prune=true --out=release-builds --version-string.CompanyName=CE --version-string.FileDescription=CE --version-string.ProductName=\"Scribe App\"",
     "package-linux":
       "electron-packager . --overwrite --asar=true --platform=linux --arch=x64 --icon=public/icons/png/1024x1024.png --prune=true --out=release-builds",
     "postinstall": "install-app-deps"
   },
   "build": {
     "appId": "com.Mindflowai.scribe-app",
-    "files": ["build/**/*", "node_modules/**/*"],
+    "files": ["build/**/*", "node_modules/**/*", "!build-scripts${/*}"],
+    "forceCodeSigning": true,
     "directories": {
       "buildResources": "assets"
+    },
+    "win": {
+      "target": ["squirrel"],
+      "certificateFile": "./build-scripts/win-cert.pfx",
+      "certificatePassword": ""
     }
   }
 }
