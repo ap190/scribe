@@ -4,7 +4,10 @@
   "version": "0.1.0",
   "description":
     "The ultimate documentation solution, everything else is soooo saddd",
-  "repository": "https://github.com/Arieg419/hackerScribe",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Arieg419/hackerScribe.git"
+  },
   "private": true,
   "devDependencies": {
     "concurrently": "^3.5.1",
@@ -89,7 +92,7 @@
     "uuid": "^3.1.0",
     "wait-on": "^2.0.2"
   },
-  "homepage": "https://github.com/Arieg419/hackerScribe",
+  "homepage": "./",
   "main": "public/electron.js",
   "scripts": {
     "start": "react-scripts start",
