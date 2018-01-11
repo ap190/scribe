@@ -23,10 +23,7 @@ export const initIpcRenderer = componentContext => {
     componentContext.setState({ channels: [] });
   });
 
-  ipcRenderer.on("updateReady", function(event, text) {
-    // changes the text of the button
-    console.log("electron builder has updates ready");
-  });
+  ipcRenderer.on("auto-update", (event, text) => console.log(`${text}`));
 
   ipcRenderer.on("create-new-clipping", (event, copiedText) => {
     componentContext.handleAddTextWrapper(copiedText);
