@@ -28,6 +28,24 @@ class ChannelModal extends Component {
     this.state = { value: "" };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.initCurrentDate = this.initCurrentDate.bind(this);
+  }
+
+  initCurrentDate() {
+    let today = new Date();
+    let dd = today.getDate();
+    let mm = today.getMonth() + 1; //January is 0!
+    const yyyy = today.getFullYear();
+
+    if (dd < 10) {
+      dd = "0" + dd;
+    }
+
+    if (mm < 10) {
+      mm = "0" + mm;
+    }
+
+    return (today = mm + "-" + dd + "-" + yyyy);
   }
 
   handleChange(event) {
@@ -36,7 +54,9 @@ class ChannelModal extends Component {
 
   handleSubmit(event) {
     event.preventDefault();
-    const timestamp = moment(new Date().toUTCString());
+    const timestamp = moment(this.initCurrentDate());
+    console.log("LOGGING MOMENT");
+    console.log(timestamp);
     this.props.handleAddChannel({
       channelName: `# ${this.state.value}`,
       id: UUIDv4(),
