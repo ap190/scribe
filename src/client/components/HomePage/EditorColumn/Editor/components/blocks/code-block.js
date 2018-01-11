@@ -55,8 +55,10 @@ export default class CodeBlock extends React.Component {
             style={showDropdown ? null : { visibility: "hidden" }}
           >
             <select onChange={this.updateData} value={this.state.value}>
-              {Object.keys(PrismLanguages).map(language => (
-                <option value={language}>{language}</option>
+              {Object.keys(PrismLanguages).map((language, idx) => (
+                <option value={language} key={idx}>
+                  {language}
+                </option>
               ))}
             </select>
           </div>
