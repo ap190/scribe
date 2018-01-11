@@ -742,7 +742,6 @@ class HomePage extends Component {
   }
 
   saveFile() {
-    console.log("here!!!");
     const timestamp = moment();
     const oldChannels = this.state.channels;
     const newChannels = oldChannels.map(channel => {
