@@ -1,4 +1,5 @@
 import React from "react";
+import moment from "moment";
 import Moment from "react-moment";
 import PropTypes from "prop-types";
 import { ContextMenuProvider } from "react-contexify";
@@ -44,6 +45,10 @@ Channel.propTypes = {
   selectChannelOrFile: PropTypes.func.isRequired,
   selected: PropTypes.bool,
   handleDeleteChannel: PropTypes.func.isRequired
+};
+
+Channel.defaultProps = {
+  lastPosted: moment("2016-01-01")
 };
 
 export default Channel;
