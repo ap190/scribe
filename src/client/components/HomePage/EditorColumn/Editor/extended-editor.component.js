@@ -1,6 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { EditorState, convertToRaw, KeyBindingUtil, Modifier } from "draft-js";
+import CodeUtils from "draft-js-code";
 import "draft-js/dist/Draft.css";
 import "./index.scss";
 import "./components/toolbar/addbutton.scss";
@@ -23,6 +24,7 @@ import {
   ImageSideButton,
   SeparatorSideButton,
   EmbedSideButton,
+  CodeBlockSideButton,
   customRendererFn,
   HANDLED,
   NOT_HANDLED
@@ -100,20 +102,15 @@ class ExtendedEditor extends React.Component {
     };
 
     this.sideButtons = [
-      {
-        title: "Image",
-        component: ImageSideButton
-      },
+      { title: "Image", component: ImageSideButton },
       {
         title: "Embed",
         component: EmbedSideButton,
         toggleModal: props.toggleModal,
         handleAddEmbeddedContent: props.handleAddEmbeddedContent
       },
-      {
-        title: "Separator",
-        component: SeparatorSideButton
-      }
+      { title: "Separator", component: SeparatorSideButton },
+      { title: "Code Block", component: CodeBlockSideButton }
     ];
     this.logData = this.logData.bind(this);
     this.toggleEdit = this.toggleEdit.bind(this);

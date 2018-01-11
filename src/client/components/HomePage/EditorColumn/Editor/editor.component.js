@@ -8,8 +8,11 @@ import {
   SelectionState,
   ContentBlock,
   genKey,
-  Modifier
+  Modifier,
+  KeyBindingUtil,
+  getDefaultKeyBinding
 } from "draft-js";
+import CodeUtils from "draft-js-code";
 import isSoftNewlineEvent from "draft-js/lib/isSoftNewlineEvent";
 import { OrderedMap } from "immutable";
 import AddButton from "./components/toolbar/addbutton";
@@ -32,7 +35,8 @@ import {
   getCurrentBlock,
   resetBlockWithType,
   addNewBlockAt,
-  isCursorBetweenLink
+  isCursorBetweenLink,
+  updateDataOfBlock
 } from "./model";
 
 import ImageButton from "./components/inline-side-buttons/image-side-button";
@@ -73,10 +77,25 @@ class MediumDraftEditor extends React.Component {
   }
 
   /**
-   * Implemented to provide nesting of upto 2 levels in ULs or OLs.
+   * Implemented to provide nesting of upto 2 levels in ULs or OLs,
+   * and to support tabs in code blocks.
    */
   onTab(e) {
     const { editorState } = this.props;
+
+    /* Handles tab for code blocks. */
+    if (CodeUtils.hasSelectionInBlock(editorState)) {
+      this.onChange(CodeUtils.onTab(e, editorState));
+      return;
+    }
+
+    /* Handles tab for OL or UL. */
+    const currentBlock = getCurrentBlock(editorState);
+    const blockType = currentBlock.getType();
+
+    if (blockType !== Block.UL && blockType !== Block.OL) {
+      return;
+    }
     const newEditorState = RichUtils.onTab(e, editorState, 2);
     if (newEditorState !== editorState) {
       this.onChange(newEditorState);
@@ -213,77 +232,19 @@ class MediumDraftEditor extends React.Component {
     then succeeded by the block type, the current block will be converted to that particular type.
   - toggleinline:inline-type -> If the command starts with `toggleinline:` and
     then succeeded by the inline type, the current selection's inline type will be
-    togglled.
+    toggled.
   */
-  handleKeyCommand(command) {
+  handleKeyCommand(e) {
     const { editorState } = this.props;
-    if (command === KEY_COMMANDS.showLinkInput()) {
-      if (!this.props.disableToolbar && this.toolbar) {
-        // For some reason, scroll is jumping sometimes for the below code.
-        // Debug and fix it later.
-        const isCursorLink = isCursorBetweenLink(editorState);
-        if (isCursorLink) {
-          this.editLinkAfterSelection(
-            isCursorLink.blockKey,
-            isCursorLink.entityKey
-          );
-          return HANDLED;
-        }
-        this.toolbar.handleLinkInput(null, true);
-        return HANDLED;
-      }
-      return NOT_HANDLED;
-    } else if (command === KEY_COMMANDS.unlink()) {
-      const isCursorLink = isCursorBetweenLink(editorState);
-      if (isCursorLink) {
-        this.removeLink(isCursorLink.blockKey, isCursorLink.entityKey);
+    if (CodeUtils.hasSelectionInBlock(editorState)) {
+      if (KeyBindingUtil.hasCommandModifier(e) && e.which === 13) {
+        const currentBlock = getCurrentBlock(editorState);
+        this.onChange(addNewBlockAt(editorState, currentBlock.getKey()));
         return HANDLED;
       }
     }
-    /* else if (command === KEY_COMMANDS.addNewBlock()) {
-      const { editorState } = this.props;
-      this.onChange(addNewBlock(editorState, Block.BLOCKQUOTE));
-      return HANDLED;
-    } */
-    const block = getCurrentBlock(editorState);
-    const currentBlockType = block.getType();
-    // if (command === KEY_COMMANDS.deleteBlock()) {
-    //   if (currentBlockType.indexOf(Block.ATOMIC) === 0 && block.getText().length === 0) {
-    //     this.onChange(resetBlockWithType(editorState, Block.UNSTYLED, { text: '' }));
-    //     return HANDLED;
-    //   }
-    //   return NOT_HANDLED;
-    // }
-    if (command.indexOf(`${KEY_COMMANDS.changeType()}`) === 0) {
-      let newBlockType = command.split(":")[1];
-      // const currentBlockType = block.getType();
-      if (currentBlockType === Block.ATOMIC) {
-        return HANDLED;
-      }
-      if (
-        currentBlockType === Block.BLOCKQUOTE &&
-        newBlockType === Block.CAPTION
-      ) {
-        newBlockType = Block.BLOCKQUOTE_CAPTION;
-      } else if (
-        currentBlockType === Block.BLOCKQUOTE_CAPTION &&
-        newBlockType === Block.CAPTION
-      ) {
-        newBlockType = Block.BLOCKQUOTE;
-      }
-      this.onChange(RichUtils.toggleBlockType(editorState, newBlockType));
-      return HANDLED;
-    } else if (command.indexOf(`${KEY_COMMANDS.toggleInline()}`) === 0) {
-      const inline = command.split(":")[1];
-      this._toggleInlineStyle(inline);
-      return HANDLED;
-    }
-    const newState = RichUtils.handleKeyCommand(editorState, command);
-    if (newState) {
-      this.onChange(newState);
-      return HANDLED;
-    }
-    return NOT_HANDLED;
+
+    return getDefaultKeyBinding(e);
   }
 
   /*
@@ -332,6 +293,7 @@ class MediumDraftEditor extends React.Component {
           case Block.OL:
           case Block.BLOCKQUOTE:
           case Block.BLOCKQUOTE_CAPTION:
+          case Block.CODE:
           case Block.CAPTION:
           case Block.TODO:
           case Block.H2:
@@ -342,6 +304,20 @@ class MediumDraftEditor extends React.Component {
           default:
             return NOT_HANDLED;
         }
+      }
+
+      if (CodeUtils.hasSelectionInBlock(editorState)) {
+        if (
+          currentBlock
+            .getText()
+            .slice(-2)
+            .trim() === ""
+        ) {
+          this.onChange(addNewBlockAt(editorState, currentBlock.getKey()));
+          return HANDLED;
+        }
+        this.onChange(CodeUtils.handleReturn(e, editorState));
+        return HANDLED;
       }
 
       const selection = editorState.getSelection();
@@ -549,7 +525,7 @@ class MediumDraftEditor extends React.Component {
               handlePastedText={this.handlePastedText}
               customStyleMap={this.props.customStyleMap}
               readOnly={!editorEnabled}
-              keyBindingFn={this.props.keyBindingFn}
+              keyBindingFn={this.handleKeyCommand}
               placeholder={this.props.placeholder}
               spellCheck={editorEnabled && this.props.spellCheck}
             />

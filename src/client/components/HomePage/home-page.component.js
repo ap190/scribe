@@ -364,7 +364,7 @@ class HomePage extends Component {
     await this.setState({
       isModalOpen: false,
       currentThread: undefined,
-      currentDocument: EditorState.createEmpty(),
+      currentDocument: createEditorState(null),
       channels: [...unselectedChannels, newChannel]
     });
   }
@@ -375,7 +375,7 @@ class HomePage extends Component {
     await this.setState({
       isModalOpen: false,
       currentThread: undefined,
-      currentDocument: EditorState.createEmpty(),
+      currentDocument: createEditorState(null),
       channels: updatedChannels
     });
     return;
@@ -465,7 +465,7 @@ class HomePage extends Component {
     if (currentThreadIdx === -1 || currentChannelIdx === -1) {
       this.setState({
         currentThread: undefined,
-        currentDocument: EditorState.createEmpty()
+        currentDocument: createEditorState(null)
       });
       return;
     }

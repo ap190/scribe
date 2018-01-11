@@ -7,6 +7,7 @@ import customRendererFn from "./components/customrenderer";
 import customStyleMap from "./util/customstylemap";
 import createEditorState from "./model/content";
 import QuoteCaptionBlock from "./components/blocks/blockquotecaption";
+import CodeBlock from "./components/blocks/code-block";
 import CaptionBlock from "./components/blocks/caption";
 import AtomicBlock from "./components/blocks/atomic";
 import TodoBlock from "./components/blocks/todo";
@@ -14,7 +15,7 @@ import ImageBlock from "./components/blocks/image";
 import ImageSideButton from "./components/inline-side-buttons/image-side-button";
 import EmbedSideButton from "./components/inline-side-buttons/embed-side-button";
 import SeparatorSideButton from "./components/inline-side-buttons/separator-side-button";
-import BreakSideButton from "./components/inline-side-buttons/break";
+import CodeBlockSideButton from "./components/inline-side-buttons/code-block-side-button";
 
 export { Block, Inline, Entity, HANDLED, NOT_HANDLED } from "./util/constants";
 export { BLOCK_BUTTONS, INLINE_BUTTONS } from "./components/toolbar";
@@ -40,6 +41,7 @@ export {
   keyBindingFn,
   customRendererFn,
   QuoteCaptionBlock,
+  CodeBlock,
   CaptionBlock,
   AtomicBlock,
   TodoBlock,
@@ -47,7 +49,7 @@ export {
   ImageSideButton,
   SeparatorSideButton,
   EmbedSideButton,
-  BreakSideButton
+  CodeBlockSideButton
 };
 
 export default MediumDraftEditor;

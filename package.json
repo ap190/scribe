@@ -1,5 +1,5 @@
 {
-  "name": "Scribe",
+  "name": "scribe",
   "author": "Omer Goldberg and Ali Paul",
   "version": "0.1.0",
   "description":
@@ -39,7 +39,8 @@
     "codemirror": "^5.32.0",
     "draft-convert": "^2.0.1",
     "draft-js": "^0.10.4",
-    "electron-builder-squirrel-windows": "^19.53.3",
+    "draft-js-code": "^0.3.0",
+    "draft-js-prism": "^1.0.5",
     "electron-context-menu": "^0.9.1",
     "electron-installer-dmg": "^0.1.2",
     "electron-is-dev": "^0.3.0",
@@ -64,6 +65,8 @@
     "mime-types": "^2.1.17",
     "moment": "^2.19.3",
     "node-cmd": "^3.0.0",
+    "prism-languages": "^0.4.0",
+    "prismjs": "^1.9.0",
     "prop-types": "^15.6.0",
     "react": "^15.4.2",
     "react-apollo": "^2.0.4",
@@ -80,6 +83,7 @@
     "react-transition-group": "^1.1.2",
     "recursive-readdir": "^2.2.1",
     "semver": "^5.4.1",
+    "redux": "^3.7.2",
     "styled-components": "^2.2.3",
     "subscriptions-transport-ws": "^0.9.4",
     "uuid": "^3.1.0",
@@ -111,7 +115,7 @@
     "package-mac":
       "rm -rf release-builds && npm run build && electron-packager . --overwrite --asar=true --platform=darwin --arch=x64 --icon=public/icons/mac/icon.icns --prune=true --out=release-builds",
     "package-win":
-      "electron-packager . --overwrite --asar=true --platform=win32 --arch=ia32 --icon=public/icons/win/icon.ico --prune=true --out=release-builds --version-string.CompanyName=CE --version-string.FileDescription=CE --version-string.ProductName=\"Scribe App\"",
+      "electron-packager . --overwrite --asar=true --platform=win32 --arch=ia32 --icon=public/icons/win/icon.ico --prune=true --out=release-builds --version-string.CompanyName=CE --version-string.FileDescription=CE --version-string.ProductName=\"Electron Tutorial App\"",
     "package-linux":
       "electron-packager . --overwrite --asar=true --platform=linux --arch=x64 --icon=public/icons/png/1024x1024.png --prune=true --out=release-builds",
     "postinstall": "install-app-deps"
