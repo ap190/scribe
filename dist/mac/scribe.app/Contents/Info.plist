@@ -45,6 +45,6 @@
     <key>NSHumanReadableCopyright</key>
     <string>Copyright © 2018 Omer Goldberg and Ali Paul</string>
     <key>AsarIntegrity</key>
-    <string>{"checksums":{"app.asar":"xQEEXBGNqEN3Y0EA5Wu9m9uFc8BnYO0pZWhripFsje7zscT/zdzEU5kzSDEVS0jvSsulJFmzE44R/U48JLfNWQ==","electron.asar":"N8qMkArPe2Vz78otrpXE3aNxOfCVyD1sqLzLTkMM5HY6Di2N/zv+HQhnv0+XjE/PttdJYymWUm+D0oj39WbLiA=="}}</string>
+    <string>{"checksums":{"app.asar":"v5YUnyYhAYTQm3CNFieged1AyyaqIIzTPcryRj/fHKOHcs6A2yD3Wb+pWIoZNyDiGGIgLfyCBDWwUesssXS/MA==","electron.asar":"N8qMkArPe2Vz78otrpXE3aNxOfCVyD1sqLzLTkMM5HY6Di2N/zv+HQhnv0+XjE/PttdJYymWUm+D0oj39WbLiA=="}}</string>
   </dict>
 </plist>
