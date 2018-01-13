@@ -92,7 +92,6 @@ const sendStatusToWindow = text => {
   console.log("send stat window");
   console.info(text);
   if (mainWindow) {
-    console.log("AUUUUUUTTTTTTTTOOOOOOOOO UUUUUPPPPPPPDDDDAAAATTTTEEEEE");
     mainWindow.webContents.send("auto-update", text);
   }
 };

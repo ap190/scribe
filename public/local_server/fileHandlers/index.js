@@ -9,7 +9,6 @@ const { getDirSelectionFromUser } = require("../dialogs");
 const { mainWindow } = require("../../electron");
 const { getScribeImgPath } = require("../utils/getScribeImgPath");
 const { copyFile } = require("../utils/copyFile");
-const FB = require("fb");
 
 // Get path to store images
 const userDataPath = (electron.app || electron.remote.app).getPath("userData");
@@ -21,52 +20,6 @@ const jsonpath = path.join(
   "data",
   SCRIBE_FILE_PATHS.SCRIBE_DATA
 );
-
-exports.genFBLogin = (event, closuredWindow) => {
-  const options = {
-    client_id: "194063647811624",
-    scopes: "public_profile",
-    redirect_uri: "https://www.facebook.com/connect/login_success.html"
-  };
-  const authWindow = new BrowserWindow({
-    width: 450,
-    height: 300,
-    show: false,
-    parent: closuredWindow,
-    modal: true,
-    webPreferences: { nodeIntegration: false }
-  });
-  const facebookAuthURL =
-    "https://www.facebook.com/v2.8/dialog/oauth?client_id=" +
-    options.client_id +
-    "&redirect_uri=" +
-    options.redirect_uri +
-    "&response_type=token,granted_scopes&scope=" +
-    options.scopes +
-    "&display=popup";
-  authWindow.loadURL(facebookAuthURL);
-  authWindow.show();
-  authWindow.webContents.on(
-    "did-get-redirect-request",
-    (event, oldUrl, newUrl) => {
-      var raw_code = /access_token=([^&]*)/.exec(newUrl) || null;
-      var access_token = raw_code && raw_code.length > 1 ? raw_code[1] : null;
-      var error = /\?error=(.+)$/.exec(newUrl);
-
-      if (access_token) {
-        FB.setAccessToken(access_token);
-        FB.api(
-          "/me",
-          { fields: ["id", "email", "name", "picture.width(800).height(800)"] },
-          res => {
-            authWindow.close();
-            closuredWindow.webContents.send("fb-auth", access_token, res);
-          }
-        );
-      }
-    }
-  );
-};
 
 const createLoadableWorkspacePath = userSelectedDir => {
   if (!userSelectedDir) return null;

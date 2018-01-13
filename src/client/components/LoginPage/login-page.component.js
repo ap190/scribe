@@ -4,6 +4,7 @@ import axios from "axios";
 import { graphql, compose } from "react-apollo";
 import gql from "graphql-tag";
 import { graphCoolConstants } from "../../utils/const";
+import "./login.css";
 
 const electron = window.require("electron");
 const ipcRenderer = electron.ipcRenderer;
@@ -66,46 +67,7 @@ class LoginPage extends Component {
     };
     this.saveUserData = this.saveUserData.bind(this);
     this.authenticateUser = this.authenticateUser.bind(this);
-    this.componentDidMount = this.componentDidMount.bind(this);
-    this.handleFBLogin = this.handleFBLogin.bind(this);
-    this.facebookCallback = this.facebookCallback.bind(this);
     this.syncToCloud = this.syncToCloud.bind(this);
-  }
-
-  componentDidMount() {
-    ipcRenderer.on("fb-auth", (event, token, res) =>
-      this.facebookCallback(token, res)
-    );
-  }
-
-  handleFBLogin() {
-    ipcRenderer.send("login-with-fb");
-  }
-
-  async facebookCallback(facebookToken, res) {
-    let graphcoolResponse;
-    console.log(`fb id is ${res.id}`);
-    console.log(`name is ${res.name}`);
-    console.log(`email is ${res.email}`);
-    console.log(`pic url is `, res.picture.data.url);
-    if (facebookToken) {
-      try {
-        graphcoolResponse = await this.props.authenticateFacebookUserMutation({
-          variables: { facebookToken }
-        });
-      } catch (err) {
-        console.log(`Error is ${err}`);
-        console.log(graphcoolResponse);
-        this.setState({ failedLogIn: true });
-      }
-      console.log(graphcoolResponse.data);
-      const graphcoolToken =
-        graphcoolResponse.data.authenticateFacebookUser.token;
-      localStorage.setItem("graphcoolToken", graphcoolToken);
-      this.props.history.push("/home");
-    } else {
-      console.warn(`User did not authorize the Facebook application.`);
-    }
   }
 
   // User with unique id of email and password
@@ -175,7 +137,7 @@ class LoginPage extends Component {
             <Input
               type="text"
               placeholder="password"
-              className="textfield"
+              className="password"
               onChange={e => this.setState({ password: e.target.value })}
             />
           </Section>
@@ -192,15 +154,6 @@ class LoginPage extends Component {
             >
               Create Account
             </button>
-            <button
-              className="btn btn-primary"
-              onClick={() => this.handleFBLogin()}
-            >
-              Log in with Facebook
-            </button>
-          </Section>
-          <Section>
-            <input name="Cloud Sync" type="file" onChange={this.syncToCloud} />
           </Section>
         </Form>
       </Background>
