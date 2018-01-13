@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import CSSTransitionGroup from "react-transition-group/CSSTransitionGroup";
 import { getSelectedBlockNode } from "../../util";
-import { lightTheme } from "../../../../../../utils/const";
+import lightTheme from "../../../../../../themes/light-theme";
 
 /*
 Implementation of the medium-link side `+` button to insert various rich blocks

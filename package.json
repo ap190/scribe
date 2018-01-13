@@ -1,7 +1,7 @@
 {
   "name": "scribe",
   "author": "Omer Arie Goldberg",
-  "version": "0.1.6",
+  "version": "0.1.7",
   "description":
     "The ultimate documentation solution, everything else is soooo saddd",
   "repository": {
@@ -40,6 +40,7 @@
     "bluebird": "^3.5.1",
     "classnames": "^2.2.5",
     "codemirror": "^5.32.0",
+    "dotenv": "^4.0.0",
     "draft-convert": "^2.0.1",
     "draft-js": "^0.10.4",
     "draft-js-code": "^0.3.0",
@@ -85,8 +86,8 @@
     "react-toggle-button": "^2.2.0",
     "react-transition-group": "^1.1.2",
     "recursive-readdir": "^2.2.1",
-    "semver": "^5.4.1",
     "redux": "^3.7.2",
+    "semver": "^5.4.1",
     "styled-components": "^2.2.3",
     "subscriptions-transport-ws": "^0.9.4",
     "uuid": "^3.1.0",
@@ -131,8 +132,10 @@
       "buildResources": "assets"
     },
     "mac": {
+      "category": "your.app.category.type",
       "publish": {
         "provider": "github",
+        "owner": "Arieg419",
         "private": true
       },
       "target": ["zip", "dmg"]

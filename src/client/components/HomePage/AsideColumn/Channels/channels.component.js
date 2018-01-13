@@ -16,11 +16,13 @@ const Channels = props => (
       alternativeText="Add a channel button"
       source={addChannelIcon}
       modalType={ASIDE_CREATE_CHANNEL_MODAL}
+      darkTheme={props.darkTheme}
     />
     <ChannelList
       channels={props.channels}
       selectChannelOrFile={props.selectChannelOrFile}
       handleDeleteChannel={props.handleDeleteChannel}
+      darkTheme={props.darkTheme}
     />
   </div>
 );
@@ -30,7 +32,8 @@ Channels.propTypes = {
   toggleModal: PropTypes.func.isRequired,
   channels: PropTypes.array.isRequired,
   selectChannelOrFile: PropTypes.func.isRequired,
-  handleDeleteChannel: PropTypes.func.isRequired
+  handleDeleteChannel: PropTypes.func.isRequired,
+  darkTheme: PropTypes.bool
 };
 
 export default Channels;

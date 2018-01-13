@@ -799,6 +799,7 @@ class HomePage extends Component {
             lastName={this.state.userData.lastName}
             email={this.state.userData.email}
             launchEditor={this.launchEditor}
+            darkTheme={this.state.darkTheme}
           />
           <SplitPane
             split="vertical"

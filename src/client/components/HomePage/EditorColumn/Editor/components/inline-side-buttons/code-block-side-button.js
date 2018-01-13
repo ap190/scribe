@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import { lightTheme } from "../../../../../../utils/const";
+import lightTheme from "../../../../../../themes/light-theme";
 import { addNewBlock } from "../../model";
 import { Block } from "../../util/constants";
 
