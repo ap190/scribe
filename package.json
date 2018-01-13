@@ -1,7 +1,7 @@
 {
   "name": "scribe",
   "author": "Omer Goldberg and Ali Paul",
-  "version": "0.1.1",
+  "version": "0.1.4",
   "description":
     "The ultimate documentation solution, everything else is soooo saddd",
   "repository": {
@@ -100,7 +100,7 @@
     "flow": "flow",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
-    "electron-pack": "build --em.main=build/electron.js",
+    "electron-pack": "build --em.main=build/electron.js --mac --win -p always",
     "win-pack": "build --em.main=build/electron.js --win",
     "check-codesign":
       "codesign --verify --verbose --deep --strict dist/mac/Scribe.app",
@@ -129,6 +129,14 @@
     "forceCodeSigning": true,
     "directories": {
       "buildResources": "assets"
+    },
+    "mac": {
+      "publish": {
+        "provider": "github",
+        "private": true,
+        "token": true
+      },
+      "target": ["zip", "dmg"]
     },
     "win": {
       "target": ["squirrel"],
