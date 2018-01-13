@@ -4,6 +4,7 @@ import axios from "axios";
 import { graphql, compose } from "react-apollo";
 import gql from "graphql-tag";
 import { graphCoolConstants } from "../../utils/const";
+import { Images } from "../../themes";
 import "./login.css";
 
 const electron = window.require("electron");
@@ -14,6 +15,7 @@ const Background = styled.div`
   display: flex;
   flex-direction: row;
   height: 100vh;
+  background-color: white;
 `;
 
 const LeftImage = styled.div`
@@ -41,15 +43,12 @@ const Section = styled.div`
 
 const Input = styled.input`
   display: flex;
-  min-width: 240px;
-  background: #ffffff;
-  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1), 0 4px 8px 0 rgba(0, 0, 0, 0.1);
-  border-radius: 3px;
+  font-family: "AvenirNext-Regular";
   outline: none;
-  font-size: 16px;
-  line-height: 22px;
-  padding: 6px 12px 6px 12px;
   border: none;
+  width: 90%;
+  font-size: 14px;
+  padding-left: 8px;
   &:focus {
     outline: none;
   }
@@ -122,38 +121,51 @@ class LoginPage extends Component {
         <LeftImage />
         <Form>
           <Section>
-            <div className="title">Log In</div>
-          </Section>
-
-          <Section>
-            <Input
-              type="text"
-              placeholder="email"
-              className="textfield"
-              onChange={e => this.setState({ email: e.target.value })}
-            />
+            <img src={Images.logoIcon} height="100" width="100" />
           </Section>
           <Section>
-            <Input
-              type="text"
-              placeholder="password"
-              className="password"
-              onChange={e => this.setState({ password: e.target.value })}
-            />
+            <div className="input-container">
+              <Input
+                type="text"
+                placeholder="email"
+                className="textfield"
+                onChange={e => this.setState({ email: e.target.value })}
+              />
+              <img src={Images.userIcon} height="15" width="15" />
+            </div>
+          </Section>
+          <Section>
+            <div className="input-container">
+              <Input
+                type="text"
+                placeholder="password"
+                className="password"
+                onChange={e => this.setState({ password: e.target.value })}
+              />
+              <img src={Images.lockIcon} height="15" width="15" />
+            </div>
           </Section>
           {this.state.failedLogIn ? (
             <h3>Incorrect email or password. Please try again. </h3>
           ) : null}
           <Section>
-            <button className="btn btn-primary" onClick={this.authenticateUser}>
+            <button
+              className="btn btn-primary login-button"
+              onClick={this.authenticateUser}
+            >
               Login
             </button>
-            <button
-              className="btn btn-primary"
-              onClick={() => this.props.history.push("/createAccount")}
-            >
-              Create Account
-            </button>
+          </Section>
+          <Section>
+            <div className="sign-up-container">
+              Don't have an account?
+              <div
+                className="sign-up"
+                onClick={() => this.props.history.push("/createAccount")}
+              >
+                Sign up here!
+              </div>
+            </div>
           </Section>
         </Form>
       </Background>
