@@ -76,6 +76,7 @@ class HomePage extends Component {
       isEditorToggled: false,
       isModalOpen: false,
       showCode: false,
+      darkTheme: false,
       absolutePath: undefined,
       currentModal: undefined,
       channels: undefined,

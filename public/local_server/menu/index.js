@@ -34,6 +34,18 @@ function setMainMenu(mainWindow) {
           }
         },
         {
+          label: "Save",
+          click() {
+            mainWindow.webContents.send("save-workspace");
+          }
+        },
+        {
+          label: "Toggle Dark Theme",
+          click() {
+            mainWindow.webContents.send("toggle-dark-theme");
+          }
+        },
+        {
           label: "Save Memory Usage Info",
           click() {
             showSaveDialog(mainWindow);

@@ -1,7 +1,7 @@
 {
   "name": "scribe",
-  "author": "Omer Goldberg and Ali Paul",
-  "version": "0.1.4",
+  "author": "Omer Arie Goldberg",
+  "version": "0.1.6",
   "description":
     "The ultimate documentation solution, everything else is soooo saddd",
   "repository": {
@@ -124,7 +124,7 @@
     "postinstall": "install-app-deps"
   },
   "build": {
-    "appId": "com.Mindflowai.scribe-app",
+    "appId": "com.github.Arieg419.scribe",
     "files": ["build/**/*", "node_modules/**/*", "!build-scripts${/*}"],
     "forceCodeSigning": true,
     "directories": {
@@ -133,15 +133,20 @@
     "mac": {
       "publish": {
         "provider": "github",
-        "private": true,
-        "token": true
+        "private": true
       },
       "target": ["zip", "dmg"]
     },
     "win": {
-      "target": ["squirrel"],
+      "publisherName": "Omer Goldberg",
       "certificateFile": "./build-scripts/win-cert.pfx",
-      "certificatePassword": ""
+      "certificatePassword": "",
+      "target": [
+        {
+          "target": "nsis",
+          "arch": ["x64", "ia32"]
+        }
+      ]
     }
   }
 }
