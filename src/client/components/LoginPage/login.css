@@ -1,3 +1,55 @@
 .password {
   -webkit-text-security: disc;
 }
+
+.input-container {
+  display: flex;
+  justify-content: space-between;
+  min-width: 240px;
+  background: #ffffff;
+  border-radius: 15px;
+  line-height: 24px;
+  padding: 6px 12px 6px 12px;
+  border: 1px solid #e2d7e5;
+  color: #33235f;
+}
+
+.login-button {
+  width: 240px;
+  line-height: 24px;
+  border-radius: 15px;
+  background: #33235f;
+  color: white;
+  outline: none;
+  border: none;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  font-weight: bold;
+  font-family: "AvenirNext-Regular";
+}
+
+.login-button:hover {
+  background: rgb(105, 80, 164);
+  cursor: pointer;
+}
+
+.sign-up {
+  color: #33235f;
+  font-family: "AvenirNext-Regular";
+  cursor: pointer;
+  text-decoration: underline;
+  padding-left: 4px;
+}
+
+.sign-up:hover {
+  color: rgb(105, 80, 164);
+}
+
+.sign-up-container {
+  display: flex;
+  justify-content: center;
+  width: 240px;
+  font-family: "AvenirNext-Regular";
+  font-size: 14px;
+}

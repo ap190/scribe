@@ -2,24 +2,8 @@ import React, { Component } from "react";
 import styled from "styled-components";
 import { graphql, compose } from "react-apollo";
 import gql from "graphql-tag";
+import { Images } from "../../themes";
 import { graphCoolConstants } from "../../utils/const";
-import "./style.css";
-
-const Background = styled.div`
-  background-color: whitesmoke;
-  display: flex;
-  flex-direction: row;
-  height: 100vh;
-`;
-
-const Form = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  flex: 1;
-  flex-grow: 1;
-`;
 
 const Section = styled.div`
   position: relative;
@@ -29,21 +13,19 @@ const Section = styled.div`
 
 const Input = styled.input`
   display: flex;
-  min-width: 240px;
-  background: #ffffff;
-  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1), 0 4px 8px 0 rgba(0, 0, 0, 0.1);
-  border-radius: 3px;
+  font-family: "AvenirNext-Regular";
   outline: none;
-  font-size: 16px;
-  line-height: 22px;
-  padding: 6px 12px 6px 12px;
   border: none;
+  width: 90%;
+  font-size: 14px;
+  padding-left: 8px;
+  color: "#33235f";
   &:focus {
     outline: none;
   }
 `;
 
-class CreateAccountPage extends Component {
+class CreateAccountForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -82,64 +64,73 @@ class CreateAccountPage extends Component {
 
   render() {
     return (
-      <Background>
-        <div className="left-image" />
-        <Form>
-          <Section>
-            <div className="title">Create New Account</div>
-          </Section>
-          <Section>
+      <div>
+        <Section>
+          <div className="input-container">
             <Input
               type="text"
               placeholder="First Name"
               className="textfield"
               onChange={e => this.setState({ firstName: e.target.value })}
             />
-          </Section>
-          <Section>
+          </div>
+        </Section>
+        <Section>
+          <div className="input-container">
             <Input
               type="text"
               placeholder="Last Name"
-              className="textfield"
               onChange={e => this.setState({ lastName: e.target.value })}
             />
-          </Section>
-          <Section>
+          </div>
+        </Section>
+        <Section>
+          <div className="input-container">
             <Input
               type="text"
               placeholder="email"
-              className="textfield"
               onChange={e => this.setState({ email: e.target.value })}
             />
-          </Section>
-          <Section>
+          </div>
+        </Section>
+        <Section>
+          <div className="input-container">
             <Input
               type="text"
               placeholder="password"
-              className="textfield"
+              className="password"
               onChange={e => this.setState({ password: e.target.value })}
             />
-          </Section>
-          <Section>
+            <img src={Images.lockIcon} alt="password" height="15" width="15" />
+          </div>
+        </Section>
+        <Section>
+          <div className="input-container">
             <Input
               type="text"
               placeholder="confirm  password"
-              className="textfield"
+              className="password"
             />
-          </Section>
-          <Section>
-            <button className="btn btn-primary" onClick={() => this.confirm()}>
-              Create Account
-            </button>
-            <button
-              className="btn btn-primary"
-              onClick={() => this.props.history.push("/")}
-            >
-              Have an account? Log in
-            </button>
-          </Section>
-        </Form>
-      </Background>
+            <img src={Images.lockIcon} alt="password" height="15" width="15" />
+          </div>
+        </Section>
+        <Section>
+          <button
+            className="btn btn-primary login-button"
+            onClick={() => this.confirm()}
+          >
+            Create Account
+          </button>
+        </Section>
+        <Section>
+          <div className="sign-up-container">
+            Have an account?
+            <div className="sign-up" onClick={this.props.toggleForms}>
+              Log in
+            </div>
+          </div>
+        </Section>
+      </div>
     );
   }
 }
@@ -168,4 +159,4 @@ const SIGNUP_USER_MUTATION = gql`
 
 export default compose(
   graphql(SIGNUP_USER_MUTATION, { name: "signupUserMutation" })
-)(CreateAccountPage);
+)(CreateAccountForm);

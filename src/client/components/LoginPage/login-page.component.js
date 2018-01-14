@@ -1,28 +1,11 @@
 import React, { Component } from "react";
 import styled from "styled-components";
-import axios from "axios";
 import { graphql, compose } from "react-apollo";
 import gql from "graphql-tag";
-import { graphCoolConstants } from "../../utils/const";
+import { Images } from "../../themes";
+import LoginForm from "./login-form.component";
+import CreateAccountForm from "./create-account-form.component";
 import "./login.css";
-
-const electron = window.require("electron");
-const ipcRenderer = electron.ipcRenderer;
-
-const Background = styled.div`
-  background-color: whitesmoke;
-  display: flex;
-  flex-direction: row;
-  height: 100vh;
-`;
-
-const LeftImage = styled.div`
-  background-image: url("https://images.unsplash.com/photo-1419407118704-43ccfda4036d?auto=format&fit=crop&w=2001&q=60&ixid=dW5zcGxhc2guY29tOzs7Ozs%3D");
-  background-size: cover;
-  background-position: center center;
-  display: flex;
-  flex: 0.7;
-`;
 
 const Form = styled.div`
   display: flex;
@@ -39,20 +22,20 @@ const Section = styled.div`
   margin-top: 14px;
 `;
 
-const Input = styled.input`
+const Background = styled.div`
+  background-color: whitesmoke;
   display: flex;
-  min-width: 240px;
-  background: #ffffff;
-  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1), 0 4px 8px 0 rgba(0, 0, 0, 0.1);
-  border-radius: 3px;
-  outline: none;
-  font-size: 16px;
-  line-height: 22px;
-  padding: 6px 12px 6px 12px;
-  border: none;
-  &:focus {
-    outline: none;
-  }
+  flex-direction: row;
+  height: 100vh;
+  background-color: white;
+`;
+
+const LeftImage = styled.div`
+  background-image: url("https://images.unsplash.com/photo-1419407118704-43ccfda4036d?auto=format&fit=crop&w=2001&q=60&ixid=dW5zcGxhc2guY29tOzs7Ozs%3D");
+  background-size: cover;
+  background-position: center center;
+  display: flex;
+  flex: 0.7;
 `;
 
 class LoginPage extends Component {
@@ -63,57 +46,14 @@ class LoginPage extends Component {
       lastName: "",
       email: "",
       password: "",
-      failedLogIn: false
+      failedLogIn: false,
+      showLoginForm: true
     };
-    this.saveUserData = this.saveUserData.bind(this);
-    this.authenticateUser = this.authenticateUser.bind(this);
-    this.syncToCloud = this.syncToCloud.bind(this);
+    this.toggleForms = this.toggleForms.bind(this);
   }
 
-  // User with unique id of email and password
-  async authenticateUser() {
-    const { email, password } = this.state;
-    let response;
-    try {
-      response = await this.props.authenticateUserMutation({
-        variables: { email, password }
-      });
-    } catch (err) {
-      console.log(err);
-      this.setState({ failedLogIn: true });
-      return;
-    }
-    console.log(response.data.authenticateUser);
-    localStorage.setItem(
-      "graphcoolToken",
-      response.data.authenticateUser.token
-    );
-    this.props.history.push({
-      pathname: "/home",
-      state: { userData: response.data.authenticateUser }
-    });
-  }
-
-  saveUserData(id, token) {
-    const { GC_USER_ID, GC_AUTH_TOKEN } = graphCoolConstants;
-    localStorage.setItem(GC_USER_ID, id);
-    localStorage.setItem(GC_AUTH_TOKEN, token);
-  }
-
-  syncToCloud(e) {
-    let data = new FormData();
-    console.log(`file si `, e.target.files[0]);
-    data.append("data", e.target.files[0]);
-    axios
-      .post("https://api.graph.cool/file/v1/cjb6feu9323cp0133gc3vuant", data, {
-        headers: {
-          "Content-Type": "multipart/form-data"
-        }
-      })
-      .then(response => {
-        console.log("file upload response", response);
-      })
-      .catch(err => console.log(`Err msg is ${err}`));
+  toggleForms() {
+    this.setState({ showLoginForm: !this.state.showLoginForm });
   }
 
   render() {
@@ -122,39 +62,19 @@ class LoginPage extends Component {
         <LeftImage />
         <Form>
           <Section>
-            <div className="title">Log In</div>
+            <img src={Images.logoIcon} height="100" width="100" />
           </Section>
-
-          <Section>
-            <Input
-              type="text"
-              placeholder="email"
-              className="textfield"
-              onChange={e => this.setState({ email: e.target.value })}
+          {this.state.showLoginForm ? (
+            <LoginForm
+              history={this.props.history}
+              toggleForms={this.toggleForms}
             />
-          </Section>
-          <Section>
-            <Input
-              type="text"
-              placeholder="password"
-              className="password"
-              onChange={e => this.setState({ password: e.target.value })}
+          ) : (
+            <CreateAccountForm
+              history={this.props.history}
+              toggleForms={this.toggleForms}
             />
-          </Section>
-          {this.state.failedLogIn ? (
-            <h3>Incorrect email or password. Please try again. </h3>
-          ) : null}
-          <Section>
-            <button className="btn btn-primary" onClick={this.authenticateUser}>
-              Login
-            </button>
-            <button
-              className="btn btn-primary"
-              onClick={() => this.props.history.push("/createAccount")}
-            >
-              Create Account
-            </button>
-          </Section>
+          )}
         </Form>
       </Background>
     );
