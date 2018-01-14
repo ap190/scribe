@@ -12,7 +12,6 @@ import { getMainDefinition } from "apollo-utilities";
 // import store from "./client/reducers";
 import HomePage from "./client/components/HomePage";
 import LoginPage from "./client/components/LoginPage";
-import CreateAccountPage from "./client/components/CreateAccount";
 import { graphCoolConstants } from "./client/utils/const";
 import "./client/styles/index.css";
 
@@ -66,9 +65,8 @@ ReactDOM.render(
     <Router>
       <div className="app">
         <Switch>
-          <Route exact path="/login" component={LoginPage} />
-          <Route path="/" component={HomePage} />
-          <Route exact path="/createAccount" component={CreateAccountPage} />
+          <Route exact path="/" component={LoginPage} />
+          <Route path="/home" component={HomePage} />
         </Switch>
       </div>
     </Router>
