@@ -67,9 +67,11 @@ class CreateAccountPage extends Component {
       }
     });
     const { id, token } = result.data.signupUser;
-    console.log(result.data.signupUser);
     this.saveUserData(id, token);
-    this.props.history.push(`/home`);
+    this.props.history.push({
+      pathname: "/home",
+      state: { userData: result.data.signupUser }
+    });
   }
 
   saveUserData(id, token) {
