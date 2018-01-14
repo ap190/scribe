@@ -82,17 +82,24 @@ class Aside extends Component {
       firstName,
       lastName,
       email,
-      launchEditor
+      launchEditor,
+      darkTheme
     } = this.props;
     return (
       <div style={styles}>
-        <UserWidget firstName={firstName} lastName={lastName} email={email} />
+        <UserWidget
+          firstName={firstName}
+          darkTheme={darkTheme}
+          lastName={lastName}
+          email={email}
+        />
         <Channels
           title={"Notebooks"}
           toggleModal={toggleModal}
           channels={channels}
           selectChannelOrFile={selectChannelOrFile}
           handleDeleteChannel={handleDeleteChannel}
+          darkTheme={darkTheme}
         />
         <Tree
           title={"Project"}
@@ -101,6 +108,7 @@ class Aside extends Component {
           getNumberOfThreads={getNumberOfThreads}
           selectFile={selectFile}
           activeNode={activeNode}
+          darkTheme={darkTheme}
         />
         <ColumnFooter>
           {Object.keys(tree).length !== 0 ? (
@@ -117,6 +125,7 @@ class Aside extends Component {
                 handleClick={this.launchEditor}
                 height="24px"
                 width="24px"
+                darkTheme={darkTheme}
               />
               <div
                 className="add-flow-description"
@@ -153,7 +162,8 @@ Aside.propTypes = {
   firstName: PropTypes.string,
   lastName: PropTypes.string,
   email: PropTypes.string,
-  launchEditor: PropTypes.func.isRequired
+  launchEditor: PropTypes.func.isRequired,
+  darkTheme: PropTypes.bool
 };
 
 export default Aside;

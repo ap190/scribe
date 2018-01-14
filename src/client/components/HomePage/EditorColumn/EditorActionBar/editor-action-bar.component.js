@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import ActionBarIcon from "../../../common/ActionBarIcon";
-import { lightTheme } from "../../../../utils/const";
+import lightTheme from "../../../../themes/light-theme";
 
 const EditorActionBar = ({
   shouldShowNext,

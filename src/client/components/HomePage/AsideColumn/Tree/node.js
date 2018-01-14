@@ -2,7 +2,7 @@ import cx from "classnames";
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import mime from "mime-types";
-import { lightTheme } from "../../../../utils/const";
+import lightTheme from "../../../../themes/light-theme";
 
 class UITreeNode extends Component {
   constructor(props) {

@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { EditorState, AtomicBlockUtils } from "draft-js";
 import { modals } from "../../../../../../utils/const";
-import { lightTheme } from "../../../../../../utils/const";
+import lightTheme from "../../../../../../themes/light-theme";
 
 class EmbedSideButton extends Component {
   constructor(props) {

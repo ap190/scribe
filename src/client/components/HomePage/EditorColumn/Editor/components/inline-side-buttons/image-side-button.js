@@ -1,7 +1,7 @@
 import PropTypes from "prop-types";
 import React, { Component } from "react";
 import UUIDv4 from "uuid/v4";
-import { lightTheme } from "../../../../../../utils/const";
+import lightTheme from "../../../../../../themes/light-theme";
 
 const electron = window.require("electron");
 const ipcRenderer = electron.ipcRenderer;

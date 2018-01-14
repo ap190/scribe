@@ -25,6 +25,13 @@ export const initIpcRenderer = componentContext => {
 
   ipcRenderer.on("auto-update", (event, text) => console.log(`${text}`));
 
+  ipcRenderer.on("toggle-dark-theme", () => {
+    console.log(componentContext.state.darkTheme);
+    componentContext.setState({
+      darkTheme: !componentContext.state.darkTheme
+    });
+  });
+
   ipcRenderer.on("create-new-clipping", (event, copiedText) => {
     componentContext.handleAddTextWrapper(copiedText);
   });

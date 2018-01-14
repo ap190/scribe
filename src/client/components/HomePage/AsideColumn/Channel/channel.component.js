@@ -7,12 +7,24 @@ import ChannelContextMenu from "../../../common/ChannelContextMenu";
 import "react-contexify/dist/ReactContexify.min.css";
 import "./channel.css";
 
+import lightTheme from "../../../../themes/light-theme";
+import darkTheme from "../../../../themes/dark-theme";
+
+const getStyling = isDarkTheme => (isDarkTheme ? darkTheme : lightTheme);
+
 const Channel = props => {
   return props.channelType === "communication" ? (
     <ContextMenuProvider
       id="menu_id"
       className="channel-container"
-      style={props.selected ? { backgroundColor: "#e0e6f6" } : null}
+      style={
+        props.selected
+          ? {
+              backgroundColor: getStyling(props.darkTheme).aside.contextMenu
+                .backgroundColor
+            }
+          : null
+      }
     >
       <div onClick={props.handleDeleteChannel}>
         <div
@@ -45,7 +57,8 @@ Channel.propTypes = {
   channelType: PropTypes.string.isRequired,
   selectChannelOrFile: PropTypes.func.isRequired,
   selected: PropTypes.bool,
-  handleDeleteChannel: PropTypes.func.isRequired
+  handleDeleteChannel: PropTypes.func.isRequired,
+  darkTheme: PropTypes.bool.isRequired
 };
 
 Channel.defaultProps = {

@@ -7,6 +7,10 @@ const { setIPCListeners } = require("./local_server/ipc");
 const setMainMenu = require("./local_server/menu");
 const registerGlobalShortcuts = require("./local_server/accelerators");
 const { saveBeforeExiting } = require("./local_server/dialogs");
+require("dotenv").config();
+
+console.log("environemnt variavbles");
+console.log(process.env.GH_TOKEN);
 
 // require("electron-context-menu")();
 

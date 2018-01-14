@@ -18,6 +18,7 @@ const ChannelList = props => {
               selectChannelOrFile={props.selectChannelOrFile}
               selected={channel.selected}
               handleDeleteChannel={props.handleDeleteChannel}
+              darkTheme={props.darkTheme}
             />
           ))}
       </div>
@@ -28,7 +29,8 @@ const ChannelList = props => {
 ChannelList.propTypes = {
   channels: PropTypes.array.isRequired,
   selectChannelOrFile: PropTypes.func.isRequired,
-  handleDeleteChannel: PropTypes.func.isRequired
+  handleDeleteChannel: PropTypes.func.isRequired,
+  darkTheme: PropTypes.bool
 };
 
 export default ChannelList;
