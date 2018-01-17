@@ -27,8 +27,18 @@ export default {
     textFile: textFileLight
   },
   aside: {
+    userAvatar: {
+      color: "#000000",
+      backgroundImage:
+        "linear-gradient(#f2f2f2, #f2f2f2), radial-gradient(circle at top left, #1d2671, #c33764)", // not working
+      userDetails: {
+        color: "#000000"
+      }
+    },
     contextMenu: {
       backgroundColor: "#e0e6f6"
-    }
+    },
+    backgroundColor: "#f2f2f2",
+    textColor: "#000000"
   }
 };

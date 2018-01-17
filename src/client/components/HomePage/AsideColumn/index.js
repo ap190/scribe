@@ -8,12 +8,18 @@ import Icon from "../../common/Icon";
 import { Images } from "../../../themes";
 import "./aside.css";
 import ColumnFooter from "../../common/ColumnFooter";
+import lightTheme from "../../../themes/light-theme";
+import darkTheme from "../../../themes/dark-theme";
 
-const styles = {
-  height: "100%",
-  backgroundColor: "#f2f2f2",
-  display: "flex",
-  flexDirection: "column"
+const getTheme = isDark => {
+  return {
+    height: "100%",
+    backgroundColor: isDark
+      ? darkTheme.aside.backgroundColor
+      : lightTheme.aside.backgroundColor,
+    display: "flex",
+    flexDirection: "column"
+  };
 };
 
 class Aside extends Component {
@@ -83,13 +89,13 @@ class Aside extends Component {
       lastName,
       email,
       launchEditor,
-      darkTheme
+      isDarkTheme
     } = this.props;
     return (
-      <div style={styles}>
+      <div style={getTheme(isDarkTheme)}>
         <UserWidget
           firstName={firstName}
-          darkTheme={darkTheme}
+          darkTheme={isDarkTheme}
           lastName={lastName}
           email={email}
         />
@@ -99,7 +105,7 @@ class Aside extends Component {
           channels={channels}
           selectChannelOrFile={selectChannelOrFile}
           handleDeleteChannel={handleDeleteChannel}
-          darkTheme={darkTheme}
+          darkTheme={isDarkTheme}
         />
         <Tree
           title={"Project"}
@@ -108,7 +114,7 @@ class Aside extends Component {
           getNumberOfThreads={getNumberOfThreads}
           selectFile={selectFile}
           activeNode={activeNode}
-          darkTheme={darkTheme}
+          darkTheme={isDarkTheme}
         />
         <ColumnFooter>
           {Object.keys(tree).length !== 0 ? (
@@ -125,7 +131,7 @@ class Aside extends Component {
                 handleClick={this.launchEditor}
                 height="24px"
                 width="24px"
-                darkTheme={darkTheme}
+                darkTheme={isDarkTheme}
               />
               <div
                 className="add-flow-description"
@@ -163,7 +169,7 @@ Aside.propTypes = {
   lastName: PropTypes.string,
   email: PropTypes.string,
   launchEditor: PropTypes.func.isRequired,
-  darkTheme: PropTypes.bool
+  isDarkTheme: PropTypes.bool
 };
 
 export default Aside;
