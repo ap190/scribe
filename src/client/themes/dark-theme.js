@@ -34,8 +34,28 @@ export default {
         color: "#57595d"
       }
     },
+    channels: {
+      header: {
+        color: "#57595d"
+      },
+      channel: {
+        color: "#57595d"
+      }
+    },
     contextMenu: {
-      backgroundColor: "#e0e6f6"
+      backgroundColor: "#323747"
+    },
+    fileTree: {
+      container: {
+        backgroundColor: "#16191E",
+        color: "#57595d"
+      },
+      header: {
+        color: "#5759fd"
+      },
+      node: {
+        color: "blue"
+      }
     },
     backgroundColor: "#16191E",
     textColor: "#57595D"

@@ -10,6 +10,13 @@ import "./channel.css";
 import lightTheme from "../../../../themes/light-theme";
 import darkTheme from "../../../../themes/dark-theme";
 
+const getTheme = isDark => {
+  return {
+    color: isDark
+      ? darkTheme.aside.channels.channel.color
+      : lightTheme.aside.channels.channel.color
+  };
+};
 const getStyling = isDarkTheme => (isDarkTheme ? darkTheme : lightTheme);
 
 const Channel = props => {
@@ -30,6 +37,7 @@ const Channel = props => {
         <div
           className="channel-list-item"
           onClick={() => props.selectChannelOrFile(props.channelType, props.id)}
+          style={getTheme(props.darkTheme)}
         >
           <div className="channel-list-item-title">{props.channelName}</div>
           <Moment className="channel-list-item-last-post" fromNow>

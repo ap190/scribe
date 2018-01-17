@@ -3,6 +3,15 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import mime from "mime-types";
 import lightTheme from "../../../../themes/light-theme";
+import darkTheme from "../../../../themes/dark-theme";
+
+const getTheme = isDark => {
+  return {
+    color: isDark
+      ? darkTheme.aside.fileTree.header.color
+      : lightTheme.aside.fileTree.header.color
+  };
+};
 
 class UITreeNode extends Component {
   constructor(props) {
@@ -97,7 +106,7 @@ class UITreeNode extends Component {
         <div className="inner" ref="inner" onMouseDown={this.handleMouseDown}>
           {this.renderCollapse()}
           {this.renderIcon()}
-          {tree.renderNode(node)}
+          {tree.renderNode(node, this.props.darkTheme)}
         </div>
         {node.collapsed ? null : this.renderChildren()}
       </div>
@@ -108,7 +117,12 @@ class UITreeNode extends Component {
 UITreeNode.propTypes = {
   tree: PropTypes.object.isRequired,
   paddingLeft: PropTypes.number,
-  index: PropTypes.object
+  index: PropTypes.object,
+  darkTheme: PropTypes.bool.isRequired
 };
+
+// UITreeNode.defaultProps = {
+//   darkTheme: false
+// };
 
 module.exports = UITreeNode;
