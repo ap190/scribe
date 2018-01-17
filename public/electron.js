@@ -93,7 +93,7 @@ app.on("activate", () => {
 // Auto updates
 //-------------------------------------------------------------------
 const sendStatusToWindow = text => {
-  console.log("send stat window");
+  console.log("SOMETHING BIG IS HAPPPENING!! AHHHH?!?!");
   console.info(text);
   if (mainWindow) {
     mainWindow.webContents.send("auto-update", text);

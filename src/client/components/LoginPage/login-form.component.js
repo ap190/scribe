@@ -7,6 +7,9 @@ import { graphCoolConstants } from "../../utils/const";
 import { Images } from "../../themes";
 import "./login.css";
 
+const electron = window.require("electron");
+const ipcRenderer = electron.ipcRenderer;
+
 const Section = styled.div`
   position: relative;
   display: flex;
@@ -27,6 +30,8 @@ const Input = styled.input`
   }
 `;
 
+ipcRenderer.on("auto-update", (event, text) => console.log(`${text}`));
+
 class LoginForm extends Component {
   constructor(props) {
     super(props);
@@ -40,6 +45,10 @@ class LoginForm extends Component {
     this.saveUserData = this.saveUserData.bind(this);
     this.authenticateUser = this.authenticateUser.bind(this);
     this.syncToCloud = this.syncToCloud.bind(this);
+  }
+
+  componentDidMount() {
+    console.log("component did mount in login pform");
   }
 
   // User with unique id of email and password

@@ -1,19 +1,19 @@
 {
   "name": "scribe",
   "author": "Omer Arie Goldberg",
-  "version": "0.1.11",
+  "version": "0.0.1",
   "description":
     "The ultimate documentation solution, everything else is soooo saddd",
   "repository": {
     "type": "git",
-    "url": "https://github.com/Arieg419/hackerScribe.git"
+    "url": "https://github.com/Arieg419/scribe-release.git"
   },
   "private": true,
   "devDependencies": {
     "concurrently": "^3.5.1",
     "devtron": "^1.4.0",
     "electron": "^1.7.10",
-    "electron-builder": "^19.52.1",
+    "electron-builder": "19.53.7",
     "electron-devtools-installer": "^2.2.3",
     "electron-icon-maker": "0.0.4",
     "eslint": "^4.8.0",
@@ -135,8 +135,7 @@
       "category": "your.app.category.type",
       "publish": {
         "provider": "github",
-        "owner": "Arieg419",
-        "private": true
+        "owner": "Arieg419"
       },
       "target": ["zip", "dmg"]
     },

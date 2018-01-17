@@ -483,12 +483,6 @@ class HomePage extends Component {
       return;
     }
 
-    // TODO: wrong indexes right now!
-    console.log(
-      "************ i get to setState ************",
-      currentChannelIdx,
-      currentThreadIdx
-    );
     channels[currentChannelIdx].threads[
       currentThreadIdx
     ].document = convertToRaw(currentDocument.getCurrentContent());

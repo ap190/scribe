@@ -5,6 +5,7 @@ node_modules
 
 # testing
 coverage
+dev-app-update.yml
 
 # production
 dist
