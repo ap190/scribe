@@ -50,7 +50,7 @@ export default class UITree extends Component {
   render() {
     const tree = new Tree(this.props.tree);
     tree.isNodeCollapsed = this.props.isNodeCollapsed;
-    tree.renderCollapse = this.props.renderCollapse; // TODO: attemtped hack
+    tree.renderCollapse = this.props.renderCollapse;
     tree.renderNode = this.props.renderNode;
     tree.changeNodeCollapsed = this.props.changeNodeCollapsed;
     tree.updateNodesPosition();

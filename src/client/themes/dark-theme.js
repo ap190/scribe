@@ -4,20 +4,22 @@ import editorActionBarSaveLight from "../../../public/assets/icons/save.svg";
 import editorActionBarExportLight from "../../../public/assets/icons/export.svg";
 import editorActionBarNextLight from "../../../public/assets/icons/next.svg";
 import editorActionBarMaximizeLight from "../../../public/assets/icons/maximize.svg";
-import folderLight from "../../../public/assets/icons/folder-light.svg";
+import folderDark from "../../../public/assets/icons/folder-dark.svg";
 import imageEmbedLight from "../../../public/assets/icons/image.svg";
 import imageFileLight from "../../../public/assets/icons/image-file-light.svg";
 import seperatorLight from "../../../public/assets/icons/seperator.svg";
 import codeBlockLight from "../../../public/assets/icons/code-block.svg";
 import textFileLight from "../../../public/assets/icons/text-file-light.svg";
+import circleAdd from "../../../public/assets/icons/circle-add-dark.svg";
 
 export default {
   icons: {
     addEditor: addEditorLight,
+    circleAdd,
     codeBlock: codeBlockLight,
     contentEmbed: contentEmbedLight,
     export: editorActionBarExportLight,
-    folder: folderLight,
+    folder: folderDark,
     imageEmbed: imageEmbedLight,
     imageFile: imageFileLight,
     maximize: editorActionBarMaximizeLight,
@@ -56,6 +58,9 @@ export default {
       node: {
         color: "#B0B1B9",
         caret: "#B0B1B9"
+      },
+      folder: {
+        icon: folderDark
       }
     },
     backgroundColor: "#16191E",

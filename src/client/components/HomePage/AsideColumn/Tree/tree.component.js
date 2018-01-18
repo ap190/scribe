@@ -23,11 +23,14 @@ const getTheme = isDark => {
       caret: isDark
         ? darkTheme.aside.fileTree.node.caret
         : lightTheme.aside.fileTree.node.caret
+    },
+    folder: {
+      icon: isDark
+        ? darkTheme.aside.fileTree.folder.icon
+        : lightTheme.aside.fileTree.folder.icon
     }
   };
 };
-
-const folderIcon = "./assets/icons/folder.png";
 
 class Tree extends Component {
   constructor(props) {
@@ -83,6 +86,7 @@ class Tree extends Component {
       </div>
     );
   }
+
   render() {
     return (
       <div className="projects-container">
@@ -90,7 +94,7 @@ class Tree extends Component {
           title={this.props.title}
           handler={this.props.handleOpenDir}
           alternativeText="Select a Project"
-          source={folderIcon}
+          source={getTheme(this.props.darkTheme).folder.icon}
           darkTheme={this.props.darkTheme}
         />
         <div
