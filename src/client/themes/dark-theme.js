@@ -54,7 +54,8 @@ export default {
         color: "#5759fd"
       },
       node: {
-        color: "#B0B1B9"
+        color: "#B0B1B9",
+        caret: "#B0B1B9"
       }
     },
     backgroundColor: "#16191E",

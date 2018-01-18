@@ -19,7 +19,10 @@ const getTheme = isDark => {
     node: {
       color: isDark
         ? darkTheme.aside.fileTree.node
-        : lightTheme.aside.fileTree.node
+        : lightTheme.aside.fileTree.node,
+      caret: isDark
+        ? darkTheme.aside.fileTree.node.caret
+        : lightTheme.aside.fileTree.node.caret
     }
   };
 };
@@ -42,6 +45,23 @@ class Tree extends Component {
     this.setState({
       tree
     });
+  }
+
+  renderCollapse(index) {
+    if (index.children && index.children.length) {
+      const { collapsed } = index.node;
+
+      return (
+        <span
+          className={cx("collapse", collapsed ? "caret-right" : "caret-down")}
+          onMouseDown={e => e.stopPropagation()}
+          onClick={this.handleCollapse}
+          style={{ color: getTheme(this.props.darkTheme).node.caret }}
+        />
+      );
+    }
+
+    return null;
   }
 
   renderNode(node) {
@@ -82,6 +102,8 @@ class Tree extends Component {
             onChange={this.handleChange}
             isNodeCollapsed={this.isNodeCollapsed}
             renderNode={this.renderNode}
+            renderCollapse={this.renderCollapse.bind(this)}
+            darkTheme={this.props.darkTheme}
           />
         </div>
       </div>

@@ -2,22 +2,7 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import Tree from "./tree";
 import Node from "./node";
-// import lightTheme from "../../../../themes/light-theme";
-// import darkTheme from "../../../../themes/dark-theme";
 
-// const getTheme = isDark => {
-// return {
-// color: isDark
-// ? darkTheme.aside.fileTree.header.color
-// : lightTheme.aside.fileTree.header.color,
-// container: {
-// backgroundColor: isDark
-// ? darkTheme.aside.fileTree.container.color
-// : lightTheme.aside.fileTree.container.color
-// }
-// };
-// };
-//
 export default class UITree extends Component {
   constructor(props) {
     super(props);
@@ -65,7 +50,8 @@ export default class UITree extends Component {
   render() {
     const tree = new Tree(this.props.tree);
     tree.isNodeCollapsed = this.props.isNodeCollapsed;
-    tree.renderNode = this.props.renderNode; // TODO: try binding props val here to render dark mode
+    tree.renderCollapse = this.props.renderCollapse; // TODO: attemtped hack
+    tree.renderNode = this.props.renderNode;
     tree.changeNodeCollapsed = this.props.changeNodeCollapsed;
     tree.updateNodesPosition();
     this.state = { tree };
@@ -91,5 +77,7 @@ UITree.defaultProps = {
 UITree.propTypes = {
   tree: PropTypes.object.isRequired,
   paddingLeft: PropTypes.number,
-  renderNode: PropTypes.func.isRequired
+  renderNode: PropTypes.func.isRequired,
+  renderCollapse: PropTypes.func.isRequired,
+  darkTheme: PropTypes.bool.isRequired
 };

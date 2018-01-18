@@ -9,7 +9,6 @@ class UITreeNode extends Component {
     super(props);
     this.renderChildren = this.renderChildren.bind(this);
     this.renderIcon = this.renderIcon.bind(this);
-    this.renderCollapse = this.renderCollapse.bind(this);
     this.handleCollapse = this.handleCollapse.bind(this);
   }
 
@@ -20,24 +19,6 @@ class UITreeNode extends Component {
     if (this.props.onCollapse) {
       this.props.onCollapse(nodeId);
     }
-  }
-
-  renderCollapse() {
-    const { index } = this.props;
-
-    if (index.children && index.children.length) {
-      const { collapsed } = index.node;
-
-      return (
-        <span
-          className={cx("collapse", collapsed ? "caret-right" : "caret-down")}
-          onMouseDown={e => e.stopPropagation()}
-          onClick={this.handleCollapse}
-        />
-      );
-    }
-
-    return null;
   }
 
   renderIcon() {
@@ -91,11 +72,10 @@ class UITreeNode extends Component {
   render() {
     const { tree, index } = this.props;
     const { node } = index;
-    // console.log("checking this out...", this.props.darkTheme);
     return (
       <div className={cx("m-node")}>
         <div className="inner" ref="inner" onMouseDown={this.handleMouseDown}>
-          {this.renderCollapse()}
+          {tree.renderCollapse(index)}
           {this.renderIcon()}
           {tree.renderNode(node)}
         </div>
@@ -110,7 +90,5 @@ UITreeNode.propTypes = {
   paddingLeft: PropTypes.number,
   index: PropTypes.object
 };
-
-// UITreeNode.defaultProps = { darkTheme: false };
 
 module.exports = UITreeNode;

@@ -129,6 +129,7 @@ span {
   left: 0;
   cursor: pointer;
 }
+
 .m-node .caret-right:before {
   content: "\276f";
   padding-left: 2px;
