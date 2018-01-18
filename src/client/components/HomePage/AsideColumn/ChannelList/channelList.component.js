@@ -1,17 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import Channel from "../Channel";
-import lightTheme from "../../../../themes/light-theme";
-import darkTheme from "../../../../themes/dark-theme";
 import "./channelList.css";
-
-const getTheme = isDark => {
-  return {
-    color: isDark
-      ? darkTheme.aside.channels.header.color
-      : lightTheme.aside.channels.header.color
-  };
-};
 
 const ChannelList = props => {
   return (

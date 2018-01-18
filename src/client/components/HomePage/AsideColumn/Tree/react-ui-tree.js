@@ -2,23 +2,23 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import Tree from "./tree";
 import Node from "./node";
-import lightTheme from "../../../../themes/light-theme";
-import darkTheme from "../../../../themes/dark-theme";
+// import lightTheme from "../../../../themes/light-theme";
+// import darkTheme from "../../../../themes/dark-theme";
 
-const getTheme = isDark => {
-  return {
-    color: isDark
-      ? darkTheme.aside.fileTree.header.color
-      : lightTheme.aside.fileTree.header.color,
-    container: {
-      backgroundColor: isDark
-        ? darkTheme.aside.fileTree.container.color
-        : lightTheme.aside.fileTree.container.color
-    }
-  };
-};
-
-class UITree extends Component {
+// const getTheme = isDark => {
+// return {
+// color: isDark
+// ? darkTheme.aside.fileTree.header.color
+// : lightTheme.aside.fileTree.header.color,
+// container: {
+// backgroundColor: isDark
+// ? darkTheme.aside.fileTree.container.color
+// : lightTheme.aside.fileTree.container.color
+// }
+// };
+// };
+//
+export default class UITree extends Component {
   constructor(props) {
     super(props);
 
@@ -70,8 +70,6 @@ class UITree extends Component {
     tree.updateNodesPosition();
     this.state = { tree };
 
-    console.log("WTFFFFFFFFFFFF", this.props.darkTheme);
-
     return (
       <div className="m-tree">
         <Node
@@ -80,7 +78,6 @@ class UITree extends Component {
           key={1}
           paddingLeft={this.props.paddingLeft}
           onCollapse={this.toggleCollapse}
-          darkTheme={this.props.darkTheme}
         />
       </div>
     );
@@ -94,8 +91,5 @@ UITree.defaultProps = {
 UITree.propTypes = {
   tree: PropTypes.object.isRequired,
   paddingLeft: PropTypes.number,
-  renderNode: PropTypes.func.isRequired,
-  darkTheme: PropTypes.bool.isRequired
+  renderNode: PropTypes.func.isRequired
 };
-
-module.exports = UITree;

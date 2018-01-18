@@ -3,15 +3,6 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import mime from "mime-types";
 import lightTheme from "../../../../themes/light-theme";
-import darkTheme from "../../../../themes/dark-theme";
-
-const getTheme = isDark => {
-  return {
-    color: isDark
-      ? darkTheme.aside.fileTree.header.color
-      : lightTheme.aside.fileTree.header.color
-  };
-};
 
 class UITreeNode extends Component {
   constructor(props) {
@@ -100,13 +91,13 @@ class UITreeNode extends Component {
   render() {
     const { tree, index } = this.props;
     const { node } = index;
-
+    // console.log("checking this out...", this.props.darkTheme);
     return (
       <div className={cx("m-node")}>
         <div className="inner" ref="inner" onMouseDown={this.handleMouseDown}>
           {this.renderCollapse()}
           {this.renderIcon()}
-          {tree.renderNode(node, this.props.darkTheme)}
+          {tree.renderNode(node)}
         </div>
         {node.collapsed ? null : this.renderChildren()}
       </div>
@@ -117,12 +108,9 @@ class UITreeNode extends Component {
 UITreeNode.propTypes = {
   tree: PropTypes.object.isRequired,
   paddingLeft: PropTypes.number,
-  index: PropTypes.object,
-  darkTheme: PropTypes.bool.isRequired
+  index: PropTypes.object
 };
 
-// UITreeNode.defaultProps = {
-//   darkTheme: false
-// };
+// UITreeNode.defaultProps = { darkTheme: false };
 
 module.exports = UITreeNode;

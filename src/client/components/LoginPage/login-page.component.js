@@ -62,7 +62,12 @@ class LoginPage extends Component {
         <LeftImage />
         <Form>
           <Section>
-            <img src={Images.logoIcon} height="100" width="100" />
+            <img
+              alt="login-graphic"
+              src={Images.logoIcon}
+              height="100"
+              width="100"
+            />
           </Section>
           {this.state.showLoginForm ? (
             <LoginForm
