@@ -28,6 +28,9 @@ export default {
     seperator: seperatorLight,
     textFile: textFileLight
   },
+  columnFooter: {
+    backgroundColor: "#e0e6f6"
+  },
   aside: {
     userAvatar: {
       color: "#000000",

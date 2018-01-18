@@ -776,7 +776,7 @@ class HomePage extends Component {
         <SplitPane
           split="vertical"
           size={this.state.isEditorToggled ? "0%" : "22%"}
-          allowResize={this.state.isEditorToggled ? false : true}
+          allowResize={this.state.isEditorToggled}
         >
           <Aside
             isEditorToggled={this.state.isEditorToggled}
@@ -798,7 +798,7 @@ class HomePage extends Component {
           <SplitPane
             split="vertical"
             size={this.state.isEditorToggled ? "0%" : "35%"}
-            allowResize={this.state.isEditorToggled ? false : true}
+            allowResize={this.state.isEditorToggled}
           >
             <ThreadColumn
               currentFiles={this.state.currentFiles}

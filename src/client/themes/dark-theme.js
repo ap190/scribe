@@ -28,6 +28,9 @@ export default {
     seperator: seperatorLight,
     textFile
   },
+  columnFooter: {
+    backgroundColor: "#131519"
+  },
   aside: {
     userAvatar: {
       backgroundImage:

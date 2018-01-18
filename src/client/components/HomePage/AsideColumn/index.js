@@ -116,7 +116,7 @@ class Aside extends Component {
           activeNode={activeNode}
           darkTheme={isDarkTheme}
         />
-        <ColumnFooter>
+        <ColumnFooter darkTheme={isDarkTheme}>
           {Object.keys(tree).length !== 0 ? (
             <div
               style={{
@@ -138,7 +138,8 @@ class Aside extends Component {
                 style={{
                   paddingLeft: "inherit",
                   marginLeft: "10px",
-                  marginBottom: "10px"
+                  marginBottom: "10px",
+                  color: isDarkTheme ? "#B0B1B9" : "#000000"
                 }}
               >
                 Launch in Editor
