@@ -31,15 +31,15 @@ export default {
       backgroundImage:
         "linear-gradient(#f2f2f2, #f2f2f2), radial-gradient(circle at top left, #1d2671, #c33764)",
       userDetails: {
-        color: "#57595d"
+        color: "#B0B1B9"
       }
     },
     channels: {
       header: {
-        color: "#57595d"
+        color: "#B0B1B9"
       },
       channel: {
-        color: "#57595d"
+        color: "#B0B1B9"
       }
     },
     contextMenu: {
@@ -54,7 +54,7 @@ export default {
         color: "#5759fd"
       },
       node: {
-        color: "blue"
+        color: "#B0B1B9"
       }
     },
     backgroundColor: "#16191E",
