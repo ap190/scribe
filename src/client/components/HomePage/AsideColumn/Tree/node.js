@@ -76,7 +76,7 @@ class UITreeNode extends Component {
       <div className={cx("m-node")}>
         <div className="inner" ref="inner" onMouseDown={this.handleMouseDown}>
           {tree.renderCollapse(index)}
-          {this.renderIcon()}
+          {tree.renderIcon(index)}
           {tree.renderNode(node)}
         </div>
         {node.collapsed ? null : this.renderChildren()}

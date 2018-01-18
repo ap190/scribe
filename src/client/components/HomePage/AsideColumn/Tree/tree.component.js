@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import cx from "classnames";
 import PropTypes from "prop-types";
+import mime from "mime-types";
 import Header from "../Header/header.component";
 import FileTree from "./react-ui-tree";
 import lightTheme from "../../../../themes/light-theme";
@@ -87,6 +88,24 @@ class Tree extends Component {
     );
   }
 
+  renderIcon(index) {
+    if (!index || !index.node || !index.node.module) {
+      return null;
+    }
+    const theme = this.props.darkTheme ? darkTheme : lightTheme;
+    let caretIcon;
+    if (index.children) {
+      caretIcon = theme.icons.folder;
+    } else {
+      const mimeType = mime.lookup(index.node.module);
+      caretIcon =
+        mimeType && mimeType.split("/")[0] === "image"
+          ? theme.icons.imageFile
+          : theme.icons.textFile;
+    }
+    return <img className="node-icon" src={caretIcon} alt="Caret Icon" />;
+  }
+
   render() {
     return (
       <div className="projects-container">
@@ -107,6 +126,7 @@ class Tree extends Component {
             isNodeCollapsed={this.isNodeCollapsed}
             renderNode={this.renderNode}
             renderCollapse={this.renderCollapse.bind(this)}
+            renderIcon={this.renderIcon.bind(this)}
             darkTheme={this.props.darkTheme}
           />
         </div>

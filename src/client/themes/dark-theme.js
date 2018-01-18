@@ -9,7 +9,7 @@ import imageEmbedLight from "../../../public/assets/icons/image.svg";
 import imageFileLight from "../../../public/assets/icons/image-file-light.svg";
 import seperatorLight from "../../../public/assets/icons/seperator.svg";
 import codeBlockLight from "../../../public/assets/icons/code-block.svg";
-import textFileLight from "../../../public/assets/icons/text-file-light.svg";
+import textFile from "../../../public/assets/icons/file-dark.svg";
 import circleAdd from "../../../public/assets/icons/circle-add-dark.svg";
 
 export default {
@@ -26,7 +26,7 @@ export default {
     next: editorActionBarNextLight,
     save: editorActionBarSaveLight,
     seperator: seperatorLight,
-    textFile: textFileLight
+    textFile
   },
   aside: {
     userAvatar: {
@@ -57,7 +57,9 @@ export default {
       },
       node: {
         color: "#B0B1B9",
-        caret: "#B0B1B9"
+        caret: "#B0B1B9",
+        folderIcon: "",
+        fileIcon: ""
       },
       folder: {
         icon: folderDark

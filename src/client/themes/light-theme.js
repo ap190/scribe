@@ -58,7 +58,9 @@ export default {
       },
       node: {
         color: "#000000",
-        caret: "#000000"
+        caret: "#000000",
+        folderIcon: "",
+        fileIcon: ""
       },
       folder: {
         icon: folderLight
