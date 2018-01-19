@@ -5,8 +5,12 @@ import ChannelList from "../ChannelList";
 import "../aside.css";
 import { modals } from "../../../../utils/const";
 
+import lightTheme from "../../../../themes/light-theme";
+import darkTheme from "../../../../themes/dark-theme";
+
 const { ASIDE_CREATE_CHANNEL_MODAL } = modals;
-const addChannelIcon = "./assets/icons/add_channel.png";
+const getTheme = isDark =>
+  isDark ? darkTheme.icons.circleAdd : lightTheme.icons.circleAdd;
 
 const Channels = props => (
   <div className="channels">
@@ -14,7 +18,7 @@ const Channels = props => (
       title={props.title}
       handler={props.toggleModal}
       alternativeText="Add a channel button"
-      source={addChannelIcon}
+      source={getTheme(props.darkTheme)}
       modalType={ASIDE_CREATE_CHANNEL_MODAL}
       darkTheme={props.darkTheme}
     />

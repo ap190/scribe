@@ -50,6 +50,8 @@ class UITree extends Component {
   render() {
     const tree = new Tree(this.props.tree);
     tree.isNodeCollapsed = this.props.isNodeCollapsed;
+    tree.renderCollapse = this.props.renderCollapse;
+    tree.renderIcon = this.props.renderIcon;
     tree.renderNode = this.props.renderNode;
     tree.changeNodeCollapsed = this.props.changeNodeCollapsed;
     tree.updateNodesPosition();
@@ -63,6 +65,7 @@ class UITree extends Component {
           key={1}
           paddingLeft={this.props.paddingLeft}
           onCollapse={this.toggleCollapse}
+          darkTheme={this.props.darkTheme}
         />
       </div>
     );
@@ -76,7 +79,10 @@ UITree.defaultProps = {
 UITree.propTypes = {
   tree: PropTypes.object.isRequired,
   paddingLeft: PropTypes.number,
-  renderNode: PropTypes.func.isRequired
+  renderNode: PropTypes.func.isRequired,
+  renderIcon: PropTypes.func.isRequired,
+  renderCollapse: PropTypes.func.isRequired,
+  darkTheme: PropTypes.bool.isRequired
 };
 
 module.exports = UITree;

@@ -6,8 +6,13 @@ import "./userWidget.css";
 
 const UserWidget = props => (
   <div className="userWidgetContainer">
-    <UserAvatar firstName={props.firstName} lastName={props.lastName} />
+    <UserAvatar
+      darkTheme={props.darkTheme}
+      firstName={props.firstName}
+      lastName={props.lastName}
+    />
     <UserDetails
+      darkTheme={props.darkTheme}
       firstName={props.firstName}
       lastName={props.lastName}
       email={props.email}
@@ -18,7 +23,8 @@ const UserWidget = props => (
 UserWidget.propTypes = {
   firstName: PropTypes.string,
   lastName: PropTypes.string,
-  email: PropTypes.string
+  email: PropTypes.string,
+  darkTheme: PropTypes.bool.isRequired
 };
 
 UserWidget.defaultProps = {

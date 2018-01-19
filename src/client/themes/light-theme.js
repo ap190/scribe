@@ -10,10 +10,12 @@ import imageFileLight from "../../../public/assets/icons/image-file-light.svg";
 import seperatorLight from "../../../public/assets/icons/seperator.svg";
 import codeBlockLight from "../../../public/assets/icons/code-block.svg";
 import textFileLight from "../../../public/assets/icons/text-file-light.svg";
+import circleAdd from "../../../public/assets/icons/circle-add-light.svg";
 
 export default {
   icons: {
     addEditor: addEditorLight,
+    circleAdd,
     codeBlock: codeBlockLight,
     contentEmbed: contentEmbedLight,
     export: editorActionBarExportLight,
@@ -26,9 +28,48 @@ export default {
     seperator: seperatorLight,
     textFile: textFileLight
   },
+  columnFooter: {
+    backgroundColor: "#e0e6f6"
+  },
   aside: {
+    userAvatar: {
+      color: "#000000",
+      backgroundImage:
+        "linear-gradient(#f2f2f2, #f2f2f2), radial-gradient(circle at top left, #1d2671, #c33764)", // not working
+      userDetails: {
+        color: "#000000"
+      }
+    },
+    channels: {
+      header: {
+        color: "#000000"
+      },
+      channel: {
+        color: "#000000"
+      }
+    },
     contextMenu: {
       backgroundColor: "#e0e6f6"
-    }
+    },
+    fileTree: {
+      container: {
+        backgroundColor: "#f2f2f2",
+        color: "#000000"
+      },
+      header: {
+        color: "#5759fd"
+      },
+      node: {
+        color: "#000000",
+        caret: "#000000",
+        folderIcon: "",
+        fileIcon: ""
+      },
+      folder: {
+        icon: folderLight
+      }
+    },
+    backgroundColor: "#f2f2f2",
+    textColor: "#000000"
   }
 };
