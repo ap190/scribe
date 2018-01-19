@@ -47,7 +47,8 @@ class ThreadColumn extends Component {
       showCode,
       currentFiles,
       absolutePath,
-      threads
+      threads,
+      isDarkTheme
     } = this.props;
     let fileData = "";
     if (absolutePath && activeNode) {
@@ -79,7 +80,7 @@ class ThreadColumn extends Component {
           </div>
         )}
         {!isModalOpen && threads !== undefined ? (
-          <ColumnFooter darkTheme={this.props.isDarkTheme}>
+          <ColumnFooter darkTheme={isDarkTheme}>
             <div style={{ display: "flex", justifyContent: "flexStart" }}>
               <Icon icon={Images.addIcon} handleClick={handleAddThread} />
               <div
@@ -101,7 +102,7 @@ class ThreadColumn extends Component {
             ) : null}
           </ColumnFooter>
         ) : (
-          <ColumnFooter darkTheme={this.props.isDarkTheme} />
+          <ColumnFooter darkTheme={isDarkTheme} />
         )}
       </div>
     );

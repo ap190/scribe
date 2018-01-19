@@ -56,6 +56,7 @@ class Aside extends Component {
   }
 
   renderNode(node) {
+    console.log("here");
     return (
       <span
         role="menuitem"
@@ -131,7 +132,6 @@ class Aside extends Component {
                 handleClick={this.launchEditor}
                 height="24px"
                 width="24px"
-                darkTheme={isDarkTheme}
               />
               <div
                 className="add-flow-description"
@@ -170,7 +170,7 @@ Aside.propTypes = {
   lastName: PropTypes.string,
   email: PropTypes.string,
   launchEditor: PropTypes.func.isRequired,
-  isDarkTheme: PropTypes.bool
+  isDarkTheme: PropTypes.bool.isRequired
 };
 
 export default Aside;

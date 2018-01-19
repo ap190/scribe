@@ -17,6 +17,7 @@ const getTheme = isDark => {
       : lightTheme.aside.channels.channel.color
   };
 };
+
 const getStyling = isDarkTheme => (isDarkTheme ? darkTheme : lightTheme);
 
 const Channel = props => {

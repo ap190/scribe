@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import cx from "classnames";
-import PropTypes from "prop-types";
 import mime from "mime-types";
+import PropTypes from "prop-types";
 import Header from "../Header/header.component";
 import FileTree from "./react-ui-tree";
 import lightTheme from "../../../../themes/light-theme";
@@ -39,8 +39,6 @@ class Tree extends Component {
     this.renderNode = this.renderNode.bind(this);
     this.onClickNode = this.onClickNode.bind(this);
     this.handleChange = this.handleChange.bind(this);
-    this.toggleCollapse = this.toggleCollapse.bind(this);
-    this.handleCollapse = this.handleCollapse.bind(this);
   }
 
   onClickNode(file) {
@@ -53,31 +51,6 @@ class Tree extends Component {
     });
   }
 
-  toggleCollapse(nodeId) {
-    const tree = this.state.tree;
-    const index = tree.getIndex(nodeId);
-    const node = index.node;
-    node.collapsed = !node.collapsed;
-    tree.updateNodesPosition();
-
-    this.setState({
-      tree
-    });
-
-    this.change(tree);
-  }
-
-  handleCollapse(e, index) {
-    e.stopPropagation();
-    const nodeId = index.id;
-    console.log("ohio");
-    this.toggleCollapse(nodeId);
-    // if (this.props.onCollapse) {
-    // console.log("new york tho");
-    // this.props.onCollapse(nodeId);
-    // }
-  }
-
   renderCollapse(index) {
     if (index.children && index.children.length) {
       const { collapsed } = index.node;
@@ -86,13 +59,32 @@ class Tree extends Component {
         <span
           className={cx("collapse", collapsed ? "caret-right" : "caret-down")}
           onMouseDown={e => e.stopPropagation()}
-          onClick={e => this.handleCollapse(e, index)}
+          onClick={this.handleCollapse}
           style={{ color: getTheme(this.props.darkTheme).node.caret }}
         />
       );
     }
 
     return null;
+  }
+
+  renderIcon(index) {
+    if (!index || !index.node || !index.node.module) {
+      return null;
+    }
+
+    const theme = this.props.darkTheme ? darkTheme : lightTheme;
+    let caretIcon;
+    if (index.children) {
+      caretIcon = theme.icons.folder;
+    } else {
+      const mimeType = mime.lookup(index.node.module);
+      caretIcon =
+        mimeType && mimeType.split("/")[0] === "image"
+          ? theme.icons.imageFile
+          : theme.icons.textFile;
+    }
+    return <img className="node-icon" src={caretIcon} alt="Caret Icon" />;
   }
 
   renderNode(node) {
@@ -115,24 +107,6 @@ class Tree extends Component {
     );
   }
 
-  renderIcon(index) {
-    if (!index || !index.node || !index.node.module) {
-      return null;
-    }
-    const theme = this.props.darkTheme ? darkTheme : lightTheme;
-    let caretIcon;
-    if (index.children) {
-      caretIcon = theme.icons.folder;
-    } else {
-      const mimeType = mime.lookup(index.node.module);
-      caretIcon =
-        mimeType && mimeType.split("/")[0] === "image"
-          ? theme.icons.imageFile
-          : theme.icons.textFile;
-    }
-    return <img className="node-icon" src={caretIcon} alt="Caret Icon" />;
-  }
-
   render() {
     return (
       <div className="projects-container">
@@ -151,10 +125,8 @@ class Tree extends Component {
             tree={this.props.tree}
             onChange={this.handleChange}
             isNodeCollapsed={this.isNodeCollapsed}
-            renderNode={this.renderNode}
-            renderCollapse={this.renderCollapse.bind(this)}
             renderIcon={this.renderIcon.bind(this)}
-            toggleCollapse={this.toggleCollapse}
+            renderNode={this.renderNode.bind(this)}
             darkTheme={this.props.darkTheme}
           />
         </div>
