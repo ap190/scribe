@@ -57,6 +57,7 @@ class Aside extends Component {
   }
 
   renderNode(node) {
+    console.log("here");
     return (
       <span
         role="menuitem"
@@ -117,7 +118,7 @@ class Aside extends Component {
           activeNode={activeNode}
           darkTheme={isDarkTheme}
         />
-        <ColumnFooter>
+        <ColumnFooter darkTheme={isDarkTheme}>
           {Object.keys(tree).length !== 0 ? (
             <div
               style={{

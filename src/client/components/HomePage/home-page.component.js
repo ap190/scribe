@@ -820,6 +820,7 @@ class HomePage extends Component {
               handleDeleteThread={this.handleDeleteThread}
               activeNode={this.state.activeNode}
               absolutePath={this.state.absolutePath}
+              isDarkTheme={this.state.darkTheme}
             />
             <EditorColumn
               isEditorToggled={this.state.isEditorToggled}
@@ -836,6 +837,7 @@ class HomePage extends Component {
               exportCurrentDocAsHTML={this.exportCurrentDocAsHTML}
               handleAddEmbeddedContent={this.handleAddEmbeddedContent}
               wasDocumentEdited={this.state.wasDocumentEdited}
+              isDarkTheme={this.state.darkTheme}
             />
           </SplitPane>
         </SplitPane>

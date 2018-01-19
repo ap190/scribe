@@ -7,8 +7,6 @@ import FileTree from "./react-ui-tree";
 import lightTheme from "../../../../themes/light-theme";
 import darkTheme from "../../../../themes/dark-theme";
 
-const folderIcon = "./assets/icons/folder.png";
-
 const getTheme = isDark => {
   return {
     color: isDark
@@ -116,7 +114,7 @@ class Tree extends Component {
           title={this.props.title}
           handler={this.props.handleOpenDir}
           alternativeText="Select a Project"
-          source={folderIcon}
+          source={getTheme(this.props.darkTheme).folder.icon}
           darkTheme={this.props.darkTheme}
         />
         <div
@@ -127,9 +125,8 @@ class Tree extends Component {
             tree={this.props.tree}
             onChange={this.handleChange}
             isNodeCollapsed={this.isNodeCollapsed}
-            renderCollapse={this.renderCollapse.bind(this)}
             renderIcon={this.renderIcon.bind(this)}
-            renderNode={this.renderNode}
+            renderNode={this.renderNode.bind(this)}
             darkTheme={this.props.darkTheme}
           />
         </div>

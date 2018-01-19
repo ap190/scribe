@@ -1,7 +1,6 @@
 import cx from "classnames";
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import mime from "mime-types";
 import lightTheme from "../../../../themes/light-theme";
 import darkTheme from "../../../../themes/dark-theme";
 
@@ -35,7 +34,6 @@ class UITreeNode extends Component {
   constructor(props) {
     super(props);
     this.renderChildren = this.renderChildren.bind(this);
-    // this.renderIcon = this.renderIcon.bind(this);
     this.renderCollapse = this.renderCollapse.bind(this);
     this.handleCollapse = this.handleCollapse.bind(this);
   }
@@ -67,27 +65,6 @@ class UITreeNode extends Component {
 
     return null;
   }
-
-  // renderIcon() {
-  //   const { index } = this.props;
-  //   if (!index || !index.node || !index.node.module) {
-  //     return null;
-  //   }
-
-  //   const theme = this.props.darkTheme ? darkTheme : lightTheme;
-  //   console.log(theme === darkTheme ? "dark" : "light");
-  //   let caretIcon;
-  //   if (index.children) {
-  //     caretIcon = theme.icons.folder;
-  //   } else {
-  //     const mimeType = mime.lookup(index.node.module);
-  //     caretIcon =
-  //       mimeType && mimeType.split("/")[0] === "image"
-  //         ? theme.icons.imageFile
-  //         : theme.icons.textFile;
-  //   }
-  //   return <img className="node-icon" src={caretIcon} alt="Caret Icon" />;
-  // }
 
   renderChildren() {
     const { index, tree } = this.props;

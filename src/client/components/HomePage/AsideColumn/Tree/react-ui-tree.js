@@ -81,7 +81,6 @@ UITree.propTypes = {
   paddingLeft: PropTypes.number,
   renderNode: PropTypes.func.isRequired,
   renderIcon: PropTypes.func.isRequired,
-  renderCollapse: PropTypes.func.isRequired,
   darkTheme: PropTypes.bool.isRequired
 };
 
