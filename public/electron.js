@@ -12,13 +12,13 @@ require("dotenv").config();
 console.log("environemnt variavbles");
 console.log(process.env.GH_TOKEN);
 
-// require("electron-context-menu")();
+require("electron-context-menu")();
 
 const BrowserWindow = electron.BrowserWindow;
-// const {
-//   default: installExtension,
-//   REACT_DEVELOPER_TOOLS
-// } = require("electron-devtools-installer");
+const {
+  default: installExtension,
+  REACT_DEVELOPER_TOOLS
+} = require("electron-devtools-installer");
 
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
@@ -47,9 +47,9 @@ function createWindow() {
   // mainWindow.webContents.openDevTools();
 
   // React DevTools
-  // installExtension(REACT_DEVELOPER_TOOLS)
-  //   .then(name => console.log(`Added Extension:  ${name}`))
-  //   .catch(err => console.log("An error occurred: ", err));
+  installExtension(REACT_DEVELOPER_TOOLS)
+    .then(name => console.log(`Added Extension:  ${name}`))
+    .catch(err => console.log("An error occurred: ", err));
 
   // Initializing accelerators
   registerGlobalShortcuts(globalShortcut, clipboard, mainWindow);

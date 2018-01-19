@@ -39,6 +39,8 @@ class Tree extends Component {
     this.renderNode = this.renderNode.bind(this);
     this.onClickNode = this.onClickNode.bind(this);
     this.handleChange = this.handleChange.bind(this);
+    this.toggleCollapse = this.toggleCollapse.bind(this);
+    this.handleCollapse = this.handleCollapse.bind(this);
   }
 
   onClickNode(file) {
@@ -51,6 +53,31 @@ class Tree extends Component {
     });
   }
 
+  toggleCollapse(nodeId) {
+    const tree = this.state.tree;
+    const index = tree.getIndex(nodeId);
+    const node = index.node;
+    node.collapsed = !node.collapsed;
+    tree.updateNodesPosition();
+
+    this.setState({
+      tree
+    });
+
+    this.change(tree);
+  }
+
+  handleCollapse(e, index) {
+    e.stopPropagation();
+    const nodeId = index.id;
+    console.log("ohio");
+    this.toggleCollapse(nodeId);
+    // if (this.props.onCollapse) {
+    // console.log("new york tho");
+    // this.props.onCollapse(nodeId);
+    // }
+  }
+
   renderCollapse(index) {
     if (index.children && index.children.length) {
       const { collapsed } = index.node;
@@ -59,7 +86,7 @@ class Tree extends Component {
         <span
           className={cx("collapse", collapsed ? "caret-right" : "caret-down")}
           onMouseDown={e => e.stopPropagation()}
-          onClick={this.handleCollapse}
+          onClick={e => this.handleCollapse(e, index)}
           style={{ color: getTheme(this.props.darkTheme).node.caret }}
         />
       );
@@ -127,6 +154,7 @@ class Tree extends Component {
             renderNode={this.renderNode}
             renderCollapse={this.renderCollapse.bind(this)}
             renderIcon={this.renderIcon.bind(this)}
+            toggleCollapse={this.toggleCollapse}
             darkTheme={this.props.darkTheme}
           />
         </div>

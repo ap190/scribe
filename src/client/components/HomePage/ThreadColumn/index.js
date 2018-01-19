@@ -79,7 +79,7 @@ class ThreadColumn extends Component {
           </div>
         )}
         {!isModalOpen && threads !== undefined ? (
-          <ColumnFooter>
+          <ColumnFooter darkTheme={this.props.isDarkTheme}>
             <div style={{ display: "flex", justifyContent: "flexStart" }}>
               <Icon icon={Images.addIcon} handleClick={handleAddThread} />
               <div
@@ -101,7 +101,7 @@ class ThreadColumn extends Component {
             ) : null}
           </ColumnFooter>
         ) : (
-          <ColumnFooter />
+          <ColumnFooter darkTheme={this.props.isDarkTheme} />
         )}
       </div>
     );
@@ -120,7 +120,8 @@ ThreadColumn.propTypes = {
   handleDeleteThread: PropTypes.func.isRequired,
   showCode: PropTypes.bool.isRequired,
   absolutePath: PropTypes.string,
-  activeNode: PropTypes.any
+  activeNode: PropTypes.any,
+  isDarkTheme: PropTypes.bool.isRequired
 };
 
 export default ThreadColumn;

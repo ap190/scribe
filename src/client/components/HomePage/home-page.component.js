@@ -314,6 +314,8 @@ class HomePage extends Component {
     }
 
     if (channelType === "file") {
+      console.log("selecting....");
+      console.log(activeFile);
       let fileChannel = this.getUpdatedChannelAndThreadsIfSelectionIsFile(
         activeFile
       );
@@ -814,6 +816,7 @@ class HomePage extends Component {
               handleDeleteThread={this.handleDeleteThread}
               activeNode={this.state.activeNode}
               absolutePath={this.state.absolutePath}
+              isDarkTheme={this.state.darkTheme}
             />
             <EditorColumn
               isEditorToggled={this.state.isEditorToggled}
@@ -830,6 +833,7 @@ class HomePage extends Component {
               exportCurrentDocAsHTML={this.exportCurrentDocAsHTML}
               handleAddEmbeddedContent={this.handleAddEmbeddedContent}
               wasDocumentEdited={this.state.wasDocumentEdited}
+              isDarkTheme={this.state.darkTheme}
             />
           </SplitPane>
         </SplitPane>

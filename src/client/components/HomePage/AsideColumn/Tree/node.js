@@ -6,16 +6,6 @@ class UITreeNode extends Component {
   constructor(props) {
     super(props);
     this.renderChildren = this.renderChildren.bind(this);
-    this.handleCollapse = this.handleCollapse.bind(this);
-  }
-
-  handleCollapse(e) {
-    e.stopPropagation();
-    const nodeId = this.props.index.id;
-
-    if (this.props.onCollapse) {
-      this.props.onCollapse(nodeId);
-    }
   }
 
   renderChildren() {
@@ -37,7 +27,7 @@ class UITreeNode extends Component {
                 index={childIndex}
                 key={childIndex.id}
                 paddingLeft={this.props.paddingLeft}
-                onCollapse={this.props.onCollapse}
+                onCollapse={this.props.toggleCollapse}
               />
             );
           })}
@@ -66,7 +56,8 @@ class UITreeNode extends Component {
 UITreeNode.propTypes = {
   tree: PropTypes.object.isRequired,
   paddingLeft: PropTypes.number,
-  index: PropTypes.object
+  index: PropTypes.object,
+  toggleCollapse: PropTypes.func.isRequired
 };
 
 module.exports = UITreeNode;

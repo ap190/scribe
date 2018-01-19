@@ -88,7 +88,7 @@ class EditorColumn extends Component {
         ) : (
           <DefaultDoc />
         )}
-        <ColumnFooter>
+        <ColumnFooter darkTheme={this.props.isDarkTheme}>
           {!isModalOpen ? (
             <div
               className="help-button-container"
@@ -121,7 +121,8 @@ EditorColumn.propTypes = {
   currentThread: PropTypes.any,
   handleAddEmbeddedContent: PropTypes.func.isRequired,
   exportCurrentDocAsHTML: PropTypes.func.isRequired,
-  wasDocumentEdited: PropTypes.bool
+  wasDocumentEdited: PropTypes.bool,
+  isDarkTheme: PropTypes.bool.isRequired
 };
 
 export default EditorColumn;

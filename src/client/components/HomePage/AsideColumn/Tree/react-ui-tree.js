@@ -4,12 +4,6 @@ import Tree from "./tree";
 import Node from "./node";
 
 export default class UITree extends Component {
-  constructor(props) {
-    super(props);
-
-    this.toggleCollapse = this.toggleCollapse.bind(this);
-  }
-
   componentWillReceiveProps(nextProps) {
     if (!this._updated) {
       this.setState(this.init(nextProps));
@@ -33,20 +27,6 @@ export default class UITree extends Component {
     if (this.props.onChange) this.props.onChange(tree.obj);
   }
 
-  toggleCollapse(nodeId) {
-    const tree = this.state.tree;
-    const index = tree.getIndex(nodeId);
-    const node = index.node;
-    node.collapsed = !node.collapsed;
-    tree.updateNodesPosition();
-
-    this.setState({
-      tree
-    });
-
-    this.change(tree);
-  }
-
   render() {
     const tree = new Tree(this.props.tree);
     tree.isNodeCollapsed = this.props.isNodeCollapsed;
@@ -64,7 +44,7 @@ export default class UITree extends Component {
           index={tree.getIndex(1)}
           key={1}
           paddingLeft={this.props.paddingLeft}
-          onCollapse={this.toggleCollapse}
+          toggleCollapse={this.props.toggleCollapse}
         />
       </div>
     );
@@ -80,5 +60,6 @@ UITree.propTypes = {
   paddingLeft: PropTypes.number,
   renderNode: PropTypes.func.isRequired,
   renderCollapse: PropTypes.func.isRequired,
+  toggleCollapse: PropTypes.func.isRequired,
   renderIcon: PropTypes.func.isRequired
 };
