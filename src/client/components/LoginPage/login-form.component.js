@@ -23,8 +23,10 @@ const Input = styled.input`
   border: none;
   width: 90%;
   font-size: 14px;
-  padding-left: 8px;
-  color: "#33235f";
+  background: transparent;
+  padding-left: 6px;
+  color: white;
+  font-weight: 600;
   &:focus {
     outline: none;
   }
@@ -102,17 +104,18 @@ class LoginForm extends Component {
       <div>
         <Section>
           <div className="input-container">
+            <img src={Images.userIcon} alt="username" height="15" width="15" />
             <Input
               type="text"
               placeholder="email"
               className="textfield"
               onChange={e => this.setState({ email: e.target.value })}
             />
-            <img src={Images.userIcon} alt="username" height="15" width="15" />
           </div>
         </Section>
         <Section>
           <div className="input-container">
+            <img src={Images.lockIcon} alt="lock" height="15" width="15" />
             <Input
               type="text"
               alt="password"
@@ -120,7 +123,6 @@ class LoginForm extends Component {
               className="password"
               onChange={e => this.setState({ password: e.target.value })}
             />
-            <img src={Images.lockIcon} alt="lock" height="15" width="15" />
           </div>
         </Section>
         {this.state.failedLogIn ? (

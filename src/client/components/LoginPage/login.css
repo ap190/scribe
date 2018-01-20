@@ -6,12 +6,12 @@
   display: flex;
   justify-content: space-between;
   min-width: 240px;
-  background: #ffffff;
+  background: rgba(255, 255, 255, 0.2);
   border-radius: 15px;
   line-height: 24px;
   padding: 6px 12px 6px 12px;
-  border: 1px solid #e2d7e5;
-  color: #33235f;
+  /* border: 1px solid #e2d7e5; */
+  color: white;
 }
 
 .login-button {
@@ -30,12 +30,11 @@
 }
 
 .login-button:hover {
-  background: rgb(105, 80, 164);
+  background: rgb(42, 33, 63);
   cursor: pointer;
 }
 
 .sign-up {
-  color: #33235f;
   font-family: "AvenirNext-Regular";
   cursor: pointer;
   text-decoration: underline;
@@ -43,13 +42,20 @@
 }
 
 .sign-up:hover {
-  color: rgb(105, 80, 164);
+  color: rgb(201, 184, 242);
 }
 
 .sign-up-container {
+  color: white;
   display: flex;
   justify-content: center;
   width: 240px;
   font-family: "AvenirNext-Regular";
-  font-size: 14px;
+  font-weight: 600;
+  font-size: 13px;
+}
+
+::-webkit-input-placeholder {
+  color: white;
+  font-weight: 500;
 }

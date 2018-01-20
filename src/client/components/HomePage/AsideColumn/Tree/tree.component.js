@@ -51,23 +51,6 @@ class Tree extends Component {
     });
   }
 
-  renderCollapse(index) {
-    if (index.children && index.children.length) {
-      const { collapsed } = index.node;
-
-      return (
-        <span
-          className={cx("collapse", collapsed ? "caret-right" : "caret-down")}
-          onMouseDown={e => e.stopPropagation()}
-          onClick={this.handleCollapse}
-          style={{ color: getTheme(this.props.darkTheme).node.caret }}
-        />
-      );
-    }
-
-    return null;
-  }
-
   renderIcon(index) {
     if (!index || !index.node || !index.node.module) {
       return null;
