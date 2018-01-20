@@ -59,7 +59,14 @@ class ThreadColumn extends Component {
       );
     }
     return (
-      <div style={divStyle}>
+      <div
+        style={{
+          ...divStyle,
+          backgroundColor: isDarkTheme
+            ? darkTheme.threads.backgroundColor
+            : lightTheme.threads.backgroundColor
+        }}
+      >
         {showCode ? (
           <CodeColumn currentFiles={fileData} />
         ) : (

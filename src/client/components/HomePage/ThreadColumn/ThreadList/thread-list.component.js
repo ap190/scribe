@@ -1,6 +1,8 @@
 import React from "react";
 import PropTypes from "prop-types";
 import Thread from "../Thread";
+import lightTheme from "../../../../themes/light-theme";
+import darkTheme from "../../../../themes/dark-theme";
 
 const divStyle = {
   height: "auto",
@@ -35,7 +37,10 @@ const ThreadList = props =>
           className="thread-list-header"
           style={{
             fontFamily: "AvenirNext-Bold",
-            padding: "10px"
+            padding: "10px",
+            color: props.darkTheme
+              ? darkTheme.threads.color
+              : lightTheme.threads.color
           }}
         >
           {props.currentChannel.channelName || props.currentChannel.module}
@@ -58,6 +63,7 @@ const ThreadList = props =>
                 onDeleteThreadHandler={props.handleDeleteThread}
                 toggleModal={props.toggleModal}
                 highlightColor={thread.highlightColor}
+                darkTheme={props.darkTheme}
               />
             ) : null
         )}
@@ -80,7 +86,8 @@ ThreadList.propTypes = {
   query: PropTypes.string.isRequired,
   toggleModal: PropTypes.func.isRequired,
   currentChannel: PropTypes.any,
-  handleDeleteThread: PropTypes.func.isRequired
+  handleDeleteThread: PropTypes.func.isRequired,
+  darkTheme: PropTypes.bool.isRequired
 };
 
 export default ThreadList;

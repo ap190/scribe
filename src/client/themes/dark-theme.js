@@ -12,7 +12,8 @@ import codeBlockLight from "../../../public/assets/icons/code-block.svg";
 import textFile from "../../../public/assets/icons/file-dark.svg";
 import circleAdd from "../../../public/assets/icons/circle-add-dark.svg";
 import addThread from "../../../public/assets/icons/thread-add-dark.svg";
-
+import deleteThread from "../../../public/assets/icons/delete-thread-dark.svg";
+// #519aba
 export default {
   icons: {
     addEditor: addEditorLight,
@@ -74,5 +75,13 @@ export default {
     backgroundColor: "#16191E",
     textColor: "#57595D"
   },
-  threads: {}
+  threads: {
+    backgroundColor: "#16191E",
+    color: "#B0B1B9",
+    search: {
+      backgroundColor: "#343537",
+      color: "#B0B1B9"
+    },
+    deleteThread
+  }
 };

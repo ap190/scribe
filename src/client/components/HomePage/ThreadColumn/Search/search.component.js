@@ -1,19 +1,27 @@
 import React from "react";
-import PropTypes from "prop-types"; // ES6
+import PropTypes from "prop-types";
+import darkTheme from "../../../../themes/dark-theme";
+import lightTheme from "../../../../themes/light-theme";
 
-const divStyle = {
-  backgroundColor: "#F2F2F2",
-  color: "#4A4A4A",
-  borderRadius: "30px",
-  border: "none",
-  textIndent: "18px",
-  fontSize: "14px",
-  fontFamily: "AvenirNext-Regular",
-  outline: "none",
-  lineHeight: "28px",
-  width: "100%",
-  top: "0",
-  WebkitAppRegion: "no-drag"
+const divStyle = isDark => {
+  return {
+    backgroundColor: isDark
+      ? darkTheme.threads.search.backgroundColor
+      : lightTheme.threads.search.backgroundColor,
+    color: isDark
+      ? darkTheme.threads.search.color
+      : lightTheme.threads.search.color,
+    borderRadius: "30px",
+    border: "none",
+    textIndent: "18px",
+    fontSize: "14px",
+    fontFamily: "AvenirNext-Regular",
+    outline: "none",
+    lineHeight: "28px",
+    width: "100%",
+    top: "0",
+    WebkitAppRegion: "no-drag"
+  };
 };
 
 const wrapperStyle = {
@@ -24,7 +32,7 @@ const Search = props => (
   <div style={wrapperStyle}>
     <input
       type="text"
-      style={divStyle}
+      style={divStyle(props.darkTheme)}
       value={props.query}
       placeholder="Search by keywords"
       onChange={event => props.onQueryChangeHandler(event)}
@@ -34,7 +42,8 @@ const Search = props => (
 
 Search.propTypes = {
   query: PropTypes.string.isRequired,
-  onQueryChangeHandler: PropTypes.func.isRequired
+  onQueryChangeHandler: PropTypes.func.isRequired,
+  darkTheme: PropTypes.bool.isRequired
 };
 
 export default Search;
