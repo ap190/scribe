@@ -30,14 +30,6 @@ const Background = styled.div`
   background-color: white;
 `;
 
-const LeftImage = styled.div`
-  background-image: url("https://images.unsplash.com/photo-1419407118704-43ccfda4036d?auto=format&fit=crop&w=2001&q=60&ixid=dW5zcGxhc2guY29tOzs7Ozs%3D");
-  background-size: cover;
-  background-position: center center;
-  display: flex;
-  flex: 0.7;
-`;
-
 class LoginPage extends Component {
   constructor(props) {
     super(props);
@@ -57,9 +49,18 @@ class LoginPage extends Component {
   }
 
   render() {
+    console.log(Images.confettiBg);
+
     return (
       <Background>
-        <LeftImage />
+        <div
+          style={{
+            backgroundImage: `url(${Images.devImg})`,
+            backgroundSize: "cover",
+            backgroundPosition: "center center",
+            flex: "0.9"
+          }}
+        />
         <Form>
           <Section>
             <img
