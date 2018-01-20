@@ -11,6 +11,7 @@ import seperatorLight from "../../../public/assets/icons/seperator.svg";
 import codeBlockLight from "../../../public/assets/icons/code-block.svg";
 import textFile from "../../../public/assets/icons/file-dark.svg";
 import circleAdd from "../../../public/assets/icons/circle-add-dark.svg";
+import addThread from "../../../public/assets/icons/thread-add-dark.svg";
 
 export default {
   icons: {
@@ -26,10 +27,12 @@ export default {
     next: editorActionBarNextLight,
     save: editorActionBarSaveLight,
     seperator: seperatorLight,
-    textFile
+    textFile,
+    addThread
   },
   columnFooter: {
-    backgroundColor: "#131519"
+    backgroundColor: "#131519",
+    color: "#B0B1B9"
   },
   aside: {
     userAvatar: {
@@ -70,5 +73,6 @@ export default {
     },
     backgroundColor: "#16191E",
     textColor: "#57595D"
-  }
+  },
+  threads: {}
 };
