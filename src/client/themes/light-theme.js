@@ -11,6 +11,8 @@ import seperatorLight from "../../../public/assets/icons/seperator.svg";
 import codeBlockLight from "../../../public/assets/icons/code-block.svg";
 import textFileLight from "../../../public/assets/icons/text-file-light.svg";
 import circleAdd from "../../../public/assets/icons/circle-add-light.svg";
+import addThread from "../../../public/assets/icons/thread-add-light.svg";
+import deleteThread from "../../../public/assets/icons/delete-thread-light.svg";
 
 export default {
   icons: {
@@ -26,7 +28,8 @@ export default {
     next: editorActionBarNextLight,
     save: editorActionBarSaveLight,
     seperator: seperatorLight,
-    textFile: textFileLight
+    textFile: textFileLight,
+    addThread
   },
   columnFooter: {
     backgroundColor: "#e0e6f6"
@@ -71,5 +74,14 @@ export default {
     },
     backgroundColor: "#f2f2f2",
     textColor: "#000000"
+  },
+  threads: {
+    backgroundColor: "white",
+    color: "#000",
+    search: {
+      backgroundColor: "#F2F2F2",
+      color: "#000"
+    },
+    deleteThread
   }
 };

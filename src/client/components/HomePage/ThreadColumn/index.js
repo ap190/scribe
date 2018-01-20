@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import path from "path";
 import PropTypes from "prop-types";
-import { Images } from "../../../themes";
 import CodeColumn from "../CodeColumn";
 import Search from "./Search";
 import ThreadList from "./ThreadList";
@@ -9,6 +8,8 @@ import Toggle from "../../common/Toggle";
 import ColumnFooter from "../../common/ColumnFooter";
 import Icon from "../../common/Icon";
 import { stringConstants } from "../../../utils/const";
+import darkTheme from "../../../themes/dark-theme";
+import lightTheme from "../../../themes/light-theme";
 
 const divStyle = {
   position: "relative",
@@ -40,6 +41,7 @@ class ThreadColumn extends Component {
   }
 
   render() {
+    console.log(darkTheme.icons.addThread);
     const {
       isModalOpen,
       handleAddThread,
@@ -57,7 +59,14 @@ class ThreadColumn extends Component {
       );
     }
     return (
-      <div style={divStyle}>
+      <div
+        style={{
+          ...divStyle,
+          backgroundColor: isDarkTheme
+            ? darkTheme.threads.backgroundColor
+            : lightTheme.threads.backgroundColor
+        }}
+      >
         {showCode ? (
           <CodeColumn currentFiles={fileData} />
         ) : (
@@ -65,6 +74,7 @@ class ThreadColumn extends Component {
             <Search
               query={this.state.query}
               onQueryChangeHandler={this.onQueryChange}
+              darkTheme={isDarkTheme}
             />
             <ThreadList
               threads={threads}
@@ -76,19 +86,30 @@ class ThreadColumn extends Component {
               selectThread={this.props.selectThread}
               currentChannel={this.props.currentChannel}
               handleDeleteThread={this.props.handleDeleteThread}
+              darkTheme={isDarkTheme}
             />
           </div>
         )}
         {!isModalOpen && threads !== undefined ? (
           <ColumnFooter darkTheme={isDarkTheme}>
             <div style={{ display: "flex", justifyContent: "flexStart" }}>
-              <Icon icon={Images.addIcon} handleClick={handleAddThread} />
+              <Icon
+                icon={
+                  isDarkTheme
+                    ? darkTheme.icons.addThread
+                    : lightTheme.icons.addThread
+                }
+                handleClick={handleAddThread}
+              />
               <div
                 className="add-flow-description"
                 style={{
                   paddingLeft: "inherit",
                   marginLeft: "10px",
-                  marginBottom: "10px"
+                  marginBottom: "10px",
+                  color: isDarkTheme
+                    ? darkTheme.columnFooter.color
+                    : lightTheme.columnFooter.color
                 }}
               >
                 {ADD_A_THREAD}

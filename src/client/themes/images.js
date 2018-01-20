@@ -1,5 +1,5 @@
 export default {
-  addIcon: "./assets/icons/simple_add.png",
+  addIcon: "./assets/icons/thread-add-light.svg",
   codeIcon: "./assets/icons/code.png",
   codeEditorIcon: "./assets/icons/code-editor.svg",
   userIcon: "./assets/icons/user.svg",
