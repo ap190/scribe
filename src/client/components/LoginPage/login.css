@@ -56,6 +56,18 @@
   color: #ffffff;
 }
 
+.error-msg {
+  font-family: "AvenirNext-Regular";
+  display: flex;
+  justify-content: center;
+  color: rgb(167, 8, 8);
+  font-weight: 600;
+  font-size: 16px;
+  width: 240px;
+  text-align: center;
+  vertical-align: middle;
+}
+
 .sign-up-container {
   color: white;
   display: flex;

@@ -11,7 +11,6 @@ const electron = window.require("electron");
 const ipcRenderer = electron.ipcRenderer;
 
 const Section = styled.div`
-  position: relative;
   display: flex;
   margin-top: 14px;
 `;
@@ -125,9 +124,6 @@ class LoginForm extends Component {
             />
           </div>
         </Section>
-        {this.state.failedLogIn ? (
-          <h3>Incorrect email or password. Please try again. </h3>
-        ) : null}
         <Section>
           <button
             className="btn btn-primary login-button"
@@ -143,6 +139,13 @@ class LoginForm extends Component {
               Sign up here!
             </div>
           </div>
+        </Section>
+        <Section>
+          {this.state.failedLogIn ? (
+            <div className="error-msg">
+              Incorrect email or password. Please try again.
+            </div>
+          ) : null}
         </Section>
       </div>
     );
