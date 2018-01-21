@@ -45,6 +45,17 @@
   color: rgb(201, 184, 242);
 }
 
+.typed-title {
+  font-family: "AndaleMono";
+  font-size: 36px;
+  margin-bottom: 48px;
+  color: #ffffff;
+}
+
+.cursor {
+  color: #ffffff;
+}
+
 .sign-up-container {
   color: white;
   display: flex;

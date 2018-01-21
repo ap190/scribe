@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import styled from "styled-components";
+import Typing, { Reset, Cursor } from "react-typing-animation";
 import { graphql, compose } from "react-apollo";
 import gql from "graphql-tag";
 import { Images } from "../../themes";
@@ -38,6 +39,7 @@ const Background = styled.div`
   align-items: center;
   flex-wrap: wrap;
   box-shadow: inset 0 0 0 1000px rgba(0, 0, 0, 0.3);
+  -webkit-app-region: drag;
 `;
 
 class LoginPage extends Component {
@@ -66,9 +68,23 @@ class LoginPage extends Component {
         style={{
           backgroundImage: `url(${Images.devImg})`,
           backgroundSize: "cover",
-          backgroundPosition: "center center"
+          backgroundPosition: "center center",
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "center"
         }}
       >
+        <Typing
+          loop={true}
+          speed={120}
+          className="typed-title"
+          cursor={<Cursor className="cursor" />}
+        >
+          <span>Clarify your code.</span>
+          <Reset count={1} delay={4500} />
+          <span>Get started using scribe.</span>
+          <Reset count={1} delay={4500} />
+        </Typing>
         <Form>
           <Section>
             <img
