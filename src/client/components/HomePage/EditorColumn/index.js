@@ -75,6 +75,7 @@ class EditorColumn extends Component {
           handleNextThread={nextThreadHandler}
           isEditorToggled={isEditorToggled}
           wasDocumentEdited={wasDocumentEdited}
+          isDarkTheme={isDarkTheme}
         />
         {currentThread && !this.state.showDefaultDoc ? (
           <ExtendedEditor

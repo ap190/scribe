@@ -36,7 +36,6 @@ import darkTheme from "../../../../themes/dark-theme";
 import lightTheme from "../../../../themes/light-theme";
 
 const getStyles = (isDark, isToggled) => {
-  console.log("i get called bruh", isDark, isToggled);
   return {
     backgroundColor: isDark
       ? darkTheme.editor.backgroundColor
