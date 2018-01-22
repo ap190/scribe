@@ -29,6 +29,14 @@
   font-family: "AvenirNext-Regular";
 }
 
+.login-button:disabled {
+  background: rgb(42, 33, 63);
+}
+
+.login-button:disabled:hover {
+  cursor: none;
+}
+
 .login-button:hover {
   background: rgb(42, 33, 63);
   cursor: pointer;

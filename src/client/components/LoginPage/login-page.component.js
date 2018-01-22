@@ -61,8 +61,6 @@ class LoginPage extends Component {
   }
 
   render() {
-    console.log(Images.confettiBg);
-
     return (
       <Background
         style={{
@@ -82,7 +80,7 @@ class LoginPage extends Component {
         >
           <span>Clarify your code.</span>
           <Reset count={1} delay={4500} />
-          <span>Get started using scribe.</span>
+          <span>Get started using Scribe.</span>
           <Reset count={1} delay={4500} />
         </Typing>
         <Form>

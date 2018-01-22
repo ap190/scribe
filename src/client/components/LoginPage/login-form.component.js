@@ -41,6 +41,7 @@ class LoginForm extends Component {
       lastName: "",
       email: "",
       password: "",
+      inputsAble: true,
       failedLogIn: false
     };
     this.saveUserData = this.saveUserData.bind(this);
@@ -54,6 +55,7 @@ class LoginForm extends Component {
 
   // User with unique id of email and password
   async authenticateUser() {
+    this.setState({ ...this.state, inputsAble: false });
     const { email, password } = this.state;
     let response;
     try {
@@ -62,7 +64,7 @@ class LoginForm extends Component {
       });
     } catch (err) {
       console.log(err);
-      this.setState({ failedLogIn: true });
+      this.setState({ ...this.state, inputsAble: true, failedLogIn: true });
       return;
     }
     console.log(response.data.authenticateUser);
@@ -109,6 +111,7 @@ class LoginForm extends Component {
               placeholder="email"
               className="textfield"
               onChange={e => this.setState({ email: e.target.value })}
+              disabled={!this.state.inputsAble}
             />
           </div>
         </Section>
@@ -121,6 +124,7 @@ class LoginForm extends Component {
               placeholder="password"
               className="password"
               onChange={e => this.setState({ password: e.target.value })}
+              disabled={!this.state.inputsAble}
             />
           </div>
         </Section>
@@ -128,6 +132,7 @@ class LoginForm extends Component {
           <button
             className="btn btn-primary login-button"
             onClick={this.authenticateUser}
+            disabled={!this.state.inputsAble}
           >
             Login
           </button>
