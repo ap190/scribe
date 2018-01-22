@@ -31,8 +31,20 @@ import {
   addNewBlockAt,
   isCursorBetweenLink
 } from "./model";
-
 import ImageButton from "./components/inline-side-buttons/image-side-button";
+import darkTheme from "../../../../themes/dark-theme";
+import lightTheme from "../../../../themes/light-theme";
+
+const getStyles = (isDark, isToggled) => {
+  console.log("i get called bruh", isDark, isToggled);
+  return {
+    backgroundColor: isDark
+      ? darkTheme.editor.backgroundColor
+      : lightTheme.editor.backgroundColor,
+    color: isDark ? darkTheme.editor.color : lightTheme.editor.color,
+    margin: isToggled ? { margin: "0% 35%" } : null
+  };
+};
 
 /*
 A wrapper over `draft-js`'s default **Editor** component which provides
@@ -450,7 +462,8 @@ class MediumDraftEditor extends React.Component {
       currentThread,
       handleDocTitleChange,
       wasDocumentEdited,
-      isToggled
+      isToggled,
+      isDarkTheme
     } = this.props;
     const showAddButton = editorEnabled;
     const editorClass = `md-RichEditor-editor${
@@ -482,13 +495,17 @@ class MediumDraftEditor extends React.Component {
         )}
         <div
           className="md-RichEditor-root"
-          style={isToggled ? { margin: "0% 35%" } : null}
+          style={getStyles(isDarkTheme, isToggled)}
         >
           <div className="title-container">
             <Textarea
               className="doc-title"
               type="text"
               value={currentThread.title}
+              style={{
+                backgroundColor: getStyles(isDarkTheme, null).backgroundColor,
+                color: getStyles(isDarkTheme, null).color
+              }}
               onChange={event => handleDocTitleChange(event.target.value)}
             />
             {wasDocumentEdited ? (
@@ -600,7 +617,8 @@ MediumDraftEditor.propTypes = {
   handleDocTitleChange: PropTypes.func,
   wasDocumentEdited: PropTypes.bool.isRequired,
   currentThread: PropTypes.any,
-  isToggled: PropTypes.bool.isRequired
+  isToggled: PropTypes.bool.isRequired,
+  isDarkTheme: PropTypes.bool.isRequired
 };
 
 MediumDraftEditor.defaultProps = {

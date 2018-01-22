@@ -41,7 +41,6 @@ class ThreadColumn extends Component {
   }
 
   render() {
-    console.log(darkTheme.icons.addThread);
     const {
       isModalOpen,
       handleAddThread,

@@ -59,10 +59,14 @@ class EditorColumn extends Component {
       currentThread,
       currentDocument,
       exportCurrentDocAsHTML,
-      wasDocumentEdited
+      wasDocumentEdited,
+      isDarkTheme
     } = this.props;
     return (
-      <div className="editor">
+      <div
+        className="editor"
+        style={{ backgroundColor: isDarkTheme ? "#16191E" : "#fff" }}
+      >
         <EditorActionBar
           shouldShowNext={currentThreads && currentThreads.length > 1}
           handleSave={saveWorkspace}
@@ -84,6 +88,7 @@ class EditorColumn extends Component {
             handleDocTitleChange={this.props.handleThreadTitleChange}
             handleAddEmbeddedContent={this.props.handleAddEmbeddedContent}
             isToggled={isEditorToggled}
+            isDarkTheme={isDarkTheme}
           />
         ) : (
           <DefaultDoc />
