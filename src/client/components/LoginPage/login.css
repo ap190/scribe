@@ -100,7 +100,7 @@ input:disabled {
   font-size: 13px;
 }
 
-::-webkit-input-placeholder {
+.input-container ::-webkit-input-placeholder {
   color: white;
   font-weight: 500;
 }
