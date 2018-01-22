@@ -83,5 +83,6 @@ export default {
       color: "#000"
     },
     deleteThread
-  }
+  },
+  editor: { backgroundColor: "#fff", color: "#000" }
 };

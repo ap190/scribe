@@ -207,6 +207,7 @@ class ExtendedEditor extends React.Component {
         wasDocumentEdited={this.props.wasDocumentEdited}
         handleDocTitleChange={this.props.handleDocTitleChange}
         isToggled={this.props.isToggled}
+        isDarkTheme={this.props.isDarkTheme}
       />
     );
   }
@@ -220,7 +221,8 @@ ExtendedEditor.propTypes = {
   wasDocumentEdited: PropTypes.bool.isRequired,
   toggleModal: PropTypes.func.isRequired,
   handleAddEmbeddedContent: PropTypes.func.isRequired,
-  isToggled: PropTypes.bool.isRequired
+  isToggled: PropTypes.bool.isRequired,
+  isDarkTheme: PropTypes.bool.isRequired
 };
 
 export default ExtendedEditor;
