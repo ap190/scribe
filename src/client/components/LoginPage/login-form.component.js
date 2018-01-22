@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import cx from "classnames";
 import styled from "styled-components";
 import axios from "axios";
 import { graphql, compose } from "react-apollo";
@@ -104,7 +105,12 @@ class LoginForm extends Component {
     return (
       <div>
         <Section>
-          <div className="input-container">
+          <div
+            className={cx(
+              "input-container",
+              this.state.inputsAble ? "able" : "disabled"
+            )}
+          >
             <img src={Images.userIcon} alt="username" height="15" width="15" />
             <Input
               type="text"
@@ -116,7 +122,12 @@ class LoginForm extends Component {
           </div>
         </Section>
         <Section>
-          <div className="input-container">
+          <div
+            className={cx(
+              "input-container",
+              this.state.inputsAble ? "able" : "disabled"
+            )}
+          >
             <img src={Images.lockIcon} alt="lock" height="15" width="15" />
             <Input
               type="text"

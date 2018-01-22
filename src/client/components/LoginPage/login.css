@@ -11,7 +11,17 @@
   line-height: 24px;
   padding: 6px 12px 6px 12px;
   /* border: 1px solid #e2d7e5; */
-  color: white;
+}
+
+.input-container.disabled {
+  display: flex;
+  justify-content: space-between;
+  min-width: 240px;
+  background: rgba(0, 0, 0, 0.132);
+  border-radius: 15px;
+  line-height: 24px;
+  padding: 6px 12px 6px 12px;
+  color: black;
 }
 
 .login-button {
@@ -62,6 +72,10 @@
 
 .cursor {
   color: #ffffff;
+}
+
+input:disabled {
+  color: black;
 }
 
 .error-msg {
