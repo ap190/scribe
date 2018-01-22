@@ -2,8 +2,7 @@
   "name": "scribe",
   "author": "Omer Arie Goldberg",
   "version": "0.0.1",
-  "description":
-    "The ultimate documentation solution, everything else is soooo saddd",
+  "description": "The ultimate documentation solution, everything else is soooo saddd",
   "repository": {
     "type": "git",
     "url": "https://github.com/Arieg419/scribe-release.git"
@@ -85,6 +84,7 @@
     "react-textarea-autosize": "^5.2.1",
     "react-toggle-button": "^2.2.0",
     "react-transition-group": "^1.1.2",
+    "react-typing-animation": "^1.1.5",
     "recursive-readdir": "^2.2.1",
     "redux": "^3.7.2",
     "semver": "^5.4.1",
@@ -103,30 +103,28 @@
     "eject": "react-scripts eject",
     "electron-pack": "build --em.main=build/electron.js --mac --win -p always",
     "win-pack": "build --em.main=build/electron.js --win",
-    "check-codesign":
-      "codesign --verify --verbose --deep --strict dist/mac/Scribe.app",
+    "check-codesign": "codesign --verify --verbose --deep --strict dist/mac/Scribe.app",
     "preelectron-pack": "npm run build",
     "electron": "electron .",
-    "electron-dev":
-      "concurrently \"BROWSER=none yarn start\" \"wait-on http://localhost:3000 && electron . --dev\"",
+    "electron-dev": "concurrently \"BROWSER=none yarn start\" \"wait-on http://localhost:3000 && electron . --dev\"",
     "dist": "npm run build && build",
     "dev": "nf start -p 3000",
-    "dev-na":
-      "concurrently \"BROWSER=none yarn start\" \"wait-on http://localhost:3000 && electron .\"",
+    "dev-na": "concurrently \"BROWSER=none yarn start\" \"wait-on http://localhost:3000 && electron .\"",
     "dev:mac": "DEV=true electron .",
     "dev:win": "SET DEV=true&& electron .",
     "pack": "build --dir",
-    "package-mac":
-      "rm -rf release-builds && npm run build && electron-packager . --overwrite --asar=true --platform=darwin --arch=x64 --icon=public/icons/mac/icon.icns --prune=true --out=release-builds",
-    "package-win":
-      "electron-packager . --overwrite --asar=true --platform=win32 --arch=ia32 --icon=public/icons/win/icon.ico --prune=true --out=release-builds --version-string.CompanyName=CE --version-string.FileDescription=CE --version-string.ProductName=\"Electron Tutorial App\"",
-    "package-linux":
-      "electron-packager . --overwrite --asar=true --platform=linux --arch=x64 --icon=public/icons/png/1024x1024.png --prune=true --out=release-builds",
+    "package-mac": "rm -rf release-builds && npm run build && electron-packager . --overwrite --asar=true --platform=darwin --arch=x64 --icon=public/icons/mac/icon.icns --prune=true --out=release-builds",
+    "package-win": "electron-packager . --overwrite --asar=true --platform=win32 --arch=ia32 --icon=public/icons/win/icon.ico --prune=true --out=release-builds --version-string.CompanyName=CE --version-string.FileDescription=CE --version-string.ProductName=\"Electron Tutorial App\"",
+    "package-linux": "electron-packager . --overwrite --asar=true --platform=linux --arch=x64 --icon=public/icons/png/1024x1024.png --prune=true --out=release-builds",
     "postinstall": "install-app-deps"
   },
   "build": {
     "appId": "com.github.Arieg419.scribe",
-    "files": ["build/**/*", "node_modules/**/*", "!build-scripts${/*}"],
+    "files": [
+      "build/**/*",
+      "node_modules/**/*",
+      "!build-scripts${/*}"
+    ],
     "forceCodeSigning": true,
     "directories": {
       "buildResources": "assets"
@@ -137,7 +135,10 @@
         "provider": "github",
         "owner": "Arieg419"
       },
-      "target": ["zip", "dmg"]
+      "target": [
+        "zip",
+        "dmg"
+      ]
     },
     "win": {
       "publisherName": "Omer Goldberg",
@@ -146,7 +147,10 @@
       "target": [
         {
           "target": "nsis",
-          "arch": ["x64", "ia32"]
+          "arch": [
+            "x64",
+            "ia32"
+          ]
         }
       ]
     }

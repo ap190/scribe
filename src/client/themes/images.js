@@ -4,7 +4,9 @@ export default {
   codeEditorIcon: "./assets/icons/code-editor.svg",
   userIcon: "./assets/icons/user.svg",
   lockIcon: "./assets/icons/lock.svg",
+  emailIcon: "./assets/icons/email.svg",
+  usernameIcon: "./assets/icons/username.svg",
   confettiBg: "./assets/img/confetti_bg.png",
-  devImg: "./assets/img/devimg.jpeg",
+  devImg: "./assets/img/devimg.jpg",
   logoIcon: "./assets/icons/logo.png"
 };

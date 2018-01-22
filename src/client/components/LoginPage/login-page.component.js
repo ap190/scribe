@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import styled from "styled-components";
+import Typing, { Reset, Cursor } from "react-typing-animation";
 import { graphql, compose } from "react-apollo";
 import gql from "graphql-tag";
 import { Images } from "../../themes";
@@ -12,8 +13,10 @@ const Form = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  flex: 1;
-  flex-grow: 1;
+  align-self: center;
+  // background: rgba(0, 0, 0, 0.3);
+  border-radius: 5px;
+  padding: 20px;
 `;
 
 const Section = styled.div`
@@ -24,10 +27,19 @@ const Section = styled.div`
 
 const Background = styled.div`
   background-color: whitesmoke;
-  display: flex;
-  flex-direction: row;
   height: 100vh;
   background-color: white;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-wrap: wrap;
+  box-shadow: inset 0 0 0 1000px rgba(0, 0, 0, 0.3);
+  -webkit-app-region: drag;
 `;
 
 class LoginPage extends Component {
@@ -49,18 +61,28 @@ class LoginPage extends Component {
   }
 
   render() {
-    console.log(Images.confettiBg);
-
     return (
-      <Background>
-        <div
-          style={{
-            backgroundImage: `url(${Images.devImg})`,
-            backgroundSize: "cover",
-            backgroundPosition: "center center",
-            flex: "0.9"
-          }}
-        />
+      <Background
+        style={{
+          backgroundImage: `url(${Images.devImg})`,
+          backgroundSize: "cover",
+          backgroundPosition: "center center",
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "center"
+        }}
+      >
+        <Typing
+          loop={true}
+          speed={120}
+          className="typed-title"
+          cursor={<Cursor className="cursor" />}
+        >
+          <span>Clarify your code.</span>
+          <Reset count={1} delay={4500} />
+          <span>Get started using Scribe.</span>
+          <Reset count={1} delay={4500} />
+        </Typing>
         <Form>
           <Section>
             <img

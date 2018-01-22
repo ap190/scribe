@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import cx from "classnames";
 import styled from "styled-components";
 import axios from "axios";
 import { graphql, compose } from "react-apollo";
@@ -11,7 +12,6 @@ const electron = window.require("electron");
 const ipcRenderer = electron.ipcRenderer;
 
 const Section = styled.div`
-  position: relative;
   display: flex;
   margin-top: 14px;
 `;
@@ -23,8 +23,10 @@ const Input = styled.input`
   border: none;
   width: 90%;
   font-size: 14px;
-  padding-left: 8px;
-  color: "#33235f";
+  background: transparent;
+  padding-left: 6px;
+  color: white;
+  font-weight: 600;
   &:focus {
     outline: none;
   }
@@ -40,6 +42,7 @@ class LoginForm extends Component {
       lastName: "",
       email: "",
       password: "",
+      inputsAble: true,
       failedLogIn: false
     };
     this.saveUserData = this.saveUserData.bind(this);
@@ -53,6 +56,7 @@ class LoginForm extends Component {
 
   // User with unique id of email and password
   async authenticateUser() {
+    this.setState({ ...this.state, inputsAble: false });
     const { email, password } = this.state;
     let response;
     try {
@@ -61,7 +65,7 @@ class LoginForm extends Component {
       });
     } catch (err) {
       console.log(err);
-      this.setState({ failedLogIn: true });
+      this.setState({ ...this.state, inputsAble: true, failedLogIn: true });
       return;
     }
     console.log(response.data.authenticateUser);
@@ -101,35 +105,45 @@ class LoginForm extends Component {
     return (
       <div>
         <Section>
-          <div className="input-container">
+          <div
+            className={cx(
+              "input-container",
+              this.state.inputsAble ? "able" : "disabled"
+            )}
+          >
+            <img src={Images.userIcon} alt="username" height="15" width="15" />
             <Input
               type="text"
               placeholder="email"
               className="textfield"
               onChange={e => this.setState({ email: e.target.value })}
+              disabled={!this.state.inputsAble}
             />
-            <img src={Images.userIcon} alt="username" height="15" width="15" />
           </div>
         </Section>
         <Section>
-          <div className="input-container">
+          <div
+            className={cx(
+              "input-container",
+              this.state.inputsAble ? "able" : "disabled"
+            )}
+          >
+            <img src={Images.lockIcon} alt="lock" height="15" width="15" />
             <Input
               type="text"
               alt="password"
               placeholder="password"
               className="password"
               onChange={e => this.setState({ password: e.target.value })}
+              disabled={!this.state.inputsAble}
             />
-            <img src={Images.lockIcon} alt="lock" height="15" width="15" />
           </div>
         </Section>
-        {this.state.failedLogIn ? (
-          <h3>Incorrect email or password. Please try again. </h3>
-        ) : null}
         <Section>
           <button
             className="btn btn-primary login-button"
             onClick={this.authenticateUser}
+            disabled={!this.state.inputsAble}
           >
             Login
           </button>
@@ -141,6 +155,13 @@ class LoginForm extends Component {
               Sign up here!
             </div>
           </div>
+        </Section>
+        <Section>
+          {this.state.failedLogIn ? (
+            <div className="error-msg">
+              Incorrect email or password. Please try again.
+            </div>
+          ) : null}
         </Section>
       </div>
     );

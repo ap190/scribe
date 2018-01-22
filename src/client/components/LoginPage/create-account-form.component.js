@@ -14,12 +14,14 @@ const Section = styled.div`
 const Input = styled.input`
   display: flex;
   font-family: "AvenirNext-Regular";
+  background: transparent;
   outline: none;
   border: none;
   width: 90%;
   font-size: 14px;
-  padding-left: 8px;
-  color: "#33235f";
+  padding-left: 6px;
+  color: white;
+  font-weight: 600;
   &:focus {
     outline: none;
   }
@@ -67,9 +69,15 @@ class CreateAccountForm extends Component {
       <div>
         <Section>
           <div className="input-container">
+            <img
+              src={Images.usernameIcon}
+              alt="password"
+              height="15"
+              width="15"
+            />
             <Input
               type="text"
-              placeholder="First Name"
+              placeholder="first name"
               className="textfield"
               onChange={e => this.setState({ firstName: e.target.value })}
             />
@@ -77,15 +85,22 @@ class CreateAccountForm extends Component {
         </Section>
         <Section>
           <div className="input-container">
+            <img
+              src={Images.usernameIcon}
+              alt="password"
+              height="15"
+              width="15"
+            />
             <Input
               type="text"
-              placeholder="Last Name"
+              placeholder="last name"
               onChange={e => this.setState({ lastName: e.target.value })}
             />
           </div>
         </Section>
         <Section>
           <div className="input-container">
+            <img src={Images.emailIcon} alt="password" height="15" width="15" />
             <Input
               type="text"
               placeholder="email"
@@ -95,23 +110,23 @@ class CreateAccountForm extends Component {
         </Section>
         <Section>
           <div className="input-container">
+            <img src={Images.lockIcon} alt="password" height="15" width="15" />
             <Input
               type="text"
               placeholder="password"
               className="password"
               onChange={e => this.setState({ password: e.target.value })}
             />
-            <img src={Images.lockIcon} alt="password" height="15" width="15" />
           </div>
         </Section>
         <Section>
           <div className="input-container">
+            <img src={Images.lockIcon} alt="password" height="15" width="15" />
             <Input
               type="text"
               placeholder="confirm  password"
               className="password"
             />
-            <img src={Images.lockIcon} alt="password" height="15" width="15" />
           </div>
         </Section>
         <Section>
