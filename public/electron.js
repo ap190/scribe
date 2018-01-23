@@ -9,7 +9,14 @@ const registerGlobalShortcuts = require("./local_server/accelerators");
 const { saveBeforeExiting } = require("./local_server/dialogs");
 require("dotenv").config();
 
-require("electron-context-menu")();
+require("electron-context-menu")({
+  prepend: params => [
+    {
+      label: "Delete Channel", // Only show it when right-clicking images
+      visible: params.titleText === "channel"
+    }
+  ]
+});
 
 const BrowserWindow = electron.BrowserWindow;
 const {

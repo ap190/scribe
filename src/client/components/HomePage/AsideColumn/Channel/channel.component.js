@@ -2,9 +2,6 @@ import React from "react";
 import moment from "moment";
 import Moment from "react-moment";
 import PropTypes from "prop-types";
-import { ContextMenuProvider } from "react-contexify";
-import ChannelContextMenu from "../../../common/ChannelContextMenu";
-import "react-contexify/dist/ReactContexify.min.css";
 import "./channel.css";
 
 import lightTheme from "../../../../themes/light-theme";
@@ -22,9 +19,10 @@ const getStyling = isDarkTheme => (isDarkTheme ? darkTheme : lightTheme);
 
 const Channel = props => {
   return props.channelType === "communication" ? (
-    <ContextMenuProvider
+    <div
       id="menu_id"
       className="channel-container"
+      title="channel"
       style={
         props.selected
           ? {
@@ -37,20 +35,23 @@ const Channel = props => {
       <div onClick={props.handleDeleteChannel}>
         <div
           className="channel-list-item"
+          title="channel"
           onClick={() => props.selectChannelOrFile(props.channelType, props.id)}
           style={getTheme(props.darkTheme)}
         >
-          <div className="channel-list-item-title">{props.channelName}</div>
-          <Moment className="channel-list-item-last-post" fromNow>
+          <div className="channel-list-item-title" title="channel">
+            {props.channelName}
+          </div>
+          <Moment
+            title="channel"
+            className="channel-list-item-last-post"
+            fromNow
+          >
             {moment(props.lastPosted._d)}
           </Moment>
         </div>
       </div>
-      <ChannelContextMenu
-        channelID={props.id}
-        handleDeleteChannel={props.handleDeleteChannel}
-      />
-    </ContextMenuProvider>
+    </div>
   ) : null;
 };
 

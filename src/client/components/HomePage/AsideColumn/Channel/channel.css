@@ -14,6 +14,7 @@
   text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;
+  user-select: none;
 }
 
 .channel-list-item-last-post {
@@ -23,6 +24,7 @@
   text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;
+  user-select: none;
 }
 
 .channel-container {
