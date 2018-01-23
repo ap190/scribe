@@ -1,5 +1,5 @@
 import addEditorLight from "../../../public/assets/icons/add-editor-light.svg";
-import contentEmbedLight from "../../../public/assets/icons/code.svg";
+import contentEmbedLight from "../../../public/assets/icons/embed-content-light.svg";
 import editorActionBarSaveLight from "../../../public/assets/icons/save.svg";
 import editorActionBarExportLight from "../../../public/assets/icons/export.svg";
 import editorActionBarNextLight from "../../../public/assets/icons/next.svg";
@@ -8,7 +8,7 @@ import folderLight from "../../../public/assets/icons/folder-light.svg";
 import imageEmbedLight from "../../../public/assets/icons/image.svg";
 import imageFileLight from "../../../public/assets/icons/image-file-light.svg";
 import seperatorLight from "../../../public/assets/icons/seperator.svg";
-import codeBlockLight from "../../../public/assets/icons/code-block.svg";
+import codeBlockLight from "../../../public/assets/icons/code.svg";
 import textFileLight from "../../../public/assets/icons/text-file-light.svg";
 import circleAdd from "../../../public/assets/icons/circle-add-light.svg";
 import addThread from "../../../public/assets/icons/thread-add-light.svg";
