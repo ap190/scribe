@@ -50,9 +50,7 @@ class LoginForm extends Component {
     this.syncToCloud = this.syncToCloud.bind(this);
   }
 
-  componentDidMount() {
-    console.log("component did mount in login pform");
-  }
+  componentDidMount() {}
 
   // User with unique id of email and password
   async authenticateUser() {

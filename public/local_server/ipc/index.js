@@ -30,11 +30,13 @@ exports.setIPCListeners = mainWindow => {
     cmd.run(`code ${projectPath}`);
   });
 
-  ipcMain.on("check-for-unsaved-work", (event, everythingIsSaved) => {
-    if (everythingIsSaved) {
+  ipcMain.on("check-for-unsaved-work", (event, page) => {
+    console.log("CHECKING FOR UNSAVED WORK", page);
+    if (page === "LOGIN") {
+      console.log("page is login....");
       app.exit();
+      return;
     }
-    // TODO: this crashes app
     saveBeforeExiting(mainWindow);
   });
 
@@ -45,4 +47,8 @@ exports.setIPCListeners = mainWindow => {
   ipcMain.on("save-img", (event, imgID, imgPath) =>
     genSaveImage(event, imgID, imgPath)
   );
+
+  ipcMain.addListener("quit-app", event => {
+    // app.quit();
+  });
 };

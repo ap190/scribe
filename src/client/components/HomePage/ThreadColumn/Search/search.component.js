@@ -3,26 +3,24 @@ import PropTypes from "prop-types";
 import darkTheme from "../../../../themes/dark-theme";
 import lightTheme from "../../../../themes/light-theme";
 
-const divStyle = isDark => {
-  return {
-    backgroundColor: isDark
-      ? darkTheme.threads.search.backgroundColor
-      : lightTheme.threads.search.backgroundColor,
-    color: isDark
-      ? darkTheme.threads.search.color
-      : lightTheme.threads.search.color,
-    borderRadius: "30px",
-    border: "none",
-    textIndent: "18px",
-    fontSize: "14px",
-    fontFamily: "AvenirNext-Regular",
-    outline: "none",
-    lineHeight: "28px",
-    width: "100%",
-    top: "0",
-    WebkitAppRegion: "no-drag"
-  };
-};
+const divStyle = isDark => ({
+  backgroundColor: isDark
+    ? darkTheme.threads.search.backgroundColor
+    : lightTheme.threads.search.backgroundColor,
+  color: isDark
+    ? darkTheme.threads.search.color
+    : lightTheme.threads.search.color,
+  borderRadius: "30px",
+  border: "none",
+  textIndent: "18px",
+  fontSize: "14px",
+  fontFamily: "AvenirNext-Regular",
+  outline: "none",
+  lineHeight: "28px",
+  width: "100%",
+  top: "0",
+  WebkitAppRegion: "no-drag"
+});
 
 const wrapperStyle = {
   margin: "24px 10px"

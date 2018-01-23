@@ -10,6 +10,7 @@ export const saveWorkspace = (channels, userSelectedDir) =>
   ipcRenderer.send("save-workspace", channels, userSelectedDir);
 
 export const initIpcRenderer = componentContext => {
+  ipcRenderer.removeAllListeners("check-for-unsaved-work");
   ipcRenderer.send("load-file-req");
 
   ipcRenderer.on("load-file-res", (event, channels, userSelectedDir) => {
@@ -21,6 +22,10 @@ export const initIpcRenderer = componentContext => {
 
   ipcRenderer.on("create-new-workspace", () => {
     componentContext.setState({ channels: [] });
+  });
+
+  ipcRenderer.on("before-quit-check", () => {
+    console.log("before-quit check yallllll");
   });
 
   ipcRenderer.on("auto-update", (event, text) => console.log(`${text}`));
@@ -48,10 +53,11 @@ export const initIpcRenderer = componentContext => {
   );
 
   ipcRenderer.on("check-for-unsaved-work", event => {
-    ipcRenderer.sendSync(
-      "check-for-unsaved-work",
-      componentContext.state.unsavedDocCache.size === 0
+    console.log(
+      "CHECKING FOR UNSAVED WORK....",
+      componentContext.state.unsavedDocCache.size
     );
+    ipcRenderer.send("check-for-unsaved-work", "HOME");
   });
 
   ipcRenderer.on("fetch-file-content-res", (event, file) => {
@@ -62,7 +68,10 @@ export const initIpcRenderer = componentContext => {
     componentContext.setState({ currentFiles: updatedMap });
   });
 
-  ipcRenderer.on("save-workspace", () => componentContext.saveWorkspace());
+  ipcRenderer.on("save-workspace", () => {
+    console.log("save-workspace ipc gets fired");
+    componentContext.saveWorkspace();
+  });
 
   ipcRenderer.on("save-workspace-notification", (event, userSelectedDir) => {
     componentContext.setState({ userSelectedDir });

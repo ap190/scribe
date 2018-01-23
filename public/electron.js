@@ -9,9 +9,6 @@ const registerGlobalShortcuts = require("./local_server/accelerators");
 const { saveBeforeExiting } = require("./local_server/dialogs");
 require("dotenv").config();
 
-console.log("environemnt variavbles");
-console.log(process.env.GH_TOKEN);
-
 require("electron-context-menu")();
 
 const BrowserWindow = electron.BrowserWindow;
@@ -61,6 +58,12 @@ function createWindow() {
     mainWindow.show();
   });
 
+  // Prompt users before window close
+  mainWindow.on("close", function(e) {
+    e.preventDefault();
+    mainWindow.webContents.send("check-for-unsaved-work");
+  });
+
   // Emitted when the window is closed.
   mainWindow.on("closed", () => {
     mainWindow = null;
@@ -70,18 +73,11 @@ function createWindow() {
 app.on("ready", createWindow);
 
 // Quit when all windows are closed.
-app.on("before-quit", event => {
-  // mainWindow.webContents.send("check-for-unsaved-work");
-  event.preventDefault();
-  saveBeforeExiting(mainWindow);
-});
-
-// Quit when all windows are closed.
-app.on("window-all-closed", () => {
-  if (process.platform !== "darwin") {
-    app.quit();
-  }
-});
+// app.on("before-quit", event => {
+//   event.preventDefault();
+//   mainWindow.webContents.send("check-for-unsaved-work");
+//   // saveBeforeExiting(mainWindow);
+// });
 
 app.on("activate", () => {
   if (mainWindow === null) {
@@ -93,8 +89,6 @@ app.on("activate", () => {
 // Auto updates
 //-------------------------------------------------------------------
 const sendStatusToWindow = text => {
-  console.log("SOMETHING BIG IS HAPPPENING!! AHHHH?!?!");
-  console.info(text);
   if (mainWindow) {
     mainWindow.webContents.send("auto-update", text);
   }

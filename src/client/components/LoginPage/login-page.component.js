@@ -8,6 +8,9 @@ import LoginForm from "./login-form.component";
 import CreateAccountForm from "./create-account-form.component";
 import "./login.css";
 
+const electron = window.require("electron");
+const ipcRenderer = electron.ipcRenderer;
+
 const Form = styled.div`
   display: flex;
   flex-direction: column;
@@ -54,6 +57,13 @@ class LoginPage extends Component {
       showLoginForm: true
     };
     this.toggleForms = this.toggleForms.bind(this);
+  }
+
+  componentDidMount() {
+    ipcRenderer.on("check-for-unsaved-work", event => {
+      console.log("login mounts first and gets called lol");
+      ipcRenderer.send("check-for-unsaved-work", "LOGIN");
+    });
   }
 
   toggleForms() {
