@@ -24,10 +24,6 @@ export const initIpcRenderer = componentContext => {
     componentContext.setState({ channels: [] });
   });
 
-  ipcRenderer.on("before-quit-check", () => {
-    console.log("before-quit check yallllll");
-  });
-
   ipcRenderer.on("auto-update", (event, text) => console.log(`${text}`));
 
   ipcRenderer.on("toggle-dark-theme", () => {
@@ -53,10 +49,10 @@ export const initIpcRenderer = componentContext => {
   );
 
   ipcRenderer.on("check-for-unsaved-work", event => {
-    console.log(
-      "CHECKING FOR UNSAVED WORK....",
-      componentContext.state.unsavedDocCache.size
-    );
+    // console.log(
+    //   "CHECKING FOR UNSAVED WORK....",
+    //   componentContext.state.unsavedDocCache.size
+    // );
     ipcRenderer.send("check-for-unsaved-work", "HOME");
   });
 

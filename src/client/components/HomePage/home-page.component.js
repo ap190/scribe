@@ -4,6 +4,7 @@ import path from "path";
 import axios from "axios";
 import styled from "styled-components";
 import { convertToRaw, EditorState, AtomicBlockUtils } from "draft-js";
+import { draftjsToMd } from "draftjs-md-converter";
 import SplitPane from "react-split-pane";
 import moment from "moment";
 import "react-contexify/dist/ReactContexify.min.css";
@@ -754,12 +755,17 @@ class HomePage extends Component {
   }
 
   exportCurrentDocAsHTML() {
-    const HTML = setRenderOptions()(
-      this.state.currentDocument.getCurrentContent()
-    );
+    // const HTML = setRenderOptions()(
+    //   draftjsToMd(convertToRaw(this.state.currentDocument.getCurrentContent()))
+    // );
+    // ipcRenderer.send(
+    // "export-current-doc",
+    // HTML,
+    // this.state.currentThread.title
+    // );
     ipcRenderer.send(
-      "export-current-doc",
-      HTML,
+      "export-to-md",
+      draftjsToMd(convertToRaw(this.state.currentDocument.getCurrentContent())),
       this.state.currentThread.title
     );
   }

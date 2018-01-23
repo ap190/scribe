@@ -8,7 +8,7 @@ const {
   genFetchFileContent,
   genSaveImage
 } = require("../fileHandlers");
-const { genExportCurrentDocument } = require("../export");
+const { genExportCurrentDocument, genExportToMD } = require("../export");
 
 exports.setIPCListeners = mainWindow => {
   ipcMain.on("load-file-req", event => genLoadData(event));
@@ -24,6 +24,10 @@ exports.setIPCListeners = mainWindow => {
   ipcMain.on("export-current-doc", (event, html, pdfName) =>
     genExportCurrentDocument(event, html, pdfName)
   );
+
+  ipcMain.on("export-to-md", (event, md, pdfname) => {
+    genExportToMD(event, md, pdfname);
+  });
 
   ipcMain.on("launch-vs-code", (event, projectPath) => {
     console.log(projectPath);
