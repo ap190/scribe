@@ -7,6 +7,15 @@ import "./editor.css";
 import EditorActionBar from "./EditorActionBar";
 import ColumnFooter from "../../common/ColumnFooter";
 import DefaultDoc from "./DefaultDoc/default-doc.component";
+import darkTheme from "../../../themes/dark-theme";
+import lightTheme from "../../../themes/light-theme";
+
+const getStyle = isDark => {
+  return {
+    color: isDark ? darkTheme.helpButton.color : lightTheme.helpButton.color,
+    border: isDark ? darkTheme.helpButton.border : lightTheme.helpButton.border
+  };
+};
 
 class EditorColumn extends Component {
   constructor(props) {
@@ -100,7 +109,13 @@ class EditorColumn extends Component {
               className="help-button-container"
               onClick={this.showDefaultDoc}
             >
-              <div className="help-button"> ? </div>
+              <div
+                className="help-button"
+                style={getStyle(this.props.isDarkTheme)}
+              >
+                {" "}
+                ?{" "}
+              </div>
             </div>
           ) : null}
         </ColumnFooter>

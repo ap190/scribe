@@ -79,8 +79,6 @@
 
 .help-button {
   cursor: pointer;
-  border: double 1px #49306b;
-  color: #49306b;
   background-origin: border-box;
   background-clip: content-box, border-box;
   border-radius: 50%;

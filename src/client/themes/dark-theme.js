@@ -85,5 +85,6 @@ export default {
     deleteThread
   },
   editor: { backgroundColor: "#16191E", color: "#B0B1B9" },
-  editedNotif: { color: "#a869ff", border: "1px solid #a869ff" }
+  editedNotif: { color: "#a869ff", border: "1px solid #a869ff" },
+  helpButton: { color: "#a869ff", border: "1px double #a869ff" }
 };
