@@ -32,13 +32,6 @@ class EditorColumn extends Component {
     this.showDefaultDoc = this.showDefaultDoc.bind(this);
   }
 
-  componentDidUpdate() {
-    this.state = {
-      ...this.state,
-      showDefaultDoc: this.props.currentThread === undefined
-    };
-  }
-
   onChange(editorState) {
     if (this.state.editorEnabled) {
       this.props.updateDocumentState(editorState);
