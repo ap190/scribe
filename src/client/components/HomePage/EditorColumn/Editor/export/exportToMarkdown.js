@@ -5,6 +5,21 @@ const { BOLD, CODE, ITALIC, STRIKETHROUGH, UNDERLINE } = Inline;
 
 const CODE_INDENT = "    ";
 
+function encodeContent(text) {
+  return text.replace(/[*_`]/g, "\\$&");
+}
+
+// Escape quotes using backslash.
+function escapeTitle(text) {
+  return text.replace(/"/g, '\\"');
+}
+
+// Encode chars that would normally be allowed in a URL but would conflict with
+// our markdown syntax: `[foo](http://foo/)`
+function encodeURL(url) {
+  return url.replace(/\)/g, "%29");
+}
+
 class MarkupGenerator {
   constructor(contentState) {
     this.contentState = contentState;
@@ -25,8 +40,6 @@ class MarkupGenerator {
   processBlock() {
     let block = this.blocks[this.currentBlock];
     let blockType = block.getType();
-    console.log("BLOCK TYPE IS ....");
-    console.log(blockType);
     switch (blockType) {
       case Block.H1: {
         this.insertLineBreaks(1);
@@ -56,6 +69,14 @@ class MarkupGenerator {
       case Block.H6: {
         this.insertLineBreaks(1);
         this.output.push("###### " + this.renderBlockContent(block) + "\n");
+        break;
+      }
+      case Block.IMAGE: {
+        this.insertLineBreaks(1);
+        // console.log("BLOCK IMAGE IS ", block.getType());
+        // console.log(block.getData());
+        // console.log(block.getData().get("src"));
+        this.output.push(this.renderBlockContent(block) + "\n");
         break;
       }
       case Block.UNORDERED_LIST_ITEM: {
@@ -159,11 +180,11 @@ class MarkupGenerator {
     }
   }
 
-  renderBlockContent(block: ContentBlock): string {
+  renderBlockContent(block) {
     let { contentState } = this;
     let blockType = block.getType();
     let text = block.getText();
-    if (text === "") {
+    if (text === "" && blockType !== Block.IMAGE) {
       // Prevent element collapse if completely empty.
       // TODO: Replace with constant.
       return "\u200B";
@@ -200,26 +221,28 @@ class MarkupGenerator {
             return content;
           })
           .join("");
+
+        if (block != null && block.getType() === Block.IMAGE) {
+          let data = block.getData();
+          let src = data.get("src") || "";
+          let alt = data.alt ? `${escapeTitle(data.alt)}` : "";
+          return `![${alt}](${encodeURL(src)})`;
+        }
+
         let entity = entityKey ? contentState.getEntity(entityKey) : null;
         if (entity != null && entity.getType() === Entity.LINK) {
           let data = entity.getData();
           let url = data.url || "";
           let title = data.title ? ` "${escapeTitle(data.title)}"` : "";
           return `[${content}](${encodeURL(url)}${title})`;
-        } else if (entity != null && entity.getType() === Entity.IMAGE) {
-          let data = entity.getData();
-          let src = data.src || "";
-          let alt = data.alt ? `${escapeTitle(data.alt)}` : "";
-          return `![${alt}](${encodeURL(src)})`;
-        } else {
-          return content;
         }
+        return content;
       })
       .join("");
   }
 }
 
-function canHaveDepth(blockType: any): boolean {
+function canHaveDepth(blockType) {
   switch (blockType) {
     case Block.UNORDERED_LIST_ITEM:
     case Block.ORDERED_LIST_ITEM:
@@ -227,21 +250,6 @@ function canHaveDepth(blockType: any): boolean {
     default:
       return false;
   }
-}
-
-function encodeContent(text) {
-  return text.replace(/[*_`]/g, "\\$&");
-}
-
-// Encode chars that would normally be allowed in a URL but would conflict with
-// our markdown syntax: `[foo](http://foo/)`
-function encodeURL(url) {
-  return url.replace(/\)/g, "%29");
-}
-
-// Escape quotes using backslash.
-function escapeTitle(text) {
-  return text.replace(/"/g, '\\"');
 }
 
 export default function stateToMarkdown(content) {
