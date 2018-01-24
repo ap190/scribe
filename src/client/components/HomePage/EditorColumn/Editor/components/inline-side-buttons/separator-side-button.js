@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { EditorState, AtomicBlockUtils } from "draft-js";
 import lightTheme from "../../../../../../themes/light-theme";
+import darkTheme from "../../../../../../themes/dark-theme";
 
 class SeparatorSideButton extends Component {
   constructor(props) {
@@ -38,7 +39,11 @@ class SeparatorSideButton extends Component {
         onClick={this.onClick}
       >
         <img
-          src={lightTheme.icons.seperator}
+          src={
+            this.props.isDarkTheme
+              ? darkTheme.icons.seperator
+              : lightTheme.icons.seperator
+          }
           alt="Embed img"
           height="15"
           width="15"

@@ -7,8 +7,8 @@ import editorActionBarMaximizeDark from "../../../public/assets/icons/full-scree
 import folderDark from "../../../public/assets/icons/folder-dark.svg";
 import imageEmbedLight from "../../../public/assets/icons/image.svg";
 import imageFileLight from "../../../public/assets/icons/image-file-light.svg";
-import seperatorLight from "../../../public/assets/icons/seperator.svg";
-import codeBlockLight from "../../../public/assets/icons/code.svg";
+import seperatorDark from "../../../public/assets/icons/separator-dark.svg";
+import codeBlockDark from "../../../public/assets/icons/code-dark.svg";
 import textFile from "../../../public/assets/icons/file-dark.svg";
 import circleAdd from "../../../public/assets/icons/circle-add-dark.svg";
 import addThread from "../../../public/assets/icons/thread-add-dark.svg";
@@ -18,7 +18,7 @@ export default {
   icons: {
     addEditor: addEditorLight,
     circleAdd,
-    codeBlock: codeBlockLight,
+    codeBlock: codeBlockDark,
     contentEmbed: contentEmbedLight,
     export: editorActionBarExportDark,
     folder: folderDark,
@@ -27,7 +27,7 @@ export default {
     maximize: editorActionBarMaximizeDark,
     next: editorActionBarNextDark,
     save: editorActionBarSaveDark,
-    seperator: seperatorLight,
+    seperator: seperatorDark,
     textFile,
     addThread
   },

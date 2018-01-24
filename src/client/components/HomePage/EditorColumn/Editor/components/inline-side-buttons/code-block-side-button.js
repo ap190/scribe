@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import lightTheme from "../../../../../../themes/light-theme";
+import darkTheme from "../../../../../../themes/dark-theme";
 import { addNewBlock } from "../../model";
 import { Block } from "../../util/constants";
 
@@ -26,7 +27,11 @@ class CodeBlockSideButton extends Component {
         onClick={this.onClick}
       >
         <img
-          src={lightTheme.icons.codeBlock}
+          src={
+            this.props.isDarkTheme
+              ? darkTheme.icons.codeBlock
+              : lightTheme.icons.codeBlock
+          }
           alt="Embed img"
           height="15"
           width="15"
