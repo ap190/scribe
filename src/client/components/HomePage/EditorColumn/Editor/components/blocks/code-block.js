@@ -38,10 +38,7 @@ export default class CodeBlock extends React.Component {
     console.log("SHOWING PROPS....");
     console.log(this.props);
     return (
-      <div
-        className="code-block-container"
-        style={{ display: "flex", flexDirection: "column", padding: "0px" }}
-      >
+      <div className="code-block-container">
         <div style={{ padding: "20px" }}>
           <EditorBlock {...this.props} />
         </div>

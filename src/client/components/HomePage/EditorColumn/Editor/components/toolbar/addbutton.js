@@ -169,6 +169,7 @@ class AddButton extends Component {
                   close={this.openToolbar}
                   toggleModal={button.toggleModal}
                   handleAddEmbeddedContent={button.handleAddEmbeddedContent}
+                  isDarkTheme={this.props.isDarkTheme}
                 />
               );
             })}
@@ -184,7 +185,8 @@ AddButton.propTypes = {
   getEditorState: PropTypes.func.isRequired,
   setEditorState: PropTypes.func.isRequired,
   sideButtons: PropTypes.arrayOf(PropTypes.object),
-  editorState: PropTypes.any
+  editorState: PropTypes.any,
+  isDarkTheme: PropTypes.bool.isRequired
 };
 
 export default AddButton;

@@ -39,7 +39,8 @@ class CodeBlockSideButton extends Component {
 CodeBlockSideButton.propTypes = {
   setEditorState: PropTypes.func,
   close: PropTypes.func,
-  getEditorState: PropTypes.func
+  getEditorState: PropTypes.func,
+  isDarkTheme: PropTypes.bool.isRequired
 };
 
 export default CodeBlockSideButton;

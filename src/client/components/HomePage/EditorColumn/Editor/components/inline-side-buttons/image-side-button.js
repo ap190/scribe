@@ -65,7 +65,8 @@ class ImageButton extends Component {
 ImageButton.propTypes = {
   setEditorState: PropTypes.func,
   getEditorState: PropTypes.func,
-  close: PropTypes.func
+  close: PropTypes.func,
+  isDarkTheme: PropTypes.bool.isRequired
 };
 
 export default ImageButton;

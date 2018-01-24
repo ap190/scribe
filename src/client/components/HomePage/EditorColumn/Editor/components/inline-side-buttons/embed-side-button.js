@@ -56,7 +56,8 @@ EmbedSideButton.propTypes = {
   setEditorState: PropTypes.func,
   toggleModal: PropTypes.func.isRequired,
   close: PropTypes.func,
-  editorState: PropTypes.any
+  editorState: PropTypes.any,
+  isDarkTheme: PropTypes.bool.isRequired
 };
 
 export default EmbedSideButton;

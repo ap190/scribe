@@ -109,7 +109,10 @@ class ExtendedEditor extends React.Component {
         handleAddEmbeddedContent: props.handleAddEmbeddedContent
       },
       { title: "Separator", component: SeparatorSideButton },
-      { title: "Code Block", component: CodeBlockSideButton }
+      {
+        title: "Code Block",
+        component: CodeBlockSideButton
+      }
     ];
     this.logData = this.logData.bind(this);
     this.toggleEdit = this.toggleEdit.bind(this);
