@@ -4,7 +4,7 @@ import path from "path";
 import axios from "axios";
 import styled from "styled-components";
 import { convertToRaw, EditorState, AtomicBlockUtils } from "draft-js";
-import { draftjsToMd } from "draftjs-md-converter";
+import stateToMarkdown from "./EditorColumn/Editor/export/exportToMarkdown";
 import SplitPane from "react-split-pane";
 import moment from "moment";
 import "react-contexify/dist/ReactContexify.min.css";
@@ -35,7 +35,7 @@ import ThreadModal from "../common/Modal/threadModal.component";
 import { createFileStructure } from "../../utils/createFileTree";
 import { modals, notifications } from "../../utils/const";
 import { highlightColor } from "../../themes";
-import { setRenderOptions } from "./EditorColumn/Editor/exportToHTML";
+import { setRenderOptions } from "./EditorColumn/Editor/export/exportToHTML";
 import "./home-page.css";
 
 const { GREY_HIGHLIGHT } = highlightColor;
@@ -763,9 +763,10 @@ class HomePage extends Component {
     // HTML,
     // this.state.currentThread.title
     // );
+    // draftjsToMd(convertToRaw(this.state.currentDocument.getCurrentContent()))
     ipcRenderer.send(
       "export-to-md",
-      draftjsToMd(convertToRaw(this.state.currentDocument.getCurrentContent())),
+      stateToMarkdown(this.state.currentDocument.getCurrentContent()),
       this.state.currentThread.title
     );
   }

@@ -1,7 +1,7 @@
 import React from "react";
 import { convertToHTML } from "draft-convert";
 
-import { Inline, Block, Entity } from "./util/constants";
+import { Inline, Block, Entity } from "../util/constants";
 
 export const styleToHTML = style => {
   switch (style) {
@@ -54,7 +54,11 @@ export const blockToHTML = block => {
       const text = block.text;
       const extraClass = text.length > 0 ? " md-block-image-has-caption" : "";
       return {
-        start: `<figure class="md-block-image${extraClass}"><img src="${imgData.src}" alt="${block.text}" /><figcaption className="md-block-image-caption">`,
+        start: `<figure class="md-block-image${extraClass}"><img src="${
+          imgData.src
+        }" alt="${
+          block.text
+        }" /><figcaption className="md-block-image-caption">`,
         end: "</figcaption></figure>"
       };
     }

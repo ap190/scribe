@@ -7,9 +7,6 @@ const pdfpath = pdfName => path.join(__dirname, "..", "data", `${pdfName}.pdf`);
 const mdpath = pdfName => path.join(__dirname, "..", "data", `${pdfName}.md`);
 
 exports.genExportToMD = (event, md, pdfname) => {
-  console.log("MARKDOWN STUFF EXPORTER...");
-  console.log(md.replace(/"/g, '\\"'));
-  console.log(pdfname);
   fs.writeFile(mdpath(pdfname), md, err => {
     if (err) {
       console.error("COULD NOT WRITE MARKDOWN FILE :( ", err);

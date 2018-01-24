@@ -9,6 +9,8 @@ export const Block = {
   H4: "header-four",
   H5: "header-five",
   H6: "header-six",
+  UNORDERED_LIST_ITEM: "unordered-list-item",
+  ORDERED_LIST_ITEM: "ordered-list-item",
   CODE: "code-block",
   BLOCKQUOTE: "blockquote",
   PULLQUOTE: "pullquote",
@@ -30,7 +32,8 @@ export const Inline = {
 };
 
 export const Entity = {
-  LINK: "LINK"
+  LINK: "LINK",
+  IMAGE: "IMAGE"
 };
 
 export const HYPERLINK = "hyperlink";

@@ -35,9 +35,7 @@ exports.setIPCListeners = mainWindow => {
   });
 
   ipcMain.on("check-for-unsaved-work", (event, page) => {
-    console.log("CHECKING FOR UNSAVED WORK", page);
     if (page === "LOGIN") {
-      console.log("page is login....");
       app.exit();
       return;
     }
