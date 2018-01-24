@@ -61,7 +61,6 @@ class LoginPage extends Component {
 
   componentDidMount() {
     ipcRenderer.on("check-for-unsaved-work", event => {
-      console.log("login mounts first and gets called lol");
       ipcRenderer.send("check-for-unsaved-work", "LOGIN");
     });
   }

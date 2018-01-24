@@ -1,5 +1,5 @@
 import addEditorLight from "../../../public/assets/icons/add-editor-light.svg";
-import contentEmbedLight from "../../../public/assets/icons/code.svg";
+import contentEmbedLight from "../../../public/assets/icons/embed-content-dark.svg";
 import editorActionBarSaveDark from "../../../public/assets/icons/save-dark.svg";
 import editorActionBarExportDark from "../../../public/assets/icons/export-dark.svg";
 import editorActionBarNextDark from "../../../public/assets/icons/next-dark.svg";
@@ -8,7 +8,7 @@ import folderDark from "../../../public/assets/icons/folder-dark.svg";
 import imageEmbedLight from "../../../public/assets/icons/image.svg";
 import imageFileLight from "../../../public/assets/icons/image-file-light.svg";
 import seperatorLight from "../../../public/assets/icons/seperator.svg";
-import codeBlockLight from "../../../public/assets/icons/code-block.svg";
+import codeBlockLight from "../../../public/assets/icons/code.svg";
 import textFile from "../../../public/assets/icons/file-dark.svg";
 import circleAdd from "../../../public/assets/icons/circle-add-dark.svg";
 import addThread from "../../../public/assets/icons/thread-add-dark.svg";

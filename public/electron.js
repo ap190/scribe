@@ -87,13 +87,6 @@ function createWindow() {
 
 app.on("ready", createWindow);
 
-// Quit when all windows are closed.
-// app.on("before-quit", event => {
-//   event.preventDefault();
-//   mainWindow.webContents.send("check-for-unsaved-work");
-//   // saveBeforeExiting(mainWindow);
-// });
-
 app.on("activate", () => {
   if (mainWindow === null) {
     createWindow();

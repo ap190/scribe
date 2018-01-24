@@ -8,7 +8,7 @@ const {
   genFetchFileContent,
   genSaveImage
 } = require("../fileHandlers");
-const { genExportCurrentDocument } = require("../export");
+const { genExportCurrentDocument, genExportToMD } = require("../export");
 
 exports.setIPCListeners = mainWindow => {
   ipcMain.on("load-file-req", event => genLoadData(event));
@@ -25,15 +25,17 @@ exports.setIPCListeners = mainWindow => {
     genExportCurrentDocument(event, html, pdfName)
   );
 
+  ipcMain.on("export-to-md", (event, md, pdfname) => {
+    genExportToMD(event, md, pdfname);
+  });
+
   ipcMain.on("launch-vs-code", (event, projectPath) => {
     console.log(projectPath);
     cmd.run(`code ${projectPath}`);
   });
 
   ipcMain.on("check-for-unsaved-work", (event, page) => {
-    console.log("CHECKING FOR UNSAVED WORK", page);
     if (page === "LOGIN") {
-      console.log("page is login....");
       app.exit();
       return;
     }
