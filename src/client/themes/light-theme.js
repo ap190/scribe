@@ -86,5 +86,6 @@ export default {
   },
   editor: { backgroundColor: "#fff", color: "#000" },
   editedNotif: { color: " #49306b", border: "1px solid #49306b" },
-  helpButton: { color: " #49306b", border: "1px double #49306b" }
+  helpButton: { color: " #49306b", border: "1px double #49306b" },
+  floatingButton: { background: "#fff" }
 };

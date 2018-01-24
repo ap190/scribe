@@ -5,6 +5,14 @@ import { modals } from "../../../../../../utils/const";
 import lightTheme from "../../../../../../themes/light-theme";
 import darkTheme from "../../../../../../themes/dark-theme";
 
+const getStyle = isDark => {
+  return {
+    background: isDark
+      ? darkTheme.floatingButton.background
+      : lightTheme.floatingButton.background
+  };
+};
+
 class EmbedSideButton extends Component {
   constructor(props) {
     super(props);
@@ -41,6 +49,7 @@ class EmbedSideButton extends Component {
         type="button"
         title="Add an Embed"
         onClick={this.onClick}
+        style={getStyle(this.props.isDarkTheme)}
       >
         <img
           src={

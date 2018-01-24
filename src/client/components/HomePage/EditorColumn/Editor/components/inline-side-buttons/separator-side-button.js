@@ -4,6 +4,14 @@ import { EditorState, AtomicBlockUtils } from "draft-js";
 import lightTheme from "../../../../../../themes/light-theme";
 import darkTheme from "../../../../../../themes/dark-theme";
 
+const getStyle = isDark => {
+  return {
+    background: isDark
+      ? darkTheme.floatingButton.background
+      : lightTheme.floatingButton.background
+  };
+};
+
 class SeparatorSideButton extends Component {
   constructor(props) {
     super(props);
@@ -37,6 +45,7 @@ class SeparatorSideButton extends Component {
         type="button"
         title="Add a separator"
         onClick={this.onClick}
+        style={getStyle(this.props.isDarkTheme)}
       >
         <img
           src={

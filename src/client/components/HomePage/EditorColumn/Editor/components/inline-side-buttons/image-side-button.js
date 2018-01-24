@@ -7,6 +7,14 @@ import darkTheme from "../../../../../../themes/dark-theme";
 const electron = window.require("electron");
 const ipcRenderer = electron.ipcRenderer;
 
+const getStyle = isDark => {
+  return {
+    background: isDark
+      ? darkTheme.floatingButton.background
+      : lightTheme.floatingButton.background
+  };
+};
+
 class ImageButton extends Component {
   constructor(props) {
     super(props);
@@ -42,6 +50,7 @@ class ImageButton extends Component {
         type="button"
         onClick={this.onClick}
         title="Add an Image"
+        style={getStyle(this.props.isDarkTheme)}
       >
         <img
           src={

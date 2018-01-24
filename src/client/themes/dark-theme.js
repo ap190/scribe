@@ -14,6 +14,7 @@ import circleAdd from "../../../public/assets/icons/circle-add-dark.svg";
 import addThread from "../../../public/assets/icons/thread-add-dark.svg";
 import deleteThread from "../../../public/assets/icons/delete-thread-dark.svg";
 // #519aba
+// #554475
 export default {
   icons: {
     addEditor: addEditorLight,
@@ -32,13 +33,13 @@ export default {
     addThread
   },
   columnFooter: {
-    backgroundColor: "#131519",
+    backgroundColor: "#1D1730",
     color: "#B0B1B9"
   },
   aside: {
     userAvatar: {
       backgroundImage:
-        "linear-gradient(#f2f2f2, #f2f2f2), radial-gradient(circle at top left, #1d2671, #c33764)",
+        "linear-gradient(#554475, #554475), radial-gradient(circle at top left, #1d2671, #c33764)",
       userDetails: {
         color: "#B0B1B9"
       }
@@ -86,5 +87,6 @@ export default {
   },
   editor: { backgroundColor: "#16191E", color: "#B0B1B9" },
   editedNotif: { color: "#a869ff", border: "1px solid #a869ff" },
-  helpButton: { color: "#a869ff", border: "1px double #a869ff" }
+  helpButton: { color: "#B3B3B3", border: "1px double #B3B3B3" },
+  floatingButton: { background: "#16191E" }
 };

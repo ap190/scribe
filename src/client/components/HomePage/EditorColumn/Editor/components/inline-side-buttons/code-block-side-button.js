@@ -5,6 +5,14 @@ import darkTheme from "../../../../../../themes/dark-theme";
 import { addNewBlock } from "../../model";
 import { Block } from "../../util/constants";
 
+const getStyle = isDark => {
+  return {
+    background: isDark
+      ? darkTheme.floatingButton.background
+      : lightTheme.floatingButton.background
+  };
+};
+
 class CodeBlockSideButton extends Component {
   constructor(props) {
     super(props);
@@ -25,6 +33,7 @@ class CodeBlockSideButton extends Component {
         type="button"
         title="Add a code block"
         onClick={this.onClick}
+        style={getStyle(this.props.isDarkTheme)}
       >
         <img
           src={
