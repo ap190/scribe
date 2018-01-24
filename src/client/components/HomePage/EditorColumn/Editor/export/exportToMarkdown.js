@@ -21,8 +21,9 @@ function encodeURL(url) {
 }
 
 class MarkupGenerator {
-  constructor(contentState) {
+  constructor(contentState, title) {
     this.contentState = contentState;
+    this.title = title;
   }
 
   generate() {
@@ -31,10 +32,15 @@ class MarkupGenerator {
     this.totalBlocks = this.blocks.length;
     this.currentBlock = 0;
     this.listItemCounts = {};
+    this.processTitle(this.title);
     while (this.currentBlock < this.totalBlocks) {
       this.processBlock();
     }
     return this.output.join("");
+  }
+
+  processTitle(title) {
+    this.output.push(`# ${title} \n`);
   }
 
   processBlock() {
@@ -73,9 +79,6 @@ class MarkupGenerator {
       }
       case Block.IMAGE: {
         this.insertLineBreaks(1);
-        // console.log("BLOCK IMAGE IS ", block.getType());
-        // console.log(block.getData());
-        // console.log(block.getData().get("src"));
         this.output.push(this.renderBlockContent(block) + "\n");
         break;
       }
@@ -252,6 +255,6 @@ function canHaveDepth(blockType) {
   }
 }
 
-export default function stateToMarkdown(content) {
-  return new MarkupGenerator(content).generate();
+export default function stateToMarkdown(content, title) {
+  return new MarkupGenerator(content, title).generate();
 }

@@ -4,15 +4,17 @@ import path from "path";
 import axios from "axios";
 import styled from "styled-components";
 import { convertToRaw, EditorState, AtomicBlockUtils } from "draft-js";
-import stateToMarkdown from "./EditorColumn/Editor/export/exportToMarkdown";
 import SplitPane from "react-split-pane";
 import moment from "moment";
-import "react-contexify/dist/ReactContexify.min.css";
 import Modal from "../common/Modal";
 import Loading from "../common/Loading";
 import ThreadColumn from "./ThreadColumn";
 import Aside from "./AsideColumn";
 import EditorColumn from "./EditorColumn";
+import {
+  exportCurrentDocAsHTML,
+  exportCurrentDocAsMarkdown
+} from "./ComponentAPIS/export.api";
 import {
   addNewBlock,
   handleAddText,
@@ -35,7 +37,6 @@ import ThreadModal from "../common/Modal/threadModal.component";
 import { createFileStructure } from "../../utils/createFileTree";
 import { modals, notifications } from "../../utils/const";
 import { highlightColor } from "../../themes";
-import { setRenderOptions } from "./EditorColumn/Editor/export/exportToHTML";
 import "./home-page.css";
 
 const { GREY_HIGHLIGHT } = highlightColor;
@@ -133,7 +134,12 @@ class HomePage extends Component {
     this.saveFile = this.saveFile.bind(this);
     this.saveWorkspace = this.saveWorkspace.bind(this);
     this.uploadFile = this.uploadFile.bind(this);
-    this.exportCurrentDocAsHTML = this.exportCurrentDocAsHTML.bind(this);
+    this.exportCurrentDocAsHTMLWrapper = this.exportCurrentDocAsHTMLWrapper.bind(
+      this
+    );
+    this.exportCurrentDocAsMarkdownWrapper = this.exportCurrentDocAsMarkdownWrapper.bind(
+      this
+    );
     this.launchEditor = this.launchEditor.bind(this);
     this.currentWindow = currentWindow;
   }
@@ -415,7 +421,6 @@ class HomePage extends Component {
 
   async handleAddTextWrapper(text = null) {
     if (!text || !this.state.currentDocument) return;
-    console.log(`handle add TExt!!`);
     const updatedEditorState = handleAddText(this.state.currentDocument, text);
     await this.updateDocumentState(updatedEditorState);
     new Notification(
@@ -754,19 +759,16 @@ class HomePage extends Component {
     this.setState({ channels: newChannels });
   }
 
-  exportCurrentDocAsHTML() {
-    // const HTML = setRenderOptions()(
-    //   draftjsToMd(convertToRaw(this.state.currentDocument.getCurrentContent()))
-    // );
-    // ipcRenderer.send(
-    // "export-current-doc",
-    // HTML,
-    // this.state.currentThread.title
-    // );
-    // draftjsToMd(convertToRaw(this.state.currentDocument.getCurrentContent()))
-    ipcRenderer.send(
-      "export-to-md",
-      stateToMarkdown(this.state.currentDocument.getCurrentContent()),
+  exportCurrentDocAsHTMLWrapper() {
+    exportCurrentDocAsHTML(
+      this.state.currentDocument.getCurrentContent(),
+      this.state.currentThread.title
+    );
+  }
+
+  exportCurrentDocAsMarkdownWrapper() {
+    exportCurrentDocAsMarkdown(
+      this.state.currentDocument.getCurrentContent(),
       this.state.currentThread.title
     );
   }
@@ -837,7 +839,10 @@ class HomePage extends Component {
               updateDocumentState={this.updateDocumentState}
               handleThreadTitleChange={this.handleThreadTitleChange}
               saveWorkspace={this.saveFile}
-              exportCurrentDocAsHTML={this.exportCurrentDocAsHTML}
+              exportCurrentDocAsHTML={this.exportCurrentDocAsMarkdownWrapper}
+              exportCurrentDocAsMarkdown={
+                this.exportCurrentDocAsMarkdownWrapper
+              }
               handleAddEmbeddedContent={this.handleAddEmbeddedContent}
               wasDocumentEdited={this.state.wasDocumentEdited}
               isDarkTheme={this.state.darkTheme}
