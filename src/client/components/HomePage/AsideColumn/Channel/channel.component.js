@@ -18,11 +18,12 @@ const getTheme = isDark => {
 const getStyling = isDarkTheme => (isDarkTheme ? darkTheme : lightTheme);
 
 const Channel = props => {
+  const titleString = `channel ${props.id}`;
   return props.channelType === "communication" ? (
     <div
       id="menu_id"
       className="channel-container"
-      title="channel"
+      title={titleString}
       style={
         props.selected
           ? {
@@ -35,15 +36,15 @@ const Channel = props => {
       <div onClick={props.handleDeleteChannel}>
         <div
           className="channel-list-item"
-          title="channel"
+          title={titleString}
           onClick={() => props.selectChannelOrFile(props.channelType, props.id)}
           style={getTheme(props.darkTheme)}
         >
-          <div className="channel-list-item-title" title="channel">
+          <div className="channel-list-item-title" title={titleString}>
             {props.channelName}
           </div>
           <Moment
-            title="channel"
+            title={titleString}
             className="channel-list-item-last-post"
             fromNow
           >

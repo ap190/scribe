@@ -7,16 +7,8 @@ const { setIPCListeners } = require("./local_server/ipc");
 const setMainMenu = require("./local_server/menu");
 const registerGlobalShortcuts = require("./local_server/accelerators");
 const { saveBeforeExiting } = require("./local_server/dialogs");
+const electronContextMenu = require("electron-context-menu");
 require("dotenv").config();
-
-require("electron-context-menu")({
-  prepend: params => [
-    {
-      label: "Delete Channel", // Only show it when right-clicking images
-      visible: params.titleText === "channel"
-    }
-  ]
-});
 
 const BrowserWindow = electron.BrowserWindow;
 const {
@@ -61,6 +53,22 @@ function createWindow() {
   // Create Menu Bar
   setMainMenu(mainWindow);
   setIPCListeners(mainWindow);
+
+  electronContextMenu({
+    mainWindow,
+    prepend: params => {
+      return [
+        {
+          label: "Delete Channel",
+          visible: params.titleText.includes("channel"),
+          click() {
+            mainWindow.webContents.send("delete-channel", params);
+          }
+        }
+      ];
+    }
+  });
+
   mainWindow.once("ready-to-show", () => {
     mainWindow.show();
   });

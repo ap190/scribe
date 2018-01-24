@@ -45,6 +45,15 @@ const getStyles = (isDark, isToggled) => {
   };
 };
 
+const getNotifStyle = isDark => {
+  return {
+    color: isDark ? darkTheme.editedNotif.color : lightTheme.editedNotif.color,
+    border: isDark
+      ? darkTheme.editedNotif.border
+      : lightTheme.editedNotif.border
+  };
+};
+
 /*
 A wrapper over `draft-js`'s default **Editor** component which provides
 some built-in customisations like custom blocks (todo, caption, etc) and
@@ -508,7 +517,12 @@ class MediumDraftEditor extends React.Component {
               onChange={event => handleDocTitleChange(event.target.value)}
             />
             {wasDocumentEdited ? (
-              <div className="is-edited-notif">Edited</div>
+              <div
+                className="is-edited-notif"
+                style={getNotifStyle(isDarkTheme)}
+              >
+                Edited
+              </div>
             ) : null}
           </div>
           <div className="update-time">
