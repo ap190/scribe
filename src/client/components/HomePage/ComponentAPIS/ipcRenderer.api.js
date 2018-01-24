@@ -52,6 +52,14 @@ export const initIpcRenderer = componentContext => {
     componentContext.uploadFile(files)
   );
 
+  ipcRenderer.on("delete-channel", (event, params) => {
+    const idToDelete = params.titleText.split(" ")[1];
+    const newChannels = componentContext.state.channels.filter(
+      channel => channel.id !== idToDelete
+    );
+    componentContext.setState({ channels: newChannels });
+  });
+
   ipcRenderer.on("check-for-unsaved-work", event => {
     console.log(
       "CHECKING FOR UNSAVED WORK....",
