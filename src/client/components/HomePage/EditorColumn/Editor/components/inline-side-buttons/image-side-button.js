@@ -2,6 +2,7 @@ import PropTypes from "prop-types";
 import React, { Component } from "react";
 import UUIDv4 from "uuid/v4";
 import lightTheme from "../../../../../../themes/light-theme";
+import darkTheme from "../../../../../../themes/dark-theme";
 
 const electron = window.require("electron");
 const ipcRenderer = electron.ipcRenderer;
@@ -43,7 +44,11 @@ class ImageButton extends Component {
         title="Add an Image"
       >
         <img
-          src={lightTheme.icons.imageEmbed}
+          src={
+            this.props.isDarkTheme
+              ? darkTheme.icons.imageEmbed
+              : lightTheme.icons.imageEmbed
+          }
           alt="Embed img"
           height="15"
           width="15"

@@ -1,11 +1,11 @@
 import addEditorLight from "../../../public/assets/icons/add-editor-light.svg";
-import contentEmbedLight from "../../../public/assets/icons/embed-content-dark.svg";
+import contentEmbedDark from "../../../public/assets/icons/embed-content-dark.svg";
 import editorActionBarSaveDark from "../../../public/assets/icons/save-dark.svg";
 import editorActionBarExportDark from "../../../public/assets/icons/export-dark.svg";
 import editorActionBarNextDark from "../../../public/assets/icons/next-dark.svg";
 import editorActionBarMaximizeDark from "../../../public/assets/icons/full-screen-dark.svg";
 import folderDark from "../../../public/assets/icons/folder-dark.svg";
-import imageEmbedLight from "../../../public/assets/icons/image.svg";
+import imageEmbedDark from "../../../public/assets/icons/image-dark.svg";
 import imageFileLight from "../../../public/assets/icons/image-file-light.svg";
 import seperatorDark from "../../../public/assets/icons/separator-dark.svg";
 import codeBlockDark from "../../../public/assets/icons/code-dark.svg";
@@ -19,10 +19,10 @@ export default {
     addEditor: addEditorLight,
     circleAdd,
     codeBlock: codeBlockDark,
-    contentEmbed: contentEmbedLight,
+    contentEmbed: contentEmbedDark,
     export: editorActionBarExportDark,
     folder: folderDark,
-    imageEmbed: imageEmbedLight,
+    imageEmbed: imageEmbedDark,
     imageFile: imageFileLight,
     maximize: editorActionBarMaximizeDark,
     next: editorActionBarNextDark,
