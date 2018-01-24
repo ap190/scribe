@@ -84,5 +84,6 @@ export default {
     },
     deleteThread
   },
-  editor: { backgroundColor: "#16191E", color: "#B0B1B9" }
+  editor: { backgroundColor: "#16191E", color: "#B0B1B9" },
+  editedNotif: { color: "#a869ff", border: "1px solid #a869ff" }
 };
