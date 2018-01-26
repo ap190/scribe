@@ -33,13 +33,14 @@ export default {
     addThread
   },
   columnFooter: {
-    backgroundColor: "#1D1730",
+    backgroundColor: "#28223C",
     color: "#B0B1B9"
   },
   aside: {
     userAvatar: {
       backgroundImage:
-        "linear-gradient(#554475, #554475), radial-gradient(circle at top left, #1d2671, #c33764)",
+        "linear-gradient(#212225, #212225), radial-gradient(circle at top left, #1d2671, #a869ff)",
+      color: "#B0B1B9",
       userDetails: {
         color: "#B0B1B9"
       }
@@ -57,7 +58,7 @@ export default {
     },
     fileTree: {
       container: {
-        backgroundColor: "#16191E",
+        backgroundColor: "#212225",
         color: "#57595d"
       },
       header: {
@@ -73,20 +74,20 @@ export default {
         icon: folderDark
       }
     },
-    backgroundColor: "#16191E",
+    backgroundColor: "#212225",
     textColor: "#57595D"
   },
   threads: {
-    backgroundColor: "#16191E",
+    backgroundColor: "#212225",
     color: "#B0B1B9",
     search: {
-      backgroundColor: "#343537",
+      backgroundColor: "#35363B",
       color: "#B0B1B9"
     },
     deleteThread
   },
-  editor: { backgroundColor: "#16191E", color: "#B0B1B9" },
+  editor: { backgroundColor: "#212225", color: "#B0B1B9" },
   editedNotif: { color: "#a869ff", border: "1px solid #a869ff" },
   helpButton: { color: "#B3B3B3", border: "1px double #B3B3B3" },
-  floatingButton: { background: "#16191E" }
+  floatingButton: { background: "#212225", border: "1px solid #B0B1B9" }
 };

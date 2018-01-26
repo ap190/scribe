@@ -67,7 +67,7 @@ class EditorColumn extends Component {
     return (
       <div
         className="editor"
-        style={{ backgroundColor: isDarkTheme ? "#16191E" : "#fff" }}
+        style={{ backgroundColor: isDarkTheme ? "#212225" : "#fff" }}
       >
         <EditorActionBar
           shouldShowNext={currentThreads && currentThreads.length > 1}

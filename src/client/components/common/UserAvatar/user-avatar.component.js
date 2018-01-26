@@ -10,9 +10,9 @@ const getTheme = isDarkTheme => {
     color: isDarkTheme
       ? darkTheme.aside.userAvatar.color
       : lightTheme.aside.userAvatar.color,
-    backgroundColor: isDarkTheme
-      ? darkTheme.aside.userAvatar.backgroundColor
-      : lightTheme.aside.userAvatar.backgroundColor
+    backgroundImage: isDarkTheme
+      ? darkTheme.aside.userAvatar.backgroundImage
+      : lightTheme.aside.userAvatar.backgroundImage
   };
 };
 
