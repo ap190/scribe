@@ -9,7 +9,10 @@ const getStyle = isDark => {
   return {
     background: isDark
       ? darkTheme.floatingButton.background
-      : lightTheme.floatingButton.background
+      : lightTheme.floatingButton.background,
+    border: isDark
+      ? darkTheme.floatingButton.border
+      : lightTheme.floatingButton.border
   };
 };
 
