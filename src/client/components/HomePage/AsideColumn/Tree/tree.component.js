@@ -73,6 +73,10 @@ class Tree extends Component {
   renderNode(node) {
     const numThreads = this.props.getNumberOfThreads(node);
     const numThreadsString = numThreads === 0 ? "" : numThreads;
+    if (node === this.props.activeNode) {
+      // console.log("################");
+      // console.log(node);
+    }
     return (
       <div
         className={cx("node", {
@@ -109,8 +113,9 @@ class Tree extends Component {
             onChange={this.handleChange}
             isNodeCollapsed={this.isNodeCollapsed}
             renderIcon={this.renderIcon.bind(this)}
-            renderNode={this.renderNode.bind(this)}
+            renderNode={this.renderNode}
             darkTheme={this.props.darkTheme}
+            activeNode={this.props.activeNode}
           />
         </div>
       </div>

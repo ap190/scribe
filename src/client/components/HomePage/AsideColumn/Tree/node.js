@@ -97,8 +97,12 @@ class UITreeNode extends Component {
   }
 
   render() {
-    const { tree, index } = this.props;
+    const { tree, index, activeNode } = this.props;
     const { node } = index;
+
+    if (activeNode) {
+      console.log(activeNode);
+    }
 
     return (
       <div className={cx("m-node")}>
@@ -117,7 +121,8 @@ UITreeNode.propTypes = {
   tree: PropTypes.object.isRequired,
   paddingLeft: PropTypes.number,
   index: PropTypes.object,
-  darkTheme: PropTypes.bool
+  darkTheme: PropTypes.bool,
+  activeNode: PropTypes.any
 };
 
 module.exports = UITreeNode;

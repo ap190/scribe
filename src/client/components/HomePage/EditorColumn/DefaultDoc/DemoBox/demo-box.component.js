@@ -15,6 +15,8 @@ class DemoBox extends Component {
   }
 
   render() {
+    console.log("ay yp");
+    console.log(this.props.explanationBlurb);
     return (
       <div className="demo">
         <div className={cx("demo-wrapper", { "is-open": this.state.isOpen })}>
@@ -25,9 +27,7 @@ class DemoBox extends Component {
             {this.props.sectionTitle}
             <div className="demo-meta">{this.props.subTitle}</div>
           </button>
-          <div className="demo-box">
-            <p>{this.props.explanationBlurb}</p>
-          </div>
+          <div className="demo-box">{this.props.children}</div>
         </div>
       </div>
     );
@@ -37,7 +37,7 @@ class DemoBox extends Component {
 DemoBox.propTypes = {
   sectionTitle: PropTypes.string.isRequired,
   subTitle: PropTypes.string.isRequired,
-  explanationBlurb: PropTypes.string.isRequired
+  explanationBlurb: PropTypes.any
 };
 
 DemoBox.defaultProps = {

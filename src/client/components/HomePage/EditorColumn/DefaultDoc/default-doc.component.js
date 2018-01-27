@@ -1,5 +1,6 @@
 import React from "react";
 import DemoBox from "./DemoBox/demo-box.component";
+import NotebookExplanation from "./Explanations/notebook.component";
 
 const DefaultDoc = () => (
   <div className="md-RichEditor-root">
@@ -19,8 +20,10 @@ const DefaultDoc = () => (
     <DemoBox
       sectionTitle="Notebooks"
       subTitle="organize docs into notebooks"
-      explanationBlurb=""
-    />
+      explanationBlurb={NotebookExplanation}
+    >
+      <NotebookExplanation />
+    </DemoBox>
     <DemoBox
       sectionTitle="Add a thread"
       subTitle="create threads to document your work"
