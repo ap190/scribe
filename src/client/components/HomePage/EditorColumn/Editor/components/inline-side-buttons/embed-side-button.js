@@ -3,6 +3,18 @@ import PropTypes from "prop-types";
 import { EditorState, AtomicBlockUtils } from "draft-js";
 import { modals } from "../../../../../../utils/const";
 import lightTheme from "../../../../../../themes/light-theme";
+import darkTheme from "../../../../../../themes/dark-theme";
+
+const getStyle = isDark => {
+  return {
+    background: isDark
+      ? darkTheme.floatingButton.background
+      : lightTheme.floatingButton.background,
+    border: isDark
+      ? darkTheme.floatingButton.border
+      : lightTheme.floatingButton.border
+  };
+};
 
 class EmbedSideButton extends Component {
   constructor(props) {
@@ -40,9 +52,14 @@ class EmbedSideButton extends Component {
         type="button"
         title="Add an Embed"
         onClick={this.onClick}
+        style={getStyle(this.props.isDarkTheme)}
       >
         <img
-          src={lightTheme.icons.contentEmbed}
+          src={
+            this.props.isDarkTheme
+              ? darkTheme.icons.contentEmbed
+              : lightTheme.icons.contentEmbed
+          }
           alt="Embed content"
           height="15"
           width="15"
@@ -56,7 +73,8 @@ EmbedSideButton.propTypes = {
   setEditorState: PropTypes.func,
   toggleModal: PropTypes.func.isRequired,
   close: PropTypes.func,
-  editorState: PropTypes.any
+  editorState: PropTypes.any,
+  isDarkTheme: PropTypes.bool.isRequired
 };
 
 export default EmbedSideButton;

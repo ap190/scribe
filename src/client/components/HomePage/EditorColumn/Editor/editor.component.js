@@ -560,6 +560,7 @@ class MediumDraftEditor extends React.Component {
                   setEditorState={this.onChange}
                   focus={this.focus}
                   sideButtons={this.props.sideButtons}
+                  isDarkTheme={this.props.isDarkTheme}
                 />
               )}
             {isCursorLink && (

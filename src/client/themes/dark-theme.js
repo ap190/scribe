@@ -1,44 +1,46 @@
-import addEditorLight from "../../../public/assets/icons/add-editor-light.svg";
-import contentEmbedLight from "../../../public/assets/icons/embed-content-dark.svg";
+import addEditorDark from "../../../public/assets/icons/add-editor-dark.svg";
+import contentEmbedDark from "../../../public/assets/icons/embed-content-dark.svg";
 import editorActionBarSaveDark from "../../../public/assets/icons/save-dark.svg";
 import editorActionBarExportDark from "../../../public/assets/icons/export-dark.svg";
 import editorActionBarNextDark from "../../../public/assets/icons/next-dark.svg";
 import editorActionBarMaximizeDark from "../../../public/assets/icons/full-screen-dark.svg";
 import folderDark from "../../../public/assets/icons/folder-dark.svg";
-import imageEmbedLight from "../../../public/assets/icons/image.svg";
+import imageEmbedDark from "../../../public/assets/icons/image-dark.svg";
 import imageFileLight from "../../../public/assets/icons/image-file-light.svg";
-import seperatorLight from "../../../public/assets/icons/seperator.svg";
-import codeBlockLight from "../../../public/assets/icons/code.svg";
+import seperatorDark from "../../../public/assets/icons/separator-dark.svg";
+import codeBlockDark from "../../../public/assets/icons/code-dark.svg";
 import textFile from "../../../public/assets/icons/file-dark.svg";
 import circleAdd from "../../../public/assets/icons/circle-add-dark.svg";
 import addThread from "../../../public/assets/icons/thread-add-dark.svg";
 import deleteThread from "../../../public/assets/icons/delete-thread-dark.svg";
 // #519aba
+// #554475
 export default {
   icons: {
-    addEditor: addEditorLight,
+    addEditor: addEditorDark,
     circleAdd,
-    codeBlock: codeBlockLight,
-    contentEmbed: contentEmbedLight,
+    codeBlock: codeBlockDark,
+    contentEmbed: contentEmbedDark,
     export: editorActionBarExportDark,
     folder: folderDark,
-    imageEmbed: imageEmbedLight,
+    imageEmbed: imageEmbedDark,
     imageFile: imageFileLight,
     maximize: editorActionBarMaximizeDark,
     next: editorActionBarNextDark,
     save: editorActionBarSaveDark,
-    seperator: seperatorLight,
+    seperator: seperatorDark,
     textFile,
     addThread
   },
   columnFooter: {
-    backgroundColor: "#131519",
+    backgroundColor: "#28223C",
     color: "#B0B1B9"
   },
   aside: {
     userAvatar: {
       backgroundImage:
-        "linear-gradient(#f2f2f2, #f2f2f2), radial-gradient(circle at top left, #1d2671, #c33764)",
+        "linear-gradient(#212225, #212225), radial-gradient(circle at top left, #1d2671, #a869ff)",
+      color: "#B0B1B9",
       userDetails: {
         color: "#B0B1B9"
       }
@@ -56,7 +58,7 @@ export default {
     },
     fileTree: {
       container: {
-        backgroundColor: "#16191E",
+        backgroundColor: "#212225",
         color: "#57595d"
       },
       header: {
@@ -72,18 +74,20 @@ export default {
         icon: folderDark
       }
     },
-    backgroundColor: "#16191E",
+    backgroundColor: "#212225",
     textColor: "#57595D"
   },
   threads: {
-    backgroundColor: "#16191E",
+    backgroundColor: "#212225",
     color: "#B0B1B9",
     search: {
-      backgroundColor: "#343537",
+      backgroundColor: "#35363B",
       color: "#B0B1B9"
     },
     deleteThread
   },
-  editor: { backgroundColor: "#16191E", color: "#B0B1B9" },
-  editedNotif: { color: "#a869ff", border: "1px solid #a869ff" }
+  editor: { backgroundColor: "#212225", color: "#B0B1B9" },
+  editedNotif: { color: "#a869ff", border: "1px solid #a869ff" },
+  helpButton: { color: "#B3B3B3", border: "1px double #B3B3B3" },
+  floatingButton: { background: "#212225", border: "1px solid #B0B1B9" }
 };

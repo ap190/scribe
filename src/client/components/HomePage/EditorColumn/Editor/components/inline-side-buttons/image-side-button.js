@@ -2,9 +2,21 @@ import PropTypes from "prop-types";
 import React, { Component } from "react";
 import UUIDv4 from "uuid/v4";
 import lightTheme from "../../../../../../themes/light-theme";
+import darkTheme from "../../../../../../themes/dark-theme";
 
 const electron = window.require("electron");
 const ipcRenderer = electron.ipcRenderer;
+
+const getStyle = isDark => {
+  return {
+    background: isDark
+      ? darkTheme.floatingButton.background
+      : lightTheme.floatingButton.background,
+    border: isDark
+      ? darkTheme.floatingButton.border
+      : lightTheme.floatingButton.border
+  };
+};
 
 class ImageButton extends Component {
   constructor(props) {
@@ -41,9 +53,14 @@ class ImageButton extends Component {
         type="button"
         onClick={this.onClick}
         title="Add an Image"
+        style={getStyle(this.props.isDarkTheme)}
       >
         <img
-          src={lightTheme.icons.imageEmbed}
+          src={
+            this.props.isDarkTheme
+              ? darkTheme.icons.imageEmbed
+              : lightTheme.icons.imageEmbed
+          }
           alt="Embed img"
           height="15"
           width="15"
@@ -65,7 +82,8 @@ class ImageButton extends Component {
 ImageButton.propTypes = {
   setEditorState: PropTypes.func,
   getEditorState: PropTypes.func,
-  close: PropTypes.func
+  close: PropTypes.func,
+  isDarkTheme: PropTypes.bool.isRequired
 };
 
 export default ImageButton;

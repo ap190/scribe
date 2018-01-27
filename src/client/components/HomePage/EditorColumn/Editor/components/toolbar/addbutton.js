@@ -3,6 +3,18 @@ import PropTypes from "prop-types";
 import CSSTransitionGroup from "react-transition-group/CSSTransitionGroup";
 import { getSelectedBlockNode } from "../../util";
 import lightTheme from "../../../../../../themes/light-theme";
+import darkTheme from "../../../../../../themes/dark-theme";
+
+const getStyle = isDark => {
+  return {
+    background: isDark
+      ? darkTheme.floatingButton.background
+      : lightTheme.floatingButton.background,
+    border: isDark
+      ? darkTheme.floatingButton.border
+      : lightTheme.floatingButton.border
+  };
+};
 
 /*
 Implementation of the medium-link side `+` button to insert various rich blocks
@@ -140,10 +152,15 @@ class AddButton extends Component {
             this.state.isOpen ? " md-open-button" : ""
           }`}
           type="button"
+          style={getStyle(this.props.isDarkTheme)}
         >
           <img
-            src={lightTheme.icons.addEditor}
-            alt="Embed content"
+            src={
+              this.props.isDarkTheme
+                ? darkTheme.icons.addEditor
+                : lightTheme.icons.addEditor
+            }
+            alt="Add Content"
             height="15"
             width="15"
           />
@@ -169,6 +186,7 @@ class AddButton extends Component {
                   close={this.openToolbar}
                   toggleModal={button.toggleModal}
                   handleAddEmbeddedContent={button.handleAddEmbeddedContent}
+                  isDarkTheme={this.props.isDarkTheme}
                 />
               );
             })}
@@ -184,7 +202,8 @@ AddButton.propTypes = {
   getEditorState: PropTypes.func.isRequired,
   setEditorState: PropTypes.func.isRequired,
   sideButtons: PropTypes.arrayOf(PropTypes.object),
-  editorState: PropTypes.any
+  editorState: PropTypes.any,
+  isDarkTheme: PropTypes.bool.isRequired
 };
 
 export default AddButton;

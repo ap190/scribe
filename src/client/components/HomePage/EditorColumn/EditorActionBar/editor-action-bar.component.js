@@ -58,7 +58,7 @@ const EditorActionBar = ({
 );
 
 EditorActionBar.propTypes = {
-  shouldShowNext: PropTypes.bool.isRequired,
+  shouldShowNext: PropTypes.bool,
   handleSave: PropTypes.func.isRequired,
   handleMaximize: PropTypes.func.isRequired,
   handleNextThread: PropTypes.func.isRequired,
@@ -66,6 +66,10 @@ EditorActionBar.propTypes = {
   handleExportToHTML: PropTypes.func.isRequired,
   wasDocumentEdited: PropTypes.bool,
   isDarkTheme: PropTypes.bool.isRequired
+};
+
+EditorActionBar.defaultProps = {
+  shouldShowNext: false
 };
 
 export default EditorActionBar;
