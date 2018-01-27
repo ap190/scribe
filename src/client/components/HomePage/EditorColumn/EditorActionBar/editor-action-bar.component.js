@@ -4,13 +4,6 @@ import ActionBarIcon from "../../../common/ActionBarIcon";
 import lightTheme from "../../../../themes/light-theme";
 import darkTheme from "../../../../themes/dark-theme";
 
-const getStyles = isDark => ({
-  save: isDark ? "" : "",
-  export: isDark ? "" : "",
-  maximize: isDark ? "" : "",
-  next: isDark ? "" : ""
-});
-
 const EditorActionBar = ({
   shouldShowNext,
   handleSave,

@@ -15,8 +15,6 @@ class DemoBox extends Component {
   }
 
   render() {
-    console.log("ay yp");
-    console.log(this.props.explanationBlurb);
     return (
       <div className="demo">
         <div className={cx("demo-wrapper", { "is-open": this.state.isOpen })}>

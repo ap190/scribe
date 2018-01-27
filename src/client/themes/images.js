@@ -8,5 +8,8 @@ export default {
   usernameIcon: "./assets/icons/username.svg",
   confettiBg: "./assets/img/confetti_bg.png",
   devImg: "./assets/img/devimg.jpg",
+  notebookTutorial: "./assets/img/addnotebook.png",
+  notebookTutorialModal: "./assets/img/addnotebook_modal.png",
+  addedNotebookTutorial: "./assets/img/added_notebook.png",
   logoIcon: "./assets/icons/logo.png"
 };

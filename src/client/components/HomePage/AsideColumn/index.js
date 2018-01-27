@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import cx from "classnames";
 import Channels from "./Channels";
 import UserWidget from "../../common/UserWidget";
 import Tree from "./Tree";
@@ -11,16 +10,14 @@ import ColumnFooter from "../../common/ColumnFooter";
 import lightTheme from "../../../themes/light-theme";
 import darkTheme from "../../../themes/dark-theme";
 
-const getTheme = isDark => {
-  return {
-    height: "100%",
-    backgroundColor: isDark
-      ? darkTheme.aside.backgroundColor
-      : lightTheme.aside.backgroundColor,
-    display: "flex",
-    flexDirection: "column"
-  };
-};
+const getTheme = isDark => ({
+  height: "100%",
+  backgroundColor: isDark
+    ? darkTheme.aside.backgroundColor
+    : lightTheme.aside.backgroundColor,
+  display: "flex",
+  flexDirection: "column"
+});
 
 class Aside extends Component {
   constructor(props) {
