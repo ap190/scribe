@@ -32,6 +32,13 @@ class EditorColumn extends Component {
     this.showDefaultDoc = this.showDefaultDoc.bind(this);
   }
 
+  componentDidUpdate() {
+    this.state = {
+      ...this.state,
+      showDefaultDoc: this.props.currentThread === undefined
+    };
+  }
+
   onChange(editorState) {
     if (this.state.editorEnabled) {
       this.props.updateDocumentState(editorState);
@@ -79,7 +86,7 @@ class EditorColumn extends Component {
           wasDocumentEdited={wasDocumentEdited}
           isDarkTheme={isDarkTheme}
         />
-        {currentThread && !this.state.showDefaultDoc ? (
+        {!this.state.showDefaultDoc ? (
           <ExtendedEditor
             ref="editor"
             style={{ justifySelf: "flex-start" }}

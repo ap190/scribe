@@ -35,8 +35,6 @@ export default class CodeBlock extends React.Component {
     } else {
       showDropdown = false;
     }
-    console.log("SHOWING PROPS....");
-    console.log(this.props);
     return (
       <div className="code-block-container">
         <div style={{ padding: "20px" }}>
