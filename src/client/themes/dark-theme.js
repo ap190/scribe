@@ -1,4 +1,4 @@
-import addEditorLight from "../../../public/assets/icons/add-editor-light.svg";
+import addEditorDark from "../../../public/assets/icons/add-editor-dark.svg";
 import contentEmbedDark from "../../../public/assets/icons/embed-content-dark.svg";
 import editorActionBarSaveDark from "../../../public/assets/icons/save-dark.svg";
 import editorActionBarExportDark from "../../../public/assets/icons/export-dark.svg";
@@ -17,7 +17,7 @@ import deleteThread from "../../../public/assets/icons/delete-thread-dark.svg";
 // #554475
 export default {
   icons: {
-    addEditor: addEditorLight,
+    addEditor: addEditorDark,
     circleAdd,
     codeBlock: codeBlockDark,
     contentEmbed: contentEmbedDark,

@@ -155,7 +155,11 @@ class AddButton extends Component {
           style={getStyle(this.props.isDarkTheme)}
         >
           <img
-            src={lightTheme.icons.addEditor}
+            src={
+              this.props.isDarkTheme
+                ? darkTheme.icons.addEditor
+                : lightTheme.icons.addEditor
+            }
             alt="Add Content"
             height="15"
             width="15"
