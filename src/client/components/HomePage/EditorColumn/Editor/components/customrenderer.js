@@ -8,7 +8,11 @@ import AtomicEmbedComponent from "./blocks/atomic-embed.component";
 import AtomicSeparatorComponent from "./blocks/atomic-seperator.component";
 import { CodeBlock } from "../index";
 
-export default (setEditorState, getEditorState) => contentBlock => {
+export default (
+  setEditorState,
+  getEditorState,
+  isDarkTheme = false
+) => contentBlock => {
   const type = contentBlock.getType();
   switch (type) {
     case Block.ATOMIC:
@@ -36,7 +40,7 @@ export default (setEditorState, getEditorState) => contentBlock => {
     case Block.CODE:
       return {
         component: CodeBlock,
-        props: { setEditorState, getEditorState }
+        props: { setEditorState, getEditorState, isDarkTheme }
       };
     case Block.IMAGE:
       return {

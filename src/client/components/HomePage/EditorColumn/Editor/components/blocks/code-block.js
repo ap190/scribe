@@ -25,7 +25,7 @@ export default class CodeBlock extends React.Component {
 
   render() {
     const { block, blockProps } = this.props;
-    const { getEditorState } = blockProps;
+    const { getEditorState, isDarkTheme } = blockProps;
     const key = block.getKey();
     const editorState = getEditorState();
     const currentblock = getCurrentBlock(editorState);
