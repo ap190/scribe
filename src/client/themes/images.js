@@ -11,5 +11,8 @@ export default {
   notebookTutorial: "./assets/img/addnotebook.png",
   notebookTutorialModal: "./assets/img/addnotebook_modal.png",
   addedNotebookTutorial: "./assets/img/added_notebook.png",
+  addThreadSelectChannel: "./assets/img/addthread_select_channel.png",
+  addThreadNewButton: "./assets/img/addthread_select_button.png",
+  addThreadSetTitle: "./assets/img/addthread_set_title.png",
   logoIcon: "./assets/icons/logo.png"
 };

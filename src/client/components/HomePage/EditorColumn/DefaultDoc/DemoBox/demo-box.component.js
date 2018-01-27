@@ -35,13 +35,12 @@ class DemoBox extends Component {
 DemoBox.propTypes = {
   sectionTitle: PropTypes.string.isRequired,
   subTitle: PropTypes.string.isRequired,
-  explanationBlurb: PropTypes.any
+  children: PropTypes.any
 };
 
 DemoBox.defaultProps = {
   sectionTitle: "Title",
-  subTitle: "subtitle",
-  explanationBlurb: "hello content!"
+  subTitle: "subtitle"
 };
 
 export default DemoBox;
