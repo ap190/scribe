@@ -13,6 +13,7 @@ export default (
   getEditorState,
   isDarkTheme = false
 ) => contentBlock => {
+  console.log(isDarkTheme);
   const type = contentBlock.getType();
   switch (type) {
     case Block.ATOMIC:
