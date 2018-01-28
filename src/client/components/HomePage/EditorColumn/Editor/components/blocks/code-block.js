@@ -4,6 +4,7 @@ import PrismLanguages from "prism-languages";
 import { EditorBlock } from "draft-js";
 
 import { getCurrentBlock, updateDataOfBlock } from "../../model/";
+import darkTheme from "../../../../../../themes/dark-theme";
 
 export default class CodeBlock extends React.Component {
   constructor(props) {
@@ -25,7 +26,7 @@ export default class CodeBlock extends React.Component {
 
   render() {
     const { block, blockProps } = this.props;
-    const { getEditorState } = blockProps;
+    const { getEditorState, isDarkTheme } = blockProps;
     const key = block.getKey();
     const editorState = getEditorState();
     const currentblock = getCurrentBlock(editorState);
@@ -36,7 +37,10 @@ export default class CodeBlock extends React.Component {
       showDropdown = false;
     }
     return (
-      <div className="code-block-container">
+      <div
+        className="code-block-container"
+        style={isDarkTheme ? { border: "1px solid #4a4a4a" } : null}
+      >
         <div style={{ padding: "20px" }}>
           <EditorBlock {...this.props} />
         </div>

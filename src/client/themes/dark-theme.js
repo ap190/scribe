@@ -58,7 +58,7 @@ export default {
     },
     fileTree: {
       container: {
-        backgroundColor: "#212225",
+        backgroundColor: "#27282B",
         color: "#57595d"
       },
       header: {
@@ -74,7 +74,7 @@ export default {
         icon: folderDark
       }
     },
-    backgroundColor: "#212225",
+    backgroundColor: "#27282B",
     textColor: "#57595D"
   },
   threads: {

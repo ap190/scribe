@@ -83,10 +83,6 @@ class MediumDraftEditor extends React.Component {
     this.removeLink = this.removeLink.bind(this);
     this.handlePastedText = this.handlePastedText.bind(this);
     this.editLinkAfterSelection = this.editLinkAfterSelection.bind(this);
-    this.blockRendererFn = this.props.rendererFn(
-      this.onChange,
-      this.getEditorState
-    );
   }
 
   /**
@@ -483,6 +479,7 @@ class MediumDraftEditor extends React.Component {
     }
     const blockButtons = this.configureToolbarBlockOptions(toolbarConfig);
     const inlineButtons = this.configureToolbarInlineOptions(toolbarConfig);
+    // console.log(isDarkTheme);
     return (
       <div className="editorContent">
         {!disableToolbar && (
@@ -537,7 +534,11 @@ class MediumDraftEditor extends React.Component {
               }}
               {...this.props}
               editorState={editorState}
-              blockRendererFn={this.blockRendererFn}
+              blockRendererFn={this.props.rendererFn(
+                this.onChange,
+                this.getEditorState,
+                isDarkTheme
+              )}
               blockStyleFn={this.props.blockStyleFn}
               onChange={this.onChange}
               onTab={this.onTab}
