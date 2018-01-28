@@ -2,12 +2,21 @@ const path = require("path");
 const pdf = require("html-pdf");
 const jsonfile = require("jsonfile");
 const fs = require("fs");
+const { mainWindow } = require("../../electron");
+const { getDirSelectionFromUser } = require("../dialogs");
 
 const pdfpath = pdfName => path.join(__dirname, "..", "data", `${pdfName}.pdf`);
 const mdpath = pdfName => path.join(__dirname, "..", "data", `${pdfName}.md`);
 
 exports.genExportToMD = (event, md, pdfname) => {
-  fs.writeFile(mdpath(pdfname), md, err => {
+  // Pop up dialogue for user to select export destination
+  const selectedDir = getDirSelectionFromUser(mainWindow);
+
+  // Did user cancel export
+  if (!selectedDir) return;
+
+  // Write converted MD to new location
+  fs.writeFile(`${selectedDir}/${pdfname}.md`, md, err => {
     if (err) {
       console.error("COULD NOT WRITE MARKDOWN FILE :( ", err);
       return;
