@@ -11,20 +11,20 @@ const SaveWorkspace = () => (
     <b> Save Workspace </b>
     <br />
     <br />
-    <img src={Images.addThreadSelectChannel} alt="Select a channel" />
+    <img src={Images.saveWorkspaceMenu} alt="Select a channel" />
     <br />
     <br />
     <b>Step 2: Select a directory </b> to have your work saved in.
     <br />
     <br />
-    <img src={Images.addThreadNewButton} alt="Create a thread" />
+    <img src={Images.saveWorkspaceDialogue} alt="Create a thread" />
     <br />
     <br />
     <b>Step 3: Your work is saved. </b> You can now close Scribe and open your
     notes whenever you want.
     <br />
     <br />
-    <img src={Images.addThreadSetTitle} alt="Set Thread Title" />
+    <img src={Images.saveWorkspaceNotif} alt="Set Thread Title" />
   </div>
 );
 

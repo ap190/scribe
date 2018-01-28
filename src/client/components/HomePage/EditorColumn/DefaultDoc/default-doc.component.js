@@ -3,6 +3,7 @@ import DemoBox from "./DemoBox/demo-box.component";
 import NotebookExplanation from "./Explanations/notebook.component";
 import AddThreadExplanation from "./Explanations/addthread.component";
 import OpenWorkspaceExplanation from "./Explanations/openworkspace.component";
+import SaveWorkspaceExplanation from "./Explanations/saveworkspace.component";
 
 const DefaultDoc = () => (
   <div className="md-RichEditor-root">
@@ -34,6 +35,27 @@ const DefaultDoc = () => (
       <AddThreadExplanation />
     </DemoBox>
     <DemoBox
+      sectionTitle="Creating a document"
+      subTitle="Create documents with our Medium-like editor"
+      explanationBlurb=""
+    >
+      <AddThreadExplanation />
+    </DemoBox>
+    <DemoBox
+      sectionTitle="Embed rich media"
+      subTitle="Embed code snippets, youtube videos, stack overflow links and much more..."
+      explanationBlurb=""
+    >
+      <AddThreadExplanation />
+    </DemoBox>
+    <DemoBox
+      sectionTitle="Save a Project"
+      subTitle="Save your notes"
+      explanationBlurb=""
+    >
+      <SaveWorkspaceExplanation />
+    </DemoBox>
+    <DemoBox
       sectionTitle="Open a Project"
       subTitle="add documentation to an existing project"
       explanationBlurb=""
@@ -45,6 +67,13 @@ const DefaultDoc = () => (
       subTitle="learn shortcuts to speed up your workflow"
       explanationBlurb=""
     />
+    <DemoBox
+      sectionTitle="Export to Markdown"
+      subTitle="Export documents to Markdown"
+      explanationBlurb=""
+    >
+      <AddThreadExplanation />
+    </DemoBox>
   </div>
 );
 

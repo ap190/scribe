@@ -17,5 +17,8 @@ export default {
   openWorkspaceMenu: "./assets/img/openworkspace_menu.png",
   openWorkspaceDialogue: "./assets/img/openworkspace_dialogue.png",
   openWorkspaceFinal: "./assets/img/openworkspace_final.png",
+  saveWorkspaceMenu: "./assets/img/saveworkspace_menu.png",
+  saveWorkspaceDialogue: "./assets/img/saveworkspace_dialogue.png",
+  saveWorkspaceNotif: "./assets/img/saveworkspace_notif.png",
   logoIcon: "./assets/icons/logo.png"
 };
