@@ -2,6 +2,7 @@ import React from "react";
 import DemoBox from "./DemoBox/demo-box.component";
 import NotebookExplanation from "./Explanations/notebook.component";
 import AddThreadExplanation from "./Explanations/addthread.component";
+import CreateDocExplanation from "./Explanations/createdoc.component";
 import OpenWorkspaceExplanation from "./Explanations/openworkspace.component";
 import SaveWorkspaceExplanation from "./Explanations/saveworkspace.component";
 
@@ -21,7 +22,7 @@ const DefaultDoc = () => (
       below.
     </div>
     <DemoBox
-      sectionTitle="Notebooks"
+      sectionTitle="Create a Notebook"
       subTitle="organize docs into notebooks"
       explanationBlurb={NotebookExplanation}
     >
@@ -39,7 +40,7 @@ const DefaultDoc = () => (
       subTitle="Create documents with our Medium-like editor"
       explanationBlurb=""
     >
-      <AddThreadExplanation />
+      <CreateDocExplanation />
     </DemoBox>
     <DemoBox
       sectionTitle="Embed rich media"

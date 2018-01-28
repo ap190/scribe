@@ -20,5 +20,10 @@ export default {
   saveWorkspaceMenu: "./assets/img/saveworkspace_menu.png",
   saveWorkspaceDialogue: "./assets/img/saveworkspace_dialogue.png",
   saveWorkspaceNotif: "./assets/img/saveworkspace_notif.png",
+  createDocument: "./assets/img/createdoc_set_title.png",
+  createDocumentHighlightText: "./assets/img/createdoc_highlight_text.png",
+  createDocumentAddButton: "./assets/img/createdoc_add_btn.png",
+  createDocumentAddExpanded: "./assets/img/createdoc_add_expanded.png",
+  createDocumentAddedImage: "./assets/img/createdoc_added_img.png",
   logoIcon: "./assets/icons/logo.png"
 };
