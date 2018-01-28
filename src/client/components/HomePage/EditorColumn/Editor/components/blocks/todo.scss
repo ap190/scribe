@@ -1,26 +1,54 @@
 .md-block-todo {
-    // margin: 10px 0;
+  // margin: 10px 0;
 
-    input[type=checkbox] {
-        cursor: pointer;
-        float: left;
-        position: relative;
-        top: 4px;
-        left: -4px;
-    }
+  input[type="checkbox"] {
+    cursor: pointer;
+    float: left;
+    position: relative;
+    top: 4px;
+    left: -4px;
+    visibility: hidden;
+  }
 
-    .public-DraftStyleDefault-block {
-        margin-left: 18px;
-    }
-
-    .md-block-todo-completed {
-        color: #949494;
-        text-decoration: line-through;
-    }
+  .md-block-todo-completed {
+    color: #949494;
+    text-decoration: line-through;
+  }
 }
 
-// .public-DraftEditor-content {
-//     .block-todo {
-//         margin: 10px 0px;
-//     }
-// }
+/**
+ * Display the tick inside the checkbox
+ */
+
+.checkboxFive label:after {
+  opacity: 0.2;
+  content: "";
+  position: absolute;
+  width: 9px;
+  height: 5px;
+  background: transparent;
+  top: 6px;
+  left: 7px;
+  border: 3px solid #333;
+  border-top: none;
+  border-right: none;
+  transform: rotate(-45deg);
+}
+/**
+ * Create the hover event of the tick
+ */
+
+.checkboxFive label:hover::after {
+  opacity: 0.5;
+}
+/**
+ * Create the checkbox state for the tick
+ */
+
+.checkboxFive input[type="checkbox"]:checked + label:after {
+  opacity: 1;
+}
+
+.public-DraftStyleDefault-block {
+  margin-left: 18px;
+}

@@ -34,12 +34,6 @@ function setMainMenu(mainWindow) {
           }
         },
         {
-          label: "Save",
-          click() {
-            mainWindow.webContents.send("save-workspace");
-          }
-        },
-        {
           label: "Toggle Dark Theme",
           click() {
             mainWindow.webContents.send("toggle-dark-theme");
@@ -55,12 +49,6 @@ function setMainMenu(mainWindow) {
           label: "Sync to Cloud",
           click() {
             getFileForCloudSync(mainWindow);
-          }
-        },
-        {
-          label: "Open a File",
-          click() {
-            showOpenDialog(mainWindow);
           }
         },
         {

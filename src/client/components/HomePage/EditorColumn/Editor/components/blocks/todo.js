@@ -1,10 +1,10 @@
-import PropTypes from 'prop-types';
+import PropTypes from "prop-types";
 // import './todo.scss';
 
-import React from 'react';
-import { EditorBlock } from 'draft-js';
+import React from "react";
+import { EditorBlock } from "draft-js";
 
-import { updateDataOfBlock } from '../../model/';
+import { updateDataOfBlock } from "../../model/";
 
 export default class TodoBlock extends React.Component {
   constructor(props) {
@@ -16,27 +16,32 @@ export default class TodoBlock extends React.Component {
     const { block, blockProps } = this.props;
     const { setEditorState, getEditorState } = blockProps;
     const data = block.getData();
-    const checked = (data.has('checked') && data.get('checked') === true);
-    const newData = data.set('checked', !checked);
+    const checked = data.has("checked") && data.get("checked") === true;
+    const newData = data.set("checked", !checked);
     setEditorState(updateDataOfBlock(getEditorState(), block, newData));
   }
 
   render() {
     const data = this.props.block.getData();
-    const checked = data.get('checked') === true;
+    const checked = data.get("checked") === true;
     return (
-      <div className={checked ? 'block-todo-completed' : ''}>
-        <span contentEditable={false}>
-          <input type="checkbox" checked={checked} onChange={this.updateData} />
-        </span>
+      <div className={checked ? "block-todo-completed" : ""}>
+        <div className="checkboxFive" contentEditable={false}>
+          <input
+            type="checkbox"
+            checked={checked}
+            id="checkboxFiveInput"
+            onChange={this.updateData}
+          />
+          <label htmlFor="checkboxFiveInput" />
+        </div>
         <EditorBlock {...this.props} />
       </div>
     );
   }
 }
 
-
 TodoBlock.propTypes = {
   block: PropTypes.object,
-  blockProps: PropTypes.object,
+  blockProps: PropTypes.object
 };

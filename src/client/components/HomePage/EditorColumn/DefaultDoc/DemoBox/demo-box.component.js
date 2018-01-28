@@ -25,9 +25,7 @@ class DemoBox extends Component {
             {this.props.sectionTitle}
             <div className="demo-meta">{this.props.subTitle}</div>
           </button>
-          <div className="demo-box">
-            <p>{this.props.explanationBlurb}</p>
-          </div>
+          <div className="demo-box">{this.props.children}</div>
         </div>
       </div>
     );
@@ -37,13 +35,12 @@ class DemoBox extends Component {
 DemoBox.propTypes = {
   sectionTitle: PropTypes.string.isRequired,
   subTitle: PropTypes.string.isRequired,
-  explanationBlurb: PropTypes.string.isRequired
+  children: PropTypes.any
 };
 
 DemoBox.defaultProps = {
   sectionTitle: "Title",
-  subTitle: "subtitle",
-  explanationBlurb: "hello content!"
+  subTitle: "subtitle"
 };
 
 export default DemoBox;

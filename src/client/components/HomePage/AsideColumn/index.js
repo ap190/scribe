@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import cx from "classnames";
 import Channels from "./Channels";
 import UserWidget from "../../common/UserWidget";
 import Tree from "./Tree";
@@ -11,16 +10,14 @@ import ColumnFooter from "../../common/ColumnFooter";
 import lightTheme from "../../../themes/light-theme";
 import darkTheme from "../../../themes/dark-theme";
 
-const getTheme = isDark => {
-  return {
-    height: "100%",
-    backgroundColor: isDark
-      ? darkTheme.aside.backgroundColor
-      : lightTheme.aside.backgroundColor,
-    display: "flex",
-    flexDirection: "column"
-  };
-};
+const getTheme = isDark => ({
+  height: "100%",
+  backgroundColor: isDark
+    ? darkTheme.aside.backgroundColor
+    : lightTheme.aside.backgroundColor,
+  display: "flex",
+  flexDirection: "column"
+});
 
 class Aside extends Component {
   constructor(props) {
@@ -28,7 +25,6 @@ class Aside extends Component {
     this.state = {
       active: null
     };
-    this.renderNode = this.renderNode.bind(this);
     this.onClickNode = this.onClickNode.bind(this);
     this.handleChange = this.handleChange.bind(this);
     this.lastName = this.launchEditor.bind(this);
@@ -53,22 +49,6 @@ class Aside extends Component {
     this.setState({
       tree
     });
-  }
-
-  renderNode(node) {
-    console.log("here");
-    return (
-      <span
-        role="menuitem"
-        tabIndex="0"
-        className={cx("node", {
-          "is-active": node === this.state.active
-        })}
-        onClick={this.onClickNode.bind(null, node)}
-      >
-        {node.module}
-      </span>
-    );
   }
 
   launchEditor() {

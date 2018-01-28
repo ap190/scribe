@@ -321,8 +321,6 @@ class HomePage extends Component {
     }
 
     if (channelType === "file") {
-      console.log("selecting....");
-      console.log(activeFile);
       let fileChannel = this.getUpdatedChannelAndThreadsIfSelectionIsFile(
         activeFile
       );
