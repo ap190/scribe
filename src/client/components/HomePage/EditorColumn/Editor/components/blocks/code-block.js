@@ -5,6 +5,7 @@ import { EditorBlock } from "draft-js";
 
 import { getCurrentBlock, updateDataOfBlock } from "../../model/";
 import darkTheme from "../../../../../../themes/dark-theme";
+import index from "../../../../AsideColumn/index";
 
 export default class CodeBlock extends React.Component {
   constructor(props) {
@@ -26,6 +27,7 @@ export default class CodeBlock extends React.Component {
 
   render() {
     const { block, blockProps } = this.props;
+    const lines = block.text.split(/\n/g);
     const { getEditorState, isDarkTheme } = blockProps;
     const key = block.getKey();
     const editorState = getEditorState();
@@ -41,18 +43,8 @@ export default class CodeBlock extends React.Component {
         className="code-block-container"
         style={isDarkTheme ? { border: "1px solid #4a4a4a" } : null}
       >
-        <div style={{ padding: "20px" }}>
-          <EditorBlock {...this.props} />
-        </div>
-        <div
-          className="code-block-footer"
-          style={{
-            display: "flex",
-            width: "100%",
-            justifyContent: "flex-end",
-            top: "30px"
-          }}
-        >
+        <div className="code-block-header">
+          {"</>"}
           <div
             className="dropdown"
             style={showDropdown ? null : { visibility: "hidden" }}
@@ -65,6 +57,12 @@ export default class CodeBlock extends React.Component {
               ))}
             </select>
           </div>
+        </div>
+        <div className="code-editor-container">
+          <div className="code-line-number">
+            {lines.map((elt, eltIdx) => <div>{eltIdx + 1}</div>)}
+          </div>
+          <EditorBlock className="test" {...this.props} />
         </div>
       </div>
     );
