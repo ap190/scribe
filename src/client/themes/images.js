@@ -14,5 +14,8 @@ export default {
   addThreadSelectChannel: "./assets/img/addthread_select_channel.png",
   addThreadNewButton: "./assets/img/addthread_select_button.png",
   addThreadSetTitle: "./assets/img/addthread_set_title.png",
+  openWorkspaceMenu: "./assets/img/openworkspace_menu.png",
+  openWorkspaceDialogue: "./assets/img/openworkspace_dialogue.png",
+  openWorkspaceFinal: "./assets/img/openworkspace_final.png",
   logoIcon: "./assets/icons/logo.png"
 };

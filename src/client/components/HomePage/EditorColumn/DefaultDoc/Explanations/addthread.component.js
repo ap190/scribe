@@ -1,8 +1,6 @@
 import React from "react";
 import { Images } from "../../../../../themes";
 
-// notebookTutorial
-
 const AddThread = () => (
   <div className="explanation">
     <h4 style={{ marginTop: "0px" }}>What is a thread?</h4>

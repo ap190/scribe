@@ -2,6 +2,7 @@ import React from "react";
 import DemoBox from "./DemoBox/demo-box.component";
 import NotebookExplanation from "./Explanations/notebook.component";
 import AddThreadExplanation from "./Explanations/addthread.component";
+import OpenWorkspaceExplanation from "./Explanations/openworkspace.component";
 
 const DefaultDoc = () => (
   <div className="md-RichEditor-root">
@@ -36,7 +37,9 @@ const DefaultDoc = () => (
       sectionTitle="Open a Project"
       subTitle="add documentation to an existing project"
       explanationBlurb=""
-    />
+    >
+      <OpenWorkspaceExplanation />
+    </DemoBox>
     <DemoBox
       sectionTitle="Shortcuts"
       subTitle="learn shortcuts to speed up your workflow"
